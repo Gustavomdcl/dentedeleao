@@ -1,0 +1,172 @@
+body {
+  font-weight: normal;
+  font-size: 14px; //1em = 14px; 3em = 42px; 1.28em = 18px; FONTEpx/14px = FONTEem
+  line-height:1.4;
+  font-family: sans-serif;
+  color: $color-base;
+  background-color: $color-gray-lighter;
+  // -webkit-font-smoothing: antialiased;
+  //         font-smoothing: antialiased;
+}
+
+p {
+  margin: 10px 0;
+}
+
+img {
+  max-width: 100%;
+}
+
+i {
+  font-size:1.42em;
+}
+
+/* headings --------------------- */
+
+h1, h2, h3, h4, h5, h6 {
+  font-weight: bold;
+  margin: 10px 0;
+}
+
+h1 { font-size: 3.0em; }
+h2 { font-size: 2.6em; }
+h3 { font-size: 2.2em; }
+h4 { font-size: 1.8em; }
+h5 { font-size: 1.4em; }
+h6 { font-size: 1.1em; }
+
+/* links ------------------------ */
+
+a {
+  text-decoration: none;
+  color: $color-gray-dark;
+  &:hover   { color: $color-gray; text-decoration: underline; }
+}
+
+/* forms ------------------------ */
+
+.input-field {
+  position: relative;
+}
+
+input, textarea {
+  @include box-sizing(border-box); // content-box = tamanho dele é definido pelo seu conteúdo apenas | border-box = O width será a soma do conteúdo com a borda e o padding: http://compass-style.org/examples/compass/css3/box_sizing/ , http://sergiolopes.org/css-box-sizing-border-box/
+  outline: none;
+  width:100%;
+  border: 1px solid $color-gray-light;
+  color: $color-gray-dark;
+  font-weight: normal;
+  font-size: 14px; //1em = 14px; 3em = 42px; 1.28em = 18px; FONTEpx/14px = FONTEem
+  line-height:1.4;
+  font-family: sans-serif;
+  padding:10px;
+  margin: 10px 0px;
+  border-radius: 5px;
+  behavior: url(assets/css/suiting/pie.htc);
+  &.error {
+    -moz-box-shadow: 0px 0px 5px $color-red;
+    -webkit-box-shadow: 0px 0px 5px $color-red;
+    box-shadow: 0px 0px 5px $color-red;
+  }
+}
+
+button, .btn {
+  @include box-sizing(border-box); // content-box = tamanho dele é definido pelo seu conteúdo apenas | border-box = O width será a soma do conteúdo com a borda e o padding: http://compass-style.org/examples/compass/css3/box_sizing/ , http://sergiolopes.org/css-box-sizing-border-box/
+  outline: none;
+  width:100%;
+  border:none;
+  color: $color-white;
+  font-weight: normal;
+  font-size: 14px; //1em = 14px; 3em = 42px; 1.28em = 18px; FONTEpx/14px = FONTEem
+  line-height:1.4;
+  font-family: sans-serif;
+  background-color: $color-gray;
+  padding:10px;
+  margin: 10px 0px;
+  cursor: pointer;
+  position: relative;
+  border-radius: 5px;
+  behavior: url(assets/css/suiting/pie.htc);
+  &:hover {
+    color: $color-white;
+    background:$color-gray-dark;
+    text-decoration: none;
+  }
+  &>i, .icon {
+    position:absolute;
+    right:10px;
+  }
+  .icon {
+    top: 1px;
+    display:inline-block;
+    padding:8px 10px!important;
+    right:0px;
+    border-radius:0px 5px 5px 0px;
+    behavior: url(assets/css/suiting/pie.htc);
+    &:hover {
+      color: $color-white;
+    }
+  }
+} p.btn { cursor: initial; color: $color-base; background-color: $color-gray-light; &:hover { color: $color-base; background-color: $color-gray-light; } }
+
+label.error {
+  display: inline-block;
+  text-align:center;
+  width: 130px;
+  position: absolute;
+  right: -160px;
+  top: -10px;
+  color: $color-white;
+  padding: 10px;
+  background-color: $color-red;
+  &:before {
+    content: '';
+    display:block;
+    background-color: $color-red;
+    width:10px;
+    height:10px;
+    position: absolute;
+    left:-5px;
+    top:15px;
+    transform: rotate(45deg);
+    -webkit-transform: rotate(45deg);
+    -moz-transform: rotate(45deg);
+    -o-transform: rotate(45deg);
+    -ms-transform: rotate(45deg);
+  }
+} .error-left + label.error {
+  left: -160px;
+  right:inherit;
+  &:before {
+    left:145px;
+  }
+}
+
+.invalid {
+    cursor: default;
+    background: $color-gray-light;
+    &:hover {
+      background: $color-gray-light;
+    }
+}
+
+.excluir:hover {
+  background-color: $color-red;
+}
+
+/* classes ------------------------ */
+
+.centralize {
+  text-align:center;
+}
+
+.hide_text {
+  text-indent: -9999px;
+  display: block;
+}
+
+.nav {
+  li {
+    display: inline-block;
+  }
+}

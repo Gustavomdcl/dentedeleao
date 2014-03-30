@@ -1,0 +1,19 @@
+.l-cover {
+  padding:10px 0px;
+  h1 {
+    position: relative;
+  }
+  i {
+    position:absolute;
+    right:10px;
+    color: $color-gray;
+  }
+  ul {
+    li {
+      color: $color-gray;
+      a {
+        color: $color-gray-dark;
+      }
+    }
+  }
+}

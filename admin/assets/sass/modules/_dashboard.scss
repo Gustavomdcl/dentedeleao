@@ -1,0 +1,30 @@
+.l-dashboard {
+	.content {
+		@include box-sizing(border-box);
+		padding:10px 15px;
+		min-height:250px;
+	    background-color: $color-white;
+	    -moz-box-shadow: 0px 0px 5px $color-gray;
+	    -webkit-box-shadow: 0px 0px 5px $color-gray;
+	    box-shadow: 0px 0px 5px $color-gray;
+	    border-radius: 5px;
+	    behavior: url(assets/css/suiting/pie.htc);
+	    h2 {
+	    	color: $color-gray;
+	    	text-align: center;
+	    	text-transform: uppercase;
+	    	font-size: 1.6em;
+	    }
+	    nav {
+	    	ul {
+	    		li {
+	    			a {
+	    				display:inline-block;
+	    				@include box-sizing(border-box);
+	    				padding:10px;
+	    			}
+	    		}
+	    	}
+	    }
+	}
+}
