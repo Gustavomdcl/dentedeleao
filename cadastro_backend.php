@@ -10,11 +10,6 @@
 	<meta name="title" content="PROJETO">
 	<meta name="description" content="PROJETO">
 
-	<!-- links https://support.google.com/webmasters/answer/139394?hl=pt-BR
-	======================================================== -->
-	<link rel="canonical" href="http://www.PROJETO.com.br/">
-	<link rel="next" href="http://www.PROJETO.com.br/page/2/">
-
 	<?php include 'template/head.php'; ?>
 
 	<!-- modernizr modernizr.com -->
@@ -40,11 +35,19 @@
 
 					<div class="l-row">
 
-						<article>
-							<header><h1>Título</h1></header>
-							<p>Conteúdo</p>
-							<footer><p>Rodapé</p></footer>
-						</article>Nome CPF E-mail Senha
+						<form id="formCadastroUsuario" method="post" action="backend/envios/enviarCadastroUsuario.php">
+
+							<input type="text" name="nome" id="nome" placeholder="Nome" required>
+
+							<input type="text" name="cpf" id="cpf" placeholder="CPF" required>
+
+							<input type="text" name="email" id="email" placeholder="Email" required>
+
+							<input type="password" name="senha" id="senha" placeholder="Senha" required>
+
+							<button type="submit">Enviar</button>
+
+						</form>
 
 					</div><!-- .l-row -->
 
