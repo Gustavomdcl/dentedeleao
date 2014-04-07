@@ -3,7 +3,7 @@
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-	<meta name="author" content="Mint DigitAll">
+	<meta name="author" content="Gustavo Lima, Adriana Lima">
   <meta name="HandheldFriendly" content="True">
   <meta name="MobileOptimized" content="320">
   <meta http-equiv="cleartype" content="on">
@@ -11,21 +11,18 @@
 	<!-- social description
 	======================================================== -->
 	<!-- Open Graph http://ogp.me/ -->
-	<meta property="og:title" content="PROJETO">
-	<meta property="og:description" content="PROJETO">
-	<meta property="og:url" content="www.PROJETO.com">
+	<meta property="og:title" content="Dente de Leão">
+	<meta property="og:description" content="Projeto Dente de Leão busca a disseminação e troca do conhecimento tácito entre os produtores orgânicos para fortalecer o mercado e os laços entre a comunidade orgânica.">
+	<meta property="og:url" content="www.dentedeleao.agr.br">
 	<meta property="og:image" content="assets/img/template/.jpg">
 	<meta property="og:type" content="website">
-	<meta property="og:site_name" content="PROJETO">
+	<meta property="og:site_name" content="Dente de Leão">
 	<meta property="og:locale" content="pt_BR">
-	<!-- facebook https://developers.facebook.com/docs/insights/ -->
-	<meta property="fb:admins" content="PROJETO" />
-	<meta property="fb:app_id" content="PROJETO"/>
 	<!-- twitter https://dev.twitter.com/docs/cards -->
 	<meta name="twitter:card" content="summary">
-	<meta name="twitter:site" content="@PROJETO">
-	<meta name="twitter:domain" content="PROJETO">
-	<meta name="twitter:creator" content="@PROJETO">
+	<meta name="twitter:site" content="@dentedeleao">
+	<meta name="twitter:domain" content="dentedeleao">
+	<meta name="twitter:creator" content="@gustavomdcl">
 
 	<!-- icon
 	======================================================== -->
