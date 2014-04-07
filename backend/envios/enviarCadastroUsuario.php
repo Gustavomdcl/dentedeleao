@@ -90,6 +90,8 @@
 
 	$resultado = mail($emaildestinatario, $assunto, $mensagemHTML, $headers, "-r" . $emailsender);
 
+	echo $resultado;
+
 	if ($resultado == 1) {
 	    //header('Location: /cadastro_backend.php?sucesso=true');
 	} else {
