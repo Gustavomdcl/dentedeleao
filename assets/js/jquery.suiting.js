@@ -70,7 +70,7 @@ if(isOpera){
 	//Is Opera
 	$('body').addClass('opera');
 }
-
+  
 //Safari
 var isSafari = /constructor/i.test(window.HTMLElement);
 if(isSafari){

@@ -2,12 +2,12 @@
 <html lang="pt_BR">
 <head>
 
-	<title>Dente de Leão | Projeto para Produtores Orgânicos - Cultive Ideias, Colha Conhecimento</title>
+	<title>Dente de Leão | Projeto para Produtores Orgânicos - Cultive Ideias. Colha Conhecimento</title>
 
 	<!-- SEO rel="nofollow" on links
 	======================================================== -->
 	<meta name="robots" content="INDEX, follow" />	
-	<meta name="title" content="Dente de Leão | Cultive Ideias, Colha Conhecimento">
+	<meta name="title" content="Dente de Leão | Cultive Ideias. Colha Conhecimento">
 	<meta name="description" content="Projeto Dente de Leão busca a disseminação e troca do conhecimento tácito entre os produtores orgânicos para fortalecer o mercado e os laços entre a comunidade orgânica.">
 	<!-- ADRIAN: Importante para acessibilidade e SEO. Coloque sempre o Título e a Descrição da página. Sempre coloque ali em cima no <title> também. Cada página precisa de um diferente. -->
 
@@ -15,7 +15,13 @@
 
 	<!-- modernizr modernizr.com -->
 	<script src="assets/min/modernizr.min.js"></script>
+	<script src="http://code.jquery.com/jquery-1.10.2.js"></script>
+  	<script src="http://code.jquery.com/ui/1.10.4/jquery-ui.js"></script>
+  	<script src="assets/min/jquery.fancybox.min.js"></script>
 
+  	<!-- CSS -->
+  	<link rel="stylesheet" href="assets/css/jquery.fancybox.css">
+	
 </head>
 
 <body class="no-js">
@@ -39,9 +45,80 @@
 					<div class="l-row">
 
 						<article>
-							<header><h1>Título</h1></header>
-							<p>Conteúdo</p>
-							<footer><p>Rodapé</p></footer>
+							<header><h1><img src ="" alt="Dente de Leão" border="none" /></h1>
+							<h2>Cultive ideias. Colha conhecimento</h2></header>
+								<div id="accordion">
+									<a class"btCadastrar">Cadastrar</a>
+									<form>
+										<input type="text" name="Nome" placeholder="Nome" /><br>
+										<input type="text" name="CPF" placeholder="CPF" /><br>
+										<input type="email" name="Email" placeholder="E-mail" /><br>
+										<input type="checkbox" name="Termos" value="Termos e condições">Li e estou de acordo com os <a href="" title="termos e condições">Termos e condições</a> <br>
+										<input type="submit" value="Cadastrar">
+
+									</form>
+								</div>
+								<!-- Script do accordion -->
+								<script>
+									(function($) {
+    
+									  var form = $('#accordion form').hide();
+									    
+									  $('#accordion a').click(function() {
+									    form.slideDown();
+									  });
+
+									})(jQuery);
+								</script>
+								<!-- botão login -->
+							<p>ou <a href="#login_form" class="btLogar" id="homeLogin">Logar</a></p>
+
+							<div style="display:none" >
+								<form id="login_form" method="post" action="">
+								    
+									<input type="text" name="Nome" placeholder="Nome de usuário" /><br>
+									<input type="password" name="Senha" placeholder="Senha" /><br>
+									<input type="checkbox" name="conectado" value="Continuar Conectado">Continuar Conectado 
+									<p>
+										<input type="submit" value="Fazer Login" />
+									</p>
+									<a href="#lembrar_form" id="lembrarSenha">Esqueceu sua senha?</a>
+									
+								</form>
+							</div>
+							<div style="display:none" >
+
+								<form id="lembrar_form" method="post" action="">
+									<p>Não consegue lembrar sua senha? Digite abaixo seu e-mail que a enviaremos para você.</p>
+									<input type="email" name="Email" placeholder="Digite aqui seu e-mail" /><br>
+									<p>
+										<input type="submit" value="Enviar" />
+									</p>
+									
+									
+								</form>
+							</div>
+							<!-- scripts fancybox de login e recuperar senha -->
+							<script>
+								(function($) {
+								$("#homeLogin").fancybox({
+									'scrolling'		: 'no',
+									'titleShow'		: false,
+									'onClosed'		: function() {
+									    $("#login_error").hide();
+									}
+								});
+
+								$("#lembrarSenha").fancybox({
+									'scrolling'		: 'no',
+									'titleShow'		: false,
+									
+								});
+
+								})(jQuery);
+							</script>
+							
+							<footer><a>Saiba mais</a></footer>
 						</article>
 
 					</div><!-- .l-row -->

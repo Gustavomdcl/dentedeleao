@@ -4,9 +4,9 @@
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 	<meta name="author" content="Gustavo Lima, Adriana Lima">
-  <meta name="HandheldFriendly" content="True">
-  <meta name="MobileOptimized" content="320">
-  <meta http-equiv="cleartype" content="on">
+  	<meta name="HandheldFriendly" content="True">
+  	<meta name="MobileOptimized" content="320">
+  	<meta http-equiv="cleartype" content="on">
 
 	<!-- social description
 	======================================================== -->
@@ -55,3 +55,6 @@
 	<link rel="stylesheet" href="assets/css/adjust.css">
 	<!-- Font FONTE | font-family: 'FONTE', sans-serif; 
 	<link href='http://google.com/fonts' rel='stylesheet' type='text/css'> -->
+
+	<!-- js -->
+	
