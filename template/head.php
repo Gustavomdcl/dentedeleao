@@ -41,12 +41,6 @@
 	<!-- Versões antigas de iPhone, iPod Touch e Android 2.2+  -->
 	<link rel="apple-touch-icon" href="assets/img/template/.png">
 
-	<!-- For iOS web apps. Delete if not needed.
-	<meta name="apple-mobile-web-app-capable" content="yes">
-	<meta name="apple-mobile-web-app-status-bar-style" content="black">
-	<meta name="apple-mobile-web-app-title" content="PROJETO">
-	-->
-
 	<!-- styles
 	======================================================== -->
 	<!-- Main Style -->
@@ -55,6 +49,3 @@
 	<link rel="stylesheet" href="assets/css/adjust.css">
 	<!-- Font FONTE | font-family: 'FONTE', sans-serif; 
 	<link href='http://google.com/fonts' rel='stylesheet' type='text/css'> -->
-
-	<!-- js -->
-	

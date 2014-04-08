@@ -47,6 +47,9 @@ module.exports = function( grunt ) {
           ],
           '../assets/min/jquery.mobile.min.js': [
             '../assets/js/jquery.mobile.js'
+          ],
+          '../assets/min/jquery.ui.min.js': [
+            '../assets/js/jquery.ui.js'
           ]
         }
       }
