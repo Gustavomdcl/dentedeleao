@@ -45,8 +45,9 @@
 								<a class"btCadastrar">Cadastrar</a>
 								<form style="display:none;">
 									<input type="text" name="nome" placeholder="Nome" /><br>
-									<input type="text" name="cpf" placeholder="CPF" /><br>
+									<input type="text" name="cpf" id="cpf" placeholder="CPF" /><br>
 									<input type="email" name="email" placeholder="E-mail" /><br>
+									<input type="password" name="senha" placeholder="Senha" /><br>
 									<input type="checkbox" name="termos" value="Termos e condições">Li e estou de acordo com os <a href="" title="termos e condições">Termos e condições</a> <br>
 									<button type="submit">Cadastrar</button>
 								</form>
@@ -113,6 +114,9 @@
 		$("#lembrarSenha").fancybox({
 			'scrolling'		: 'no',
 			'titleShow'		: false,
+		});
+		jQuery(function($){
+		   $("#cpf").mask("999.999.999-99");
 		});
 	</script>
 

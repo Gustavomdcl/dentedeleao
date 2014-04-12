@@ -13,3 +13,8 @@
 	var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
 	document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
 	</script>
+	<!-- jquery validate -->
+	<script src="assets/min/jquery.validate.min.js"></script>
+	<script src="assets/min/jquery.placeholder.min.js"></script><!-- depois de todos os códigos javascript -->
+	<script src="assets/min/jquery.validate.messages.min.js"></script>
+	<script src="assets/min/jquery.maskedinput.min.js"></script>
