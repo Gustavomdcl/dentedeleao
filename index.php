@@ -69,7 +69,7 @@
 					</div>
 					<div style="display:none" >
 
-						<form id="lembrar_form" method="post" action="">
+						<form id="lembrar_form" method="post" action="backend/envios/mudarSenha.php">
 							<p>Não consegue lembrar sua senha? Digite abaixo seu e-mail que a enviaremos para você.</p>
 							<input type="email" name="email" placeholder="Digite aqui seu e-mail"><br>
 							<p><button type="submit">Enviar</button></p>
