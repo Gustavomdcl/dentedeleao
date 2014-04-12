@@ -6,12 +6,12 @@
 	$cpf  			=	$_POST['cpf'];
 	$email 			=	$_POST['email'];
 	$senha 			=	md5($_POST['senha']);
-	$aprovado   = false;
+	$aprovado   	=	false;
 
 	//Verifica se esse cadastro já existe no registered
-	$nomeRegisteredVerify = mysql_query("SELECT * FROM teste WHERE nome = '$nome'");
-	$cpfRegisteredVerify = mysql_query("SELECT * FROM teste WHERE cpf = '$cpf'");
-	$emailRegisteredVerify = mysql_query("SELECT * FROM teste WHERE email = '$email'");
+	$nomeRegisteredVerify = mysql_query("SELECT * FROM DL_ADMIN_registered WHERE nome = '$nome'");
+	$cpfRegisteredVerify = mysql_query("SELECT * FROM DL_ADMIN_registered WHERE cpf = '$cpf'");
+	$emailRegisteredVerify = mysql_query("SELECT * FROM DL_ADMIN_registered WHERE email = '$email'");
 
 	//Verifica se email ou cpf existem no banco da lista do Admin
 	$emailVerify = mysql_query("SELECT * FROM DL_ADMIN_emailList WHERE email = '$email'");
@@ -36,11 +36,13 @@
 		    $mensagemHTML = utf8_decode('<img src="http://www.dentedeleao.agr.br/admin/assets/img/template/logo.gif" alt="Logo Dente de Leão">
 		    <p>Olá, ' . $nome . ' , tudo bem? Obrigado pelo cadastro!</p>
 		    <p>Para começar, acesse esse link para validar seu email:</p>
-			<p><a href="http://www.dentedeleao.agr.br" target="_blank">http://www.dentedeleao.agr.br</a></p>
+			<p><a href="http://www.dentedeleao.agr.br/backend/envios/validaUsuario.php?usuario=' . $email . '&code=' . $senha . '" target="_blank">http://www.dentedeleao.agr.br/backend/envios/validaUsuario.php?usuario=' . $email . '&code=' . $senha . '</a></p>
 			<p>Qualquer dúvida, entre em contato: (011) 99973-5872</p>
 		    <br>
 		    <p>Dente de Leão. Cultive Ideias, Colha Conhecimento.</p>
 			<hr>');
+
+			$aprovado = true;
 
 			//echo '<script>window.location.assign("../../lista-cpf.php?error=' . $cpf . '");</script>';
 
@@ -51,7 +53,7 @@
 
 		   	$mensagemHTML = utf8_decode('<img src="http://www.dentedeleao.agr.br/admin/assets/img/template/logo.gif" alt="Logo Dente de Leão">
 		    <p>Olá,' . $nome . ', tudo bem? Obrigado pelo cadastro!</p>
-		    <p>Seu email está passando por um processo de validação, por favor aguarde Verifique sua caixa de entrada, um email foi enviado para você validar seu usuário</p>
+		    <p>Seu email está passando por um processo de validação, por favor aguarde.</p>
 		    <p>Assim que tudo estiver ok enviaremos um email.</p>
 		    <p>Qualquer dúvida, entre em contato: (011) 99973-5872</p>
 		    <br>
@@ -63,7 +65,7 @@
 		}
 
 		//Envio para o Banco ==============================
-		$sql = "INSERT INTO teste(nome, cpf, email, senha, aprovado) VALUES ('$nome', '$cpf', '$email', '$senha', '$aprovado')";
+		$sql = "INSERT INTO DL_ADMIN_registered(nome, cpf, email, senha, aprovado) VALUES ('$nome', '$cpf', '$email', '$senha', '$aprovado')";
 
 		mysqlexecuta($id, $sql);
 
@@ -71,7 +73,7 @@
 		//Envio de Email ==============================
 		include_once("email/class.phpmailer.php");
 
-		$nomeDestinatario = $nome;
+		$nomeDestinatario = utf8_decode('Contato Dente de Leão');
 
 		$usuario = 'contato@dentedeleao.agr.br';
 

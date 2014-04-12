@@ -107,7 +107,27 @@ button, .btn {
       color: $color-white;
     }
   }
-} p.btn { cursor: initial; color: $color-base; background-color: $color-gray-light; &:hover { color: $color-base; background-color: $color-gray-light; } }
+  span[class*=l-col] {
+    padding: 0px;
+    text-align: center;
+  }
+}
+p.btn {
+  cursor: initial;
+  color: $color-base;
+  background-color: $color-gray-light;
+  &:hover {
+    color: $color-base;
+    background-color: $color-gray-light;
+  }
+  &.sumary {
+    color: $color-gray;
+    background-color: $color-gray-lighter;
+    span[class*=l-col] {
+      text-align: center;
+    }
+  }
+}
 
 label.error {
   display: inline-block;
@@ -152,6 +172,10 @@ label.error {
 
 .excluir:hover {
   background-color: $color-red;
+}
+
+.validar:hover {
+  background-color: $color-green;
 }
 
 /* classes ------------------------ */

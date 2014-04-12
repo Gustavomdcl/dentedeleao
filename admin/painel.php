@@ -80,7 +80,7 @@
 
 							<nav>
 								<ul>
-									<li><a href="" title="" class="btn invalid">Registros <i class="fa fa-users"></i></a></li>
+									<li><a href="lista-registros.php" title="" class="btn">Registros <i class="fa fa-users"></i></a></li>
 									<li><a href="" title="" class="btn invalid">Dispositivos <i class="fa fa-tachometer"></i></a></li>
 								</ul>
 							</nav>
