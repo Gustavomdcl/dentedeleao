@@ -26,7 +26,7 @@
 	if(mysql_num_rows($usuarioVerify) > 0) {
 	    //echo 'tem';
 
-	    echo "Um código para trocar sua senha foi enviado para o seu email.";
+	    //echo "Um código para trocar sua senha foi enviado para o seu email.";
 
 	    $mensagemHTML = utf8_decode('<img src="http://www.dentedeleao.agr.br/admin/assets/img/template/logo.gif" alt="Logo Dente de Leão">
 	    <p>Olá, ' . $nome . ' , tudo bem?</p>
@@ -80,9 +80,10 @@
 		}
 
 		//Volta para a anterior
-		//echo '<script>window.location.assign("../../lista-email.php");</script>';
+		echo '<script>window.location.assign("../../index.php?sucesso=alterarsenha");</script>';
 	} else {
-		echo "Email não cadastrado";
+		echo '<script>window.location.assign("../../index.php?error=emailnaocadastrado");</script>';
+		//echo "Email não cadastrado";
 	}
 
 ?>

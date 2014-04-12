@@ -78,10 +78,13 @@
 		$mensagemRetorno = 'E-mail enviado com sucesso!';
 		}
 
-		echo 'Senha alterada!';
+		//echo 'Senha alterada!';
+		//Volta para a anterior
+		echo '<script>window.location.assign("../../index.php?sucesso=senhaalterada");</script>';
 
 	} else {
-		echo utf8_decode("Usuário não existente");
+		echo '<script>window.location.assign("../../index.php?error=emailnaocadastrado");</script>';
+		//echo utf8_decode("Usuário não existente");
 	}
 
 ?>

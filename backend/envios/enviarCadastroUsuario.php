@@ -2,8 +2,10 @@
 	require_once("../conecta.php");
 	require_once("../executa.php");
 
+	$caracteres = array(".", "-");
+
 	$nome 			=	utf8_decode($_POST['nome']);
-	$cpf  			=	$_POST['cpf'];
+	$cpf  			=	str_replace($caracteres, "", $_POST['cpf']);
 	$email 			=	$_POST['email'];
 	$senha 			=	md5($_POST['senha']);
 	$aprovado   	=	false;
@@ -23,15 +25,17 @@
 
 	//Condições se existe um cadastro na registered do banco de dados ==============================
 	if(mysql_num_rows($cpfRegisteredVerify) > 0) {
-		echo 'CPF Já Registrado';
+		echo '<script>window.location.assign("../../index.php?error=cadastrocpfexistente");</script>';
+		//echo 'CPF Já Registrado';
 	} else if (mysql_num_rows($emailRegisteredVerify) > 0) {
-		echo 'Email Já Registrado';
+		echo '<script>window.location.assign("../../index.php?error=cadastroemailexistente");</script>';
+		//echo 'Email Já Registrado';
 	} else {
 		//Condições se foi encontrado ou não no banco da lista do admin ==============================
 		if(mysql_num_rows($cpfVerify) > 0 || mysql_num_rows($emailVerify) > 0) {
 		    //echo 'tem';
 
-		    echo 'Obrigado por cadastrar. <br> Verifique sua caixa de entrada, um email foi enviado para você validar seu usuário';
+		    //echo 'Obrigado por cadastrar. <br> Verifique sua caixa de entrada, um email foi enviado para você validar seu usuário';
 
 		    $mensagemHTML = utf8_decode('<img src="http://www.dentedeleao.agr.br/admin/assets/img/template/logo.gif" alt="Logo Dente de Leão">
 		    <p>Olá, ' . $nome . ' , tudo bem? Obrigado pelo cadastro!</p>
@@ -44,12 +48,12 @@
 
 			$aprovado = true;
 
-			//echo '<script>window.location.assign("../../lista-cpf.php?error=' . $cpf . '");</script>';
+			$mensagemValidacao = "aprovado";
 
 		} else {
 		    //echo 'nao tem';
 
-		    echo 'Obrigado por cadastrar. <br> Seu email está passando por um processo de validação, por favor aguarde o nosso contato por email';
+		    //echo 'Obrigado por cadastrar. <br> Seu email está passando por um processo de validação, por favor aguarde o nosso contato por email';
 
 		   	$mensagemHTML = utf8_decode('<img src="http://www.dentedeleao.agr.br/admin/assets/img/template/logo.gif" alt="Logo Dente de Leão">
 		    <p>Olá,' . $nome . ', tudo bem? Obrigado pelo cadastro!</p>
@@ -60,7 +64,7 @@
 		    <p>Dente de Leão. Cultive Ideias, Colha Conhecimento.</p>
 			<hr>');
 
-			//echo '<script>window.location.assign("../../lista-cpf.php");</script>';
+			$mensagemValidacao = "validacao";
 
 		}
 
@@ -112,7 +116,7 @@
 		}
 
 		//Volta para a anterior
-		//echo '<script>window.location.assign("../../lista-email.php");</script>';
+		echo '<script>window.location.assign("../../index.php?sucesso=' . $mensagemValidacao . '");</script>';
 
 	}
 

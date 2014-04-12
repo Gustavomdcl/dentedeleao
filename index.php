@@ -1,4 +1,33 @@
-<!DOCTYPE html>
+<?php
+
+// ERROR ==============================================
+$error = isset($_GET['error']) ? $_GET['error'] : null;
+if($error == "cadastrocpfexistente") {
+	$mensagem = '<p>/!\ CPF Já Registrado /!\</p>';
+} else if ($error == "cadastroemailexistente") {
+	$mensagem = '<p>/!\ Email Já Registrado /!\</p>';
+} else if ($error == "usuarionaoaprovado") {
+	$mensagem = '<p>/!\ Usuário ainda não foi aprovado. Aguarde aprovação da nossa equipe. /!\</p>';
+} else if ($error == "usuarionaoexiste") {
+	$mensagem = '<p>/!\ Usuário não existe /!\</p>';
+} else if ($error == "emailnaocadastrado") {
+	$mensagem = '<p>/!\ Email não cadastrado /!\</p>';
+}
+// SUCESSO ==============================================
+$sucesso = isset($_GET['sucesso']) ? $_GET['sucesso'] : null;
+if($sucesso == "aprovado") {
+	$mensagem = '<p>/!\ Obrigado por cadastrar. <br> Verifique sua caixa de entrada, um email foi enviado para você validar seu usuário /!\</p>';
+} else if ($sucesso == "validacao") {
+	$mensagem = '<p>/!\ Obrigado por cadastrar. <br> Seu email está passando por um processo de validação, por favor aguarde o nosso contato por email /!\</p>';
+} else if ($sucesso == "validado") {
+	$mensagem = '<p>/!\ Seu cadastro foi confirmado com sucesso! /!\</p>';
+} else if ($sucesso == "alterarsenha") {
+	$mensagem = '<p>/!\ Um código para trocar sua senha foi enviado para o seu email. /!\</p>';
+} else if ($sucesso == "senhaalterada") {
+	$mensagem = '<p>/!\ Sua senha foi alterada! /!\</p>';
+}
+
+?><!DOCTYPE html>
 <html lang="pt_BR">
 <head>
 
@@ -29,6 +58,10 @@
 		<?php include 'template/header.php'; ?><!-- ADRIAN: Não delete isso pois é o cabeçalho do site, tudo bem? Ele está puxando o arquivo da pasta template. Ele vai repetir esse cabeçalho em todas as páginas -->
 
 		<!-- ADRIAN: ÁREA PARA COLOCAR SEU CÓDIGO, QUE VAI MUDAR EM CADA PÁGINA -->
+
+		<!-- MENSAGEM DE ERRO -->
+		<?php echo $mensagem; ?>
+		<!-- MENSAGEM DE ERRO -->
 
 		<!-- login ADRIAN: Essa section é um exemplo de como você vai colocando as áreas do site. você pode alterar o nome da class .l-login para .l-login ou algo assim, dependendo do que for fazer. Preciso que cada sessão (nesse caso sessão tem o valor de corte, área. Um exemplo considere o wireframe do painel. Cada área dele, sendo a parte dos gráficos, a parte das notificações e dúvidas são sessões diferentes) do site seja feita pela tag <section>, pois isso agora é importante.
 		======================================================== -->

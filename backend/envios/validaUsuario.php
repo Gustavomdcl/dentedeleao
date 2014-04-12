@@ -29,7 +29,7 @@
 			if(mysql_num_rows($aprovedVerify) > 0) {
 			    //echo 'tem';
 
-			    echo 'Obrigado por cadastrar. <br>';
+			    //echo 'Obrigado por cadastrar. <br>';
 
 			    $mensagemHTML = utf8_decode('<img src="http://www.dentedeleao.agr.br/admin/assets/img/template/logo.gif" alt="Logo Dente de Leão">
 			    <p>Olá, ' . $nome . ' , tudo bem?</p>
@@ -90,12 +90,14 @@
 				}
 
 				//Volta para a anterior
-				//echo '<script>window.location.assign("../../lista-email.php");</script>';
+				echo '<script>window.location.assign("../../index.php?sucesso=validado");</script>';
 			} else {
-				echo "Usuário não aprovado";
+				//echo "Usuário não aprovado";
+				echo '<script>window.location.assign("../../index.php?error=usuarionaoaprovado");</script>';
 			}
 		} else {
-			echo "Usuário não existente";
+			//echo "Usuário não existente";
+			echo '<script>window.location.assign("../../index.php?error=usuarionaoexiste");</script>';
 		}
 	}
 
