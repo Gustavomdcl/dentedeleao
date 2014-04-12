@@ -6,7 +6,7 @@
 
 	<!-- SEO rel="nofollow" on links
 	======================================================== -->
-	<meta name="robots" content="INDEX, follow" />	
+	<meta name="robots" content="INDEX, follow">	
 	<meta name="title" content="Dente de Leão | Cultive Ideias. Colha Conhecimento">
 	<meta name="description" content="Projeto Dente de Leão busca a disseminação e troca do conhecimento tácito entre os produtores orgânicos para fortalecer o mercado e os laços entre a comunidade orgânica.">
 	<!-- ADRIAN: Importante para acessibilidade e SEO. Coloque sempre o Título e a Descrição da página. Sempre coloque ali em cima no <title> também. Cada página precisa de um diferente. -->
@@ -38,48 +38,46 @@
 
 				<div class="l-row">
 
-					<article>
-						<header><h1><img src ="" alt="Dente de Leão" border="none" /></h1>
-						<h2>Cultive ideias. Colha conhecimento</h2></header>
-							<div id="accordion">
-								<a class"btCadastrar">Cadastrar</a>
-								<form style="display:none;">
-									<input type="text" name="nome" placeholder="Nome" /><br>
-									<input type="text" name="cpf" id="cpf" placeholder="CPF" /><br>
-									<input type="email" name="email" placeholder="E-mail" /><br>
-									<input type="password" name="senha" placeholder="Senha" /><br>
-									<input type="checkbox" name="termos" value="Termos e condições">Li e estou de acordo com os <a href="" title="termos e condições">Termos e condições</a> <br>
-									<button type="submit">Cadastrar</button>
-								</form>
-							</div>
-							
-						<p>ou <a href="#login_form" class="btLogar" id="homeLogin">Logar</a></p>
-
-						<div style="display:none" >
-							<form id="login_form" method="post" action="">
-							    
-								<input type="text" name="nome" placeholder="Nome de usuário" /><br>
-								<input type="password" name="senha" placeholder="Senha" /><br>
-								<input type="checkbox" name="conectado" value="Continuar Conectado">Continuar Conectado 
-								<p>
-									<button type="submit">Fazer Login</button>
-								</p>
-								<a href="#lembrar_form" id="lembrarSenha">Esqueceu sua senha?</a>
-								
-							</form>
-						</div>
-						<div style="display:none" >
-
-							<form id="lembrar_form" method="post" action="">
-								<p>Não consegue lembrar sua senha? Digite abaixo seu e-mail que a enviaremos para você.</p>
-								<input type="email" name="email" placeholder="Digite aqui seu e-mail" /><br>
-								<p><button type="submit">Enviar</button></p>
-		
+					<header><h1><img src ="" alt="Dente de Leão" border="none"></h1>
+					<h2>Cultive ideias. Colha conhecimento</h2></header>
+						<div id="accordion">
+							<a class"btCadastrar">Cadastrar</a>
+							<form id="formCadastroUsuario" method="post" action="backend/envios/enviarCadastroUsuario.php" style="display:none;">
+								<input type="text" name="nome" placeholder="Nome" required><br>
+								<input type="text" name="cpf" id="cpf" placeholder="CPF" required><br>
+								<input type="email" name="email" placeholder="Email" required><br>
+								<input type="password" name="senha" placeholder="Senha" required><br>
+								<input type="checkbox" name="termos" value="Termos e condições" required>Li e estou de acordo com os <a href="" title="termos e condições">Termos e condições</a> <br>
+								<button type="submit">Cadastrar</button>
 							</form>
 						</div>
 						
-						<footer><a>Saiba mais</a></footer>
-					</article>
+					<p>ou <a href="#login_form" class="btLogar" id="homeLogin">Logar</a></p>
+
+					<div style="display:none" >
+						<form id="login_form" method="post" action="">
+						    
+							<input type="text" name="nome" placeholder="Nome de usuário"><br>
+							<input type="password" name="senha" placeholder="Senha"><br>
+							<input type="checkbox" name="conectado" value="Continuar Conectado">Continuar Conectado 
+							<p>
+								<button type="submit">Fazer Login</button>
+							</p>
+							<a href="#lembrar_form" id="lembrarSenha">Esqueceu sua senha?</a>
+							
+						</form>
+					</div>
+					<div style="display:none" >
+
+						<form id="lembrar_form" method="post" action="">
+							<p>Não consegue lembrar sua senha? Digite abaixo seu e-mail que a enviaremos para você.</p>
+							<input type="email" name="email" placeholder="Digite aqui seu e-mail"><br>
+							<p><button type="submit">Enviar</button></p>
+	
+						</form>
+					</div>
+					
+					<footer><a>Saiba mais</a></footer>
 
 				</div><!-- .l-row -->
 
