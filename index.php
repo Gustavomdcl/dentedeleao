@@ -88,14 +88,12 @@ if($sucesso == "aprovado") {
 					<p>ou <a href="#login_form" class="btLogar" id="homeLogin">Logar</a></p>
 
 					<div style="display:none" >
-						<form id="login_form" method="post" action="">
+						<form id="login_form" method="post" action="backend/valida.php">
 						    
-							<input type="text" name="nome" placeholder="Nome de usuário"><br>
-							<input type="password" name="senha" placeholder="Senha"><br>
+							<input type="text" name="usuario" id="usuario" placeholder="Email" required><br>
+							<input type="password" name="senha" id="senha" placeholder="Senha" required><br>
 							<input type="checkbox" name="conectado" value="Continuar Conectado">Continuar Conectado 
-							<p>
-								<button type="submit">Fazer Login</button>
-							</p>
+							<p><button type="submit">Fazer Login</button></p>
 							<a href="#lembrar_form" id="lembrarSenha">Esqueceu sua senha?</a>
 							
 						</form>

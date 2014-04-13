@@ -4,7 +4,7 @@
 
 	$usuarioAlterar 	=	$_POST['usuario'];
 	$senhaAntiga		=	$_POST['senhaantiga'];
-	$senhaNova			=	md5($_POST['senhanova']);
+	$senhaNova			=	md5($_POST['novasenha']);
 
 	//Verifica se esse cadastro já existe no DL_USER
 	$usuarioVerify = mysql_query("SELECT * FROM DL_USER WHERE usuario = '$usuarioAlterar' AND senha = '$senhaAntiga'");
