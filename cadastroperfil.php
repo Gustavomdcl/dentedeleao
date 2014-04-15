@@ -37,16 +37,70 @@
 			<div class="l-container cf"><!-- ADRIAN: Essa div com class l-container centraliza em 960px e centraliza, no sass você pode observar isso. a class cf desconsidera os floats, sabe? as vezes quando você da um float left dentro de uma div o seu height não considera esses elementos. a class cf acaba considerando. -->
 
 				<div class="l-row">
-
-					<article>
-						<header>
-							<h2>Olá <span>Nome do usuário</span></h2>
-							<p>Seja bem vindo ao Dente de Leão, uma plataforma que o auxiliará diariamente. Antes de começar a utilizá-la, queremos te conhecer!</p>
-						</header>
-						<div>
-
-						</div>
-					</article>
+					<header>
+						<h2>Olá <span>Nome do usuário</span></h2>
+						<p>Seja bem vindo ao Dente de Leão, uma plataforma que o auxiliará diariamente. Antes de começar a utilizá-la, queremos te conhecer!</p>
+					</header>
+					<div>
+						<p>Envie-nos uma foto no campo abaixo</p>
+						<span><img src="" width="150" height="150" /></span>
+						<input type="button"></input>
+					</div>
+					<div>
+						<p>Qual o seu número de telefone?</p>
+						<form>
+							<input type="text" name="telefone" placeholder="Telefone" id="telefone" required><br>
+							<input type="text" name="celular" placeholder="Celular" id="celular" required><br>
+							<h2>Conte-nos sobre sua fazenda</h2>
+							<input type="text" name="nomefazenda" placeholder="Nome de sua fazenda" required><br>
+							<input type="text" name="cnpjfazenda" placeholder="CNPJ de sua fazenda" id="cnpjfazenda" required><br>
+							<p>Onde ela está localizada?</p>
+							<input type="text" name="enderecofazenda" placeholder="Endereço" required><br>
+							<input type="text" name="cepfazenda" placeholder="CEP" id="cepfazenda" required><br>
+							<select>
+							  <option value="Acre">AC</option>
+							  <option value="Alagoas">AL</option>
+							  <option value="Amapá">AP</option>
+							  <option value="Amazonas">AM</option>
+							  <option value="Bahia">BA</option>
+							  <option value="Ceará">CE</option>
+							  <option value="Distrito Federal">DF</option>
+							  <option value="Espírito Santo">ES</option>
+							  <option value="Goiás">GO</option>
+							  <option value="Maranhão">MA</option>
+							  <option value="Mato Grosso">MT</option>
+							  <option value="Mato Grosso do Sul">MS</option>
+							  <option value="Minas Gerais">MG</option>
+							  <option value="Pará">PA</option>
+							  <option value="Paraíba">PB</option>
+							  <option value="Paraná">PR</option>
+							  <option value="Pernambuco">PE</option>
+							  <option value="Piauí">PI</option>
+							  <option value="Rio de Janeiro">RJ</option>
+							  <option value="Rio Grande do Norte">RN</option>
+							  <option value="Rio Grande do Sul">RS</option>
+							  <option value="Rondônia">RO</option>
+							  <option value="Roraima">RR</option>
+							  <option value="Santa Catarina">SC</option>
+							  <option value="São Paulo" selected>SP</option>
+							  <option value="Sergipe">SE</option>
+							  <option value="Tocantins">TO</option>
+							</select>
+							<input type="text" name="cidade" placeholder="Cidade" required><br>
+							<p>O que você cultiva?</p>
+							<span class="plantacoes">
+								<input type="checkbox" name="tomate" value="Tomate">
+								<input type="checkbox" name="cebola" value="Cebola">
+								<input type="checkbox" name="morango" value="Morango">
+								<input type="checkbox" name="espinafre" value="Espinafre">
+								<input type="checkbox" name="batata" value="Batata">
+							</span>
+							<p> Você cultiva algo mais? Separe com ponto-vírgula (;)</p>
+							<input type="text" name="demaisplantacoes"><br>
+							<button type="submit">Salvar Informações</button>
+						</form>
+					</div>
+					
 
 				</div><!-- .l-row -->
 
@@ -64,7 +118,10 @@
   	<!-- Script do accordion -->
 	<script>
 		jQuery(function($){
-		   $("#cpf").mask("999.999.999-99");
+		   $("#telefone").mask("(99)9999-9999");
+		   $("#celular").mask("(99)99999-9999");
+		   $("#cnpjfazenda").mask("99.999.999/9999-99");
+		   $("#cepfazenda").mask("99999-999");
 		});
 	</script>
 

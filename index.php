@@ -116,10 +116,6 @@ if($sucesso == "aprovado") {
 
 		</section><!-- .l-login -->
 
-		<!-- ADRIAN: FINAL DA ÁREA PARA COLOCAR SEU CÓDIGO, QUE VAI MUDAR EM CADA PÁGINA -->
-
-		<?php include 'template/footer.php'; ?><!-- ADRIAN: Não delete isso pois é o rodapé do site, tudo bem? Ele está puxando o arquivo da pasta template. Ele vai repetir esse rodapé em todas as páginas -->
-
 	</div><!-- #site -->
 
 	<?php include 'template/script.php'; ?>
