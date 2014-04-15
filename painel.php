@@ -10,6 +10,6 @@
 <head>
 </head>
 <body>
-	<?php echo $_SESSION['usuarioID']; echo $_SESSION['usuarioNome']; ?>
+	<?php echo $_SESSION['usuarioUserID']; echo $_SESSION['usuarioUserNome']; ?>
 </body>
 </html>

@@ -63,14 +63,14 @@
 			// O registro foi encontrado => o usuário é valido
 
 			// Definimos dois valores na sessão com os dados do usuário
-			$_SESSION['usuarioID'] = $resultado['id']; // Pega o valor da coluna 'id do registro encontrado no MySQL
-			$_SESSION['usuarioNome'] = $resultado['usuario']; // Pega o valor da coluna 'nome' do registro encontrado no MySQL
+			$_SESSION['usuarioUserID'] = $resultado['id']; // Pega o valor da coluna 'id do registro encontrado no MySQL
+			$_SESSION['usuarioUserNome'] = $resultado['usuario']; // Pega o valor da coluna 'nome' do registro encontrado no MySQL
 
 			// Verifica a opção se sempre validar o login
 			if ($_SG['validaSempre'] == true) {
 			// Definimos dois valores na sessão com os dados do login
-			$_SESSION['usuarioLogin'] = $usuario;
-			$_SESSION['usuarioSenha'] = $senha;
+			$_SESSION['usuarioUserLogin'] = $usuario;
+			$_SESSION['usuarioUserSenha'] = $senha;
 		}
 
 		return true;
@@ -83,14 +83,14 @@
 	function protegePagina() {
 		global $_SG;
 
-		if (!isset($_SESSION['usuarioID']) OR !isset($_SESSION['usuarioNome'])) {
+		if (!isset($_SESSION['usuarioUserID']) OR !isset($_SESSION['usuarioUserNome'])) {
 			// Não há usuário logado, manda pra página de login
 			desloga();
-		} else if (!isset($_SESSION['usuarioID']) OR !isset($_SESSION['usuarioNome'])) {
+		} else if (!isset($_SESSION['usuarioUserID']) OR !isset($_SESSION['usuarioUserNome'])) {
 			// Há usuário logado, verifica se precisa validar o login novamente
 			if ($_SG['validaSempre'] == true) {
 				// Verifica se os dados salvos na sessão batem com os dados do banco de dados
-				if (!validaUsuario($_SESSION['usuarioLogin'], $_SESSION['usuarioSenha'])) {
+				if (!validaUsuario($_SESSION['usuarioUserLogin'], $_SESSION['usuarioUserSenha'])) {
 					// Os dados não batem, manda pra tela de login
 					desloga();
 				}
@@ -105,7 +105,7 @@
 		global $_SG;
 
 		// Remove as variáveis da sessão (caso elas existam)
-		unset($_SESSION['usuarioID'], $_SESSION['usuarioNome'], $_SESSION['usuarioLogin'], $_SESSION['usuarioSenha']);
+		unset($_SESSION['usuarioUserID'], $_SESSION['usuarioUserNome'], $_SESSION['usuarioUserLogin'], $_SESSION['usuarioUserSenha']);
 
 		// Manda pra tela de login
 		header("Location: ../index.php");
@@ -118,7 +118,7 @@
 		global $_SG;
 
 		// Remove as variáveis da sessão (caso elas existam)
-		unset($_SESSION['usuarioID'], $_SESSION['usuarioNome'], $_SESSION['usuarioLogin'], $_SESSION['usuarioSenha']);
+		unset($_SESSION['usuarioUserID'], $_SESSION['usuarioUserNome'], $_SESSION['usuarioUserLogin'], $_SESSION['usuarioUserSenha']);
                 
                 // Destroi a sessão
                 session_destroy();
