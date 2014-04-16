@@ -121,7 +121,7 @@
 		unset($_SESSION['usuarioUserID'], $_SESSION['usuarioUserNome'], $_SESSION['usuarioUserLogin'], $_SESSION['usuarioUserSenha']);
                 
                 // Destroi a sessão
-                session_destroy();
+                //session_destroy();
                 
 		// Manda pra tela de login
 		header("Location: index.php");
