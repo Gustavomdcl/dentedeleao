@@ -1,4 +1,7 @@
 <?php
+// IDENTIFICA LOGIN ===================================
+require_once ("backend/seguranca.php");
+if(isset($_SESSION['usuarioUserID'])){ header("Location: painel.php"); }
 
 // ERROR ==============================================
 $error = isset($_GET['error']) ? $_GET['error'] : null;

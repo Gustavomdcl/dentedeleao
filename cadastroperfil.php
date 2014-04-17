@@ -1,4 +1,32 @@
-<!DOCTYPE html>
+<?php
+  require_once ("backend/seguranca.php");
+  protegePagina();
+
+  require_once("backend/conecta.php");
+  require_once("backend/executa.php");
+
+  // VARIAVEIS GLOBAIS ==================================
+  $usuarioLogadoID = $_SESSION['usuarioUserID'];
+  $usuarioLogadoEmail = $_SESSION['usuarioUserNome'];
+
+  // VALIDA PERFIL ======================================
+  $perfilCriado = mysql_query("SELECT * FROM DL_PROFILE WHERE usuario = '$usuarioLogadoID'");
+
+  if(mysql_num_rows($perfilCriado) > 0) {
+  	header("Location: painel.php");
+  } else {}
+
+  // PEGA INFORMAÇÕES ===================================
+  $informacoesUsuario = mysql_query("SELECT * FROM DL_ADMIN_registered WHERE email = '$usuarioLogadoEmail'");
+  $nome;
+  $cpf;
+
+  while ($row=mysql_fetch_array($informacoesUsuario)) {
+  	$nome=$row['nome'];
+  	$cpf=$row['cpf'];
+  }
+
+?><!DOCTYPE html>
 <html lang="pt_BR">
 <head>
 
@@ -38,17 +66,19 @@
 
 				<div class="l-row">
 					<header>
-						<h2>Olá <span>Nome do usuário</span></h2>
+						<h2>Olá <span><?php echo $nome; ?></span></h2>
 						<p>Seja bem vindo ao Dente de Leão, uma plataforma que o auxiliará diariamente. Antes de começar a utilizá-la, queremos te conhecer!</p>
 					</header>
 					<div>
-						<p>Envie-nos uma foto no campo abaixo</p>
-						<span><img src="" width="150" height="150" /></span>
-						<input type="button"></input>
-					</div>
-					<div>
-						<p>Qual o seu número de telefone?</p>
 						<form>
+							<input type="hidden" name="usuario" id="usuario" value="<?php echo $usuarioLogadoID; ?>">
+							<input type="hidden" name="nome" id="nome" value="<?php echo $nome; ?>">
+							<input type="hidden" name="cpf" id="cpf" value="<?php echo $cpf; ?>">
+							<input type="hidden" name="email" id="email" value="<?php echo $usuarioLogadoEmail; ?>">
+							<p>Envie-nos uma foto no campo abaixo</p>
+							<span><img src="" width="150" height="150" /></span>
+							<input type="file">
+							<p>Qual o seu número de telefone?</p>
 							<input type="text" name="telefone" placeholder="Telefone" id="telefone" required><br>
 							<input type="text" name="celular" placeholder="Celular" id="celular" required><br>
 							<h2>Conte-nos sobre sua fazenda</h2>
