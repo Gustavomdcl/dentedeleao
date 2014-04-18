@@ -22,6 +22,17 @@
 	    				display:inline-block;
 	    				@include box-sizing(border-box);
 	    				padding:10px;
+	    				& + a {
+	    					right: 36px;
+	    					border-radius: 0;
+	    				}
+	    				& + a + a {
+	    					right: 72px;
+	    					border-radius: 0;
+	    				}
+	    			}
+	    			.plantacaofigura {
+	    				margin-top: 10px;
 	    			}
 	    		}
 	    	}

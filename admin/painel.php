@@ -117,7 +117,7 @@
 								<ul>
 									<li><a href="lista-email.php" title="Lista de Email" class="btn">Lista de Email <i class="fa fa-envelope"></i></a></li>
 									<li><a href="lista-cpf.php" title="" class="btn">Lista de CPF <i class="fa fa-credit-card"></i></a></li>
-									<li><a href="" title="" class="btn invalid">Lista de Plantação <i class="fa fa-leaf"></i></a></li>
+									<li><a href="lista-plantacao.php" title="" class="btn">Lista de Plantação <i class="fa fa-leaf"></i></a></li>
 								</ul>
 							</nav>
 

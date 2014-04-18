@@ -1,12 +1,6 @@
-#confirm_form {
+#confirm_form, #edit_form, #valida_form {
   text-align: center;
-  #deletcpfname {
-  	font-size:1.2em;
-  }
-  #deletemailname {
-  	font-size:1.2em;
-  }
-  #nomeselecionado {
+  #deletcpfname, #deletemailname, #nomeselecionado, #deletplantacaoname {
   	font-size:1.2em;
   }
 }

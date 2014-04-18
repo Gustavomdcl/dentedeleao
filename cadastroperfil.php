@@ -76,8 +76,8 @@
 							<input type="hidden" name="cpf" id="cpf" value="<?php echo $cpf; ?>">
 							<input type="hidden" name="email" id="email" value="<?php echo $usuarioLogadoEmail; ?>">
 							<p>Envie-nos uma foto no campo abaixo</p>
-							<span><img src="" width="150" height="150" /></span>
-							<input type="file" name="foto[]" id="foto">
+							<span><img src="" id="preview" width="150" height="150" /></span>
+							<input type="file" name="foto[]" id="foto" onchange="readURL(this);" accept="image/x-png, image/gif, image/bmp, image/jpeg">
 							<p>Qual o seu número de telefone?</p>
 							<input type="text" name="telefone" placeholder="Telefone" id="telefone" required><br>
 							<input type="text" name="celular" placeholder="Celular" id="celular" required><br>
@@ -153,6 +153,18 @@
 		   $("#cnpjfazenda").mask("99.999.999/9999-99");
 		   $("#cepfazenda").mask("99999-999");
 		});
+	</script>
+	<!-- Script do Input File -->
+	<script>
+		function readURL(input){
+			if (input.files && input.files[0]){
+				var reader = new FileReader();
+				reader.onload = function (e) {
+	                $('#preview').attr('src',e.target.result);
+				};
+				reader.readAsDataURL(input.files[0]);
+			}
+		}
 	</script>
 
 </body>

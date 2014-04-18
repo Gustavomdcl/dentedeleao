@@ -37,16 +37,28 @@
 	// ==========
 
 	var_dump($usuarioId);
+	echo '<br>';
 	var_dump($nome);
+	echo '<br>';
 	var_dump($cpf);
+	echo '<br>';
 	var_dump($email);
+	echo '<br>';
+	echo '<br>';
 
 	var_dump($foto);
+	echo '<br>';
 	var_dump($nome_img);
+	echo '<br>';
 	var_dump($tmps);
+	echo '<br>';
 	var_dump($types);
+	echo '<br>';
 	var_dump($qtd);
+	echo '<br>';
 	var_dump($dir);
+	echo '<br>';
+	echo '<br>';
 
 	
 		for($i = 0; $i < $qtd; $i++){
@@ -75,28 +87,46 @@
 			$insertimg = mysql_query("INSERT INTO teste (caminho, nome_imagem) VALUES('$dir', '$nome_img[$i]')");
 			$resultedimg = mysql_query($insertimg);	
 			echo 'Imagem enviada com sucesso';
+			echo '<br><img src="'.$uploadDir.$nome_img[$i].'">';
+	echo '<br>';
 
 			//O ID DA IMAGEM QUE SUBIU PARA SER USADO NO PRÓXIMO INSERT
-			$imagemTabelaId = mysql_insert_id();
+			$imagemTabelaId = $imagemTabelaId . mysql_insert_id().'-';
+			echo $imagemTabelaId;
+	echo '<br>';
+	echo '<br>';
 		}
 
 	var_dump($telefone);
+	echo '<br>';
 	var_dump($celular);
+	echo '<br>';
+	echo '<br>';
 
 	var_dump($nomefazenda);
+	echo '<br>';
 	var_dump($cnpjfazenda);
+	echo '<br>';
+	echo '<br>';
 
 	var_dump($enderecofazenda);
+	echo '<br>';
 	var_dump($cepfazenda);
+	echo '<br>';
+	echo '<br>';
 
 	var_dump($estado);
+	echo '<br>';
 	var_dump($cidade);
+	echo '<br>';
+	echo '<br>';
 
 	echo "array( ";
 	foreach ($platacao as $value){
 		echo $value." ";
 	}
 	echo ")";
+	echo '<br>';
 
 	var_dump($demaisplantacoes);
 
