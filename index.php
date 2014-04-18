@@ -74,16 +74,16 @@ if($sucesso == "aprovado") {
 
 				<div class="l-row">
 
-					<header><h1><img src ="" alt="Dente de Leão" border="none"></h1>
-					<h2>Cultive ideias. Colha conhecimento</h2></header>
+					<header><h1><img src ="assets/img/template/dente-de-leao-logo.png" alt="Dente de Leão" border="none"></h1>
+					<h2>Cultive ideias. Colha conhecimento.</h2></header>
 						<div id="accordion">
-							<a class"btCadastrar">Cadastrar</a>
+							<a class"btcadastrar">Cadastrar</a>
 							<form id="formCadastroUsuario" method="post" action="backend/envios/enviarCadastroUsuario.php" style="display:none;">
 								<input type="text" name="nome" placeholder="Nome" required><br>
 								<input type="text" name="cpf" id="cpf" placeholder="CPF" required><br>
 								<input type="email" name="email" placeholder="Email" required><br>
 								<input type="password" name="senha" placeholder="Senha" required><br>
-								<input type="checkbox" name="termos" value="Termos e condições" required>Li e estou de acordo com os <a href="" title="termos e condições">Termos e condições</a> <br>
+								<input type="checkbox" name="termos" value="Termos e condições" class="termos" required >Li e estou de acordo com os <a href="" title="termos e condições">Termos e condições</a> <br>
 								<button type="submit">Cadastrar</button>
 							</form>
 						</div>
@@ -111,7 +111,7 @@ if($sucesso == "aprovado") {
 						</form>
 					</div>
 					
-					<footer><a>Saiba mais</a></footer>
+					<footer><div id="saiba-mais"><a>Saiba mais</a></div></footer>
 
 				</div><!-- .l-row -->
 

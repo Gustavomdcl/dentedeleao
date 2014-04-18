@@ -1,5 +1,27 @@
 .l-login {
 	h2 {
-		font-size:3.57em;
+		font-size:0.86em;
+		text-align:center;
+		margin:5px auto;
+	}
+	h1 {
+		margin:0 auto;
+		text-align:center;
+		font-size:2em;
+	}
+	#saiba-mais{
+		bottom:50px;
+		position:absolute;
+		text-align:center;
+		width:960px;
+		cursor:pointer;
+	}
+	#accordion{
+		width:300px;
+		margin:10px auto;
+	}
+	p{
+		text-align:center;
+		
 	}
 }
