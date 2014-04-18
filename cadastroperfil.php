@@ -70,14 +70,14 @@
 						<p>Seja bem vindo ao Dente de Leão, uma plataforma que o auxiliará diariamente. Antes de começar a utilizá-la, queremos te conhecer!</p>
 					</header>
 					<div>
-						<form>
+						<form id="enviarPerfil" method="post" action="backend/envios/enviarPerfilUsuario.php" enctype="multipart/form-data">
 							<input type="hidden" name="usuario" id="usuario" value="<?php echo $usuarioLogadoID; ?>">
 							<input type="hidden" name="nome" id="nome" value="<?php echo $nome; ?>">
 							<input type="hidden" name="cpf" id="cpf" value="<?php echo $cpf; ?>">
 							<input type="hidden" name="email" id="email" value="<?php echo $usuarioLogadoEmail; ?>">
 							<p>Envie-nos uma foto no campo abaixo</p>
 							<span><img src="" width="150" height="150" /></span>
-							<input type="file">
+							<input type="file" name="foto[]" id="foto">
 							<p>Qual o seu número de telefone?</p>
 							<input type="text" name="telefone" placeholder="Telefone" id="telefone" required><br>
 							<input type="text" name="celular" placeholder="Celular" id="celular" required><br>
@@ -87,7 +87,7 @@
 							<p>Onde ela está localizada?</p>
 							<input type="text" name="enderecofazenda" placeholder="Endereço" required><br>
 							<input type="text" name="cepfazenda" placeholder="CEP" id="cepfazenda" required><br>
-							<select>
+							<select name="estado" id="estado">
 							  <option value="Acre">AC</option>
 							  <option value="Alagoas">AL</option>
 							  <option value="Amapá">AP</option>
@@ -119,11 +119,11 @@
 							<input type="text" name="cidade" placeholder="Cidade" required><br>
 							<p>O que você cultiva?</p>
 							<span class="plantacoes">
-								<input type="checkbox" name="tomate" value="Tomate">
-								<input type="checkbox" name="cebola" value="Cebola">
-								<input type="checkbox" name="morango" value="Morango">
-								<input type="checkbox" name="espinafre" value="Espinafre">
-								<input type="checkbox" name="batata" value="Batata">
+								<input type="checkbox" name="platacao[]" value="Tomate">
+								<input type="checkbox" name="platacao[]" value="Cebola">
+								<input type="checkbox" name="platacao[]" value="Morango">
+								<input type="checkbox" name="platacao[]" value="Espinafre">
+								<input type="checkbox" name="platacao[]" value="Batata">
 							</span>
 							<p> Você cultiva algo mais? Separe com ponto-vírgula (;)</p>
 							<input type="text" name="demaisplantacoes"><br>
