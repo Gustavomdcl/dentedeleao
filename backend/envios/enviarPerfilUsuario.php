@@ -72,7 +72,7 @@
 			//SOBE NO SITE ===========
 
 			move_uploaded_file($tmps[$i], $uploadDir.$nome_img[$i]);
-			$insertimg = mysql_query("INSERT INTO teste (tabela, id_tabela, caminho, nome_imagem) VALUES('DL_PROFILE', '1', '$dir', '$nome_img[$i]')");
+			$insertimg = mysql_query("INSERT INTO teste (caminho, nome_imagem) VALUES('$dir', '$nome_img[$i]')");
 			$resultedimg = mysql_query($insertimg);	
 			echo 'Imagem enviada com sucesso';
 
