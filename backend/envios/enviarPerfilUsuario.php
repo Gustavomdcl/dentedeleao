@@ -17,6 +17,7 @@
 	$qtd				=	count($nome_img);
 	$dir				=	'assets/img/upload/';
 	$uploadDir          =   '../../' . $dir;
+	$imagemTabelaId		=	'';
 
 	$telefone   		=	str_replace($caracteres, "", $_POST['telefone']);
 	$celular   			=	str_replace($caracteres, "", $_POST['celular']);

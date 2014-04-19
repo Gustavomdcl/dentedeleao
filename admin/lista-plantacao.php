@@ -83,7 +83,7 @@
 
 					<div class="l-col5">
 
-						<span class="input-field"><input type="file" name="imgnovaplantacao[]" id="imgnovaplantacao" onchange="readURL(this);" accept="image/x-png, image/gif, image/bmp, image/jpeg"></span>
+						<span class="input-field"><input type="file" name="imgnovaplantacao[]" id="imgnovaplantacao" onchange="readURL(this);" class="ignore" accept="image/x-png, image/gif, image/bmp, image/jpeg, image/jpg"></span>
 
 					</div><!-- .l-col5 -->
 
@@ -127,11 +127,11 @@
 
 				<?php 
 
-				$sqlPlantacaoUserList = "SELECT * FROM DL_ADMIN_plantationList WHERE valido = '0' order by id desc";
+				$sqlPlantacaoUserList = "SELECT * FROM testenovo WHERE valido = '0' order by id desc";
 
 				$resultPlantacaoUserList = mysql_query($sqlPlantacaoUserList);
 
-				//if (mysql_num_rows($resultPlantacaoUserList) > 0) {
+				if (mysql_num_rows($resultPlantacaoUserList) > 0) {
 
 				?>
 
@@ -152,29 +152,30 @@
 										$plantacao=$row['plantacao'];
 										$imagem=$row['imagem'];
 
+										if($imagem == null){ 
+											$imagem = 'assets/img/template/logo.gif'; 
+										} else { 
+
+											$imagemId = explode('-', $imagem);
+
+											$sqlPlantacaoimg = "SELECT * FROM teste WHERE id = '$imagemId[0]' order by id desc";
+											$resultPlantacaoimg = mysql_query($sqlPlantacaoimg);
+
+											while ($row=mysql_fetch_array($resultPlantacaoimg)) {
+												$imagem = '../'.$row['caminho'] . $row['nome_imagem'];
+											}
+										}
+
 									?> 
 
-									<li class="l-col1"><img src="<?php if($imagem == null){ echo 'assets/img/template/logo.gif'; } else { echo $plantacao; } ?>" id="preview" class="plantacaofigura" width="40" height="40" /></li>
+									<li class="l-col1"><img src="<?php echo $imagem ?>" id="preview" class="plantacaofigura" width="40" height="40" /></li>
 									<li class="l-col11"><p class="btn"><?php echo $plantacao ?> 
-										<a href="#confirm_form" data-id="<?php echo $id ?>" data-plantacao="<?php echo $plantacao ?>" data-img="<?php if($imagem == null){ echo 'assets/img/template/logo.gif'; } else { echo $plantacao; } ?>" class="icon excluir modal"><i class="fa fa-trash-o"></i></a>
-										<a href="#edit_form" data-id="<?php echo $id ?>" data-plantacao="<?php echo $plantacao ?>" data-img="<?php if($imagem == null){ echo 'assets/img/template/logo.gif'; } else { echo $plantacao; } ?>" class="icon editar modal"><i class="fa fa-pencil"></i></a>
-										<a href="#valida_form" data-id="<?php echo $id ?>" data-plantacao="<?php echo $plantacao ?>" data-img="<?php if($imagem == null){ echo 'assets/img/template/logo.gif'; } else { echo $plantacao; } ?>" class="icon validar modal"><i class="fa fa-check"></i></a>
+										<a href="#confirm_form" data-id="<?php echo $id ?>" data-plantacao="<?php echo $plantacao ?>" data-img="<?php echo $imagem ?>" class="icon excluir modal"><i class="fa fa-trash-o"></i></a>
+										<a href="#edit_form" data-id="<?php echo $id ?>" data-plantacao="<?php echo $plantacao ?>" data-img="<?php echo $imagem ?>" class="icon editar modal"><i class="fa fa-pencil"></i></a>
+										<a href="#valida_form" data-id="<?php echo $id ?>" data-plantacao="<?php echo $plantacao ?>" data-img="<?php echo $imagem ?>" class="icon validar modal"><i class="fa fa-check"></i></a>
 									</p></li>
 
 									<?php } ?>
-
-									<li class="l-col1"><img src="assets/img/template/logo.gif" id="preview" class="plantacaofigura" width="40" height="40" /></li>
-									<li class="l-col11"><p class="btn">Mangericam 
-										<a href="#confirm_form" data-id="3000" data-plantacao="Mangericam" data-img="assets/img/template/logo.gif" class="icon excluir modal"><i class="fa fa-trash-o"></i></a>
-										<a href="#edit_form" data-id="3000" data-plantacao="Mangericam" data-img="assets/img/template/logo.gif" class="icon editar modal"><i class="fa fa-pencil"></i></a>
-										<a href="#valida_form" data-id="3000" data-plantacao="Mangericam" data-img="assets/img/template/logo.gif" class="icon validar modal"><i class="fa fa-check"></i></a>
-									</p></li>
-									<li class="l-col1"><img src="assets/img/template/logo.gif" id="preview" class="plantacaofigura" width="40" height="40" /></li>
-									<li class="l-col11"><p class="btn">Legumes 
-										<a href="#confirm_form" data-id="3000" data-plantacao="Legumes" data-img="assets/img/template/logo.gif" class="icon excluir modal"><i class="fa fa-trash-o"></i></a>
-										<a href="#edit_form" data-id="3000" data-plantacao="Legumes" data-img="assets/img/template/logo.gif" class="icon editar modal"><i class="fa fa-pencil"></i></a>
-										<a href="#valida_form" data-id="3000" data-plantacao="Legumes" data-img="assets/img/template/logo.gif" class="icon validar modal"><i class="fa fa-check"></i></a>
-									</p></li>
 
 								</ul>
 							</nav>
@@ -185,7 +186,7 @@
 
 				</div><!-- .l-row -->
 
-				<?php //} ?>
+				<?php } ?>
 
 				<div class="l-row">
 
@@ -199,7 +200,7 @@
 								<ul class="l-row">
 									<?php
 
-									$sqlPlantacaoList = "SELECT * FROM DL_ADMIN_plantationList WHERE valido = '1' order by id desc";
+									$sqlPlantacaoList = "SELECT * FROM testenovo WHERE valido = '1' order by id desc";
 
 									$resultPlantacaoList = mysql_query($sqlPlantacaoList);
 
@@ -208,26 +209,29 @@
 										$plantacao=$row['plantacao'];
 										$imagem=$row['imagem'];
 
+										if($imagem == null){ 
+											$imagem = 'assets/img/template/logo.gif'; 
+										} else { 
+
+											$imagemId = explode('-', $imagem);
+
+											$sqlPlantacaoimg = "SELECT * FROM teste WHERE id = '$imagemId[0]' order by id desc";
+											$resultPlantacaoimg = mysql_query($sqlPlantacaoimg);
+
+											while ($row=mysql_fetch_array($resultPlantacaoimg)) {
+												$imagem = '../'.$row['caminho'] . $row['nome_imagem'];
+											}
+										}
+
 									?> 
 
-									<li class="l-col1"><img src="<?php if($imagem == null){ echo 'assets/img/template/logo.gif'; } else { echo $plantacao; } ?>" id="preview" class="plantacaofigura" width="40" height="40" /></li>
+									<li class="l-col1"><img src="<?php echo $imagem; ?>" id="preview" class="plantacaofigura" width="40" height="40" /></li>
 									<li class="l-col11"><p class="btn"><?php echo $plantacao ?> 
-										<a href="#confirm_form" data-id="<?php echo $id ?>" data-plantacao="<?php echo $plantacao ?>" data-img="<?php if($imagem == null){ echo 'assets/img/template/logo.gif'; } else { echo $plantacao; } ?>" class="icon excluir modal"><i class="fa fa-trash-o"></i></a>
-										<a href="#edit_form" data-id="<?php echo $id ?>" data-plantacao="<?php echo $plantacao ?>" data-img="<?php if($imagem == null){ echo 'assets/img/template/logo.gif'; } else { echo $plantacao; } ?>" class="icon editar modal"><i class="fa fa-pencil"></i></a>
+										<a href="#confirm_form" data-id="<?php echo $id ?>" data-plantacao="<?php echo $plantacao ?>" data-img="<?php echo $imagem; ?>" class="icon excluir modal"><i class="fa fa-trash-o"></i></a>
+										<a href="#edit_form" data-id="<?php echo $id ?>" data-plantacao="<?php echo $plantacao ?>" data-img="<?php echo $imagem; ?>" class="icon editar modal"><i class="fa fa-pencil"></i></a>
 									</p></li>
 
 									<?php } ?>
-
-									<li class="l-col1"><img src="assets/img/template/logo.gif" id="preview" class="plantacaofigura" width="40" height="40" /></li>
-									<li class="l-col11"><p class="btn">Tomate 
-										<a href="#confirm_form" data-id="3000" data-plantacao="Tomate" data-img="assets/img/template/logo.gif" class="icon excluir modal"><i class="fa fa-trash-o"></i></a>
-										<a href="#edit_form" data-id="3000" data-plantacao="Tomate" data-img="assets/img/template/logo.gif" class="icon editar modal"><i class="fa fa-pencil"></i></a>
-									</p></li>
-									<li class="l-col1"><img src="assets/img/template/logo.gif" id="preview" class="plantacaofigura" width="40" height="40" /></li>
-									<li class="l-col11"><p class="btn">Batata 
-										<a href="#confirm_form" data-id="3000" data-plantacao="Batata" data-img="assets/img/template/logo.gif" class="icon excluir modal"><i class="fa fa-trash-o"></i></a>
-										<a href="#edit_form" data-id="3000" data-plantacao="Batata" data-img="assets/img/template/logo.gif" class="icon editar modal"><i class="fa fa-pencil"></i></a>
-									</p></li>
 								</ul>
 							</nav>
 
@@ -295,6 +299,8 @@
 
 				<form id="formEditPlantacaoList" method="post" action="backend/envios/editarPlantacaoList.php" enctype="multipart/form-data">
 
+				<input type="hidden" name="idnovaplantacaoeditar" id="idnovaplantacaoeditar">
+
 				<div class="l-col4">
 
 					<span class="input-field"><input type="text" name="nomenovaplantacaoeditar" id="nomenovaplantacaoeditar" placeholder="Plantação" class="error-left" required></span>
@@ -303,7 +309,7 @@
 
 				<div class="l-col5">
 
-					<span class="input-field"><input type="file" name="imgnovaplantacaoeditar[]" id="imgnovaplantacaoeditar" onchange="readURLedit(this);" accept="image/x-png, image/gif, image/bmp, image/jpeg"></span>
+					<span class="input-field"><input type="file" name="imgnovaplantacaoeditar[]" id="imgnovaplantacaoeditar" class="ignore" onchange="readURLedit(this);" accept="image/x-png, image/gif, image/bmp, image/jpeg"></span>
 
 				</div><!-- .l-col5 -->
 
@@ -375,6 +381,7 @@
 		//editar plantacao
 		$('#editarplantacaoname').text($(this).attr('data-plantacao'));
 		$('#nomenovaplantacaoeditar').val($(this).attr('data-plantacao'));
+		$('#idnovaplantacaoeditar').val($(this).attr('data-id'));
 		$('#previewimgeditar').attr('src', $(this).attr('data-img'));
 		//aprovar plantacao
 		$('#nomeselecionado').text($(this).attr('data-plantacao'));

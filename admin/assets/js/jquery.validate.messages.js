@@ -21,6 +21,18 @@ $(document).ready(function() {
 				if (element.name == "cpf") return false;
 			break;
 
+			case "cpf": 
+				if (element.name == "cpf") return false;
+			break;
+
+			case "nomenovaplantacao": 
+				if (element.name == "nomenovaplantacao") return false;
+			break;
+
+			case "nomenovaplantacaoeditar": 
+				if (element.name == "nomenovaplantacaoeditar") return false;
+			break;
+
 			default: return true;
 			break;
 		} 
@@ -108,6 +120,8 @@ $(document).ready(function() {
 		    return this.optional(element) || true;
 		}, "Informe um CPF válido."); // Mensagem padrão 
 
+		jQuery.validator.setDefaults({ignore: ".ignore"});
+
 		jQuery.validator.addMethod("telefone", function (value, element) {
 		    value = value.replace("(", "");
 		    value = value.replace(")", "");
@@ -165,6 +179,32 @@ $(document).ready(function() {
 			},
 			messages: {
 				cpf: "Cpf inválido",
+			}
+		});
+
+		$("#formPlantacaoList").validate({
+			rules: {
+				nomenovaplantacao: {
+					required: true
+				},
+				/*imgnovaplantacao: {
+			      extension: "jpg|jpeg|pdf|doc|docx|png",
+			    },*/
+			},
+			messages: {
+				nomenovaplantacao: "Preencher o nome",
+				imgnovaplantacao: "Preencher o nome",
+			}
+		});
+
+		$("#formEditPlantacaoList").validate({
+			rules: {
+				nomenovaplantacaoeditar: {
+					required: true
+				},
+			},
+			messages: {
+				nomenovaplantacaoeditar: "Preencher o nome",
 			}
 		});
 
