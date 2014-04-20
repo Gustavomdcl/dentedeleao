@@ -145,7 +145,7 @@
 	</div><!-- #site -->
 
 	<?php include 'template/script.php'; ?>
-  	<!-- Script do accordion -->
+  	<!-- Script da mascara -->
 	<script>
 		jQuery(function($){
 		   $("#telefone").mask("(99)9999-9999");

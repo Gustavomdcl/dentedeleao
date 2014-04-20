@@ -26,7 +26,7 @@
 	======================================================== -->
 	<div id="site">
 
-		<?php include 'template/header.php'; ?><!-- ADRIAN: Não delete isso pois é o cabeçalho do site, tudo bem? Ele está puxando o arquivo da pasta template. Ele vai repetir esse cabeçalho em todas as páginas -->
+		<?php include 'template/header.php'; ?>
 
 		<!-- ADRIAN: ÁREA PARA COLOCAR SEU CÓDIGO, QUE VAI MUDAR EM CADA PÁGINA -->
 
@@ -38,23 +38,20 @@
 
 				<div class="l-row">
 					<header>
-						MENU LATERAL
-					</header>
-					<div>
 						<h2>MEU PERFIL</h2>
-					</div>
-					<img src="" border="0" width="" height="" />
+					</header>
+					<img src="" border="0" width="150" height="150" align="left" class="fotoperfil" />
 					<div id="perfil-content">
 						<h3>Nome do usuário</h3>
 						<p><span>Sobre</span></p>
-						<p>Lorem ipsum dolor sit amet</p>
+						<p style="clear:both;">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla nulla diam, fringilla sit amet vestibulum sit amet, elementum sed elit. Phasellus aliquet est nec erat laoreet consectetur quis eu eros. Ut sollicitudin odio et eleifend bibendum. Ut vel venenatis justo. Nulla sagittis urna sit amet purus varius, ut cursus elit vestibulum. Vestibulum accumsan ipsum in nibh adipiscing, sed tincidunt lacus condimentum. Suspendisse ultrices nulla a eros pharetra, sed fringilla ipsum blandit. Aliquam ultricies suscipit aliquet. Fusce diam neque, porttitor a est et, varius tristique elit. Fusce lacinia, erat sed auctor rutrum, eros eros congue quam, in porta justo elit ac leo. Phasellus consequat augue dapibus, ornare enim eu, faucibus neque. Nullam rutrum odio id orci posuere semper.</p>
 						<p><span>Fazenda</span> 1234</p>
 						<p><span>CNPJ</span> 1234</p>
 						<p><span>Telefone</span> 1234</p>
 						<p><span>Celular</span> 1234</p>
 						<p><span>E-mail</span> 1234</p>
 						<p><span>Localização</span></p>
-						<img src="" alt="mapa"/>
+						<img src="" alt="mapa" style="clear:both;"/>
 						<p>Endereço</p>
 
 					</div>
@@ -65,21 +62,9 @@
 		</section><!-- .l-perfil -->
 
 		<!-- ADRIAN: FINAL DA ÁREA PARA COLOCAR SEU CÓDIGO, QUE VAI MUDAR EM CADA PÁGINA -->
-
-		<?php include 'template/footer.php'; ?><!-- ADRIAN: Não delete isso pois é o rodapé do site, tudo bem? Ele está puxando o arquivo da pasta template. Ele vai repetir esse rodapé em todas as páginas -->
-
 	</div><!-- #site -->
-
+	<?php include 'template/footer.php'; ?>
 	<?php include 'template/script.php'; ?>
-  	<!-- Script do accordion -->
-	<script>
-		jQuery(function($){
-		   $("#telefone").mask("(99)9999-9999");
-		   $("#celular").mask("(99)99999-9999");
-		   $("#cnpjfazenda").mask("99.999.999/9999-99");
-		   $("#cepfazenda").mask("99999-999");
-		});
-	</script>
-
+  	
 </body>
 </html>

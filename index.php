@@ -58,8 +58,6 @@ if($sucesso == "aprovado") {
 	======================================================== -->
 	<div id="site">
 
-		<?php include 'template/header.php'; ?><!-- ADRIAN: Não delete isso pois é o cabeçalho do site, tudo bem? Ele está puxando o arquivo da pasta template. Ele vai repetir esse cabeçalho em todas as páginas -->
-
 		<!-- ADRIAN: ÁREA PARA COLOCAR SEU CÓDIGO, QUE VAI MUDAR EM CADA PÁGINA -->
 
 		<!-- MENSAGEM DE ERRO ADRIANA ARRASTE PARA ONDE PREFERIR. AS MENSAGENS ESTÃO NO TOPO DO ARQUIVO -->
