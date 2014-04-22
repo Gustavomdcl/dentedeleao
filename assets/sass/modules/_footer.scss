@@ -2,9 +2,11 @@
 	height:50px;
 	position:absolute;
 	background-color:#ccc;
-	width:100%;
+	width:1000px;
 	padding-top:10px;
 	bottom:0px;
+	left:50%;
+	margin-left:-500px;
 
 	.l-footer-top, .l-footer-bottom{
 		text-align:center;

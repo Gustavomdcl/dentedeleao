@@ -1,6 +1,4 @@
 body {
-  font-weight: normal;
-  font-size: 14px; //1em = 14px; 3em = 42px; 1.28em = 18px; FONTEpx/14px = FONTEem
   line-height:1.4;
   font-family: sans-serif;
   color: $color-base;
@@ -8,22 +6,26 @@ body {
   //         font-smoothing: antialiased;
   margin:0;
   padding:0;
-  min-height:100%;
-  
 }
 
 #site{
   min-height:100%;
+  width:1000px;
+  margin:0 auto;
   position:relative;
+  
 }
 
 #site section{
-  padding-bottom:70px;
   height:100%;
+  width:735px;
+  padding:0 10px 70px;
+  min-height:700px;
 }
 
 p {
-  margin: 10px 0;
+  margin: 0;
+  font-size: 0.85em; //14px; - 1em = 14px; 3em = 42px; 1.28em = 18px; FONTEpx/14px = FONTEem
 }
 
 img {
@@ -69,5 +71,9 @@ a {
 .nav {
   li {
     display: inline-block;
+  }
+
+b {
+  font-weight:bold;
   }
 }

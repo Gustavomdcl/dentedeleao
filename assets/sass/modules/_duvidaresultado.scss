@@ -1,0 +1,19 @@
+.l-duvida-resultado {
+	li{
+		width:200px;
+		display:block;
+		float:left;
+		margin:5px 10px;
+
+	}
+	.postnome{
+		font-weight:bold;
+	}
+	ul{
+		overflow:auto;
+	}
+	.bt-saibamais{
+		display:block;
+		float:right;
+	}
+}
