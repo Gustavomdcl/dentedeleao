@@ -1,0 +1,67 @@
+.l-painel {
+	ul#abas{
+		height:40px;
+		overflow:auto;
+		border-bottom:1px solid black;
+		li a{
+			display:block;
+			float:left;
+			padding:5px;
+			border:1px solid red;
+			cursor:pointer;
+		}
+	}
+	#tomate{
+		background-color:#ffd0d0;
+	}
+	#batata{
+		background-color:#fff38b;
+	}
+	#morango{
+		background-color:#fe8bff;
+	}
+	#amora{
+		background-color:#950597;
+	}
+	#resultados ul{
+		overflow:auto;
+	}
+
+	#resultados li{
+		width:25%;
+		display:block;
+		float:left;
+	}
+	#notificacoes{
+		overflow:auto;
+		margin:10px 0;
+	}
+	#notificacoes li{
+		width:31%;
+		margin-right:2%;
+		display: block;
+		float:left;
+	}
+	#notificacoes li img{
+		margin-right:5px;
+	}
+	#duvidas-recentes{
+		li{
+		width:220px;
+		display:block;
+		float:left;
+		margin:5px 10px;
+
+		}
+		.postnome{
+			font-weight:bold;
+		}
+		ul{
+			overflow:auto;
+		}
+		.bt-saibamais{
+			display:block;
+			float:right;
+		}
+	}
+}
