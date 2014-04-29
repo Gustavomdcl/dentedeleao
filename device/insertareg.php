@@ -6,14 +6,18 @@
 <h1>Dados do Sensor</h1>
 <form action="add.php" method="get">
 <TABLE>
+<!--<tr>
+   <td>ID</td>
+   <td><input type="text" name="id" size="20" maxlength="30"></td>
+</tr>-->
 <tr>
    <td>Device</td>
-   <td><input type="text" name="id" size="20" maxlength="30"></td>
+   <td><input type="text" name="device" size="20" maxlength="30"></td>
 </tr>
-<tr>
+<!--<tr>
    <td>Data</td>
    <td><input type="text" name="data" size="20" maxlength="30"></td>
-</tr>
+</tr>-->
 <tr>
    <td>Temperatura</td>
    <td><input type="text" name="temp" size="20" maxlength="30"></td>
@@ -37,10 +41,11 @@
 <?php
    include("conec.php");
    $link=Conection();
-   $result=mysql_query("select * from DL_DEVICE_02",$link);
+   $result=mysql_query("select * from DL_DEVICE order by id desc",$link);
 ?>
 <table border="1" cellspacing="1" cellpadding="1">
       <tr>
+         <td>&nbsp;ID&nbsp;</td>
          <td>&nbsp;Device&nbsp;</td>
          <td>&nbsp;Data&nbsp;</td>
 		 <td>&nbsp;Temperatura&nbsp;</td>
@@ -51,7 +56,7 @@
        </tr>
 <?php      
    while($row = mysql_fetch_array($result)) {
-printf("<tr><td> &nbsp;%s </td><td> &nbsp;%s&nbsp; </td><td> &nbsp;%s&nbsp; </td><td> &nbsp;%s&nbsp; </td><td> &nbsp;%s&nbsp; </td><td> &nbsp;%s&nbsp; </td></tr>", $row["device"], $row["data"], $row["temp"], $row["umi"], $row["umisolo"], $row["chuva"]);
+printf("<tr><td> &nbsp;%s </td><td> &nbsp;%s&nbsp; </td><td> &nbsp;%s&nbsp; </td><td> &nbsp;%s&nbsp; </td><td> &nbsp;%s&nbsp; </td><td> &nbsp;%s&nbsp; </td><td> &nbsp;%s&nbsp; </td></tr>", $row["id"], $row["device"], $row["data"], $row["temp"], $row["umi"], $row["umisolo"], $row["chuva"]);
    }
    mysql_free_result($result);
 ?>
