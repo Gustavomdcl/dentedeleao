@@ -1,5 +1,5 @@
 .l-footer {
-	height:50px;
+	height:30px;
 	position:absolute;
 	background-color:#ccc;
 	width:1000px;
@@ -8,12 +8,9 @@
 	left:50%;
 	margin-left:-500px;
 
-	.l-footer-top, .l-footer-bottom{
+	.l-footer-bottom{
 		text-align:center;
 		margin:0 auto;
-	}
-	.l-footer-top a{
-		padding:0 5px;
 	}
 	p{
 		margin:2px 0;
