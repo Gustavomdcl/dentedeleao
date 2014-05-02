@@ -7,18 +7,18 @@
 					<h1><img src="assets/img/template/dente-de-leao-logo.png" border="0" width="200" height="123" /></h1>
 					<h2>Cultive Ideias. Colha conhecimento.</h2>
 					<hr />
-					<p><img src="" alt="icone" width="20" height="20" border="0" /> <?php echo $nome ?> <img src="" alt="editar perfil" width="20" height="20" />
+					<p><img src="" alt="icone" width="20" height="20" border="0" /> <?php echo $nome ?> <a href="#" title="Editar perfil"><img src="" alt="editar perfil" width="20" height="20" border="0" /></a></p>
 				</div><!-- .l-container.cf -->
 			</div><!-- .l-header-top -->
 
 			<div class="l-header-center">
 				<div class="l-container cf">
 					<h3>Painel</h3>
-					<li><img src="" width="20" height="20" /> <a href=".php" title="Perfil Pessoal">Perfil Pessoal</a></li>
+					<li><img src="" width="20" height="20" /> <a href="perfil.php" title="Perfil Pessoal">Perfil Pessoal</a></li>
 					<li><img src="" width="20" height="20" /> <a href=".php" title="Notificações">Notificações</a></li>
 					<li><img src="" width="20" height="20" /> <a href=".php" title="Gráficos">Gráficos</a></li>
-					<li><img src="" width="20" height="20" /> <a href=".php" title="Dúvidas">Dúvidas</a></li>
-					<li><img src="" width="20" height="20" /> <a href=".php" title="Produtores">Produtores</a></li>
+					<li><img src="" width="20" height="20" /> <a href="duvida-exibicao.php" title="Dúvidas">Dúvidas</a></li>
+					<li><img src="" width="20" height="20" /> <a href="produtores.php" title="Produtores">Produtores</a></li>
 				</div><!-- .l-container.cf -->
 			</div><!-- .l-header-center -->
 
