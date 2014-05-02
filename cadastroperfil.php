@@ -77,7 +77,7 @@
 							<input type="hidden" name="email" id="email" value="<?php echo $usuarioLogadoEmail; ?>">
 							<p>Envie-nos uma foto no campo abaixo</p>
 							<span><img src="" id="preview" width="150" height="150" /></span>
-							<input type="file" name="foto[]" id="foto" onchange="readURL(this);" accept="image/x-png, image/gif, image/bmp, image/jpeg, image/jpg">
+							<input type="file" name="foto[]" id="foto" onchange="readURL(this);" accept="image/png, image/gif, image/bmp, image/jpeg, image/jpg">
 							<p>Qual o seu número de telefone?</p>
 							<input type="text" name="telefone" placeholder="Telefone" id="telefone" required><br>
 							<input type="text" name="celular" placeholder="Celular" id="celular" required><br>
@@ -100,7 +100,7 @@
 							    <!-- Unidade de Local -->
 							</div><!-- .map-container -->
 							<input type="text" name="cepfazenda" placeholder="CEP" id="cepfazenda" required><br>
-							<select name="estado" id="estado">
+							<select name="estado" id="estado" required>
 								<option selected disabled>Estado</option>
 								<?php
 
@@ -120,7 +120,7 @@
 								<?php } ?>
 							</select>
 							<span class="carregando" style="display:none;">Carregando Cidades...</span>
-							<select name="cidade" id="cidade" style="display:none;">
+							<select name="cidade" id="cidade" style="display:none;" required>
 							</select><br>
 							<p>O que você cultiva?</p>
 							<span class="plantacoes">
