@@ -13,12 +13,28 @@
   $perfilCriado = mysql_query("SELECT * FROM DL_PROFILE WHERE usuario = '$usuarioLogadoID'");
   $nome;
   $cpf;
+  $imagem;
 
   if(mysql_num_rows($perfilCriado) > 0) {
 
     while ($row=mysql_fetch_array($perfilCriado)) {
       $nome=$row['nome'];
       $cpf=$row['cpf'];
+      $foto=$row['foto'];
+
+      if($foto == null){ 
+        $foto = 'admin/assets/img/template/logo.gif'; 
+      } else { 
+
+        $fotoId = explode('-', $foto);
+
+        $sqlPlantacaoimg = "SELECT * FROM DL_IMAGES WHERE id = '$fotoId[0]' order by id desc";
+        $resultPlantacaoimg = mysql_query($sqlPlantacaoimg);
+
+        while ($row=mysql_fetch_array($resultPlantacaoimg)) {
+          $foto = $row['caminho'] . $row['nome_imagem'];
+        }
+      }
     }
 
   } else {

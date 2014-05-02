@@ -1,4 +1,91 @@
-<!DOCTYPE html>
+<?php
+  require_once ("backend/seguranca.php");
+  protegePagina();
+
+  require_once("backend/conecta.php");
+  require_once("backend/executa.php");
+
+  // VARIAVEIS GLOBAIS ==================================
+  $usuarioLogadoID = $_SESSION['usuarioUserID'];
+  $usuarioLogadoEmail = $_SESSION['usuarioUserNome'];
+
+  // VALIDA PERFIL ======================================
+  $perfilCriado = mysql_query("SELECT * FROM DL_PROFILE WHERE usuario = '$usuarioLogadoID'");
+  $nome;
+  $foto;
+  $cpf;
+  $email;
+  $telefone;
+  $celular;
+  $fazenda;
+  $cnpj;
+  $endereco;
+  $latitude;
+  $longitude;
+  $cep;
+  $estado;
+  $uf;
+  $cidade;
+  $plantacoes;
+  $sobre;
+
+  if(mysql_num_rows($perfilCriado) > 0) {
+
+    while ($row=mysql_fetch_array($perfilCriado)) {
+      $nome=$row['nome'];
+      $foto=$row['foto'];
+      $cpf=$row['cpf'];
+      $email=$row['email'];
+	  $telefone=$row['telefone'];
+	  $celular=$row['celular'];
+	  $fazenda=$row['fazenda'];
+	  $cnpj=$row['cnpj'];
+	  $endereco=$row['endereco'];
+	  $latitude=$row['latitude'];
+	  $longitude=$row['longitude'];
+	  $cep=$row['cep'];
+	  $estado=$row['estado'];
+	  $cidade=$row['cidade'];
+	  $plantacoes=$row['plantacoes'];
+	  $sobre=$row['sobre'];
+
+      if($foto == null){ 
+        $foto = 'admin/assets/img/template/logo.gif'; 
+      } else {
+
+        $fotoId = explode('-', $foto);
+
+        $sqlPlantacaoimg = "SELECT * FROM DL_IMAGES WHERE id = '$fotoId[0]' order by id desc";
+        $resultPlantacaoimg = mysql_query($sqlPlantacaoimg);
+
+        while ($row=mysql_fetch_array($resultPlantacaoimg)) {
+          $foto = $row['caminho'] . $row['nome_imagem'];
+        }
+      }
+
+      if($sobre == null){
+      	$sobre = 'Não há nenhuma descrição cadastrada';
+      }
+
+      $sqlState = "SELECT * FROM DL_STATE WHERE id = '$estado' order by id asc";
+	  $resultState = mysql_query($sqlState);
+   	  while ($row=mysql_fetch_array($resultState)) {
+		  $uf=$row['uf'];
+	  }
+
+	  $sqlCity = "SELECT * FROM DL_CITY WHERE id = '$cidade' order by id asc";
+	  $resultCity = mysql_query($sqlCity);
+   	  while ($row=mysql_fetch_array($resultCity)) {
+		  $cidade=$row['cidade'];
+	  }
+
+    }
+
+  } else {
+  	header("Location: cadastroperfil.php");
+  }
+
+?><!DOCTYPE html>
 <html lang="pt_BR">
 <head>
 
@@ -36,23 +123,105 @@
 
 			<div class="l-container cf"><!-- ADRIAN: Essa div com class l-container centraliza em 960px e centraliza, no sass você pode observar isso. a class cf desconsidera os floats, sabe? as vezes quando você da um float left dentro de uma div o seu height não considera esses elementos. a class cf acaba considerando. -->
 
+				<?php
+				
+				$produtor = isset($_GET['produtor']) ? $_GET['produtor'] : null;
+				if($produtor != null) {
+					// VALIDA PERFIL ======================================
+					  $perfilCriado = mysql_query("SELECT * FROM DL_PROFILE WHERE id = '$produtor'");
+					  $nome;
+					  $foto;
+					  $cpf;
+					  $email;
+					  $telefone;
+					  $celular;
+					  $fazenda;
+					  $cnpj;
+					  $endereco;
+					  $latitude;
+					  $longitude;
+					  $cep;
+					  $estado;
+					  $uf;
+					  $cidade;
+					  $plantacoes;
+					  $sobre;
+
+				    while ($row=mysql_fetch_array($perfilCriado)) {
+				      $nome=$row['nome'];
+				      $foto=$row['foto'];
+				      $cpf=$row['cpf'];
+				      $email=$row['email'];
+					  $telefone=$row['telefone'];
+					  $celular=$row['celular'];
+					  $fazenda=$row['fazenda'];
+					  $cnpj=$row['cnpj'];
+					  $endereco=$row['endereco'];
+					  $latitude=$row['latitude'];
+					  $longitude=$row['longitude'];
+					  $cep=$row['cep'];
+					  $estado=$row['estado'];
+					  $cidade=$row['cidade'];
+					  $plantacoes=$row['plantacoes'];
+					  $sobre=$row['sobre'];
+
+				      if($foto == null){ 
+				        $foto = 'admin/assets/img/template/logo.gif'; 
+				      } else {
+
+				        $fotoId = explode('-', $foto);
+
+				        $sqlPlantacaoimg = "SELECT * FROM DL_IMAGES WHERE id = '$fotoId[0]' order by id desc";
+				        $resultPlantacaoimg = mysql_query($sqlPlantacaoimg);
+
+				        while ($row=mysql_fetch_array($resultPlantacaoimg)) {
+				          $foto = $row['caminho'] . $row['nome_imagem'];
+				        }
+				      }
+
+				      if($sobre == null){
+				      	$sobre = 'Não há nenhuma descrição cadastrada';
+				      }
+
+				      $sqlState = "SELECT * FROM DL_STATE WHERE id = '$estado' order by id asc";
+					  $resultState = mysql_query($sqlState);
+				   	  while ($row=mysql_fetch_array($resultState)) {
+						  $uf=$row['uf'];
+					  }
+
+					  $sqlCity = "SELECT * FROM DL_CITY WHERE id = '$cidade' order by id asc";
+					  $resultCity = mysql_query($sqlCity);
+				   	  while ($row=mysql_fetch_array($resultCity)) {
+						  $cidade=$row['cidade'];
+					  }
+
+				    }
+				}
+
+				?>
+
 				<div class="l-row">
 					<header>
 						<h2>MEU PERFIL</h2>
 					</header>
-					<img src="" border="0" width="150" height="150" align="left" class="fotoperfil" />
+					<img src="<?php echo $foto ?>" border="0" width="150" height="150" align="left" class="fotoperfil" />
 					<div id="perfil-content">
-						<h3>Nome do usuário</h3>
+						<h3><?php echo $nome ?></h3>
 						<p><span>Sobre</span></p>
-						<p style="clear:both;">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla nulla diam, fringilla sit amet vestibulum sit amet, elementum sed elit. Phasellus aliquet est nec erat laoreet consectetur quis eu eros. Ut sollicitudin odio et eleifend bibendum. Ut vel venenatis justo. Nulla sagittis urna sit amet purus varius, ut cursus elit vestibulum. Vestibulum accumsan ipsum in nibh adipiscing, sed tincidunt lacus condimentum. Suspendisse ultrices nulla a eros pharetra, sed fringilla ipsum blandit. Aliquam ultricies suscipit aliquet. Fusce diam neque, porttitor a est et, varius tristique elit. Fusce lacinia, erat sed auctor rutrum, eros eros congue quam, in porta justo elit ac leo. Phasellus consequat augue dapibus, ornare enim eu, faucibus neque. Nullam rutrum odio id orci posuere semper.</p>
-						<p><span>Fazenda</span> 1234</p>
-						<p><span>CNPJ</span> 1234</p>
-						<p><span>Telefone</span> 1234</p>
-						<p><span>Celular</span> 1234</p>
-						<p><span>E-mail</span> 1234</p>
+						<p style="clear:both;"><?php echo $sobre; ?></p>
+						<p><span>Fazenda</span> <?php echo $fazenda; ?></p>
+						<p><span>CNPJ</span> <?php echo $cnpj; ?></p>
+						<p><span>Telefone</span> <?php echo $telefone; ?></p>
+						<p><span>Celular</span> <?php echo $celular; ?></p>
+						<p><span>E-mail</span> <?php echo $email; ?></p>
 						<p><span>Localização</span></p>
-						<img src="" alt="mapa" style="clear:both;"/>
-						<p>Endereço</p>
+						<div id="map-canvas" style="width:100%;height:500px;"></div><!-- div#map-canvas -->
+						<!-- Unidade de Local -->
+					    <div class="map-place" data-lat="<?php echo $latitude; ?>" data-long="<?php echo $longitude; ?>" id="mark-0"> <!-- o id deve mudar -->
+					    	<p><?php echo $endereco; ?><br>
+					    		CEP <?php echo $cep; ?> - <?php echo $cidade; ?>/<?php echo $uf; ?></p>
+					    </div><!-- .map-place -->
+					    <!-- Unidade de Local -->
 
 					</div>
 				</div><!-- .l-row -->
@@ -61,10 +230,13 @@
 
 		</section><!-- .l-perfil -->
 
+		<?php include 'template/footer.php'; ?>
+
 		<!-- ADRIAN: FINAL DA ÁREA PARA COLOCAR SEU CÓDIGO, QUE VAI MUDAR EM CADA PÁGINA -->
 	</div><!-- #site -->
-	<?php include 'template/footer.php'; ?>
 	<?php include 'template/script.php'; ?>
+	<!-- google maps api -->
+	<script src="assets/js/jquery.mapsperfil.js" type="text/javascript"></script>
   	
 </body>
 </html>

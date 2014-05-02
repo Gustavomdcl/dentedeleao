@@ -1,4 +1,96 @@
-<!DOCTYPE html>
+<?php
+  require_once ("backend/seguranca.php");
+  protegePagina();
+
+  require_once("backend/conecta.php");
+  require_once("backend/executa.php");
+
+  // VARIAVEIS GLOBAIS ==================================
+  $usuarioLogadoID = $_SESSION['usuarioUserID'];
+  $usuarioLogadoEmail = $_SESSION['usuarioUserNome'];
+
+  // VALIDA PERFIL ======================================
+  $perfilCriado = mysql_query("SELECT * FROM DL_PROFILE WHERE usuario = '$usuarioLogadoID'");
+  $nome;
+  $foto;
+  $cpf;
+  $email;
+  $telefone;
+  $celular;
+  $fazenda;
+  $cnpj;
+  $endereco;
+  $latitude;
+  $longitude;
+  $cep;
+  $estado;
+  $uf;
+  $cidade;
+  $plantacoes;
+  $sobre;
+
+  if(mysql_num_rows($perfilCriado) > 0) {
+
+    while ($row=mysql_fetch_array($perfilCriado)) {
+      $nome=$row['nome'];
+      $foto=$row['foto'];
+      $cpf=$row['cpf'];
+      $email=$row['email'];
+	  $telefone=$row['telefone'];
+	  $celular=$row['celular'];
+	  $fazenda=$row['fazenda'];
+	  $cnpj=$row['cnpj'];
+	  $endereco=$row['endereco'];
+	  $latitude=$row['latitude'];
+	  $longitude=$row['longitude'];
+	  $cep=$row['cep'];
+	  $estado=$row['estado'];
+	  $cidade=$row['cidade'];
+	  $plantacoes=$row['plantacoes'];
+	  $sobre=$row['sobre'];
+
+      if($foto == null){ 
+        $foto = 'admin/assets/img/template/logo.gif'; 
+      } else {
+
+        $fotoId = explode('-', $foto);
+
+        $sqlPlantacaoimg = "SELECT * FROM DL_IMAGES WHERE id = '$fotoId[0]' order by id desc";
+        $resultPlantacaoimg = mysql_query($sqlPlantacaoimg);
+
+        while ($row=mysql_fetch_array($resultPlantacaoimg)) {
+          $foto = $row['caminho'] . $row['nome_imagem'];
+        }
+      }
+
+      if($sobre == null){
+      	$sobre = 'Não há nenhuma descrição cadastrada';
+      }
+
+      $sqlState = "SELECT * FROM DL_STATE WHERE id = '$estado' order by id asc";
+	  $resultState = mysql_query($sqlState);
+   	  while ($row=mysql_fetch_array($resultState)) {
+		  $uf=$row['uf'];
+	  }
+
+	  $sqlCity = "SELECT * FROM DL_CITY WHERE id = '$cidade' order by id asc";
+	  $resultCity = mysql_query($sqlCity);
+   	  while ($row=mysql_fetch_array($resultCity)) {
+		  $cidade=$row['cidade'];
+	  }
+
+    }
+
+  } else {
+  	header("Location: cadastroperfil.php");
+  }
+
+  // Resultado Buscas ======================================
+  $cultivoBusca 		=	$_POST['cultivo'];
+  $estadoBusca 			=	$_POST['estado'];
+  $cidadeBusca 			=	$_POST['cidade'];
+
+?><!DOCTYPE html>
 <html lang="pt_BR">
 <head>
 
@@ -40,79 +132,190 @@
 					<header>
 						<h2>Produtores</h2>
 					</header>
-					<form>
+					<form method="post" action="produtores.php">
 						<p>Buscar produtores</p>
 						<select name="cultivo" id="cultivo">
-						  <option value="Amora">Amora</option>
-						  <option value="Banana">Banana</option>
-						  <option value="Batata">Batata</option>
-						  <option value="Maçã">Maçã</option>
-						  <option value="Tomate">Tomate</option>
+							<option selected disabled>Plantação</option>
+							<?php
+
+							$sqlPlantacaoList = "SELECT * FROM DL_ADMIN_plantationList WHERE valido = '1' order by id desc";
+
+							$resultPlantacaoList = mysql_query($sqlPlantacaoList);
+
+						   	while ($row=mysql_fetch_array($resultPlantacaoList)) {
+						   		$idPlantacao=$row['id'];
+								$plantacaoPlantacao=$row['plantacao'];
+
+							?>
+
+							<option value="<?php echo $idPlantacao ?>"><?php echo $plantacaoPlantacao ?></option>
+
+							<?php } ?>
+							<option value="null">Nenhuma</option>
 						</select><br>
 						<select name="estado" id="estado">
-						  <option value="Acre">AC</option>
-						  <option value="Alagoas">AL</option>
-						  <option value="Amapá">AP</option>
-						  <option value="Amazonas">AM</option>
-						  <option value="Bahia">BA</option>
-						  <option value="Ceará">CE</option>
-						  <option value="Distrito Federal">DF</option>
-						  <option value="Espírito Santo">ES</option>
-						  <option value="Goiás">GO</option>
-						  <option value="Maranhão">MA</option>
-						  <option value="Mato Grosso">MT</option>
-						  <option value="Mato Grosso do Sul">MS</option>
-						  <option value="Minas Gerais">MG</option>
-						  <option value="Pará">PA</option>
-						  <option value="Paraíba">PB</option>
-						  <option value="Paraná">PR</option>
-						  <option value="Pernambuco">PE</option>
-						  <option value="Piauí">PI</option>
-						  <option value="Rio de Janeiro">RJ</option>
-						  <option value="Rio Grande do Norte">RN</option>
-						  <option value="Rio Grande do Sul">RS</option>
-						  <option value="Rondônia">RO</option>
-						  <option value="Roraima">RR</option>
-						  <option value="Santa Catarina">SC</option>
-						  <option value="São Paulo" selected>SP</option>
-						  <option value="Sergipe">SE</option>
-						  <option value="Tocantins">TO</option>
+							<option selected disabled>Estado</option>
+							<?php
+
+							$sqlState = "SELECT * FROM DL_STATE order by id asc";
+
+							$resultState = mysql_query($sqlState);
+
+						   	while ($row=mysql_fetch_array($resultState)) {
+						   		$idEstado=$row['id'];
+								$estadoEstado=$row['estado'];
+								$ufEstado=$row['uf'];
+
+							?>
+
+							<option value="<?php echo $idEstado; ?>"><?php echo $estadoEstado; ?></option>
+
+							<?php } ?>
+							<option value="null">Nenhum</option>
 						</select>
-						<input type="text" name="cidade" placeholder="Cidade" id="cidade" required><br>
+						<span class="carregando" style="display:none;">Carregando Cidades...</span>
+						<select name="cidade" id="cidade" style="display:none;">
+						</select>
 						<button type="submit">Buscar</button>
 					</form>
 					<hr />
 					<div id="resultadoprodutores">
-						<img src="mapa" width="800" height="300" />
+						<div id="map-canvas" style="width:100%;height:500px;"></div><!-- div#map-canvas -->
 						<ul>
-							<li><img src="" width="150" height="150" />
-								<strong>Nome</strong>
-								<p>Telefone: (11) 12345-6789</p>
-								<p>Sítio ALegria, Rua do Limão meu Limoeiro.</p>
-								<p>CEP 06052-020 - Osasco-SP</p>
-								<a href="" title="Saiba mais">Saiba mais</a>
-							</li>
-							<li><img src="" width="150" height="150" />
-								<strong>Nome</strong>
-								<p>Telefone: (11) 12345-6789</p>
-								<p>Sítio ALegria, Rua do Limão meu Limoeiro.</p>
-								<p>CEP 06052-020 - Osasco-SP</p>
-								<a href="" title="Saiba mais">Saiba mais</a>
-							</li> 
-							<li><img src="" width="150" height="150" />
-								<strong>Nome</strong>
-								<p>Telefone: (11) 12345-6789</p>
-								<p>Sítio ALegria, Rua do Limão meu Limoeiro.</p>
-								<p>CEP 06052-020 - Osasco-SP</p>
-								<a href="" title="Saiba mais">Saiba mais</a>
-							</li> 
-							<li><img src="" width="150" height="150" />
-								<strong>Nome</strong>
-								<p>Telefone: (11) 12345-6789</p>
-								<p>Sítio ALegria, Rua do Limão meu Limoeiro.</p>
-								<p>CEP 06052-020 - Osasco-SP</p>
-								<a href="" title="Saiba mais">Saiba mais</a>
-							</li>  
+							<?php
+								// Query Produtores ======================================
+								  $condicoes = "";
+								  $condicaoCount = 0;
+								  /*if($cultivoBusca != null && $cultivoBusca != 'null') {
+								  	$condicoes = $condicoes + "WHERE id = ";
+								  }*/
+
+								  if($estadoBusca != null && $estadoBusca != 'null') {
+								  	$condicoes = $condicoes . "WHERE";
+								  } else if ($cidadeBusca != null && $cidadeBusca != 'null') {
+								  	$condicoes = $condicoes . "WHERE";
+								  }
+
+								  if($estadoBusca != null && $estadoBusca != 'null') {
+								  	if ($condicaoCount == 0) { $condicaoCount = 1; } else { $condicoes = $condicoes . " and "; }
+								  	$condicoes =  $condicoes . " estado = '" . $estadoBusca . "' ";
+								  }
+
+								  if($cidadeBusca != null && $cidadeBusca != 'null') {
+								  	if ($condicaoCount == 0) { $condicaoCount = 1; } else { $condicoes = $condicoes . " and "; }
+								  	$condicoes =  $condicoes . " cidade = '" . $cidadeBusca . "' ";
+								  }
+
+								  $produtoresLista = mysql_query("SELECT * FROM DL_PROFILE $condicoes order by id asc");
+								  $nome;
+								  $foto;
+								  $cpf;
+								  $email;
+								  $telefone;
+								  $celular;
+								  $fazenda;
+								  $cnpj;
+								  $endereco;
+								  $latitude;
+								  $longitude;
+								  $cep;
+								  $estado;
+								  $uf;
+								  $cidade;
+								  $plantacoes;
+								  $sobre;
+
+								  $produtor_contador = 0;
+
+							    while ($row=mysql_fetch_array($produtoresLista)) {
+							      $idProdutor=$row['id'];
+							      $nome=$row['nome'];
+							      $foto=$row['foto'];
+							      $cpf=$row['cpf'];
+							      $email=$row['email'];
+								  $telefone=$row['telefone'];
+								  $celular=$row['celular'];
+								  $fazenda=$row['fazenda'];
+								  $cnpj=$row['cnpj'];
+								  $endereco=$row['endereco'];
+								  $latitude=$row['latitude'];
+								  $longitude=$row['longitude'];
+								  $cep=$row['cep'];
+								  $estado=$row['estado'];
+								  $cidade=$row['cidade'];
+								  $plantacoes=$row['plantacoes'];
+								  $sobre=$row['sobre'];
+
+							      if($foto == null){ 
+							        $foto = 'admin/assets/img/template/logo.gif'; 
+							      } else {
+
+							        $fotoId = explode('-', $foto);
+
+							        $sqlPlantacaoimg = "SELECT * FROM DL_IMAGES WHERE id = '$fotoId[0]' order by id desc";
+							        $resultPlantacaoimg = mysql_query($sqlPlantacaoimg);
+
+							        while ($row=mysql_fetch_array($resultPlantacaoimg)) {
+							          $foto = $row['caminho'] . $row['nome_imagem'];
+							        }
+							      }
+
+							      if($sobre == null){
+							      	$sobre = 'Não há nenhuma descrição cadastrada';
+							      }
+
+							      $sqlState = "SELECT * FROM DL_STATE WHERE id = '$estado' order by id asc";
+								  $resultState = mysql_query($sqlState);
+							   	  while ($row=mysql_fetch_array($resultState)) {
+									  $uf=$row['uf'];
+								  }
+
+								  $sqlCity = "SELECT * FROM DL_CITY WHERE id = '$cidade' order by id asc";
+								  $resultCity = mysql_query($sqlCity);
+							   	  while ($row=mysql_fetch_array($resultCity)) {
+									  $cidade=$row['cidade'];
+								  }
+
+								  if($cultivoBusca == null && $cultivoBusca == 'null') {
+
+								  ?>
+								  <li class="map-place" data-lat="<?php echo $latitude; ?>" data-long="<?php echo $longitude; ?>" id="mark-<?php echo $produtor_contador; ?>"><img src="<?php echo $foto ?>" width="150" height="150" />
+								  	<strong><?php echo $nome ?></strong>
+									<p>Telefone: <?php echo $telefone; ?></p>
+									<p><?php echo $endereco; ?></p>
+									<p>CEP <?php echo $cep; ?> - <?php echo $cidade; ?>/<?php echo $uf; ?></p>
+									<a href="perfil.php?produtor=<?php echo $idProdutor; ?>" title="Saiba mais">Saiba mais</a>
+								  </li>
+
+								  <?php 
+
+								    	$produtor_contador = $produtor_contador + 1; 
+
+								    	} else {
+
+								    		$plantacoes;
+								    		$listaPlantacoes = explode("/", $plantacoes);
+								    		if(in_array($cultivoBusca, $listaPlantacoes)){
+
+								    			?>
+
+											  <li class="map-place" data-lat="<?php echo $latitude; ?>" data-long="<?php echo $longitude; ?>" id="mark-<?php echo $produtor_contador; ?>"><img src="<?php echo $foto ?>" width="150" height="150" />
+											  	<strong><?php echo $nome ?></strong>
+												<p>Telefone: <?php echo $telefone; ?></p>
+												<p><?php echo $endereco; ?></p>
+												<p>CEP <?php echo $cep; ?> - <?php echo $cidade; ?>/<?php echo $uf; ?></p>
+												<a href="perfil.php?produtor=<?php echo $idProdutor; ?>" title="Saiba mais">Saiba mais</a>
+											  </li>
+
+											  <?php 
+
+								    		}
+
+								    	}
+
+									} //while
+
+									?>  
 						</ul>
 					</div>
 				</div><!-- .l-row -->
@@ -128,6 +331,28 @@
 	</div><!-- #site -->
 
 	<?php include 'template/script.php'; ?>
+	<!-- google maps api -->
+	<script src="assets/js/jquery.mapsprodutores.js" type="text/javascript"></script>
+	<script>
+	/* POPULA AS CIDADES */
+	//http://www.daviferreira.com/posts/populando-selects-de-cidades-e-estados-com-ajax-php-e-jquery
+	$('#estado').change(function(){
+		if( $(this).val() ) {
+			$('.carregando').show();
+			$.getJSON('backend/envios/buscarCidades.php?search=',{cod_estados: $(this).val(), ajax: 'true'}, function(j){
+				var options = '<option selected disabled>Cidade</option>';	
+				for (var i = 0; i < j.length; i++) {
+					options += '<option value="' + j[i].cod_cidades + '">' + j[i].cidade + '</option>';
+				}	
+				options += '<option value="null">Nenhuma</option>';
+				$('#cidade').html(options).show();
+				$('.carregando').hide();
+			});
+		} else {
+			$('#cod_cidades').html('<option value="">-- Escolha um estado --</option>');
+		}
+	});
+	</script>
   	
 </body>
 </html>
