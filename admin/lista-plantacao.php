@@ -83,7 +83,7 @@
 
 					<div class="l-col5">
 
-						<span class="input-field"><input type="file" name="imgnovaplantacao[]" id="imgnovaplantacao" onchange="readURL(this);" class="ignore" accept="image/x-png, image/gif, image/bmp, image/jpeg, image/jpg"></span>
+						<span class="input-field"><input type="file" name="imgnovaplantacao[]" id="imgnovaplantacao" onchange="readURL(this);" class="ignore" accept="image/png, image/gif, image/bmp, image/jpeg, image/jpg"></span>
 
 					</div><!-- .l-col5 -->
 
@@ -127,7 +127,7 @@
 
 				<?php 
 
-				$sqlPlantacaoUserList = "SELECT * FROM testenovo WHERE valido = '0' order by id desc";
+				$sqlPlantacaoUserList = "SELECT * FROM DL_ADMIN_plantationList WHERE valido = '0' order by id desc";
 
 				$resultPlantacaoUserList = mysql_query($sqlPlantacaoUserList);
 
@@ -158,7 +158,7 @@
 
 											$imagemId = explode('-', $imagem);
 
-											$sqlPlantacaoimg = "SELECT * FROM teste WHERE id = '$imagemId[0]' order by id desc";
+											$sqlPlantacaoimg = "SELECT * FROM DL_IMAGES WHERE id = '$imagemId[0]' order by id desc";
 											$resultPlantacaoimg = mysql_query($sqlPlantacaoimg);
 
 											while ($row=mysql_fetch_array($resultPlantacaoimg)) {
@@ -200,7 +200,7 @@
 								<ul class="l-row">
 									<?php
 
-									$sqlPlantacaoList = "SELECT * FROM testenovo WHERE valido = '1' order by id desc";
+									$sqlPlantacaoList = "SELECT * FROM DL_ADMIN_plantationList WHERE valido = '1' order by id desc";
 
 									$resultPlantacaoList = mysql_query($sqlPlantacaoList);
 
@@ -215,7 +215,7 @@
 
 											$imagemId = explode('-', $imagem);
 
-											$sqlPlantacaoimg = "SELECT * FROM teste WHERE id = '$imagemId[0]' order by id desc";
+											$sqlPlantacaoimg = "SELECT * FROM DL_IMAGES WHERE id = '$imagemId[0]' order by id desc";
 											$resultPlantacaoimg = mysql_query($sqlPlantacaoimg);
 
 											while ($row=mysql_fetch_array($resultPlantacaoimg)) {

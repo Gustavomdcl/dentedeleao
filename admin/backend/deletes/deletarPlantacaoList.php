@@ -4,7 +4,7 @@
 
 	$plantacao 			=	$_POST['deletplantacao'];
 
-	$sql = "DELETE FROM testenovo WHERE plantacao='$plantacao'";
+	$sql = "DELETE FROM DL_ADMIN_plantationList WHERE plantacao='$plantacao'";
 
 	mysqlexecuta($id, $sql);
 

@@ -17,7 +17,7 @@
 	$uploadDir          =   '../../../' . $dir;
 	$imagemTabelaId		=	'';
 
-	$sql = "UPDATE testenovo SET plantacao='$plantacao' WHERE id='$registeredId'";
+	$sql = "UPDATE DL_ADMIN_plantationList SET plantacao='$plantacao' WHERE id='$registeredId'";
 
 	mysqlexecuta($id, $sql);
 
@@ -47,14 +47,14 @@
 			//SOBE NO SITE ===========
 
 			move_uploaded_file($tmps[$i], $uploadDir.$nome_img[$i]);
-			$insertimg = mysql_query("INSERT INTO teste (caminho, nome_imagem) VALUES('$dir', '$nome_img[$i]')");
+			$insertimg = mysql_query("INSERT INTO DL_IMAGES (caminho, nome_imagem) VALUES('$dir', '$nome_img[$i]')");
 			$resultedimg = mysql_query($insertimg);	
 
 			//O ID DA IMAGEM QUE SUBIU PARA SER USADO NO PRÓXIMO INSERT
 			$imagemTabelaId = $imagemTabelaId . mysql_insert_id().'-';
 		}
 
-		$sqlimg = "UPDATE testenovo SET imagem='$imagemTabelaId' WHERE id='$registeredId'";
+		$sqlimg = "UPDATE DL_ADMIN_plantationList SET imagem='$imagemTabelaId' WHERE id='$registeredId'";
 
 		mysqlexecuta($id, $sqlimg);
 

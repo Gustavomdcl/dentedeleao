@@ -1,4 +1,6 @@
 <?php
+ini_set('default_charset', 'UTF-8'); // Para o charset das páginas e
+mysql_set_charset('utf8'); // para a conexão com o MySQL
   require_once ("backend/seguranca.php");
   protegePagina();
 
@@ -84,48 +86,78 @@
 							<h2>Conte-nos sobre sua fazenda</h2>
 							<input type="text" name="nomefazenda" placeholder="Nome de sua fazenda" required><br>
 							<input type="text" name="cnpjfazenda" placeholder="CNPJ de sua fazenda" id="cnpjfazenda" required><br>
-							<p>Onde ela está localizada?</p>
-							<input type="text" name="enderecofazenda" placeholder="Endereço" required><br>
+							<p>Onde ela está localizada? (Arraste a marcação no mapa se preciso)</p>
+							<input type="text" name="enderecofazenda" placeholder="Endereço" id="start" style="width:200px;" required><br>
+							<div id="map-canvas" style="width:100%;height:500px;"></div><!-- div#map-canvas -->
+							<div class="map-container" style="display:none;">
+								<!-- Unidade de Local -->
+							    <div class="map-place" data-lat="-23.5505199" data-long="-46.63330939999997" id="mark-0"> <!-- o id deve mudar -->
+							    	<p>Unidade de Marcação</p>
+							    	<label>latitude</label>
+								    <input type="text" name="lat" id="lat-input" value="-23.5505199" >
+
+								    <label>longitude</label>
+								    <input type="text" name="long" id="long-input" value="-46.63330939999997">
+							    </div><!-- .map-place -->
+							    <!-- Unidade de Local -->
+							</div><!-- .map-container -->
 							<input type="text" name="cepfazenda" placeholder="CEP" id="cepfazenda" required><br>
 							<select name="estado" id="estado">
-							  <option value="Acre">AC</option>
-							  <option value="Alagoas">AL</option>
-							  <option value="Amapá">AP</option>
-							  <option value="Amazonas">AM</option>
-							  <option value="Bahia">BA</option>
-							  <option value="Ceará">CE</option>
-							  <option value="Distrito Federal">DF</option>
-							  <option value="Espírito Santo">ES</option>
-							  <option value="Goiás">GO</option>
-							  <option value="Maranhão">MA</option>
-							  <option value="Mato Grosso">MT</option>
-							  <option value="Mato Grosso do Sul">MS</option>
-							  <option value="Minas Gerais">MG</option>
-							  <option value="Pará">PA</option>
-							  <option value="Paraíba">PB</option>
-							  <option value="Paraná">PR</option>
-							  <option value="Pernambuco">PE</option>
-							  <option value="Piauí">PI</option>
-							  <option value="Rio de Janeiro">RJ</option>
-							  <option value="Rio Grande do Norte">RN</option>
-							  <option value="Rio Grande do Sul">RS</option>
-							  <option value="Rondônia">RO</option>
-							  <option value="Roraima">RR</option>
-							  <option value="Santa Catarina">SC</option>
-							  <option value="São Paulo" selected>SP</option>
-							  <option value="Sergipe">SE</option>
-							  <option value="Tocantins">TO</option>
+								<option selected disabled>Estado</option>
+								<?php
+
+								$sqlState = "SELECT * FROM DL_STATE order by id asc";
+
+								$resultState = mysql_query($sqlState);
+
+							   	while ($row=mysql_fetch_array($resultState)) {
+							   		$id=$row['id'];
+									$estado=$row['estado'];
+									$uf=$row['uf'];
+
+								?>
+
+								<option value="<?php echo $id; ?>"><?php echo $estado; ?></option>
+
+								<?php } ?>
 							</select>
-							<input type="text" name="cidade" placeholder="Cidade" required><br>
+							<span class="carregando" style="display:none;">Carregando Cidades...</span>
+							<select name="cidade" id="cidade" style="display:none;">
+							</select><br>
 							<p>O que você cultiva?</p>
 							<span class="plantacoes">
-								<input type="checkbox" name="platacao[]" value="Tomate">
-								<input type="checkbox" name="platacao[]" value="Cebola">
-								<input type="checkbox" name="platacao[]" value="Morango">
-								<input type="checkbox" name="platacao[]" value="Espinafre">
-								<input type="checkbox" name="platacao[]" value="Batata">
+								<?php
+
+								$sqlPlantacaoList = "SELECT * FROM DL_ADMIN_plantationList WHERE valido = '1' order by id desc";
+
+								$resultPlantacaoList = mysql_query($sqlPlantacaoList);
+
+							   	while ($row=mysql_fetch_array($resultPlantacaoList)) {
+							   		$id=$row['id'];
+									$plantacao=$row['plantacao'];
+									$imagem=$row['imagem'];
+
+									if($imagem == null){ 
+										$imagem = 'admin/assets/img/template/logo.gif'; 
+									} else { 
+
+										$imagemId = explode('-', $imagem);
+
+										$sqlPlantacaoimg = "SELECT * FROM DL_IMAGES WHERE id = '$imagemId[0]' order by id desc";
+										$resultPlantacaoimg = mysql_query($sqlPlantacaoimg);
+
+										while ($row=mysql_fetch_array($resultPlantacaoimg)) {
+											$imagem = $row['caminho'] . $row['nome_imagem'];
+										}
+									}
+
+								?> 
+								<img src="<?php echo $imagem; ?>" id="preview" class="plantacaofigura" width="50" height="50" />
+								<input type="checkbox" name="platacao[]" id="plantacao-<?php echo $id ?>" value="<?php echo $id ?>">
+								<label for="plantacao-<?php echo $id ?>"><?php echo $plantacao ?></label>
+								<?php } ?>
 							</span>
-							<p> Você cultiva algo mais? Separe com ponto-vírgula (;)</p>
+							<p> Você cultiva algo mais? Separe com vírgula (,)</p>
 							<input type="text" name="demaisplantacoes"><br>
 							<button type="submit">Salvar Informações</button>
 						</form>
@@ -145,6 +177,8 @@
 	</div><!-- #site -->
 
 	<?php include 'template/script.php'; ?>
+	<!-- google maps api -->
+	<script src="assets/js/jquery.mapsedit.js" type="text/javascript"></script>
   	<!-- Script da mascara -->
 	<script>
 		jQuery(function($){
@@ -153,6 +187,26 @@
 		   $("#cnpjfazenda").mask("99.999.999/9999-99");
 		   $("#cepfazenda").mask("99999-999");
 		});
+	</script>
+	<!-- popula as cidades -->
+	<script>
+	/* POPULA AS CIDADES */
+	//http://www.daviferreira.com/posts/populando-selects-de-cidades-e-estados-com-ajax-php-e-jquery
+	$('#estado').change(function(){
+		if( $(this).val() ) {
+			$('.carregando').show();
+			$.getJSON('backend/envios/buscarCidades.php?search=',{cod_estados: $(this).val(), ajax: 'true'}, function(j){
+				var options = '<option selected disabled>Cidade</option>';	
+				for (var i = 0; i < j.length; i++) {
+					options += '<option value="' + j[i].cod_cidades + '">' + j[i].cidade + '</option>';
+				}	
+				$('#cidade').html(options).show();
+				$('.carregando').hide();
+			});
+		} else {
+			$('#cod_cidades').html('<option value="">-- Escolha um estado --</option>');
+		}
+	});
 	</script>
 	<!-- Script do Input File -->
 	<script>

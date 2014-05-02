@@ -5,7 +5,7 @@
 	$plantacao			=	$_POST['confirmplantacao'];
 	$registeredId 		=	$_POST['confirmid'];
 
-	$sql = "UPDATE testenovo SET valido='1' WHERE id='$registeredId'";
+	$sql = "UPDATE DL_ADMIN_plantationList SET valido='1' WHERE id='$registeredId'";
 
 	mysqlexecuta($id, $sql);
 

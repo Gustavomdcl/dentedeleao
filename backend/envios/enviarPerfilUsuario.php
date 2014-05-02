@@ -26,6 +26,8 @@
 	$cnpjfazenda 		=	str_replace($caracteres, "", $_POST['cnpjfazenda']);
 
 	$enderecofazenda 	=	utf8_decode($_POST['enderecofazenda']);
+	$lat 				=	$_POST['lat'];
+	$long 				=	$_POST['long'];
 	$cepfazenda 		=	str_replace($caracteres, "", $_POST['cepfazenda']);
 
 	$estado 			=	utf8_decode($_POST['estado']);
@@ -37,27 +39,27 @@
 
 	// ==========
 
-	var_dump($usuarioId);
+	echo $usuarioId;
 	echo '<br>';
-	var_dump($nome);
+	echo $nome;
 	echo '<br>';
-	var_dump($cpf);
+	echo $cpf;
 	echo '<br>';
-	var_dump($email);
+	echo $email;
 	echo '<br>';
 	echo '<br>';
 
-	var_dump($foto);
+	echo $foto;
 	echo '<br>';
-	var_dump($nome_img);
+	echo $nome_img;
 	echo '<br>';
-	var_dump($tmps);
+	echo $tmps;
 	echo '<br>';
-	var_dump($types);
+	echo $types;
 	echo '<br>';
-	var_dump($qtd);
+	echo $qtd;
 	echo '<br>';
-	var_dump($dir);
+	echo $dir;
 	echo '<br>';
 	echo '<br>';
 
@@ -98,27 +100,31 @@
 	echo '<br>';
 		}
 
-	var_dump($telefone);
+	echo $telefone;
 	echo '<br>';
-	var_dump($celular);
-	echo '<br>';
-	echo '<br>';
-
-	var_dump($nomefazenda);
-	echo '<br>';
-	var_dump($cnpjfazenda);
+	echo $celular;
 	echo '<br>';
 	echo '<br>';
 
-	var_dump($enderecofazenda);
+	echo $nomefazenda;
 	echo '<br>';
-	var_dump($cepfazenda);
+	echo $cnpjfazenda;
 	echo '<br>';
 	echo '<br>';
 
-	var_dump($estado);
+	echo $enderecofazenda;
 	echo '<br>';
-	var_dump($cidade);
+	echo $lat;
+	echo '<br>';
+	echo $long;
+	echo '<br>';
+	echo $cepfazenda;
+	echo '<br>';
+	echo '<br>';
+
+	echo $estado;
+	echo '<br>';
+	echo $cidade;
 	echo '<br>';
 	echo '<br>';
 
@@ -129,6 +135,10 @@
 	echo ")";
 	echo '<br>';
 
-	var_dump($demaisplantacoes);
+	echo $demaisplantacoes;
+
+	$sql = "INSERT INTO testenovo(plantacao) VALUES ('$foto')";
+
+	mysqlexecuta($id, $sql);
 
 ?>

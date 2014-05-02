@@ -18,7 +18,7 @@
 
 	//Envio Plantacao ==================
 
-	$plantacaoVerify = mysql_query("SELECT * FROM testenovo WHERE plantacao = '$nomenovaplantacao'");
+	$plantacaoVerify = mysql_query("SELECT * FROM DL_ADMIN_plantationList WHERE plantacao = '$nomenovaplantacao'");
 	if(mysql_num_rows($plantacaoVerify) > 0) {
 	    // echo 'tem';
 
@@ -55,7 +55,7 @@
 				//SOBE NO SITE ===========
 
 				move_uploaded_file($tmps[$i], $uploadDir.$nome_img[$i]);
-				$insertimg = mysql_query("INSERT INTO teste (caminho, nome_imagem) VALUES('$dir', '$nome_img[$i]')");
+				$insertimg = mysql_query("INSERT INTO DL_IMAGES (caminho, nome_imagem) VALUES('$dir', '$nome_img[$i]')");
 				$resultedimg = mysql_query($insertimg);	
 
 				//O ID DA IMAGEM QUE SUBIU PARA SER USADO NO PRÓXIMO INSERT
@@ -64,7 +64,7 @@
 
 		}
 
-		$sql = "INSERT INTO testenovo(plantacao, imagem, valido) VALUES ('$nomenovaplantacao', '$imagemTabelaId', '1')";
+		$sql = "INSERT INTO DL_ADMIN_plantationList(plantacao, imagem, valido) VALUES ('$nomenovaplantacao', '$imagemTabelaId', '1')";
 
 		mysqlexecuta($id, $sql);
 
