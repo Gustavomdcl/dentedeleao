@@ -7,7 +7,7 @@
 					<h1><img src="assets/img/template/dente-de-leao-logo.png" border="0" width="200" height="123" /></h1>
 					<h2>Cultive Ideias. Colha conhecimento.</h2>
 					<hr />
-					<p><img src="" alt="icone" width="20" height="20" border="0" /> Nome da pessoa <img src="" alt="editar perfil" width="20" height="20" />
+					<p><img src="" alt="icone" width="20" height="20" border="0" /> <?php echo $nome ?> <img src="" alt="editar perfil" width="20" height="20" />
 				</div><!-- .l-container.cf -->
 			</div><!-- .l-header-top -->
 

@@ -11,8 +11,17 @@
 
   // VALIDA PERFIL ======================================
   $perfilCriado = mysql_query("SELECT * FROM DL_PROFILE WHERE usuario = '$usuarioLogadoID'");
+  $nome;
+  $cpf;
 
-  if(mysql_num_rows($perfilCriado) > 0) {} else {
+  if(mysql_num_rows($perfilCriado) > 0) {
+
+    while ($row=mysql_fetch_array($perfilCriado)) {
+      $nome=$row['nome'];
+      $cpf=$row['cpf'];
+    }
+
+  } else {
   	header("Location: cadastroperfil.php");
   }
 
@@ -58,7 +67,7 @@
           <header>
             <h2>Meu Painel</h2>
           </header>
-          <div id="com-sensor"><?php echo $_SESSION['usuarioUserID']; echo $_SESSION['usuarioUserNome']; ?>
+          <div id="com-sensor">
             <h3>Dados recentes da plantação</h3>
             <p>Selecione abaixo a aba correspondente ao cultivo que deseja visualizar</p>
             
