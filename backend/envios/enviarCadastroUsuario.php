@@ -4,7 +4,8 @@
 
 	$caracteres = array(".", "-");
 
-	$nome 			=	utf8_decode($_POST['nome']);
+	$nome 			=	$_POST['nome'];
+	$nomeEmail 		=	utf8_decode($_POST['nome']);
 	$cpf  			=	str_replace($caracteres, "", $_POST['cpf']);
 	$email 			=	$_POST['email'];
 	$senha 			=	md5($_POST['senha']);
@@ -38,7 +39,7 @@
 		    //echo 'Obrigado por cadastrar. <br> Verifique sua caixa de entrada, um email foi enviado para você validar seu usuário';
 
 		    $mensagemHTML = utf8_decode('<img src="http://www.dentedeleao.agr.br/admin/assets/img/template/logo.gif" alt="Logo Dente de Leão">
-		    <p>Olá, ' . $nome . ' , tudo bem? Obrigado pelo cadastro!</p>
+		    <p>Olá, ' . $nomeEmail . ' , tudo bem? Obrigado pelo cadastro!</p>
 		    <p>Para começar, acesse esse link para validar seu email:</p>
 			<p><a href="http://www.dentedeleao.agr.br/backend/envios/validaUsuario.php?usuario=' . $email . '&code=' . $senha . '" target="_blank">http://www.dentedeleao.agr.br/backend/envios/validaUsuario.php?usuario=' . $email . '&code=' . $senha . '</a></p>
 			<p>Qualquer dúvida, entre em contato: (011) 99973-5872</p>
@@ -56,7 +57,7 @@
 		    //echo 'Obrigado por cadastrar. <br> Seu email está passando por um processo de validação, por favor aguarde o nosso contato por email';
 
 		   	$mensagemHTML = utf8_decode('<img src="http://www.dentedeleao.agr.br/admin/assets/img/template/logo.gif" alt="Logo Dente de Leão">
-		    <p>Olá,' . $nome . ', tudo bem? Obrigado pelo cadastro!</p>
+		    <p>Olá,' . $nomeEmail . ', tudo bem? Obrigado pelo cadastro!</p>
 		    <p>Seu email está passando por um processo de validação, por favor aguarde.</p>
 		    <p>Assim que tudo estiver ok enviaremos um email.</p>
 		    <p>Qualquer dúvida, entre em contato: (011) 99973-5872</p>
