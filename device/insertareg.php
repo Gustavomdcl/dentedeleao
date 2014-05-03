@@ -3,21 +3,21 @@
    <title>Dados do Sensor</title>
 </head>
 <body>
-<h1>Dados do Sensor</h1>
+<!--<h1>Dados do Sensor</h1>
 <form action="add.php" method="get">
 <TABLE>
-<!--<tr>
+<tr>
    <td>ID</td>
    <td><input type="text" name="id" size="20" maxlength="30"></td>
-</tr>-->
+</tr>
 <tr>
    <td>Device</td>
    <td><input type="text" name="device" size="20" maxlength="30"></td>
 </tr>
-<!--<tr>
+<tr>
    <td>Data</td>
    <td><input type="text" name="data" size="20" maxlength="30"></td>
-</tr>-->
+</tr>
 <tr>
    <td>Temperatura</td>
    <td><input type="text" name="temp" size="20" maxlength="30"></td>
@@ -36,12 +36,12 @@
 </tr>
 </TABLE>
 <input type="submit" name="accion" value="Grabar">
-</FORM>
+</FORM>-->
 <hr>
 <?php
    include("conec.php");
    $link=Conection();
-   $result=mysql_query("select * from DL_DEVICE order by id desc",$link);
+   $result=mysql_query("select * from DL_DEVICE_1001 order by id desc",$link);
 ?>
 <table border="1" cellspacing="1" cellpadding="1">
       <tr>
@@ -56,7 +56,7 @@
        </tr>
 <?php      
    while($row = mysql_fetch_array($result)) {
-printf("<tr><td> &nbsp;%s </td><td> &nbsp;%s&nbsp; </td><td> &nbsp;%s&nbsp; </td><td> &nbsp;%s&nbsp; </td><td> &nbsp;%s&nbsp; </td><td> &nbsp;%s&nbsp; </td><td> &nbsp;%s&nbsp; </td></tr>", $row["id"], $row["device"], $row["data"], $row["temp"], $row["umi"], $row["umisolo"], $row["chuva"]);
+printf("<tr><td> &nbsp;%s </td><td> &nbsp;%s&nbsp; </td><td> &nbsp;%s&nbsp; </td><td> &nbsp;%s&nbsp; </td><td> &nbsp;%s&nbsp; </td><td> &nbsp;%s&nbsp; </td><td> &nbsp;%s&nbsp; </td></tr>", $row["id"], $row["dispositivo"], $row["data"], $row["temperatura"], $row["umidade"], $row["umidade_do_solo"], $row["chuva"]);
    }
    mysql_free_result($result);
 ?>
