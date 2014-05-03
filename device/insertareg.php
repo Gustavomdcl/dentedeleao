@@ -3,9 +3,9 @@
    <title>Dados do Sensor</title>
 </head>
 <body>
-<!--<h1>Dados do Sensor</h1>
+<h1>Dados do Sensor</h1>
 <form action="add.php" method="get">
-<TABLE>
+<!--<TABLE>
 <tr>
    <td>ID</td>
    <td><input type="text" name="id" size="20" maxlength="30"></td>
@@ -35,8 +35,8 @@
    <td><input type="text" name="chuva" size="20" maxlength="30"></td>
 </tr>
 </TABLE>
-<input type="submit" name="accion" value="Grabar">
-</FORM>-->
+<input type="submit" name="accion" value="Grabar">-->
+</FORM>
 <hr>
 <?php
    include("conec.php");
