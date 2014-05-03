@@ -5,7 +5,7 @@
 	$caracteres = array(".", "-", " ", "(", ")", "[", "]", "/");
 
 	$usuarioId 			=	$_POST['usuario'];
-	$nome 				=	utf8_decode($_POST['nome']);
+	$nome 				=	$_POST['nome'];
 	$cpf  				=	str_replace($caracteres, "", $_POST['cpf']);
 	$email 				=	$_POST['email'];
 
@@ -22,10 +22,10 @@
 	$telefone   		=	str_replace($caracteres, "", $_POST['telefone']);
 	$celular   			=	str_replace($caracteres, "", $_POST['celular']);
 
-	$nomefazenda 		=	utf8_decode($_POST['nomefazenda']);
+	$nomefazenda 		=	$_POST['nomefazenda'];
 	$cnpjfazenda 		=	str_replace($caracteres, "", $_POST['cnpjfazenda']);
 
-	$enderecofazenda 	=	utf8_decode($_POST['enderecofazenda']);
+	$enderecofazenda 	=	$_POST['enderecofazenda'];
 	$lat 				=	$_POST['lat'];
 	$long 				=	$_POST['long'];
 	$cepfazenda 		=	str_replace($caracteres, "", $_POST['cepfazenda']);
@@ -39,7 +39,7 @@
 		$plantacao = $plantacao . '/' . $value;
 	}
 
-	$demaisplantacoes 	=	utf8_decode($_POST['demaisplantacoes']);
+	$demaisplantacoes 	=	$_POST['demaisplantacoes'];
 	if ($_POST['demaisplantacoes'] != null && $_POST['demaisplantacoes'] != 'null') {
 		function multiexplode ($delimiters,$string) {
 		    $ready = str_replace($delimiters, $delimiters[0], $string);
