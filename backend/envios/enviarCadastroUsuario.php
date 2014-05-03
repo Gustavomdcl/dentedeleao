@@ -56,7 +56,7 @@
 		    //echo 'Obrigado por cadastrar. <br> Seu email está passando por um processo de validação, por favor aguarde o nosso contato por email';
 
 		   	$mensagemHTML = utf8_decode('<img src="http://www.dentedeleao.agr.br/admin/assets/img/template/logo.gif" alt="Logo Dente de Leão">
-		    <p>Olá,' . $nome . ', tudo bem? Obrigado pelo cadastro!</p>
+		    <p>Olá, ' . $nome . ', tudo bem? Obrigado pelo cadastro!</p>
 		    <p>Seu email está passando por um processo de validação, por favor aguarde.</p>
 		    <p>Assim que tudo estiver ok enviaremos um email.</p>
 		    <p>Qualquer dúvida, entre em contato: (011) 99973-5872</p>
