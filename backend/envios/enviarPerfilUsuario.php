@@ -40,19 +40,20 @@
 	}
 
 	$demaisplantacoes 	=	utf8_decode($_POST['demaisplantacoes']);
-	function multiexplode ($delimiters,$string) {
-	    $ready = str_replace($delimiters, $delimiters[0], $string);
-	    $launch = explode($delimiters[0], $ready);
-	    return  $launch;
-	}
-	$condition = array(',' , ', ' , ' , ' , ' ,');
-	$plantacoesValidar = multiexplode($condition, $demaisplantacoes);
-	foreach ($plantacoesValidar as $values){
+	if ($_POST['demaisplantacoes'] != null && $_POST['demaisplantacoes'] != 'null') {
+		function multiexplode ($delimiters,$string) {
+		    $ready = str_replace($delimiters, $delimiters[0], $string);
+		    $launch = explode($delimiters[0], $ready);
+		    return  $launch;
+		}
+		$condition = array(',' , ', ' , ' , ' , ' ,');
+		$plantacoesValidar = multiexplode($condition, $demaisplantacoes);
+		foreach ($plantacoesValidar as $values){
 
-		$sqlPlantacaoValidar = "INSERT INTO DL_ADMIN_plantationList(plantacao, valido) VALUES ('$values', '0')";
-		mysqlexecuta($id, $sqlPlantacaoValidar);
-		$plantacao = $plantacao . '/' . mysql_insert_id();
-
+			$sqlPlantacaoValidar = "INSERT INTO DL_ADMIN_plantationList(plantacao, valido) VALUES ('$values', '0')";
+			mysqlexecuta($id, $sqlPlantacaoValidar);
+			$plantacao = $plantacao . '/' . mysql_insert_id();
+		}
 	}
 
 	// IMAGENS ==========
