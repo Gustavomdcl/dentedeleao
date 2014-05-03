@@ -14,6 +14,7 @@
   $nome;
   $cpf;
   $foto;
+  $idProfile;
 
   if(mysql_num_rows($perfilCriado) > 0) {
 
@@ -21,6 +22,7 @@
       $nome=$row['nome'];
       $cpf=$row['cpf'];
       $foto=$row['foto'];
+      $idProfile=$row['id'];
 
       if($foto == null){ 
         $foto = 'admin/assets/img/template/logo.gif'; 
@@ -83,15 +85,48 @@
           <header>
             <h2>Meu Painel</h2>
           </header>
+          <?php 
+
+          $sqlDispositivo = "SELECT * FROM DL_ADMIN_deviceuser WHERE usuario = '$idProfile' order by id asc";
+
+          $resultDispositivo = mysql_query($sqlDispositivo);
+
+          if (mysql_num_rows($resultDispositivo) > 0) {
+
+          ?>
+
           <div id="com-sensor">
             <h3>Dados recentes da plantação</h3>
             <p>Selecione abaixo a aba correspondente ao cultivo que deseja visualizar</p>
             
             <ul id="abas">
-              <li><a class="tomate">Tomate</a></li>
-              <li><a class="batata">Batata</a></li>
-              <li><a class="morango">Morango</a></li>
-              <li><a class="amora">Amora</a></li>
+              <?php
+
+              $plantacaoDispositivoCount = 0;
+              $plantacaoDispositivoVerify = array();
+
+              while ($row=mysql_fetch_array($resultDispositivo)) {
+
+                $plantacaoDispositivo = $row['plantacao'];
+
+                if(in_array($plantacaoDispositivo, $plantacaoDispositivoVerify)) {} else {
+
+                array_push($plantacaoDispositivoVerify, $plantacaoDispositivo);
+
+                $sqlPlantacaoHistorico = "SELECT * FROM DL_ADMIN_plantationList WHERE id = '$plantacaoDispositivo' order by id desc";
+                $resultPlantacaoHistorico = mysql_query($sqlPlantacaoHistorico);
+                while ($row=mysql_fetch_array($resultPlantacaoHistorico)) {
+                  $plantacaoDispositivo = $row['plantacao'];
+                }
+
+              ?>
+
+              <li><a class="plantacao-<?php echo $plantacaoDispositivoCount; ?>"><?php echo $plantacaoDispositivo; ?></a></li>
+
+              <?php $plantacaoDispositivoCount = $plantacaoDispositivoCount + 1; ?>
+              <?php }//else inarray() ?>
+              <?php }//while ?>
+
             </ul>
             <div id="resultados">
               <div id="tomate">
@@ -132,11 +167,13 @@
               </div>
             </div>
           </div>
+          <?php } else { ?>
           <div id="sem-sensor">
             <h3>Ainda não conhece o dispositivo?</h3>
             <p>Monitore sua plantação 24h por dia, tenha acesso a gráficos e comece um banco de dados de informações para saber como resolver seus problemas em qualquer situação.</p>
             <img src="" width="700" height="300" />
           </div>
+          <?php } ?>
           <hr />
           <h3>Notificações</h3>
           <p>Alguém te marcou</p>

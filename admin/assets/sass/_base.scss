@@ -53,7 +53,11 @@ a {
   position: relative;
 }
 
-input, textarea {
+select {
+  width: 100%;
+}
+
+input, textarea, .select {
   @include box-sizing(border-box); // content-box = tamanho dele é definido pelo seu conteúdo apenas | border-box = O width será a soma do conteúdo com a borda e o padding: http://compass-style.org/examples/compass/css3/box_sizing/ , http://sergiolopes.org/css-box-sizing-border-box/
   outline: none;
   width:100%;
@@ -191,6 +195,10 @@ label.error {
 
 .editar:hover {
   background-color: $color-blue;
+}
+
+.parar:hover {
+  background-color: $color-gray-dark;
 }
 
 /* classes ------------------------ */

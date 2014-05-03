@@ -208,6 +208,29 @@ $(document).ready(function() {
 			}
 		});
 
+		$("#formDispositivo").validate({
+			rules: {
+				dispositivo: {
+					required: true
+				},
+				usuario: {
+					required: true
+				},
+				plantacao: {
+					required: true
+				},
+				data_inicio: {
+					required: true
+				},
+			},
+			messages: {
+				dispositivo: "Obrigatório",
+				usuario: "Obrigatório",
+				plantacao: "Obrigatório",
+				data_inicio: "Obrigatório",
+			}
+		});
+
 	});
 	  //placeholders in IE
     // $('input').placeholder();
