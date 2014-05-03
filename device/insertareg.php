@@ -41,7 +41,7 @@
 <?php
    include("conec.php");
    $link=Conection();
-   $result=mysql_query("select * from DL_DEVICE_1001 order by id desc",$link);
+   $result=mysql_query("select * from DL_DEVICE order by id desc",$link);
 ?>
 <table border="1" cellspacing="1" cellpadding="1">
       <tr>
