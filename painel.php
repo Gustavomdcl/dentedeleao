@@ -13,7 +13,7 @@
   $perfilCriado = mysql_query("SELECT * FROM DL_PROFILE WHERE usuario = '$usuarioLogadoID'");
   $nome;
   $cpf;
-  $imagem;
+  $foto;
 
   if(mysql_num_rows($perfilCriado) > 0) {
 

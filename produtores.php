@@ -12,46 +12,19 @@
   // VALIDA PERFIL ======================================
   $perfilCriado = mysql_query("SELECT * FROM DL_PROFILE WHERE usuario = '$usuarioLogadoID'");
   $nome;
-  $foto;
   $cpf;
-  $email;
-  $telefone;
-  $celular;
-  $fazenda;
-  $cnpj;
-  $endereco;
-  $latitude;
-  $longitude;
-  $cep;
-  $estado;
-  $uf;
-  $cidade;
-  $plantacoes;
-  $sobre;
+  $imagem;
 
   if(mysql_num_rows($perfilCriado) > 0) {
 
     while ($row=mysql_fetch_array($perfilCriado)) {
       $nome=$row['nome'];
-      $foto=$row['foto'];
       $cpf=$row['cpf'];
-      $email=$row['email'];
-	  $telefone=$row['telefone'];
-	  $celular=$row['celular'];
-	  $fazenda=$row['fazenda'];
-	  $cnpj=$row['cnpj'];
-	  $endereco=$row['endereco'];
-	  $latitude=$row['latitude'];
-	  $longitude=$row['longitude'];
-	  $cep=$row['cep'];
-	  $estado=$row['estado'];
-	  $cidade=$row['cidade'];
-	  $plantacoes=$row['plantacoes'];
-	  $sobre=$row['sobre'];
+      $foto=$row['foto'];
 
       if($foto == null){ 
         $foto = 'admin/assets/img/template/logo.gif'; 
-      } else {
+      } else { 
 
         $fotoId = explode('-', $foto);
 
@@ -62,30 +35,13 @@
           $foto = $row['caminho'] . $row['nome_imagem'];
         }
       }
-
-      if($sobre == null){
-      	$sobre = 'Não há nenhuma descrição cadastrada';
-      }
-
-      $sqlState = "SELECT * FROM DL_STATE WHERE id = '$estado' order by id asc";
-	  $resultState = mysql_query($sqlState);
-   	  while ($row=mysql_fetch_array($resultState)) {
-		  $uf=$row['uf'];
-	  }
-
-	  $sqlCity = "SELECT * FROM DL_CITY WHERE id = '$cidade' order by id asc";
-	  $resultCity = mysql_query($sqlCity);
-   	  while ($row=mysql_fetch_array($resultCity)) {
-		  $cidade=$row['cidade'];
-	  }
-
     }
 
   } else {
   	header("Location: cadastroperfil.php");
   }
 
-  // Resultado Buscas ======================================
+  // RESULTADO BUSCAS ======================================
   $cultivoBusca 		=	$_POST['cultivo'];
   $estadoBusca 			=	$_POST['estado'];
   $cidadeBusca 			=	$_POST['cidade'];
@@ -308,7 +264,7 @@
 											  </li>
 
 											  <?php 
-
+											  $produtor_contador = $produtor_contador + 1;
 								    		}
 
 								    	}

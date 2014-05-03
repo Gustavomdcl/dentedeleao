@@ -129,23 +129,7 @@
 				if($produtor != null) {
 					// VALIDA PERFIL ======================================
 					  $perfilCriado = mysql_query("SELECT * FROM DL_PROFILE WHERE id = '$produtor'");
-					  $nome;
-					  $foto;
-					  $cpf;
-					  $email;
-					  $telefone;
-					  $celular;
-					  $fazenda;
-					  $cnpj;
-					  $endereco;
-					  $latitude;
-					  $longitude;
-					  $cep;
-					  $estado;
-					  $uf;
-					  $cidade;
-					  $plantacoes;
-					  $sobre;
+					  $nome; $foto; $cpf; $email; $telefone; $celular; $fazenda; $cnpj; $endereco; $latitude; $longitude; $cep; $estado; $uf; $cidade; $plantacoes; $sobre;
 
 				    while ($row=mysql_fetch_array($perfilCriado)) {
 				      $nome=$row['nome'];
