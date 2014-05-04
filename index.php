@@ -49,7 +49,7 @@ if($sucesso == "aprovado") {
 
 	<!-- modernizr modernizr.com -->
 	<script src="assets/min/modernizr.min.js"></script>
-	
+
 </head>
 
 <body class="no-js">
@@ -77,40 +77,86 @@ if($sucesso == "aprovado") {
 						<div id="accordion">
 							<a class="btcadastrar">Cadastrar</a>
 							<form id="formCadastroUsuario" method="post" action="backend/envios/enviarCadastroUsuario.php" style="display:none;">
-								<input type="text" name="nome" placeholder="Nome" required><br>
+
+								<input type="text" name="nome" placeholder="Nome" id="nome" required><br>
+
 								<input type="text" name="cpf" id="cpf" placeholder="CPF" required><br>
-								<input type="email" name="email" placeholder="Email" required><br>
-								<input type="password" name="senha" placeholder="Senha" required><br>
-								<p><input type="checkbox" name="termos" value="Termos e condições" class="termos" required >Li e estou de acordo com os <a href="" title="termos e condições">Termos e condições</a> </p><br>
+
+								<input type="email" name="email" placeholder="Email" id="email" required><br>
+
+								<input type="password" name="senha" placeholder="Senha" id="senha" required><br>
+
+								<p><input type="checkbox" name="termos" value="Termos e condições" class="termos" id="termos" required >Li e estou de acordo com os <a href="" title="termos e condições">Termos e condições</a> </p><br>
+
 								<button type="submit">Cadastrar</button>
 							</form>
-						</div>
+						</div><!-- #accordion -->
 						
 					<p>ou <a href="#login_form" class="btLogar" id="homeLogin">Logar</a></p>
 
 					<div style="display:none" >
+
 						<form id="login_form" method="post" action="backend/valida.php">
 						    
-							<input type="text" name="usuario" id="usuario" placeholder="Email" required><br>
+							<input type="text" name="usuario" id="usuario" placeholder="Usuário" required><br>
+
 							<input type="password" name="senha" id="senha" placeholder="Senha" required><br>
+
 							<input type="checkbox" name="conectado" value="Continuar Conectado">Continuar Conectado 
+							
 							<p><button type="submit">Fazer Login</button></p>
+							
 							<a href="#lembrar_form" id="lembrarSenha">Esqueceu sua senha?</a>
 							
 						</form>
-					</div>
+					</div><!-- Div do formulario de login que abre com fancybox-->
+
 					<div style="display:none" >
 
 						<form id="lembrar_form" method="post" action="backend/envios/mudarSenha.php">
 							<p>Não consegue lembrar sua senha? Digite abaixo seu e-mail que a enviaremos para você.</p>
-							<input type="email" name="email" placeholder="Digite aqui seu e-mail"><br>
+							<input type="email" name="email" placeholder="Digite aqui seu e-mail" id="email"><br>
 							<p><button type="submit">Enviar</button></p>
 	
 						</form>
-					</div>
+					</div><!--Div reenvio de senha-->
 					
-					<footer><div id="saiba-mais"><a>Saiba mais</a></div></footer>
+					<footer><a class="bt-saiba-mais">Saiba mais</a></footer>
+					<div id="saiba-mais" style="display:none;">
+						<div class="sobre-projeto">
+							<h2>Sobre o Projeto:</h2>
+							<p>Com o objetivo de auxiliar produtores orgânicos em suas dúvidas e dificuldades cotidianas relacionadas a plantação, surgiu o projeto Dente de Leão. Nele você poderá trocar informações e conhecimentos com pessoas diretamente relacionadas às plantações e que possam ter passado pelas mesmas situações. A sabedoria que só se adquire na prática está aqui.</p>
 
+						</div><!-- .sobre-projeto -->
+						<div class="beneficios">
+							<h2>Benefícios:</h2>
+							<p>Cadastrando-se aqui, você terá diversos benefícios como:</p>
+							<ol>
+								<li>Poder conversar com pessoas que possuem o mesmo orgulho e prazer em cultivar alimentos saudáveis e social responsáveis.</li>
+								<li>Ter dúvidas respondidas por colegas que estão empenhados como você numa plantação que melhora a cada dia.</li>
+								<li>Poder expor o conhecimento adquirido em seu cotidiano e auxiliar pessoas.</li>
+								<li>Ter um monitoramento em tempo real de dados como umidade do ar, umidade do solo, temperatura e chuva relacionados a sua plantação.</li>
+								<li>Poder ler a respeito de diversos assuntos para ampliar sua visão de mercado, soluções, legislação entre outros.</li>
+							</ol>
+						</div><!-- .beneficios -->
+						<div class="como-funciona">
+							<h2>Como funciona:</h2>
+							<p>Você precisa ser um agricultor orgânico certificado para se cadastrar. Seu cadastro será validado e você terá acesso ao ambiente online onde encontrará, entre outras, páginas de dúvidas, criação de eventos, e uma interface com gráficos relacionados ao monitoramento da sua terra. Para ter acesso a estes dados, será preciso adquirir um dispositivo que será instalado por nossa equipe e, além do monitoramento, estes dados serão responsáveis por um filtro de busca para questões relacionadas as suas, trazendo assim resultados mais efetivos.</p>
+						</div><!-- .como-funciona -->
+						<div class="contato">
+							<h2>Contato</h2>
+							<p>Ficou interessado ou quer saber mais sobre este projeto? Envie-nos uma mensagem respondendo ao formulário abaixo.</p>
+							<form id="contatoHome">
+								<input type="text" name="nome" placeholder="Nome" id="nome" required><br>
+
+								<input type="email" name="email" placeholder="Email" id="email" required><br>
+
+								<textarea rows="5" cols="60" name="conteudo" placeholder="Mensagem" required></textarea><br>
+
+								<button type="submit">Enviar</button>
+							</form>
+						</div><!-- .contato-->
+					</div><!-- #saiba-mais -->
 				</div><!-- .l-row -->
 
 			</div><!-- .l-container.cf -->
@@ -120,7 +166,7 @@ if($sucesso == "aprovado") {
 	</div><!-- #site -->
 
 	<?php include 'template/script.php'; ?>
-  	<script src="assets/min/jquery.ui.min.js"></script>
+	<script src="assets/min/jquery.ui.min.js"></script>
   	<script src="assets/min/jquery.fancybox.min.js"></script>
   	<!-- Script do accordion -->
 	<script>
@@ -145,6 +191,10 @@ if($sucesso == "aprovado") {
 		jQuery(function($){
 		   $("#cpf").mask("999.999.999-99");
 		});
+		$('.bt-saiba-mais').click(function() {
+		    $('#saiba-mais').show();
+		    $('.bt-saiba-mais').hide();
+		  });
 	</script>
 
 </body>

@@ -1,6 +1,16 @@
 .l-cadastrarperfil {
-	.plantacoes {
-		
-		border:1px solid red;
+	width:960px;
+  	margin: 0 auto;
+	form {
+		text-align:left;
+	}
+	text-align:center;
+	p{
+		width:400px;
+		margin:0 auto;
+	}
+	input[type="text"]{
+		width:250px; 
+		margin:0 auto;
 	}
 }
