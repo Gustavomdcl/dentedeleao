@@ -85,21 +85,8 @@
 							<input type="text" name="cnpjfazenda" placeholder="CNPJ de sua fazenda" id="cnpjfazenda" required><br>
 							<p>Onde ela está localizada? (Arraste a marcação no mapa se preciso)</p>
 							<input type="text" name="enderecofazenda" placeholder="Endereço" id="start" required><br>
-							<div id="map-canvas" style="width:100%;height:500px;"></div><!-- div#map-canvas -->
-							<div class="map-container" style="display:none;">
-								<!-- Unidade de Local -->
-							    <div class="map-place" data-lat="-23.5505199" data-long="-46.63330939999997" id="mark-0"> <!-- o id deve mudar -->
-							    	<p>Unidade de Marcação</p>
-							    	<label>latitude</label>
-								    <input type="text" name="lat" id="lat-input" value="-23.5505199" >
-
-								    <label>longitude</label>
-								    <input type="text" name="long" id="long-input" value="-46.63330939999997">
-							    </div><!-- .map-place -->
-							    <!-- Unidade de Local -->
-							</div><!-- .map-container -->
 							<input type="text" name="cepfazenda" placeholder="CEP" id="cepfazenda" required><br>
-							<select name="estado" id="estado" required>
+							<select name="estado" id="estado" style="width:255px;">
 								<option selected disabled>Estado</option>
 								<?php
 
@@ -117,10 +104,22 @@
 								<option value="<?php echo $id; ?>"><?php echo $estado; ?></option>
 
 								<?php } ?>
-							</select>
-							<span class="carregando" style="display:none;">Carregando Cidades...</span>
-							<select name="cidade" id="cidade" style="display:none;" required>
 							</select><br>
+							<span class="carregando" style="display:none; width:255px;">Carregando Cidades...</span>
+							<select name="cidade" id="cidade" style="display:none; width:255px;" required></select><br>
+							<div id="map-canvas" style="width:100%;height:500px;"></div><!-- div#map-canvas -->
+							<div class="map-container" style="display:none;">
+								<!-- Unidade de Local -->
+							    <div class="map-place" data-lat="-23.5505199" data-long="-46.63330939999997" id="mark-0"> <!-- o id deve mudar -->
+							    	<p>Unidade de Marcação</p>
+							    	<label>latitude</label>
+								    <input type="text" name="lat" id="lat-input" value="-23.5505199" >
+
+								    <label>longitude</label>
+								    <input type="text" name="long" id="long-input" value="-46.63330939999997">
+							    </div><!-- .map-place -->
+							    <!-- Unidade de Local -->
+							</div><!-- .map-container -->
 							<p>O que você cultiva?</p>
 							<span class="plantacoes">
 								<?php

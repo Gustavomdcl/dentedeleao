@@ -1,0 +1,16 @@
+.l-notificacoes {
+	#conteudoNotificacoes{
+		overflow:auto;
+		margin:10px 0;
+	}
+	#conteudoNotificacoes li{
+		width:31%;
+		margin:1% 2% 1% 0;
+		display: block;
+		float:left;
+
+	}
+	#conteudoNotificacoes li img{
+		margin-right:5px;
+	}
+}

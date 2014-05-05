@@ -15,9 +15,9 @@
 				<div class="l-container cf">
 					<h3>Painel</h3>
 					<li><img src="" width="20" height="20" /> <a href="perfil.php" title="Perfil Pessoal">Perfil Pessoal</a></li>
-					<li><img src="" width="20" height="20" /> <a href=".php" title="Notificações">Notificações</a></li>
-					<li><img src="" width="20" height="20" /> <a href=".php" title="Gráficos">Gráficos</a></li>
-					<li><img src="" width="20" height="20" /> <a href="duvida-exibicao.php" title="Dúvidas">Dúvidas</a></li>
+					<li><img src="" width="20" height="20" /> <a href="notificacoes.php" title="Notificações">Notificações</a></li>
+					<li><img src="" width="20" height="20" /> <a href="graficos.php" title="Gráficos">Gráficos</a></li>
+					<li><img src="" width="20" height="20" /> <a href="duvida-inicial.php" title="Dúvidas">Dúvidas</a></li>
 					<li><img src="" width="20" height="20" /> <a href="produtores.php" title="Produtores">Produtores</a></li>
 				</div><!-- .l-container.cf -->
 			</div><!-- .l-header-center -->

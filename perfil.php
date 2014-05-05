@@ -191,13 +191,14 @@
 					<img src="<?php echo $foto ?>" border="0" width="150" height="150" align="left" class="fotoperfil" />
 					<div id="perfil-content">
 						<h3><?php echo $nome ?></h3>
-						<p><span>Sobre</span></p>
-						<p style="clear:both;"><?php echo $sobre; ?></p>
 						<p><span>Fazenda</span> <?php echo $fazenda; ?></p>
 						<p><span>CNPJ</span> <?php echo $cnpj; ?></p>
 						<p><span>Telefone</span> <?php echo $telefone; ?></p>
 						<p><span>Celular</span> <?php echo $celular; ?></p>
 						<p><span>E-mail</span> <?php echo $email; ?></p>
+						<p><span>Sobre</span></p>
+						<p><?php echo $sobre; ?></p>
+						
 						<p><span>Localização</span></p>
 						<div id="map-canvas" style="width:100%;height:500px;"></div><!-- div#map-canvas -->
 						<!-- Unidade de Local -->
@@ -207,7 +208,7 @@
 					    </div><!-- .map-place -->
 					    <!-- Unidade de Local -->
 
-					</div>
+					</div><!-- #perfil-content -->
 				</div><!-- .l-row -->
 
 			</div><!-- .l-container.cf -->

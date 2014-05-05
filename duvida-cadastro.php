@@ -52,19 +52,19 @@
 						<input type="text" id="datepicker">
 						<p>A qual platação está relacionada a sua dúvida?</p>
 						<span class="plantacoes">
-							<input type="checkbox" name="platacao[]" value="Tomate">
-							<input type="checkbox" name="platacao[]" value="Cebola">
-							<input type="checkbox" name="platacao[]" value="Morango">
-							<input type="checkbox" name="platacao[]" value="Espinafre">
-							<input type="checkbox" name="platacao[]" value="Batata">
-						</span>
+							<input type="checkbox" name="platacao[]" value="">
+							<input type="checkbox" name="platacao[]" value="">
+							<input type="checkbox" name="platacao[]" value="">
+							<input type="checkbox" name="platacao[]" value="">
+							<input type="checkbox" name="platacao[]" value="">
+						</span><!-- .plantacoes -->
 						<p>Deseja enviar fotos?</p>
 						<!--UL para upload das 5 fotos permitidas, peguei no airu e comentei-->
 						<ul>
 							<li id="img_li_1">
 								<!--Visualizar thumbnail-->
 								<div class="imageWrapper">
-                                	<img src="" alt="Ver imagem pequena" style="display:none;" width="130" height="130">
+                                	<img src="" alt="Ver imagem pequena" width="130" height="130">
                                 </div>
                                 <!--Clicar e visualizar a imagem no tamanho real-->
                                 <div class="previewButtonWrapper showFullImage" style="display: none;">
@@ -88,12 +88,12 @@
 		                                </div>
                                 	</form>
                                 </div>
-                            </li>
+                            </li><!-- #img_li_1 -->
 
                             <li id="img_li_2">
 								<!--Visualizar thumbnail-->
 								<div class="imageWrapper">
-                                	<img src="" alt="Ver imagem pequena" style="display:none;" width="130" height="130">
+                                	<img src="" alt="Ver imagem pequena" width="130" height="130">
                                 </div>
                                 <!--Clicar e visualizar a imagem no tamanho real-->
                                 <div class="previewButtonWrapper showFullImage" style="display: none;">
@@ -117,12 +117,12 @@
 		                                </div>
                                 	</form>
                                 </div>
-                            </li>
+                            </li><!-- #img_li_2 -->
 
                             <li id="img_li_3">
 								<!--Visualizar thumbnail-->
 								<div class="imageWrapper">
-                                	<img src="" alt="Ver imagem pequena" style="display:none;" width="130" height="130">
+                                	<img src="" alt="Ver imagem pequena" width="130" height="130">
                                 </div>
                                 <!--Clicar e visualizar a imagem no tamanho real-->
                                 <div class="previewButtonWrapper showFullImage" style="display: none;">
@@ -146,12 +146,12 @@
 		                                </div>
                                 	</form>
                                 </div>
-                            </li>
+                            </li><!-- #img_li_3 -->
 
                             <li id="img_li_4">
 								<!--Visualizar thumbnail-->
 								<div class="imageWrapper">
-                                	<img src="" alt="Ver imagem pequena" style="display:none;" width="130" height="130">
+                                	<img src="" alt="Ver imagem pequena" width="130" height="130">
                                 </div>
                                 <!--Clicar e visualizar a imagem no tamanho real-->
                                 <div class="previewButtonWrapper showFullImage" style="display: none;">
@@ -175,12 +175,12 @@
 		                                </div>
                                 	</form>
                                 </div>
-                            </li>
+                            </li><!-- #img_li_4 -->
 
                             <li id="img_li_5">
 								<!--Visualizar thumbnail-->
 								<div class="imageWrapper">
-                                	<img src="" alt="Ver imagem pequena" style="display:none;" width="130" height="130">
+                                	<img src="" alt="Ver imagem pequena" width="130" height="130">
                                 </div>
                                 <!--Clicar e visualizar a imagem no tamanho real-->
                                 <div class="previewButtonWrapper showFullImage" style="display: none;">
@@ -204,17 +204,16 @@
 		                                </div>
                                 	</form>
                                 </div>
-                            </li>
+                            </li><!-- #img_li_5 -->
 						</ul>
 						<p>E vídeo?</p>
-						<form action="URL?nexturl=http%3A%2F%2Fwww.example.com" method="post" enctype="multipart/form-data" onsubmit="return checkForFile();">
+						<div id="uploadVideo">
 						  <input id="file" type="file" name="file"/>
-						  <div id="errMsg" style="display:none;color:red">
+						  <div id="errMsg" style="display:none; color:red;">
 						    You need to specify a file.
 						  </div>
 						  <input type="hidden" name="token" value="TOKEN"/>
-						  <!--Retirei botão, o publicar dúvida que será responsável por subir o vídeo. Pode form dentro de form?-->
-						</form>
+						</div> <!-- #uploadVideo -->
 						<button type="submit">Publicar dúvida</button>
 					</form>
 					

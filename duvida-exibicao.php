@@ -97,7 +97,7 @@
 					<hr />
 					<video width="480" height="360" controls>
 						Exibir video
-					  <--!<source src="movie.mp4" type="video/mp4">
+					  <!--<source src="movie.mp4" type="video/mp4">
 					  <source src="movie.ogg" type="video/ogg">-->
 					
 					</video>
@@ -110,11 +110,11 @@
 					<div id="comentario1" class="comentario">
 						<p class="titulo"><b>Nome da pessoa</b> | data | horário </p>
 						<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla auctor malesuada nunc viverra faucibus. Nulla viverra commodo quam. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Nullam posuere lorem ipsum, at varius eros condimentum ac. Aenean eget elit vitae lacus tempus pretium. Integer vitae libero magna. Aenean sit amet ligula at dui tristique mattis. Suspendisse cursus rhoncus sem, eget fermentum ante hendrerit vel.</p>
-					</div>
+					</div><!-- #comentario1-->
 					<div id="comentario2" class="comentario">
 						<p class="titulo"><b>Nome da pessoa</b> | data | horário </p>
 						<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla auctor malesuada nunc viverra faucibus. Nulla viverra commodo quam. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Nullam posuere lorem ipsum, at varius eros condimentum ac. </p>
-					</div>
+					</div><!-- #comentario2-->
 				</div><!-- .l-row -->
 
 			</div><!-- .l-container.cf -->

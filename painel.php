@@ -128,7 +128,7 @@
               <?php }//else inarray() ?>
               <?php }//while ?>
 
-            </ul>
+            </ul> <!-- #abas -->
             <div id="resultados">
               <div id="platacao-0">
                 <ul>
@@ -148,14 +148,14 @@
                 </ul>
                 <a href="#" title="Veja mais">Veja mais</a>
               </div>
-            </div>
-          </div>
+            </div> <!-- #resultados -->
+          </div><!-- #com-sensor -->
           <?php } else { ?>
           <div id="sem-sensor">
             <h3>Ainda não conhece o dispositivo?</h3>
             <p>Monitore sua plantação 24h por dia, tenha acesso a gráficos e comece um banco de dados de informações para saber como resolver seus problemas em qualquer situação.</p>
-            <img src="" width="700" height="300" />
-          </div>
+            <img src="" width="735" height="300" />
+          </div><!-- #sem-sensor  -->
           <?php } ?>
           <hr />
           <h3>Notificações</h3>
@@ -179,7 +179,7 @@
               <p>Nome da postagem</p>
               <a href="link" >Saiba mais</a>
             </li>
-          </ul>
+          </ul><!-- #notificacoes -->
           <hr style="clear:both;" />
           <h3>Dúvidas postadas recentemente</h3>
           <p>Confira as últimas dúvidas e contribua</p>
@@ -204,7 +204,7 @@
               <a href="tag" title="Tag">Tag</a>
               <a href="linkdapostagem.php" title="Saiba mais" class="bt-saibamais">Saiba mais</a>
             </li>
-          </ul>
+          </ul> <!-- #duvidas-recentes -->
 
         </div><!-- .l-row -->
 

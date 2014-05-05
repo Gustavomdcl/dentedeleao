@@ -32,7 +32,7 @@
 
 		<!-- login ADRIAN: Essa section é um exemplo de como você vai colocando as áreas do site. você pode alterar o nome da class .l-duvida-resultado para .l-duvida-resultado ou algo assim, dependendo do que for fazer. Preciso que cada sessão (nesse caso sessão tem o valor de corte, área. Um exemplo considere o wireframe do painel. Cada área dele, sendo a parte dos gráficos, a parte das notificações e dúvidas são sessões diferentes) do site seja feita pela tag <section>, pois isso agora é importante.
 		======================================================== -->
-		<section class="l-duvida-resultado">
+		<section class="l-duvida-inicial">
 
 			<div class="l-container cf"><!-- ADRIAN: Essa div com class l-container centraliza em 960px e centraliza, no sass você pode observar isso. a class cf desconsidera os floats, sabe? as vezes quando você da um float left dentro de uma div o seu height não considera esses elementos. a class cf acaba considerando. -->
 
@@ -40,9 +40,44 @@
 					<header>
 						<h2>Dúvidas</h2>
 					</header>
-					<h3>Resultado</h3>
-					<p>Foram encontradas algumas dúvidas relacionadas a sua busca, clique em saiba mais para visualizar ou inicie uma nova dúvida.</p>
-					<ul class="conteudoDuvidasResultado" >
+					
+					<form>
+						<input type="text" name="busca" placeholder="Pesquise aqui"><button type="submit">Buscar</button>
+					</form><!-- barra de busca -->
+
+					<h3>Dúvidas Recentes</h3>
+					
+					<ul id="conteudoDuvidas">
+						<li>
+							<img src="" alt="nome do post" width="200" height="150" />
+							<p class="postnome">Nome da Postagem</p>
+							<a href="tag" title="Tag">Tag</a>
+							<a href="linkdapostagem.php" title="Saiba mais" class="bt-saibamais">Saiba mais</a>
+						</li>
+						<li>
+							<img src="" alt="nome do post" width="200" height="150" />
+							<p class="postnome">Nome da Postagem</p>
+							<a href="tag" title="Tag">Tag</a>
+							<a href="linkdapostagem.php" title="Saiba mais" class="bt-saibamais">Saiba mais</a>
+						</li>
+						<li>
+							<img src="" alt="nome do post" width="200" height="150" />
+							<p class="postnome">Nome da Postagem</p>
+							<a href="tag" title="Tag">Tag</a>
+							<a href="linkdapostagem.php" title="Saiba mais" class="bt-saibamais">Saiba mais</a>
+						</li>
+						<li>
+							<img src="" alt="nome do post" width="200" height="150" />
+							<p class="postnome">Nome da Postagem</p>
+							<a href="tag" title="Tag">Tag</a>
+							<a href="linkdapostagem.php" title="Saiba mais" class="bt-saibamais">Saiba mais</a>
+						</li>
+						<li>
+							<img src="" alt="nome do post" width="200" height="150" />
+							<p class="postnome">Nome da Postagem</p>
+							<a href="tag" title="Tag">Tag</a>
+							<a href="linkdapostagem.php" title="Saiba mais" class="bt-saibamais">Saiba mais</a>
+						</li>
 						<li>
 							<img src="" alt="nome do post" width="200" height="150" />
 							<p class="postnome">Nome da Postagem</p>
@@ -68,7 +103,7 @@
 							<a href="linkdapostagem.php" title="Saiba mais" class="bt-saibamais">Saiba mais</a>
 						</li>
 						
-					</ul><!-- .conteudoDuvidasResultado -->
+					</ul> <!-- #conteudoDuvidas -->
 					<div id="paginacao">
 						<ul>
 							<li>1</li>
@@ -78,14 +113,15 @@
 					</div><!-- #paginacao -->
 					<hr />
 					<div id="cadastrarDuvida">
-						<p>As sugestões não te ajudaram? Preencha sua dúvida.</p>
-						<a href="duvida-cadastro.php" title="Formulário para cadastrar dúvida" class="btCadastrarDuvida">Cadastrar minha dúvida</a>
+						<p>Não encontrou uma solução para seu problema? Inicie uma nova dúvida!</p>
+						<a href="duvidas.php" title="Quero cadastrar minha dúvida" class="btCadastrarDuvida">Quero cadastrar minha dúvida</a>
 					</div> <!-- #cadastrarDuvida -->
+
 				</div><!-- .l-row -->
 
 			</div><!-- .l-container.cf -->
 
-		</section><!-- .l-duvida-resultado -->
+		</section><!-- .l-duvida-inicial -->
 
 		<!-- ADRIAN: FINAL DA ÁREA PARA COLOCAR SEU CÓDIGO, QUE VAI MUDAR EM CADA PÁGINA -->
 

@@ -17,6 +17,6 @@
 	<script src="assets/min/jquery.validate.min.js"></script>
 	<script src="assets/js/jquery.validate.messages.js"></script>
 	<script src="assets/min/jquery.placeholder.min.js"></script><!-- depois de todos os códigos javascript -->
-	<script src="assets/min/jquery.validate.messages.min.js"></script>
+	<script src="assets/min/jquery.validate.messages.min.js"></script><!-- não existe, precisa ser criado -->
 	<script src="assets/min/jquery.maskedinput.min.js"></script>
 	<script src="assets/min/jquery.jscroll.min.js"></script>
