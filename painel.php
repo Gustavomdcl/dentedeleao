@@ -109,6 +109,7 @@
               while ($row=mysql_fetch_array($resultDispositivo)) {
 
                 $plantacaoDispositivo = $row['plantacao'];
+                $datafimDispositivo = $row['data_fim'];
 
                 if(in_array($plantacaoDispositivo, $plantacaoDispositivoVerify)) {} else {
 
@@ -119,6 +120,13 @@
                 while ($row=mysql_fetch_array($resultPlantacaoHistorico)) {
                   $plantacaoDispositivo = $row['plantacao'];
                 }
+
+                $date1=date_create(date('o\-m\-d'));
+                $date2=date_create($datafimDispositivo);
+                $diff=date_diff($date1,$date2);
+                echo $datafimDispositivo;
+                echo date('o\-m\-d');
+                echo $diff->format("%R%a days");
 
               ?>
 
