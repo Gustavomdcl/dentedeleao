@@ -12,12 +12,14 @@
 		text-align:center;
 		font-size:2em;
 	}
-	#saiba-mais{
+	.bt-saiba-mais{
 		bottom:50px;
 		position:absolute;
 		text-align:center;
-		width:960px;
 		cursor:pointer;
+		width:100px;
+		margin-left:-50px;
+		left:50%;
 	}
 	#accordion{
 		width:260px;

@@ -40,10 +40,11 @@
     }
 
   } else {
-  	header("Location: cadastroperfil.php");
+    header("Location: cadastroperfil.php");
   }
 
-?><!DOCTYPE html>
+?>
+<!DOCTYPE html>
 <html lang="pt_BR">
 <head>
 
@@ -137,7 +138,7 @@
 
             </ul>
             <div id="resultados">
-              <div id="tomate">
+              <div id="platacao-0">
                 <ul>
                   <li>Dados da chuva</li>
                   <li>Umidade do Solo</li>
@@ -146,25 +147,7 @@
                 </ul>
                 <a href="#" title="Veja mais">Veja mais</a>
               </div>
-              <div id="batata">
-                <ul>
-                  <li>Dados da chuva</li>
-                  <li>Umidade do Solo</li>
-                  <li>Umidade</li>
-                  <li>Temperatura</li>
-                </ul>
-                <a href="#" title="Veja mais">Veja mais</a>
-              </div>
-              <div id="morango">
-                <ul>
-                  <li>Dados da chuva</li>
-                  <li>Umidade do Solo</li>
-                  <li>Umidade</li>
-                  <li>Temperatura</li>
-                </ul>
-                <a href="#" title="Veja mais">Veja mais</a>
-              </div>
-              <div id="amora">
+              <div id="platacao-1">
                 <ul>
                   <li>Dados da chuva</li>
                   <li>Umidade do Solo</li>
@@ -247,15 +230,15 @@
     <script>
       // Optional code to hide all divs
     $("div#resultados > div").hide();
-    $("div#tomate").show();
+    $("div#platacao-0").show();
 
 
     // Selector
-    var divs = $("#tomate, #morango, #batata, #amora");
+    //var divs = $("#tomate, #morango, #batata, #amora");
 
     // Show chosen div, and hide all others
     $("li a").click(function () {
-        $(divs).hide();
+        $("div#resultados > div").hide();
         $("#" + $(this).attr("class")).show();
     });
     </script>

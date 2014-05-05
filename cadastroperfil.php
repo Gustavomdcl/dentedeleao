@@ -26,7 +26,8 @@
   	$cpf=$row['cpf'];
   }
 
-?><!DOCTYPE html>
+?>
+<!DOCTYPE html>
 <html lang="pt_BR">
 <head>
 
@@ -74,16 +75,16 @@
 							<input type="hidden" name="cpf" id="cpf" value="<?php echo $cpf; ?>">
 							<input type="hidden" name="email" id="email" value="<?php echo $usuarioLogadoEmail; ?>">
 							<p>Envie-nos uma foto no campo abaixo</p>
-							<span><img src="" id="preview" width="150" height="150" /></span>
+							<span><img src="" id="preview" width="150" height="150" /></span><br>
 							<input type="file" name="foto[]" id="foto" onchange="readURL(this);" accept="image/png, image/gif, image/bmp, image/jpeg, image/jpg">
 							<p>Qual o seu número de telefone?</p>
 							<input type="text" name="telefone" placeholder="Telefone" id="telefone" required><br>
-							<input type="text" name="celular" placeholder="Celular" id="celular" required><br>
+							<input type="text" name="celular" placeholder="Celular" id="celular"><br>
 							<h2>Conte-nos sobre sua fazenda</h2>
-							<input type="text" name="nomefazenda" placeholder="Nome de sua fazenda" required><br>
+							<input type="text" name="nomefazenda" placeholder="Nome de sua fazenda" id="nomefazenda" required><br>
 							<input type="text" name="cnpjfazenda" placeholder="CNPJ de sua fazenda" id="cnpjfazenda" required><br>
 							<p>Onde ela está localizada? (Arraste a marcação no mapa se preciso)</p>
-							<input type="text" name="enderecofazenda" placeholder="Endereço" id="start" style="width:200px;" required><br>
+							<input type="text" name="enderecofazenda" placeholder="Endereço" id="start" required><br>
 							<div id="map-canvas" style="width:100%;height:500px;"></div><!-- div#map-canvas -->
 							<div class="map-container" style="display:none;">
 								<!-- Unidade de Local -->
@@ -157,7 +158,7 @@
 							<input type="text" name="demaisplantacoes"><br>
 							<button type="submit">Salvar Informações</button>
 						</form>
-					</div>
+					</div><!-- Formulário de cadastro-->
 					
 
 				</div><!-- .l-row -->
@@ -168,7 +169,7 @@
 
 		<!-- ADRIAN: FINAL DA ÁREA PARA COLOCAR SEU CÓDIGO, QUE VAI MUDAR EM CADA PÁGINA -->
 
-		<?php include 'template/footer.php'; ?><!-- ADRIAN: Não delete isso pois é o rodapé do site, tudo bem? Ele está puxando o arquivo da pasta template. Ele vai repetir esse rodapé em todas as páginas -->
+		<?php include 'template/footer.php'; ?>
 
 	</div><!-- #site -->
 
