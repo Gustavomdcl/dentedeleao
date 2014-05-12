@@ -1,0 +1,167 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>Proposta de Projeto Interativa - Projeto Dente de Leão</title>
+<link rel="stylesheet" type="text/css" href="css/style.css" />
+	<!-- Attach our CSS -->
+	  	<link rel="stylesheet" href="reveal.css">	
+	  	
+		<!-- Attach necessary scripts -->
+		<!-- <script type="text/javascript" src="jquery-1.4.4.min.js"></script> -->
+		<script type="text/javascript" src="http://code.jquery.com/jquery-1.6.min.js"></script>
+		<script type="text/javascript" src="jquery.reveal.js"></script>
+		
+		<style type="text/css">
+			.big-link { display:block; text-align: center; font-size: 70px; color: #06f; }
+		</style>
+</head>
+
+<body>
+<div id="topo-geral">
+	<div id="tamanho-diagrama">
+        <div id="ico-diagrama">
+         <a href="#" class="big-link" data-reveal-id="painel" data-animation="fade" title="Diagrama">Diagrama</a>
+          
+        </div>
+     </div>
+     <div id="painel" class="reveal-modal-large">
+			<h1>Diagrama de Navegação</h1>
+            <br />
+            <br  />
+            <p>
+			<img src="css/images/painel.jpg" /></p>
+			<a class="close-reveal-modal">&#215;</a>
+		</div>
+</div>
+
+<div id="container">
+
+<div id="lateralEsqInt">
+
+<h2>Meu Painel</h2>
+
+<h3>Dados recentes da plantação</h3>
+
+Selecione abaixo a aba correspondente ao cultivo que deseja visualizar 
+
+<span data-title="Os dados gráficos se tratam dos dados colhidos pelo dispositivo referente a cada cultivo cadastrado. Por exemplo, o produtor pode cadastrar mais de um dispositivo em cada cultivo (tomate, cebola, batata, etc)." class="tooltip2"><img src="css/images/ico-interface.png"/> </span>
+
+<br /><br />
+
+<img src="css/images/grafico.jpg" />
+<br /><br />
+<div class="btnveja"><a href="graficos.html" title="Veja Mais">Veja mais</a></div>
+
+<div class="line2"></div>
+
+<h2>Notificações</h2><span data-title="As notificações são alertas de quando algum produtor menciona em uma dúvida." class="tooltip"><img src="css/images/tooltip-ico.png"/> </span>
+
+<div class="txtgeral">
+Alguém te marcou</div>
+
+<div class="blocoNotificacao">
+    <div class="imgnot"></div>
+    <div class="nomenot">José Amaro</div>
+    <div class="txtnot">Lorem ipsum dolor sit amet, consectetur adipiscing elit. </div>
+    <div class="saibanot">Saiba mais ></div>
+</div>
+
+<div class="blocoNotificacao">
+    <div class="imgnot"></div>
+    <div class="nomenot">Iracema Jesus</div>
+    <div class="txtnot">Lorem ipsum dolor sit amet, consectetur adipiscing elit. </div>
+    <div class="saibanot">Saiba mais ></div>
+</div>
+
+
+<div class="blocoNotificacao">
+    <div class="imgnot"></div>
+    <div class="nomenot">Carlos Castro</div>
+    <div class="txtnot">Lorem ipsum dolor sit amet, consectetur adipiscing elit. </div>
+    <div class="saibanot">Saiba mais ></div>
+</div>
+
+<div class="line2"></div>
+
+<h2>Dúvidas recentes</h2><span data-title="Últimas dúvidas criadas dentro do ambiente" class="tooltip"><img src="css/images/tooltip-ico.png"/> </span>
+
+<div class="txtgeral">
+</div>
+
+<div class="blocoduvidas">
+	<div class="imgduvida"></div>
+    <div class="titduvida">Praga no cultivo de 
+banana da terra e nanica</div>
+    <div class="txtduvida">Notei recentemente a presença
+de um inseto nas folhas da...</div>
+    <div class="hashtag">#Banana</div> <div class="saibaduv">Saiba mais ></div>
+</div>
+
+<div class="blocoduvidas">
+	<div class="imgduvida"></div>
+    <div class="titduvida">Praga no cultivo de 
+banana da terra e nanica</div>
+    <div class="txtduvida">Notei recentemente a presença
+de um inseto nas folhas da...</div>
+    <div class="hashtag">#Banana</div> <div class="saibaduv">Saiba mais ></div>
+</div>
+
+
+<div class="blocoduvidas">
+	<div class="imgduvida"></div>
+    <div class="titduvida">Praga no cultivo de 
+banana da terra e nanica</div>
+    <div class="txtduvida">Notei recentemente a presença
+de um inseto nas folhas da...</div>
+    <div class="hashtag">#Banana</div> <div class="saibaduv">Saiba mais ></div>
+</div>
+
+
+</div>
+
+<div id="lateralDirInt">
+<div class="logoInt"><h1><a href="index.html">Projeto Dente de Leão</a></h1></div>
+<div class="sloganCadastro">Cultive ideias, colha conhecimento</div>
+<div class="smallLine"></div>
+
+<div class="imgperfilint"></div> <div class="nomeperfil">Roberto Carlos</div> <div class="btneditar"><a href="meu-perfil.html" title="Editar">Editar</a></div>
+
+<h3 class="titLateral"> Painel</h3>
+
+<ul class="menulateral">
+
+<li class="perfil"><a href="meu-perfil.html" title="Perfil Pessoal">Perfil Pessoal</a></li>
+<li class="notificacoes">Notificações</li>
+<li class="grafico"><a href="graficos.html" title="Gráficos">Gráficos</a></li>
+<li class="duvida"><a href="duvidas.html" title="Dúvidas sobre Cultivo">Dúvidas sobre Cultivo</a></li>
+<li class="produtores"><a href="meu-perfil-busca.html" title="Produtores">Produtores</a></li>
+
+</ul>
+
+<h3 class="titLateral"> Eventos</h3>
+
+<ul class="menulateral">
+    <li class="evento">Eventos Anteriores</li>
+    <li class="evento">Participar do Próximo</li>
+    <li class="evento">Sediar Evento</li>
+</ul>
+
+<div class="smallLine"></div>
+
+<a href="index.html" class="sairbtn" title="Sair">Sair</a>
+</div>
+
+
+</div>
+
+<div class="footer-termos">
+	<div class="termos">
+Home 	| Sobre o Projeto 		| Benefícios 		| Como Funciona		| Contato<br />
+Todos direitos reservados. Dente de Leão 2014.
+	</div>
+</div>
+
+
+
+   

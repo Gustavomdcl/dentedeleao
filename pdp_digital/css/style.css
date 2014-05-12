@@ -1,0 +1,984 @@
+*{
+	margin: 0px;
+	padding: 0px;
+	border: 0px;
+	list-style: none;
+	text-decoration:none;
+}
+
+a {
+	color: #8cc63e;	
+	text-decoration: underline;
+}
+
+body {font-family: Arial, Helvetica, sans-serif; font-size: 12px; color: #97959c;}
+
+input {
+	background-image:url(images/input.png);
+	clear: both;
+    float: left;
+    height: 35px;
+    padding-left: 20px;
+    width: 125px;
+}
+
+#topo-geral {
+	background-image:url(images/topo.png);
+	background-repeat: repeat-x;
+	height: 66px;	
+	margin-bottom: 50px;
+}
+
+#topo-geral #tamanho-diagrama {
+	width: 1000px;	
+	margin: 0 auto;
+}
+
+#topo-geral #tamanho-diagrama #ico-diagrama a{
+	background-image:url(images/diagrama-pgs.png);
+	width: 44px;
+	height: 32px;
+	float: right;
+	overflow: hidden;
+	text-indent: -9999px;
+	margin-top: 10px;
+}
+
+#lateralEsqInicial {
+	background-image:url(images/lateral-conceito.jpg);
+	width: 140px;
+	height: 920px;
+	float: left;
+	background-repeat: repeat-y;
+}
+
+#lateralDirInt {
+	background-image: url("images/lateral-int.png");
+    background-repeat: repeat-y;
+    float: right;
+    margin-top: -63px;
+    width: 259px;
+	height: 1030px;
+}
+
+#lateralEsqInt{
+	float: left;
+    width: 700px;
+}	
+
+#lateralEsqInt h2{
+	float: left;	
+}
+
+#lateralEsqInt h3{
+	clear: both;	
+}
+
+.txtgeral {
+	margin-top: 10px;
+	margin-bottom: 10px;
+	clear: both;	
+	display: block;
+}
+
+#lateralEsqInicial ul li {
+	margin-left: 20px;	
+	margin-top: 100px;
+}
+
+#lateralEsqInicial ul li.conceito a{
+	background-image:url(images/conceito-ico.png);
+	width: 74px;
+	height: 74px;
+	float: left;
+	clear: both;
+	overflow: hidden;
+	text-indent: -9999px;	
+	margin-bottom: 30px;
+}
+
+#lateralEsqInicial ul li.conceito a:hover{
+	background-position: bottom;	
+}
+
+#lateralEsqInicial ul li.tipografia a{
+	background-image:url(images/tipo-ico.png);
+	width: 74px;
+	height: 74px;
+	float: left;
+	clear: both;
+	overflow: hidden;
+	text-indent: -9999px;	
+	margin-bottom: 30px;
+}
+
+#lateralEsqInicial ul li.tipografia a:hover{
+	background-position: bottom;	
+}
+
+#lateralEsqInicial ul li.paleta a{
+	background-image:url(images/paleta-ico.png);
+	width: 74px;
+	height: 74px;
+	float: left;
+	clear: both;
+	overflow: hidden;
+	text-indent: -9999px;	
+	margin-bottom: 30px;
+}
+
+
+#lateralEsqInicial ul li.paleta a:hover{
+	background-position: bottom;	
+}
+
+#lateralEsqInicial ul li.device a {
+	background-image:url(images/device.png);
+	width: 74px;
+	height: 74px;
+	float: left;
+	clear: both;
+	overflow: hidden;
+	text-indent: -9999px;	
+	margin-bottom: 30px;
+}
+
+#lateralEsqInicial ul li.device a:hover {
+background-position: bottom;
+}
+
+#lateralEsqInicial ul li.diagrama a{
+	background-image:url(images/diagrama-ico.png);
+	width: 74px;
+	height: 74px;
+	float: left;
+	clear: both;
+	overflow: hidden;
+	text-indent: -9999px;	
+	margin-bottom: 30px;
+}
+
+#lateralEsqInicial ul li.diagrama a:hover{
+	background-position: bottom;	
+}
+
+#lateralDirInicial {
+	margin: 0 auto;
+	display: table;
+}	
+
+
+
+#lateralDirInicial #logo-inicial h1 a {
+	background-image: url(images/logo.png);
+	width: 516px;
+	height:307px;
+	float: left;
+	overflow: hidden;
+	display: block;
+	text-indent: -9999px;	
+	margin-top: 150px;
+}
+
+#lateralDirInicial #logo-inicial h1 a:hover {
+	background-position: bottom;	
+}
+
+#container {
+	width: 1000px;
+	margin: 0 auto;
+	display: table;
+}
+
+
+/*Cadastro Inicial*/
+
+
+.logoCadastro h1{
+	background-image: url(images/logo-int.png);
+	width: 251px;
+	height: 166px;
+	overflow: hidden;
+	text-indent: -9999px;	
+	margin-left: auto;
+    margin-right: auto;
+}
+
+.logoInt h1 a{
+	background-image: url(images/logo-int-lateral.png);
+ 	height: 147px;
+    margin-left: 37px;
+    margin-right: auto;
+    margin-top: 20px;
+    overflow: hidden;
+    text-indent: -9999px;
+    width: 210px;
+	display: block;
+}
+
+.sloganCadastro {
+	width: 191px;
+	margin-left: auto;
+    margin-right: auto;	
+}
+
+.btnCadastro {
+	margin-left: auto;
+    margin-right: auto;
+	width: 	131px;
+}
+
+.btnCadastro a{
+	background-image: url(images/btn-cadastro.png);	
+	width: 	131px;
+	height: 41px;
+	float: left;
+	overflow: hidden;
+	text-indent: -9999px;
+	margin-top: 30px;
+	margin-bottom: 30px;
+}
+
+.saiba {
+	margin-left: auto;
+    margin-right: auto;
+	width: 	131px;	
+	text-align: center;
+}
+
+
+
+.tooltip{
+/*    display: inline;
+    position: relative;*/
+	 display: inline-block;
+    float: left;
+    position: relative;
+}
+
+.tooltip:hover:after{
+    padding: 5px 15px;
+    border-radius: 5px;
+    background: #8cc63e;
+    content: attr(data-title);    
+    position: absolute;
+    left: 20%;
+    bottom: 26px;
+    z-index: 98;
+    color: #fff;
+	width: 200px;    
+}
+
+.tooltip:hover:before{
+    border: solid;
+    border-color: #8cc63e transparent;
+    border-width: 6px 6px 0px 6px;
+    content: "";
+    position: absolute;
+    left: 50%;
+    bottom: 20px;
+    z-index: 99;
+}
+
+.tooltip2{
+    display: inline-block;
+    position: relative;
+	margin-top: 20px;
+}
+
+.tooltip2:hover:after{
+    padding: 5px 15px;
+    border-radius: 5px;
+    background: #8cc63e;
+    content: attr(data-title);    
+    position: absolute;
+    left: 20%;
+    bottom: 26px;
+    z-index: 98;
+    color: #fff; 
+	width: 200px;   
+}
+
+.tooltip2:hover:before{
+    border: solid;
+    border-color: #8cc63e transparent;
+    border-width: 6px 6px 0px 6px;
+    content: "";
+    position: absolute;
+    left: 50%;
+    bottom: 20px;
+    z-index: 99;
+}
+
+
+#termos {
+	margin-left: auto;
+    margin-right: auto;
+	width: 	200px;	
+	margin-top: 30px;
+	clear: both;
+	text-align: center;
+}
+
+#termos input {
+  	float: left;
+    margin-right: 10px;
+    margin-top: -6px;
+    width: 10px;
+}
+
+.txttermos {
+	float: left;
+	width: 	175px;
+}
+
+.precadastro {
+	margin-left: auto;
+    margin-right: auto;
+	width: 	155px;
+	margin-top: 30px;
+	margin-bottom: 30px;
+	display:table;	
+}
+
+.sobre {
+	clear: both;
+	margin: 0 auto;	
+}
+
+.line {
+	width: 930px;
+	height: 4px;
+	background-color: #e7e7e7;
+	clear: both;	
+	margin-top: 30px;
+	margin-bottom: 30px;
+}
+
+.line2 {
+	width: 700px;
+	height: 4px;
+	background-color: #e7e7e7;
+	clear: both;	
+	margin-top: 30px;
+	margin-bottom: 30px;
+	float: left;
+}
+
+.blocoSobre {
+	width: 300px;
+	float: left;
+	text-align: justify;
+	margin-left: 110px;	
+	margin-bottom: 50px;
+}
+
+.blocoSobre h3 {
+	width: 175px;
+	float: left;
+	margin-right: 85px;	
+}
+
+.blocoComo h3 {
+	width: 175px;
+	float: left;
+	margin-right: 85px;	
+}
+
+.beneficiosimg {
+	width: 175px;
+	float: left;
+	margin-right: 85px;	
+	margin-left: 110px;	
+	clear: both
+}
+
+.blocoComo {
+	width: 300px;
+	float: left;
+	text-align: justify;
+	clear: both;	
+	margin-left: 110px;	
+	margin-bottom: 50px;
+}
+
+.blocoBeneficios {
+	width: 300px;
+	float: left;
+	text-align: justify;
+	margin-bottom: 50px;
+}
+
+.ico-interface {
+	background-image: url(images/ico-interface.png);
+	width: 38px;	
+	height: 38px;
+	float: left;
+}
+
+.txt {
+	clear: both;		
+}
+
+.img {
+	background-image: url(images/img.png);
+	width: 409px;	
+	height: 284px;
+	float: left;
+	margin-left: 40px;
+}
+
+.img2 {
+	background-image: url(images/img.png);
+	width: 409px;	
+	height: 284px;
+	float: left;
+	clear: both;
+	margin-right: 40px;
+	margin-left: 110px;	
+	margin-bottom: 50px;
+}
+
+.blocoContato {
+	width: 500px;
+	margin-left: auto;
+    margin-right: auto;	
+	text-align: center;
+	padding-bottom: 30px;
+	display:table;
+}
+
+.msg input {
+	background-image:url(images/msg-input.png);
+	clear: both;
+    float: left;
+	width: 311px;
+    height: 88px;
+}
+
+
+.msgComentario  input{
+	background-image:url(images/msg-input.png);
+    float: left;
+	width: 311px;
+    height: 88px;
+}
+
+.btnComentario {
+	float: left;	
+}
+.footer-termos {
+	height:40px;
+	clear: both;
+	background-color: #e7e7e7;
+	background-repeat:repeat-x;	
+}
+
+.termos {
+	width: 1000px;
+	margin: 0 auto;
+	padding-top: 7px;
+	text-align: center;	
+}
+
+.btnEnviarInativo {
+	background-image: url(images/btn-enviar-inativo.png);	
+	width: 	131px;
+	height: 41px;
+	float: left;
+	clear: both;
+	overflow: hidden;
+	text-indent: -9999px;
+	margin-top: 30px;
+	margin-bottom: 30px;
+	margin-left: 110px;
+}
+
+.btnSalvar a{
+	background-image: url(images/btn-salvar-infos.png);	
+	width: 	199px;
+	height: 41px;
+	float: left;
+	clear: both;
+	overflow: hidden;
+	text-indent: -9999px;
+	margin-top: 30px;
+	margin-bottom: 30px;
+	margin-left: 35px;	
+}
+
+.btnSalvarDuvida a {
+	background-image: url(images/btn-salvar-duvida.png);	
+	width: 	144px;
+	height: 41px;
+	float: left;
+	clear: both;
+	overflow: hidden;
+	text-indent: -9999px;
+	margin-top: 30px;
+	margin-bottom: 30px;
+	
+}
+
+.perfilContent {
+	width: 315px;
+	margin-left: auto;
+	margin-right: auto;
+}
+
+.perfilContent  .cnpj {
+	margin-bottom: 20px;
+	float: left;
+}
+
+
+.perfilContent  .celular {
+	margin-bottom: 20px;
+	float: left;
+}
+.perfilContent input {
+	background-image:url(images/input-perfil.png);
+	clear: both;
+    float: left;
+    height: 38px;
+    padding-left: 20px;
+    width: 250px;
+}
+
+.perfilContent h3 {
+	clear: both;
+    margin-bottom: 20px;
+}
+
+.titperfil {
+	width: 200px;
+	float: left;	
+	margin-bottom: 20px;
+}
+
+.imgperfil {
+	background-image:url(images/img-perfil.png);
+	clear: both;
+    float: left;
+    height: 154px;
+    width: 154px;
+	margin-left: 83px;	
+}
+
+.smallLine {
+	background-color: #e7e7e7;
+	width: 195px;
+	height: 3px;
+	clear: both;	
+	margin-top: 30px;
+	margin-bottom: 30px;
+	margin-left: 40px;
+}	
+
+.imgperfilint {
+	background-image:url(images/imgperfil.jpg);
+    float: left;
+    height: 42px;
+    width: 44px;
+	margin-left: 40px;
+	margin-right: 10px;
+}
+
+.btneditar a {
+	background-image:url(images/btn-editar.png);
+    float: left;
+    height: 22px;
+    width: 26px;
+	overflow: hidden;
+	text-indent: -9999px;
+	margin-left: 10px;
+    margin-top: 5px;
+}
+
+.titLateral {
+	clear: both;
+    margin-bottom: 20px;
+    margin-left: 40px;
+    padding-top: 20px;		
+}
+
+.nomeperfil {
+	float: left;
+	margin-top: 15px;
+	margin-left: 20px;	
+}
+
+.perfil {
+	background-image:url(images/ico1.png);
+	background-repeat:no-repeat;
+    float: left;
+    height: 30px;
+    padding-left: 45px;
+	padding-top: 7px;
+}
+
+.notificacoes {
+	background-image:url(images/ico2.png);
+	background-repeat:no-repeat;
+    float: left;
+    height: 30px;
+    padding-left: 45px;
+	padding-top: 7px;
+}
+
+.grafico {
+	background-image:url(images/ico3.png);
+	background-repeat:no-repeat;
+    float: left;
+    height: 30px;
+    padding-left: 45px;
+	padding-top: 7px;
+}
+
+.duvida {
+	background-image:url(images/ico4.png);
+	background-repeat:no-repeat;
+    float: left;
+    height: 30px;
+     padding-left: 45px;
+	padding-top: 7px;
+}
+
+.produtores {
+	background-image:url(images/ico5.png);
+	background-repeat:no-repeat;
+    float: left;
+    height: 30px;
+    padding-left: 45px;
+	padding-top: 7px;
+}
+
+.menulateral li {
+	margin-bottom: 20px;
+	clear: both;
+	width: 150px;	
+	 margin-left: 40px;
+}
+
+.evento {
+	background-image:url(images/evento-ico.png);
+	background-repeat:no-repeat;
+    float: left;
+    height: 26px;
+     padding-left: 45px;
+	padding-top: 7px;
+}
+
+.sairbtn {
+	display: block;
+    margin-left: 133px;
+    padding-bottom: 30px;
+}
+
+.blocoNotificacao {
+	float: left;
+	width: 200px;	
+	margin-right:  25px;
+}
+
+.blocoResultado {
+	float: left;
+	width: 285px;	
+	margin-right:  65px;
+	margin-bottom: 45px;
+}
+
+
+.imgnot {
+	background-image: url(images/img-notificacao.png);
+	width: 95px;
+	height: 98px;
+	float: left;	
+	margin-right: 10px;
+    margin-top: 4px;
+}
+
+.blocoduvidas {
+	width: 200px;
+	float: left;
+	margin-right: 30px;
+	margin-bottom: 30px;
+}
+
+.imgduvida {
+	background-image: url(images/img-duvidas-recentes.png);
+	width: 199px;
+	height: 124px;
+	float: left;
+	clear: both;
+	 margin-bottom: 10px;
+}
+
+.titduvida {
+	clear: both;	
+}
+
+.hashtag {
+	float: left;
+}
+
+.saibaduv {
+	float: left;	
+	margin-left: 70px;
+}
+
+.txtduvida {
+	margin-top: 10px;
+	margin-bottom: 10px;	
+}
+
+.btnveja a{
+	background-image: url(images/btn-veja.png);
+	width: 131px;
+	height: 41px;
+	float: right;
+	overflow: hidden;
+	text-indent: -9999px;
+	margin-right: 230px;	
+}
+
+.txtnot {
+	margin-top: 10px;
+	margin-bottom: 10px;
+}
+
+.fotoperfil {
+	background-image: url(images/perfl-foto.png);
+	width: 176px;
+	height: 183px;
+	float: left;
+	clear: both;
+	margin-top: 20px;
+}
+
+.txtsobre {
+ 	float: left;
+    width: 460px;
+	margin-left: 20px;
+}
+
+.cultivo input {
+	background-image:url(images/input-perfil.png);
+	clear: both;
+    float: left;
+    height: 38px;
+    padding-left: 20px;
+    width: 250px;
+}
+
+.blocoOpcao {
+	width: 167px;
+	height: 77px;
+	float: left;
+	border: 1px solid #e7e7e7;
+	margin-right: 25px;
+	margin-top: 30px;	
+	margin-bottom: 30px;
+}
+
+.blocoOpcao input {
+	margin-left: 99px;
+    margin-top: -75px;
+}
+
+.imgopcao {
+	float: left;
+	margin-left: 16px;
+	margin-top: 10px;
+	margin-right: 10px;	
+}
+
+.btnBuscar a{
+	background-image:url(images/buscar-btn.png);	
+	width: 99px;
+	height: 40px;
+	float: right;
+	overflow: hidden;
+	text-indent: -9999px;
+	clear: both;
+	margin-top: 30px;
+	margin-right: 140px;
+}
+
+.btn-cadastre-duvida a {
+	background-image:url(images/btn-cadastrar-duvida.png);	
+	width: 246px;
+	height: 41px;
+	float: left;
+	overflow: hidden;
+	text-indent: -9999px;
+	clear: both;
+	margin-top: 30px;
+	margin-left: 230px;
+}	
+
+.nomenot {
+	font-weight: bold;	
+}
+
+.titopcao {
+	font-weight: bold;
+	margin-top: 20px;
+	text-transform: uppercase;
+}
+
+.titopcao2 {
+	margin-left: 60px;
+    margin-top: 30px;	
+}
+
+.txtdata {
+	float: left;
+	margin-top: 7px;
+	font-weight: bold;
+	margin-right: 10px;	
+}
+
+.data {
+	float: left;
+}
+
+.data input {
+	background-image:url(images/input-data.png);
+    float: left;
+    height: 34px;
+    padding-left: 20px;
+    width: 78px;
+}
+
+.calendario {
+	background-image:url(images/ico-calendario.png);
+    float: left;
+    height: 35px;
+    width: 31px;
+	margin-left: 10px;
+}
+
+.cultivocadastro {
+	clear: both;
+	margin-bottom: 30px;
+	float: left;	
+}
+
+.eucultivo {
+	float: left;	
+	width: 50px;
+	margin-right: 10px;
+}
+
+.eucultivo input{
+	margin-left: -80px;
+    margin-top: -80px;
+    position: relative;
+    z-index: 2;
+}
+.eucultivocadastro {
+	float: left;	
+	width: 60px;
+	margin-right: 10px;
+	margin-top: 20px;
+}
+
+.eucultivocadastro input{
+    margin-top: -80px;
+    position: relative;
+    z-index: 2;
+}
+
+
+.linksobre {
+	float: left;
+	margin-right: 20px;
+	margin-left: 15px;
+	margin-top: 3px;	
+}
+
+.cidadeperfil input {
+	background-image:url(images/input-cidade.png);
+	clear: both;
+    float: left;
+    height: 35px;
+    width: 185px;	
+}
+
+select {
+	float: left;
+	clear: both;
+	width: 50px;
+	margin-top: 10px;
+	margin-right: 10px;
+}
+
+
+.cidadeperfil {
+	float: left;
+	margin-bottom: 30px;	
+}
+
+.uf {
+	float: left;
+	clear: both;	
+}
+
+.float {
+	float: left;	
+}
+.float2 {
+	float: left;	
+	margin-right: 10px;
+	margin-left: 10px;
+}
+
+.titulo input {
+	background-image:url(images/input-perfil.png);
+	clear: both;
+    float: left;
+    height: 38px;
+    padding-left: 20px;
+    width: 250px;
+}
+
+.minhaduvida {
+	clear: both;	
+}
+
+.minhaduvida li{
+	float: left;	
+	margin-right: 10px;
+	
+}
+
+.btnComentario a{
+	background-image:url(images/btn-enviar-comentario.png);	
+	width: 150px;
+	height: 41px;
+	float: left;
+	overflow: hidden;
+	text-indent: -9999px;
+	margin-top: 23px;
+	margin-left: 20px;
+}
+
+.coment ul li{
+	float: left;
+	margin-right: 10px;	
+}
+
+.coment {
+	clear: both;
+	border-bottom: 1px solid;
+	margin-top: 30px;	
+	float: left;
+}
+
+.txtcoment {
+	margin-top: 20px;
+	clear: both;
+	float: left;
+	margin-bottom: 20px;
+}

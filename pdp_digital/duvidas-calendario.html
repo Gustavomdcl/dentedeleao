@@ -1,0 +1,128 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>Proposta de Projeto Interativa - Projeto Dente de Leão</title>
+<link rel="stylesheet" type="text/css" href="css/style.css" />
+	<!-- Attach our CSS -->
+	  	<link rel="stylesheet" href="reveal.css">	
+	  	
+		<!-- Attach necessary scripts -->
+		<!-- <script type="text/javascript" src="jquery-1.4.4.min.js"></script> -->
+		<script type="text/javascript" src="http://code.jquery.com/jquery-1.6.min.js"></script>
+		<script type="text/javascript" src="jquery.reveal.js"></script>
+		
+		<style type="text/css">
+			.big-link { display:block; text-align: center; font-size: 70px; color: #06f; }
+		</style>
+</head>
+
+<body>
+<div id="topo-geral">
+	<div id="tamanho-diagrama">
+        <div id="ico-diagrama">
+         <a href="#" class="big-link" data-reveal-id="duvidas" data-animation="fade" title="Diagrama">Diagrama</a>
+          
+        </div>
+     </div>
+      <div id="duvidas" class="reveal-modal-large">
+			<h1>Diagrama de Navegação</h1>
+            <br />
+            <br  />
+            <p>
+			<img src="css/images/duvidas.jpg" /></p>
+			<a class="close-reveal-modal">&#215;</a>
+		</div>
+</div>
+
+<div id="container">
+
+<div id="lateralEsqInt">
+
+<h2>Meu Painel</h2>
+<br /><br />
+<div class="txtgeral">
+<strong>Tenho uma dúvida sobre:</strong></div>
+<div class="txtgeral">
+Está com um problema em sua plantação? Selecione uma das opções abaixo e encontre uma solução 
+para o seu problema.
+<br /><br />
+Você deve selecionar apenas uma opção, caso o cultivo não esteja cadastrado, selecione a opção outro.
+</div>
+
+<div class="blocoOpcao">
+    <div class="imgopcao"><img src="css/images/img-tomate.jpg" /></div>
+    <div class="titopcao">Tomate</div>
+    <div class="txtopcao">Sensor 1</div>
+     <input id="duvida" type="checkbox" name="duvida">
+</div>
+
+<div class="blocoOpcao">
+    <div class="imgopcao"><img src="css/images/cebola.jpg" /></div>
+    <div class="titopcao">Cebola</div>
+    <div class="txtopcao">Sensor 2</div>
+     <input id="duvida" type="checkbox" name="duvida">
+</div>
+
+<div class="blocoOpcao">
+    <div class="imgopcao"><img src="css/images/outros.png" /></div>
+    <div class="titopcao"></div>
+    <div class="titopcao2">OUTRO</div>
+     <input id="duvida" type="checkbox" name="duvida">
+
+</div>
+<div class="txtgeral">
+Quando você notou o problema referente a sua dúvida?
+<br  /><br  />
+<div class="txtdata">Data:</div><div class="data"><input id="data" type="text" name="data" value="/ /"></div><div class="calendario"></div>
+</div>
+
+<div class="btnBuscar"><a href="resultados.html">Buscar</a></div>
+
+</div>
+
+<div id="lateralDirInt">
+<div class="logoInt"><h1><a href="index.html">Projeto Dente de Leão</a></h1></div>
+<div class="sloganCadastro">Cultive ideias, colha conhecimento</div>
+<div class="smallLine"></div>
+
+<div class="imgperfilint"></div> <div class="nomeperfil">Roberto Carlos</div> <div class="btneditar"><a href="meu-perfil.html" title="Editar">Editar</a></div>
+
+<h3 class="titLateral"> Painel</h3>
+
+<ul class="menulateral">
+
+<li class="perfil"><a href="meu-perfil.html" title="Perfil Pessoal">Perfil Pessoal</a></li>
+<li class="notificacoes">Notificações</li>
+<li class="grafico"><a href="graficos.html" title="Gráficos">Gráficos</a></li>
+<li class="duvida"><a href="duvidas.html" title="Dúvidas sobre Cultivo">Dúvidas sobre Cultivo</a></li>
+<li class="produtores"><a href="meu-perfil-busca.html" title="Produtores">Produtores</a></li>
+
+</ul>
+
+<h3 class="titLateral"> Eventos</h3>
+
+<ul class="menulateral">
+    <li class="evento">Eventos Anteriores</li>
+    <li class="evento">Participar do Próximo</li>
+    <li class="evento">Sediar Evento</li>
+</ul>
+
+<div class="smallLine"></div>
+
+<a href="index.html" class="sairbtn" title="Sair">Sair</a>
+</div>
+
+
+</div>
+
+<div class="footer-termos">
+	<div class="termos">
+Home 	| Sobre o Projeto 		| Benefícios 		| Como Funciona		| Contato<br />
+Todos direitos reservados. Dente de Leão 2014.
+	</div>
+</div>
+
+
+
+   

@@ -1,0 +1,122 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>Proposta de Projeto Interativa - Projeto Dente de Leão</title>
+<link rel="stylesheet" type="text/css" href="css/style.css" />
+	<!-- Attach our CSS -->
+	  	<link rel="stylesheet" href="reveal.css">	
+	  	
+		<!-- Attach necessary scripts -->
+		<!-- <script type="text/javascript" src="jquery-1.4.4.min.js"></script> -->
+		<script type="text/javascript" src="http://code.jquery.com/jquery-1.6.min.js"></script>
+		<script type="text/javascript" src="jquery.reveal.js"></script>
+		
+		<style type="text/css">
+			.big-link { display:block; text-align: center; font-size: 70px; color: #06f; }
+		</style>
+</head>
+
+<body>
+<div id="topo-geral">
+	<div id="tamanho-diagrama">
+        <div id="ico-diagrama">
+         <a href="#" class="big-link" data-reveal-id="perfil-preencher" data-animation="fade" title="Diagrama">Diagrama</a>
+          
+        </div>
+     </div>
+     <div id="perfil-preencher" class="reveal-modal-large">
+			<h1>Diagrama de Navegação</h1>
+            <br />
+            <br  />
+            <p>
+			<img src="css/images/atualizar.jpg" /></p>
+			<a class="close-reveal-modal">&#215;</a>
+		</div>
+</div>
+<div id="container">
+
+	<div class="perfilContent">
+
+<h3>Olá Roberto,</h3>
+Seja bem vindo ao Dente de Leão,
+lorem ipsum dolor sit amet.
+Antes de começar, queremos te conhecer!
+<br  /><br  />
+Envie-nos uma foto no campo abaixo...
+<br  /><br  />
+<div class="imgperfil"></div>
+<h3><center>Enviar foto</center></h3>
+
+<h3>Qual o seu DDD e número de telefone?</h3>
+
+<div class="telefone"><input id="telefone" type="text" name="telefone" value="Telefone"></div>
+<div class="celular"><input id="celular" type="text" name="celular" value="Celular"></div>
+<span data-title="Após o pré-cadastro do produtor, o mesmo receberá um e-mail de confirmação e deverá completar seu perfil com dados mais específicos. O telefone será usado para possíveis contatos." class="tooltip2"><img src="css/images/ico-interface.png"/> </span>
+<br  />
+
+<h3>Conte-nos sobre sua fazenda!</h3>
+
+	<div class="nome"><input id="nome" type="text" name="nome" value="Nome"></div>
+    <div class="cnpj"><input id="cnpj" type="text" name="cnpj" value="CNPJ"></div>
+<span data-title="Dados como o nome da fazenda e CNPJ serão usados para validarmos a veracidade do produtor cadastrado." class="tooltip2"><img src="css/images/ico-interface.png"/> </span>
+
+<h3>Onde ela está localizada?</h3>
+	<div class="endereco"><input id="endereco" type="text" name="endereco" value="Endereço"></div>
+    <div class="cpf"><input id="cpf" type="text" name="cpf" value="CPF"></div>
+    <select>
+  <option value="volvo">UF</option>
+</select> 
+<div class="cidadeperfil"><input id="cidade" type="text" name="cidade" value="Cidade"></div>
+    <span data-title="Dados como endereço, CPF, Estado e Cidade serão utilizados para aproximar os produtores na plataforma, agregado ao dispositivo e também para gerar a tabela de dados por região." class="tooltip2"><img src="css/images/ico-interface.png"/> </span>
+  
+<h3 class="titperfil">O que você cultiva?</h3><span data-title="O produtor poderá escolher dentre uma lista o que produz em sua fazenda." class="tooltip"><img src="css/images/tooltip-ico.png"/> </span>
+<br  />
+<div class="cultivocadastro">
+<div class="eucultivo">
+    <div class="cultivoimg"><img src="css/images/img-tomate.jpg" /></div>
+    <div class="cultivotxt">Tomate</div>
+    <input id="cultivo" type="checkbox" name="cultivo">
+</div>
+    
+    <div class="eucultivo">
+        <div class="cultivoimg"><img src="css/images/cebola.jpg" /></div>
+        <div class="cultivotxt">Cebola</div>
+        <input id="cultivo" type="checkbox" name="cultivo">
+    </div>
+    
+    <div class="eucultivo">
+        <div class="cultivoimg"><img src="css/images/morango.jpg" /></div>
+        <div class="cultivotxt">Morango</div>
+        <input id="cultivo" type="checkbox" name="cultivo">
+    </div>
+    
+    <div class="eucultivo">
+        <div class="cultivoimg"><img src="css/images/batata.jpg" /></div>
+        <div class="cultivotxt">Batata</div>
+        <input id="cultivo" type="checkbox" name="cultivo">
+    </div>
+    
+    <div class="eucultivo">
+        <div class="cultivoimg"><img src="css/images/abacaxi.jpg" /></div>
+        <div class="cultivotxt">Abacaxi</div>
+        <input id="cultivo" type="checkbox" name="cultivo">
+    </div>
+</div>
+<h3 class="titperfil">Você cultiva algo mais?</h3><span data-title="Caso os itens que o produtor cultiva não estejam na lista acima, será possível adicioná-lo." class="tooltip"><img src="css/images/tooltip-ico.png"/> </span>
+<div class="cultivoextra"><input id="cultivoextra" type="text" name="cultivoextra" value="Alfazema; Alecrim"></div>
+<div class="btnSalvar"><a href="painel.html" title="Salvar Informações">Salvar Informações</a></div>
+</div>
+</div>
+
+
+<div class="footer-termos">
+	<div class="termos">
+Home 	| Sobre o Projeto 		| Benefícios 		| Como Funciona		| Contato<br />
+Todos direitos reservados. Dente de Leão 2014.
+	</div>
+</div>
+
+
+
+   
