@@ -146,7 +146,7 @@
 
 					<div class="l-col2">
 
-						<span class="input-field"><input type="text" name="data_inicio" id="data_inicio" placeholder="Data AAAA/MM/DD" value="<?php echo date('o\-m\-d'); ?>" class="error-left" required></span>
+						<span class="input-field"><input type="text" name="data_inicio" id="data_inicio" placeholder="Data AAAA/MM/DD" class="error-left" required></span>
 
 					</div><!-- .l-col2 -->
 
@@ -379,7 +379,7 @@
 
 			<input type="hidden" name="stopid" id="stopid">
 
-			<input type="text" placeholder="Data AAAA/MM/DD" value="<?php echo date('o\-m\-d'); ?>" name="data_fim" id="data_fim" class="centralize">
+			<input type="text" placeholder="Data AAAA/MM/DD" name="data_fim" id="data_fim" class="centralize">
 
 			<div class="l-row">
 				<div class="l-col5">
@@ -405,13 +405,24 @@
 
 	<?php include 'template/script.php'; ?>
 	<script>
-	/* LIBERA USUÁRIOS */
+	/* ENVIA DATA */
 	$('#dispositivo').change(function(){
 		if( $(this).val() ) {
 			$('.message-waiting-usuario').hide();
 			$('#usuario').show();
 			$('.message-waiting-plantacao').text('Escolha um Usuário');
+			$.getJSON('backend/envios/buscarUltimaDataDispositivo.php?search=',{cod_device: $(this).val(), ajax: 'true'}, function(j){
+				$('#data_inicio').val(j[0].last_data_device);
+			});
 		} else {}
+	});
+	/*DATA PARAR*/
+	$('.parar').each(function(){
+		$(this).click(function(){
+			$.getJSON('backend/envios/buscarUltimaDataDispositivo.php?search=',{cod_device: $(this).data('dispositivo'), ajax: 'true'}, function(j){
+				$('#data_fim').val(j[0].last_data_device);
+			});
+		});
 	});
 	/* POPULA AS PLANTAÇÕES */
 	//http://www.daviferreira.com/posts/populando-selects-de-cidades-e-estados-com-ajax-php-e-jquery

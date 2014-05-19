@@ -88,83 +88,113 @@
           </header>
           <?php 
 
-          $sqlDispositivo = "SELECT * FROM DL_ADMIN_deviceuser WHERE usuario = '$idProfile' order by id asc";
+          $sqlDispositivo = "SELECT * FROM DL_ADMIN_deviceuser WHERE usuario = '$idProfile' order by id desc";
 
           $resultDispositivo = mysql_query($sqlDispositivo);
+          $deviceUserRow;
+          $devicePlantations;
 
           if (mysql_num_rows($resultDispositivo) > 0) {
 
+            while ($row=mysql_fetch_array($resultDispositivo)) {
+              if(in_array($row['plantacao'], $devicePlantations)){//Se a plantação já existe
+              } else {
+                $deviceUserRow[] = array(
+                  'id'              => $row['id'],
+                  'dispositivo'     => $row['dispositivo'],
+                  'plantacao'       => $row['plantacao'],
+                  'data_inicio'     => $row['data_inicio'],
+                  'data_fim'        => $row['data_fim'],
+                );
+                $devicePlantations[] = $row['plantacao'];
+              }
+            }
+
           ?>
+
+          <!-- ================= COM SENSOR ================== -->
 
           <div id="com-sensor">
             <h3>Dados recentes da plantação</h3>
             <p>Selecione abaixo a aba correspondente ao cultivo que deseja visualizar</p>
             
             <ul id="abas">
-              <?php
+              <?php 
 
-              $plantacaoDispositivoCount = 0;
-              $plantacaoDispositivoVerify = array();
+              foreach ($deviceUserRow as $value) { 
 
-              while ($row=mysql_fetch_array($resultDispositivo)) {
+                $plantationNameId = $value['plantacao'];
 
-                $plantacaoDispositivo = $row['plantacao'];
-                $datafimDispositivo = $row['data_fim'];
-
-                if(in_array($plantacaoDispositivo, $plantacaoDispositivoVerify)) {} else {
-
-                array_push($plantacaoDispositivoVerify, $plantacaoDispositivo);
-
-                $sqlPlantacaoHistorico = "SELECT * FROM DL_ADMIN_plantationList WHERE id = '$plantacaoDispositivo' order by id desc";
-                $resultPlantacaoHistorico = mysql_query($sqlPlantacaoHistorico);
-                while ($row=mysql_fetch_array($resultPlantacaoHistorico)) {
-                  $plantacaoDispositivo = $row['plantacao'];
-                }
-
-                /*$date1=date_create(date('o\-m\-d'));
-                $date2=date_create($datafimDispositivo);
-                $diff=date_diff($date1,$date2);
-                echo $datafimDispositivo;
-                echo date('o\-m\-d');
-                echo $diff->format("%R%a days");*/
+                $sqlPlantacaoNome = "SELECT plantacao FROM DL_ADMIN_plantationList WHERE id = '$plantationNameId' order by id desc limit 1";
+                $resultPlantacaoNome = mysql_query($sqlPlantacaoNome);
+                while ($row=mysql_fetch_array($resultPlantacaoNome)) {
 
               ?>
 
-              <li><a class="plantacao-<?php echo $plantacaoDispositivoCount; ?>"><?php echo $plantacaoDispositivo; ?></a></li>
+              <li><a href="plantacao-<?php echo $value['plantacao']; ?>"><?php echo $row['plantacao']; ?></a></li> 
 
-              <?php $plantacaoDispositivoCount = $plantacaoDispositivoCount + 1; ?>
-              <?php }//else inarray() ?>
-              <?php }//while ?>
+              <?php 
+
+                }//while
+
+              }//foreach
+
+              ?>
 
             </ul> <!-- #abas -->
             <div id="resultados">
-              <div id="platacao-0">
+              <?php 
+
+              foreach ($deviceUserRow as $value) { 
+
+                $deviceCode = $value['dispositivo'];
+                $deviceDataFim;
+                $MysqlDataSintaxe;
+                
+                if($value['data_fim']!=null){
+                  $deviceDataFim = $value['data_fim'];
+                  $MysqlDataSintaxe = "AND data LIKE '%$deviceDataFim%'";
+                }
+
+                $sqlDeviceValue = "SELECT * FROM DL_DEVICE WHERE dispositivo = '$deviceCode' $MysqlDataSintaxe order by id desc limit 1";
+                $resultDeviceValue = mysql_query($sqlDeviceValue);
+                while ($row=mysql_fetch_array($resultDeviceValue)) {
+
+              ?>
+
+              <div id="plantacao-<?php echo $value['plantacao']; ?>" class="aba-device-plantacao">
                 <ul>
-                  <li>Dados da chuva</li>
-                  <li>Umidade do Solo</li>
-                  <li>Umidade</li>
-                  <li>Temperatura</li>
+                  <li>Dados da chuva: <?php echo $row['chuva']; ?></li>
+                  <li>Umidade do Solo: <?php echo $row['umidade_do_solo']; ?></li>
+                  <li>Umidade: <?php echo $row['umidade']; ?></li>
+                  <li>Temperatura: <?php echo $row['temperatura']; ?></li>
                 </ul>
                 <a href="#" title="Veja mais">Veja mais</a>
               </div>
-              <div id="platacao-1">
-                <ul>
-                  <li>Dados da chuva</li>
-                  <li>Umidade do Solo</li>
-                  <li>Umidade</li>
-                  <li>Temperatura</li>
-                </ul>
-                <a href="#" title="Veja mais">Veja mais</a>
-              </div>
+
+              <?php 
+
+                }//while
+
+              }//foreach
+
+              ?>
             </div> <!-- #resultados -->
           </div><!-- #com-sensor -->
+          <!-- ================= COM SENSOR ================== -->
+
           <?php } else { ?>
+
+          <!-- ================= SEM SENSOR ================== -->
           <div id="sem-sensor">
             <h3>Ainda não conhece o dispositivo?</h3>
             <p>Monitore sua plantação 24h por dia, tenha acesso a gráficos e comece um banco de dados de informações para saber como resolver seus problemas em qualquer situação.</p>
             <img src="" width="735" height="300" />
           </div><!-- #sem-sensor  -->
-          <?php } ?>
+          <!-- ================= SEM SENSOR ================== -->
+
+          <?php }//Não existe device ?>
+
           <hr />
           <h3>Notificações</h3>
           <p>Alguém te marcou</p>
@@ -229,17 +259,26 @@
   <?php include 'template/script.php'; ?>
     <script>
       // Optional code to hide all divs
-    $("div#resultados > div").hide();
-    $("div#platacao-0").show();
-
-
+    $(".aba-device-plantacao").each(function(e){
+      if(e==0){
+        $(this).show();
+      } else {
+        $(this).hide();
+      }
+    });
+    $("#abas li a").each(function(e){
+      if(e==0) {
+         $(this).addClass("active");
+      }
+    });
     // Selector
     //var divs = $("#tomate, #morango, #batata, #amora");
-
     // Show chosen div, and hide all others
-    $("li a").click(function () {
-        $("div#resultados > div").hide();
-        $("#" + $(this).attr("class")).show();
+    $("#abas li a").click(function (e) {
+      e.preventDefault();
+      $("#" + $(this).attr("href")).show().siblings('.aba-device-plantacao').hide();
+      $(".active").removeClass("active");
+      $(this).addClass("active");
     });
     </script>
 </body>

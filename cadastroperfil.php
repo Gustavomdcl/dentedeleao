@@ -10,14 +10,14 @@
   $usuarioLogadoEmail = $_SESSION['usuarioUserNome'];
 
   // VALIDA PERFIL ======================================
-  $perfilCriado = mysql_query("SELECT * FROM DL_PROFILE WHERE usuario = '$usuarioLogadoID'");
+  $perfilCriado = mysql_query("SELECT 1 FROM DL_PROFILE WHERE usuario = '$usuarioLogadoID'");
 
   if(mysql_num_rows($perfilCriado) > 0) {
   	header("Location: painel.php");
   } else {}
 
   // PEGA INFORMAÇÕES ===================================
-  $informacoesUsuario = mysql_query("SELECT * FROM DL_ADMIN_registered WHERE email = '$usuarioLogadoEmail'");
+  $informacoesUsuario = mysql_query("SELECT 1 FROM DL_ADMIN_registered WHERE email = '$usuarioLogadoEmail'");
   $nome;
   $cpf;
 
@@ -76,7 +76,7 @@
 							<input type="hidden" name="email" id="email" value="<?php echo $usuarioLogadoEmail; ?>">
 							<p>Envie-nos uma foto no campo abaixo</p>
 							<span><img src="" id="preview" width="150" height="150" /></span><br>
-							<input type="file" name="foto[]" id="foto" onchange="readURL(this);" accept="image/png, image/gif, image/bmp, image/jpeg, image/jpg">
+							<input type="file" name="foto[]" id="foto" onchange="readURL(this);" class="ignore" accept="image/png, image/gif, image/bmp, image/jpeg, image/jpg">
 							<p>Qual o seu número de telefone?</p>
 							<input type="text" name="telefone" placeholder="Telefone" id="telefone" required><br>
 							<input type="text" name="celular" placeholder="Celular" id="celular"><br>
