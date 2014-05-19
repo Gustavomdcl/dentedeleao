@@ -121,10 +121,10 @@
           } else {
             $deviceDataFim = date('o\-m\-d');
           }
-
+          $deviceNumberName = $value['dispositivo'];
           $data_inicio = $value['data_inicio'];//00:00:00
           $data_fim = $deviceDataFim . "23:59:59";
-          $sqlDispositivoBeta = "SELECT * FROM DL_DEVICE WHERE data BETWEEN '$data_inicio' and '$data_fim' AND dispositivo = '1001' order by id desc";
+          $sqlDispositivoBeta = "SELECT * FROM DL_DEVICE WHERE data BETWEEN '$data_inicio' and '$data_fim' AND dispositivo = '$deviceNumberName' order by id desc";
           $resultDispositivoBeta = mysql_query($sqlDispositivoBeta);
           while ($row=mysql_fetch_array($resultDispositivoBeta)) {
       ?>
