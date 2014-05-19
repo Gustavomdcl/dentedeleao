@@ -97,7 +97,7 @@
           if (mysql_num_rows($resultDispositivo) > 0) {
 
             while ($row=mysql_fetch_array($resultDispositivo)) {
-              if(in_array($row['plantacao'], $devicePlantations)){//Se a plantação já existe
+              if(in_array($row['plantacao'], (array) $devicePlantations)){//Se a plantação já existe
               } else {
                 $deviceUserRow[] = array(
                   'id'              => $row['id'],
