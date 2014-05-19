@@ -1,4 +1,49 @@
-<!DOCTYPE html>
+<?php
+  require_once ("backend/seguranca.php");
+  protegePagina();
+
+  require_once("backend/conecta.php");
+  require_once("backend/executa.php");
+
+  // VARIAVEIS GLOBAIS ==================================
+  $usuarioLogadoID = $_SESSION['usuarioUserID'];
+  $usuarioLogadoEmail = $_SESSION['usuarioUserNome'];
+
+  // VALIDA PERFIL ======================================
+  $perfilCriado = mysql_query("SELECT * FROM DL_PROFILE WHERE usuario = '$usuarioLogadoID'");
+  $nome;
+  $cpf;
+  $foto;
+  $idProfile;
+
+  if(mysql_num_rows($perfilCriado) > 0) {
+
+    while ($row=mysql_fetch_array($perfilCriado)) {
+      $nome=$row['nome'];
+      $cpf=$row['cpf'];
+      $foto=$row['foto'];
+      $idProfile=$row['id'];
+
+      if($foto == null){ 
+        $foto = 'admin/assets/img/template/logo.gif'; 
+      } else { 
+
+        $fotoId = explode('-', $foto);
+
+        $sqlPlantacaoimg = "SELECT * FROM DL_IMAGES WHERE id = '$fotoId[0]' order by id desc";
+        $resultPlantacaoimg = mysql_query($sqlPlantacaoimg);
+
+        while ($row=mysql_fetch_array($resultPlantacaoimg)) {
+          $foto = $row['caminho'] . $row['nome_imagem'];
+        }
+      }
+    }
+
+  } else {
+    header("Location: cadastroperfil.php");
+  }
+
+?><!DOCTYPE html>
 <html lang="pt_BR">
 <head>
 
@@ -11,7 +56,7 @@
   <meta name="description" content="Projeto Dente de Leão busca a disseminação e troca do conhecimento tácito entre os produtores orgânicos para fortalecer o mercado e os laços entre a comunidade orgânica.">
   <!-- ADRIAN: Importante para acessibilidade e SEO. Coloque sempre o Título e a Descrição da página. Sempre coloque ali em cima no <title> também. Cada página precisa de um diferente. -->
 
-  <?php include 'template/head.php'; ?>
+  <?php //include 'template/head.php'; ?>
   <!-- Fancybox CSS -->
     <link rel="stylesheet" href="assets/css/jquery.fancybox.css">
 
@@ -29,6 +74,35 @@
     <?php include 'template/header.php'; ?>
 
     <!-- ADRIAN: ÁREA PARA COLOCAR SEU CÓDIGO, QUE VAI MUDAR EM CADA PÁGINA -->
+
+    <table width="100%">
+      <tr>
+        <td>id</td>
+        <td>dispositivo</td>
+        <td>umidade</td>
+        <td>umidade_do_solo</td>
+        <td>temperatura</td>
+        <td>chuva</td>
+        <td>data</td>
+      </tr>
+      <?php
+      $data_inicio = "2014-05-08";//00:00:00
+      $data_fim = "2014-05-16" . "23:59:59";
+      $sqlDispositivo = "SELECT * FROM DL_DEVICE WHERE data BETWEEN '$data_inicio' and '$data_fim' AND dispositivo = '1001' order by id desc";
+      $resultDispositivo = mysql_query($sqlDispositivo);
+      while ($row=mysql_fetch_array($resultDispositivo)) {
+      ?>
+      <tr>
+        <td><?php echo $row['id']; ?></td>
+        <td><?php echo $row['dispositivo']; ?></td>
+        <td><?php echo $row['umidade']; ?></td>
+        <td><?php echo $row['umidade_do_solo']; ?></td>
+        <td><?php echo $row['temperatura']; ?></td>
+        <td><?php echo $row['chuva']; ?></td>
+        <td><?php echo $row['data']; ?></td>
+      </tr>
+      <?php }//while ?>
+    </table>
 
     <!-- login ADRIAN: Essa section é um exemplo de como você vai colocando as áreas do site. você pode alterar o nome da class .l-duvida-exibicao para .l-duvida-exibicao ou algo assim, dependendo do que for fazer. Preciso que cada sessão (nesse caso sessão tem o valor de corte, área. Um exemplo considere o wireframe do painel. Cada área dele, sendo a parte dos gráficos, a parte das notificações e dúvidas são sessões diferentes) do site seja feita pela tag <section>, pois isso agora é importante.
     ======================================================== -->

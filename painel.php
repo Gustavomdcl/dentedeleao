@@ -43,8 +43,7 @@
     header("Location: cadastroperfil.php");
   }
 
-?>
-<!DOCTYPE html>
+?><!DOCTYPE html>
 <html lang="pt_BR">
 <head>
 
