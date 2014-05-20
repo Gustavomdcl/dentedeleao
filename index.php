@@ -52,7 +52,7 @@ if($sucesso == "aprovado") {
 
 </head>
 
-<body class="no-js">
+<body class="no-js index">
 
 	<!-- site
 	======================================================== -->

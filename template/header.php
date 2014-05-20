@@ -66,9 +66,7 @@
 					<hr />
 					<p><img src="<?php echo $foto ?>" alt="icone" width="38" height="38" border="0" /> <?php echo $nome ?> <img src="" alt="editar perfil" width="20" height="20" /><br>
 					<div id="all-weather">
-		                <div id="browser_geo">
-		                    Localizar
-		                </div>
+		                <div id="browser_geo" data-latitude="<?php echo $latitude ?>" data-longitude="<?php echo $longitude ?>"></div><!-- Localizar -->
 		                <div id="location"></div>
 		                <div class="t" id="degreesCelsius">
 		                    <span class="number"></span>

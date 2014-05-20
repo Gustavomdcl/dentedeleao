@@ -1,4 +1,5 @@
-	   var localizeMemory;
+if($('body').hasClass('index')) {} else {
+	   	var localizeMemory;
 		if(readCookie('ddlweather')){
 			var cookieDate = readCookie('ddlweather').split('|');
 
@@ -10,7 +11,10 @@
 
 			$('#location').text(cookieDate[2]);//local
 		} else {
-			getWeather("./weather.php");
+			//getWeather("./weather.php");
+			var profileLatitude = $('#browser_geo').data('latitude');
+			var profileLongitude = $('#browser_geo').data('longitude');
+			getWeather("http://api.openweathermap.org/data/2.5/weather?lat="+profileLatitude+"&lon="+profileLongitude);
 		}
 
 	   function getWeather(link) {
@@ -69,7 +73,7 @@
 		});
 	   }
 
-	   	$("#browser_geo" ).one('click', function(){
+	   	/*$("#browser_geo" ).one('click', function(){
 	   		getLocation();
 
   			 function getLocation()
@@ -92,4 +96,5 @@
                 getWeather(url);
                 $("#browser_geo").text("Localizado!").css("cursor", "auto").css("color", "#FF5CFF");
 			  }
-			});
+			});*/
+}

@@ -2,10 +2,18 @@
 	======================================================== -->
 	<!-- jquery jquery.com -->
 	<script src="assets/min/jquery.min.js?v=1.11.0"></script>
-	<!-- Jquery Weather -->
+	<!-- jquery Cookies -->
 	<script src="assets/js/jquery.cookies.js"></script>
-	<!-- Jquery Weather -->
+	<!-- jquery Weather -->
 	<script src="assets/js/jquery.weather.js"></script>
+	<!-- jquery Logout -->
+	<script>
+	$('.logout').click(function(e){
+		e.preventDefault();
+		createCookie('ddlweather', '',0);
+		window.location.assign("sair.php");
+	});
+	</script>
 	<!-- suiting -->
 	<script src="assets/min/jquery.suiting.min.js"></script><!-- GRUNT http://blog.henriquesilverio.com/javascript-e-jquery/grunt-js-automatize-tarefas-e-otimize-o-seu-workflow/ -->
 	<!-- mobile -->

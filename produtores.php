@@ -14,6 +14,8 @@
   $nome;
   $cpf;
   $imagem;
+  $latitude;
+  $longitude;
 
   if(mysql_num_rows($perfilCriado) > 0) {
 
@@ -21,6 +23,8 @@
       $nome=$row['nome'];
       $cpf=$row['cpf'];
       $foto=$row['foto'];
+      $latitude=$row['latitude'];
+	  $longitude=$row['longitude'];
 
       if($foto == null){ 
         $foto = 'admin/assets/img/template/logo.gif'; 
