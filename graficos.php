@@ -250,6 +250,7 @@
   <!-- mapa google-->
   <script type="text/javascript" src="https://www.google.com/jsapi"></script>
     <script type="text/javascript">
+      //https://developers.google.com/chart/?hl=pt-br
       google.load("visualization", "1", {packages:["corechart"]});
       google.setOnLoadCallback(drawChart);
       function drawChart() {

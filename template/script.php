@@ -2,6 +2,10 @@
 	======================================================== -->
 	<!-- jquery jquery.com -->
 	<script src="assets/min/jquery.min.js?v=1.11.0"></script>
+	<!-- Jquery Weather -->
+	<script src="assets/js/jquery.cookies.js"></script>
+	<!-- Jquery Weather -->
+	<script src="assets/js/jquery.weather.js"></script>
 	<!-- suiting -->
 	<script src="assets/min/jquery.suiting.min.js"></script><!-- GRUNT http://blog.henriquesilverio.com/javascript-e-jquery/grunt-js-automatize-tarefas-e-otimize-o-seu-workflow/ -->
 	<!-- mobile -->
