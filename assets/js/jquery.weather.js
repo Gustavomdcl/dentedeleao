@@ -1,5 +1,5 @@
 	   var localizeMemory;
-		/*if(readCookie('ddlweather')){
+		if(readCookie('ddlweather')){
 			var cookieDate = readCookie('ddlweather').split('|');
 
 			localizeMemory = cookieDate[0];
@@ -9,9 +9,9 @@
 			$('#degreesCelsius .cel').text("°C ");
 
 			$('#location').text(cookieDate[2]);//local
-		} else {*/
+		} else {
 			getWeather("./weather.php");
-		//}
+		}
 
 	   function getWeather(link) {
 	   		$.getJSON(link, function(data){
