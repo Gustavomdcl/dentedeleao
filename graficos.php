@@ -75,17 +75,6 @@
 
     <!-- ADRIAN: ÁREA PARA COLOCAR SEU CÓDIGO, QUE VAI MUDAR EM CADA PÁGINA -->
 
-    <table width="800">
-      <tr>
-        <td>nome</td>
-        <td>id</td>
-        <td>dispositivo</td>
-        <td>umidade</td>
-        <td>umidade_do_solo</td>
-        <td>temperatura</td>
-        <td>chuva</td>
-        <td>data</td>
-      </tr>
       <?php
 
       $sqlDispositivo = "SELECT * FROM DL_ADMIN_deviceuser WHERE usuario = '$idProfile' order by id desc";
@@ -110,39 +99,7 @@
           }
         }
 
-        foreach ($deviceUserRow as $value) { 
-
-          $deviceCode = $value['dispositivo'];
-          $deviceDataFim;
-          $MysqlDataSintaxe;
-          
-          if($value['data_fim']!=null){
-            $deviceDataFim = $value['data_fim'];
-          } else {
-            $deviceDataFim = date('o\-m\-d');
-          }
-          $deviceNumberName = $value['dispositivo'];
-          $data_inicio = $value['data_inicio'];//00:00:00
-          $data_fim = $deviceDataFim . "23:59:59";
-          $sqlDispositivoBeta = "SELECT * FROM DL_DEVICE WHERE data BETWEEN '$data_inicio' and '$data_fim' AND dispositivo = '$deviceNumberName' order by id desc";
-          $resultDispositivoBeta = mysql_query($sqlDispositivoBeta);
-          while ($row=mysql_fetch_array($resultDispositivoBeta)) {
-      ?>
-      <tr>
-        <td><?php echo $value['plantacao']; ?></td>
-        <td><?php echo $row['id']; ?></td>
-        <td><?php echo $row['dispositivo']; ?></td>
-        <td><?php echo $row['umidade']; ?></td>
-        <td><?php echo $row['umidade_do_solo']; ?></td>
-        <td><?php echo $row['temperatura']; ?></td>
-        <td><?php echo $row['chuva']; ?></td>
-        <td><?php echo $row['data']; ?></td>
-      </tr>
-      <?php 
-          }//while
-        }//foreach
-      ?>
-    </table>
+        ?>
 
     <!-- login ADRIAN: Essa section é um exemplo de como você vai colocando as áreas do site. você pode alterar o nome da class .l-duvida-exibicao para .l-duvida-exibicao ou algo assim, dependendo do que for fazer. Preciso que cada sessão (nesse caso sessão tem o valor de corte, área. Um exemplo considere o wireframe do painel. Cada área dele, sendo a parte dos gráficos, a parte das notificações e dúvidas são sessões diferentes) do site seja feita pela tag <section>, pois isso agora é importante.
     ======================================================== -->
@@ -157,77 +114,102 @@
           <p>Selecione abaixo a aba correspondente ao cultivo que deseja visualizar.</p>
 
           <ul id="plantacoes">
-            <li class="plantacao" target="1"><img src="assets/img/upload/abobora.png" alt="produto" /></li>
-            <li class="plantacao" target="2"><img src="assets/img/upload/brocolis.png" alt="produto" /></li>
-            <li class="plantacao" target="3"><img src="assets/img/upload/cogumelo.png" alt="produto" /></li>
+            <?php 
+
+            foreach ($deviceUserRow as $value) { 
+
+              $plantationNameId = $value['plantacao'];
+              $imagem=$row['imagem'];
+
+              $sqlPlantacaoNome = "SELECT * FROM DL_ADMIN_plantationList WHERE id = '$plantationNameId' order by id desc limit 1";
+              $resultPlantacaoNome = mysql_query($sqlPlantacaoNome);
+              while ($row=mysql_fetch_array($resultPlantacaoNome)) {
+
+                $imagem=$row['imagem'];
+                $plantationName=$row['plantacao'];
+
+                if($imagem == null){ 
+                      $imagem = 'admin/assets/img/template/logo.gif'; 
+                    } else { 
+
+                      $imagemId = explode('-', $imagem);
+
+                      $sqlPlantacaoimg = "SELECT * FROM DL_IMAGES WHERE id = '$imagemId[0]' order by id desc";
+                      $resultPlantacaoimg = mysql_query($sqlPlantacaoimg);
+
+                      while ($row=mysql_fetch_array($resultPlantacaoimg)) {
+                        $imagem = $row['caminho'] . $row['nome_imagem'];
+                      }
+                    }
+
+            ?>
+            <li class="plantacao" target="<?php echo $value['plantacao']; ?>"><img src="<?php echo $imagem ?>" alt="<?php echo $plantationName; ?>" /></li>
+            <?php 
+
+              }//while
+
+            }//foreach
+
+            ?>
           </ul><!-- #plantacoes -->
 
           <hr />
-          <div id="plantacao-1" class="target">
+
+          <?php
+
+          foreach ($deviceUserRow as $value) {
+
+          ?>
+
+          <div id="plantacao-<?php echo $value['plantacao']; ?>" class="target" data-plantacao="<?php echo $value['plantacao']; ?>">
             <h3>Chuva</h3>
-            <div id="chuva-1" style="width: 735px; height: 300px;"></div>
+            <div id="chuva-<?php echo $value['plantacao']; ?>" style="width: 735px; height: 300px;"></div>
             <a href="interna1" class="bt-vermais">Ver mais </a>
 
           <hr style="clear:both" />
             <h3>Umidade</h3>
-            <img src="" width="735" height="300" />
+            <div id="umidade-<?php echo $value['plantacao']; ?>" style="width: 735px; height: 300px;"></div>
             <a href="interna1" class="bt-vermais">Ver mais </a>
 
           <hr style="clear:both" />
             <h3>Umidade do Solo</h3>
-            <img src="" width="735" height="300" />
+            <div id="umidade_do_solo-<?php echo $value['plantacao']; ?>" style="width: 735px; height: 300px;"></div>
             <a href="interna1" class="bt-vermais">Ver mais </a>
 
           <hr style="clear:both" />
             <h3>Temperatura</h3>
-            <img src="" width="735" height="300" />
+            <div id="temperatura-<?php echo $value['plantacao']; ?>" style="width: 735px; height: 300px;"></div>
             <a href="interna1" class="bt-vermais">Ver mais </a>
 
-          </div><!-- #plantacao1 -->
+          <div class="values-container">
 
-          <div id="plantacao-2" class="target" style="background-color:pink; display:none;">
-            <h3>Chuva</h3>
-            <img src="" width="735" height="300" />
-            <a href="interna1" class="bt-vermais">Ver mais </a>
+          <?php
 
-          <hr style="clear:both" />
-            <h3>Umidade</h3>
-            <img src="" width="735" height="300" />
-            <a href="interna1" class="bt-vermais">Ver mais </a>
-
-          <hr style="clear:both" />
-            <h3>Umidade do Solo</h3>
-            <img src="" width="735" height="300" />
-            <a href="interna1" class="bt-vermais">Ver mais </a>
-
-          <hr style="clear:both" />
-            <h3>Temperatura</h3>
-            <img src="" width="735" height="300" />
-            <a href="interna1" class="bt-vermais">Ver mais </a>
-
-          </div><!-- #plantacao2 -->
-
-          <div id="plantacao-3" class="target" style="background-color:green; display:none;">
-            <h3>Chuva</h3>
-            <img src="" width="735" height="300" />
-            <a href="interna1" class="bt-vermais">Ver mais </a>
-
-          <hr style="clear:both" />
-            <h3>Umidade</h3>
-            <img src="" width="735" height="300" />
-            <a href="interna1" class="bt-vermais">Ver mais </a>
-
-          <hr style="clear:both" />
-            <h3>Umidade do Solo</h3>
-            <img src="" width="735" height="300" />
-            <a href="interna1" class="bt-vermais">Ver mais </a>
-
-          <hr style="clear:both" />
-            <h3>Temperatura</h3>
-            <img src="" width="735" height="300" />
-            <a href="interna1" class="bt-vermais">Ver mais </a>
-
-          </div><!-- #plantacao2 -->
+              $deviceCode = $value['dispositivo'];
+              $deviceDataFim;
+              $MysqlDataSintaxe;
+              
+              if($value['data_fim']!=null){
+                $deviceDataFim = $value['data_fim'];
+              } else {
+                $deviceDataFim = date('o\-m\-d');
+              }
+              $deviceNumberName = $value['dispositivo'];
+              $data_inicio = $value['data_inicio'];//00:00:00
+              $data_fim = $deviceDataFim . "23:59:59";
+              $sqlDispositivoBeta = "SELECT * FROM DL_DEVICE WHERE data BETWEEN '$data_inicio' and '$data_fim' AND dispositivo = '$deviceNumberName' order by id asc";
+              $resultDispositivoBeta = mysql_query($sqlDispositivoBeta);
+              while ($row=mysql_fetch_array($resultDispositivoBeta)) {
+          ?>
+            <div class="value-<?php echo $value['plantacao']; ?>" data-plantacao="<?php echo $value['plantacao']; ?>" data-id="<?php echo $row['id']; ?>" data-device="<?php echo $row['dispositivo']; ?>" data-umidade="<?php echo $row['umidade']; ?>" data-umidadedosolo="<?php echo $row['umidade_do_solo']; ?>" data-temperatura="<?php echo $row['temperatura']; ?>" data-chuva="<?php echo $row['chuva']; ?>" data-date="<?php echo $row['data']; ?>"></div>
+          <?php 
+              }//while
+          ?>
+            </div><!-- .values-container -->
+          </div><!-- #plantacao -->
+          <?php
+            }//foreach
+          ?>
 
           <?php } else { ?>
 
@@ -261,33 +243,73 @@
       google.load("visualization", "1", {packages:["corechart"]});
       google.setOnLoadCallback(drawChart);
       function drawChart() {
-        var data = google.visualization.arrayToDataTable([
-          ['Horário', 'Mililitros'],
-          ['00h',  20],
-          ['04h',  30],
-          ['08h',  12],
-          ['12h',  18],
-          ['16h',  22],
-          ['20h',  17]
-        ]);
+        jQuery(".target").each(function(e){
 
-        var options = {
-          title: ' '
-        };
+          var valueChuva = [['Horário', 'Mililitros']];
+          var valueUmidade = [['Horário', 'Mililitros']];
+          var valueUmidadeSolo = [['Horário', 'Mililitros']];
+          var valueTemperatura = [['Horário', 'Celsius']];
 
-        var chart = new google.visualization.LineChart(document.getElementById('chuva-1'));
-        chart.draw(data, options);
+          jQuery(".value-" + jQuery(this).data('plantacao')).each(function(f){
+
+            var valueDate = jQuery(this).data('date').split(" "); var valueFirst = valueDate[0].split("-"); var valueSecond = valueDate[1].split(":");
+            var ano = valueFirst[0];
+            var mes = valueFirst[1];
+            var dia = valueFirst[2];
+            var hora = valueSecond[0];
+            var minuto = valueSecond[1];
+            var segundos = valueSecond[2];
+
+            valueChuva.push([dia + ' ' + hora + 'h',  jQuery(this).data('chuva')]);
+            valueUmidade.push([dia + ' ' + hora + 'h',  jQuery(this).data('umidade')]);
+            valueUmidadeSolo.push([dia + ' ' + hora + 'h',  jQuery(this).data('umidadedosolo')]);
+            valueUmidadeSolo.push([dia + ' ' + hora + 'h',  jQuery(this).data('umidadedosolo')]);
+            valueTemperatura.push([dia + ' ' + hora + 'h',  jQuery(this).data('temperatura')]);            
+          });
+          var dataChuva = google.visualization.arrayToDataTable(valueChuva);
+          var dataUmidade = google.visualization.arrayToDataTable(valueUmidade);
+          var dataUmidadeSolo = google.visualization.arrayToDataTable(valueUmidadeSolo);
+          var dataTemperatura = google.visualization.arrayToDataTable(valueTemperatura);
+          var options = {
+            title: jQuery(this).data('nome')
+          };
+          var chartChuva = new google.visualization.LineChart(document.getElementById('chuva-' + jQuery(this).data('plantacao')));
+          var chartUmidade = new google.visualization.LineChart(document.getElementById('umidade-' + jQuery(this).data('plantacao')));
+          var chartUmidadeSolo = new google.visualization.LineChart(document.getElementById('umidade_do_solo-' + jQuery(this).data('plantacao')));
+          var chartTemperatura = new google.visualization.LineChart(document.getElementById('temperatura-' + jQuery(this).data('plantacao')));
+          chartChuva.draw(dataChuva, options);
+          chartUmidade.draw(dataUmidade, options);
+          chartUmidadeSolo.draw(dataUmidadeSolo, options);
+          chartTemperatura.draw(dataTemperatura, options);
+
+        });
+        escondeTudo();
       }
     
-    // Selecionar plantação 
+    // Selecionar plantação
 
-          jQuery(function(){
+      function escondeTudo(){
+        jQuery(".target").each(function(e){
+          if(e==0){
+            $(this).show();
+          } else {
+            $(this).hide();
+          }
+        });
+      }
+
+      jQuery('.plantacao').each(function(){
+          jQuery('#plantacao-'+$(this).attr('target')).attr('data-nome', jQuery(this).children('img').attr('alt'));
+      });
+
+      jQuery(function(){
          
         jQuery('.plantacao').click(function(){
               jQuery('.target').hide();
               jQuery('#plantacao-'+$(this).attr('target')).show();
         });
-});
+
+      });
     </script>
 </body>
 </html>
