@@ -10,7 +10,7 @@
 
 			$('#location').text(cookieDate[2]);//local
 		} else {*/
-			getWeather("weather.php");
+			getWeather("./weather.php");
 		//}
 
 	   function getWeather(link) {
