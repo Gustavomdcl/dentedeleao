@@ -213,16 +213,26 @@
 
           <?php } else { ?>
 
-          <!-- ================= SEM SENSOR ================== -->
-          <div id="sem-sensor">
-            <h3>Ainda não conhece o dispositivo?</h3>
-            <p>Monitore sua plantação 24h por dia, tenha acesso a gráficos e comece um banco de dados de informações para saber como resolver seus problemas em qualquer situação.</p>
-            <img src="" width="735" height="300" />
-          </div><!-- #sem-sensor  -->
-          <!-- ================= SEM SENSOR ================== -->
+          <!-- login ADRIAN: Essa section é um exemplo de como você vai colocando as áreas do site. você pode alterar o nome da class .l-duvida-exibicao para .l-duvida-exibicao ou algo assim, dependendo do que for fazer. Preciso que cada sessão (nesse caso sessão tem o valor de corte, área. Um exemplo considere o wireframe do painel. Cada área dele, sendo a parte dos gráficos, a parte das notificações e dúvidas são sessões diferentes) do site seja feita pela tag <section>, pois isso agora é importante.
+          ======================================================== -->
+          <section class="l-graficos">
 
-          <?php }//Não existe device ?>
-          
+            <div class="l-container cf"><!-- ADRIAN: Essa div com class l-container centraliza em 960px e centraliza, no sass você pode observar isso. a class cf desconsidera os floats, sabe? as vezes quando você da um float left dentro de uma div o seu height não considera esses elementos. a class cf acaba considerando. -->
+
+              <div class="l-row">
+
+              <!-- ================= SEM SENSOR ================== -->
+              <header>
+                <h2>Dados da Plantação</h2>
+              </header>
+              <div id="sem-sensor">
+                <h3>Ainda não conhece o dispositivo?</h3>
+                <p>Monitore sua plantação 24h por dia, tenha acesso a gráficos e comece um banco de dados de informações para saber como resolver seus problemas em qualquer situação.</p>
+                <img src="" width="735" height="300" />
+              </div><!-- #sem-sensor  -->
+              <!-- ================= SEM SENSOR ================== -->
+
+          <?php }//Não existe device ?> 
           
         </div><!-- .l-row -->
 
