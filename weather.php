@@ -1,5 +1,17 @@
 <?php
 
+
+function my_file_get_contents( $site_url ){
+  $ch = curl_init();
+  $timeout = 10;
+  curl_setopt ($ch, CURLOPT_URL, $site_url);
+  curl_setopt ($ch, CURLOPT_RETURNTRANSFER, 1);
+  curl_setopt ($ch, CURLOPT_CONNECTTIMEOUT, $timeout);
+  $file_contents = curl_exec($ch);
+  curl_close($ch);
+  return $file_contents;
+}
+
 function get_client_ip() {
      $ipaddress = '';
      if(getenv('REMOTE_ADDR'))
@@ -24,7 +36,7 @@ $ip = get_client_ip(); // the IP address to query
 //test ip
 //$ip = "180.76.6.19";
 
-$query = @unserialize(file_get_contents('http://ip-api.com/php/'.$ip));
+$query = @unserialize(my_file_get_contents('http://ip-api.com/php/'.$ip));
 if($query && $query['status'] == 'success') {
   //get Coords
   $lat = $query['lat'];
@@ -34,12 +46,12 @@ if($query && $query['status'] == 'success') {
   $url = "http://api.openweathermap.org/data/2.5/weather?lat={$lat}&lon={$lon}";
   //$url = "http://api.openweathermap.org/data/2.5/weather?q={$city}&APPID=test";
 
-    $djson = file_get_contents($url);
+    $djson = my_file_get_contents($url);
   echo $djson;
 
 } else {
     $url = "http://api.openweathermap.org/data/2.5/weather?q=Brazil";
-    $djson = file_get_contents($url);
+    $djson = my_file_get_contents($url);
   echo $djson;
 }
 ?>
