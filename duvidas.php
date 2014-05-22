@@ -1,4 +1,6 @@
-<!DOCTYPE html>
+<?php
+  require_once ("backend/header.php");
+?><!DOCTYPE html>
 <html lang="pt_BR">
 <head>
 
@@ -12,8 +14,8 @@
 	<!-- ADRIAN: Importante para acessibilidade e SEO. Coloque sempre o Título e a Descrição da página. Sempre coloque ali em cima no <title> também. Cada página precisa de um diferente. -->
 
 	<?php include 'template/head.php'; ?>
-	<!-- picker CSS -->
-  	<link rel="stylesheet" href="assets/css/jquery-ui-datepicker.css">
+	<!-- Fancybox CSS -->
+  	<link rel="stylesheet" href="assets/css/jquery.fancybox.css">
 
 	<!-- modernizr modernizr.com -->
 	<script src="assets/min/modernizr.min.js"></script>
@@ -32,7 +34,7 @@
 
 		<!-- login ADRIAN: Essa section é um exemplo de como você vai colocando as áreas do site. você pode alterar o nome da class .l-duvida-resultado para .l-duvida-resultado ou algo assim, dependendo do que for fazer. Preciso que cada sessão (nesse caso sessão tem o valor de corte, área. Um exemplo considere o wireframe do painel. Cada área dele, sendo a parte dos gráficos, a parte das notificações e dúvidas são sessões diferentes) do site seja feita pela tag <section>, pois isso agora é importante.
 		======================================================== -->
-		<section class="l-duvida-resultado">
+		<section class="l-duvida-inicial">
 
 			<div class="l-container cf"><!-- ADRIAN: Essa div com class l-container centraliza em 960px e centraliza, no sass você pode observar isso. a class cf desconsidera os floats, sabe? as vezes quando você da um float left dentro de uma div o seu height não considera esses elementos. a class cf acaba considerando. -->
 
@@ -40,22 +42,88 @@
 					<header>
 						<h2>Dúvidas</h2>
 					</header>
-					<h3>Tenho uma dúvida sobre</h3>
-					<p>Notou algum problema em sua plantação ou está com dúvida sobre alguma cultura? Selecione uma opção abaixo e, caso a dúvida não esteja relacionada a nenhuma opção, selecione outra.</p>
-					<form>
-						<input type="radio" name="platacao[]" value="Tomate">Tomate 
-						<input type="radio" name="platacao[]" value="Banana">Banana
-						<input type="radio" name="platacao[]" value="Batata">Batata
 					
-					<p>Quando você notou o problema referente a sua dúvida?</p>
-						<input type="text" id="datepicker" placeholder="Data">
-						<button type="submit">Buscar</button><!-- aqui deve direcionar para a duvida-resultado.php, que serão as dúvidas filtradas -->
-					</form>
+					<form method="post" action="duvida-resultado.php">
+						<input type="text" name="busca" placeholder="Pesquise aqui"><button type="submit">Buscar</button>
+					</form><!-- barra de busca -->
+
+					<h3>Dúvidas Recentes</h3>
+					
+					<ul id="conteudoDuvidas">
+						<li>
+							<img src="" alt="nome do post" width="200" height="150" />
+							<p class="postnome">Nome da Postagem</p>
+							<a href="tag" title="Tag">Tag</a>
+							<a href="duvida.php" title="Saiba mais" class="bt-saibamais">Saiba mais</a>
+						</li>
+						<li>
+							<img src="" alt="nome do post" width="200" height="150" />
+							<p class="postnome">Nome da Postagem</p>
+							<a href="tag" title="Tag">Tag</a>
+							<a href="duvida.php" title="Saiba mais" class="bt-saibamais">Saiba mais</a>
+						</li>
+						<li>
+							<img src="" alt="nome do post" width="200" height="150" />
+							<p class="postnome">Nome da Postagem</p>
+							<a href="tag" title="Tag">Tag</a>
+							<a href="duvida.php" title="Saiba mais" class="bt-saibamais">Saiba mais</a>
+						</li>
+						<li>
+							<img src="" alt="nome do post" width="200" height="150" />
+							<p class="postnome">Nome da Postagem</p>
+							<a href="tag" title="Tag">Tag</a>
+							<a href="duvida.php" title="Saiba mais" class="bt-saibamais">Saiba mais</a>
+						</li>
+						<li>
+							<img src="" alt="nome do post" width="200" height="150" />
+							<p class="postnome">Nome da Postagem</p>
+							<a href="tag" title="Tag">Tag</a>
+							<a href="duvida.php" title="Saiba mais" class="bt-saibamais">Saiba mais</a>
+						</li>
+						<li>
+							<img src="" alt="nome do post" width="200" height="150" />
+							<p class="postnome">Nome da Postagem</p>
+							<a href="tag" title="Tag">Tag</a>
+							<a href="duvida.php" title="Saiba mais" class="bt-saibamais">Saiba mais</a>
+						</li>
+						<li>
+							<img src="" alt="nome do post" width="200" height="150" />
+							<p class="postnome">Nome da Postagem</p>
+							<a href="tag" title="Tag">Tag</a>
+							<a href="duvida.php" title="Saiba mais" class="bt-saibamais">Saiba mais</a>
+						</li>
+						<li>
+							<img src="" alt="nome do post" width="200" height="150" />
+							<p class="postnome">Nome da Postagem</p>
+							<a href="tag" title="Tag">Tag</a>
+							<a href="duvida.php" title="Saiba mais" class="bt-saibamais">Saiba mais</a>
+						</li>
+						<li>
+							<img src="" alt="nome do post" width="200" height="150" />
+							<p class="postnome">Nome da Postagem</p>
+							<a href="tag" title="Tag">Tag</a>
+							<a href="duvida.php" title="Saiba mais" class="bt-saibamais">Saiba mais</a>
+						</li>
+						
+					</ul> <!-- #conteudoDuvidas -->
+					<div id="paginacao">
+						<ul>
+							<li>1</li>
+							<li>| <a href="#">2</a> |</li>
+							<li><a href="#">3</a></li>
+						</ul>
+					</div><!-- #paginacao -->
+					<hr />
+					<div id="cadastrarDuvida">
+						<p>Não encontrou uma solução para seu problema? Inicie uma nova dúvida!</p>
+						<a href="duvida-inicial.php" title="Quero cadastrar minha dúvida" class="btCadastrarDuvida">Quero cadastrar minha dúvida</a>
+					</div> <!-- #cadastrarDuvida -->
+
 				</div><!-- .l-row -->
 
 			</div><!-- .l-container.cf -->
 
-		</section><!-- .l-duvida-resultado -->
+		</section><!-- .l-duvida-inicial -->
 
 		<!-- ADRIAN: FINAL DA ÁREA PARA COLOCAR SEU CÓDIGO, QUE VAI MUDAR EM CADA PÁGINA -->
 
@@ -64,21 +132,8 @@
 	</div><!-- #site -->
 	
 	<?php include 'template/script.php'; ?>
-  	<script src="assets/min/jquery.ui.min.js"></script>
-  	<script src="//code.jquery.com/ui/1.10.4/jquery-ui.js"></script>
   	<script>
-	  $(function() {
-	    $("#datepicker").datepicker({
-		    dateFormat: 'dd/mm/yy',
-		    dayNames: ['Domingo','Segunda','Terça','Quarta','Quinta','Sexta','Sábado'],
-		    dayNamesMin: ['D','S','T','Q','Q','S','S','D'],
-		    dayNamesShort: ['Dom','Seg','Ter','Qua','Qui','Sex','Sáb','Dom'],
-		    monthNames: ['Janeiro','Fevereiro','Março','Abril','Maio','Junho','Julho','Agosto','Setembro','Outubro','Novembro','Dezembro'],
-		    monthNamesShort: ['Jan','Fev','Mar','Abr','Mai','Jun','Jul','Ago','Set','Out','Nov','Dez'],
-		    nextText: 'Próximo',
-		    prevText: 'Anterior'
-		});
-	});
-	  </script>
+  		$('.scroll').jscroll();
+  	</script>
 </body>
 </html>

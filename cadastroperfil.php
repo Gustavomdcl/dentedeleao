@@ -10,14 +10,14 @@
   $usuarioLogadoEmail = $_SESSION['usuarioUserNome'];
 
   // VALIDA PERFIL ======================================
-  $perfilCriado = mysql_query("SELECT 1 FROM DL_PROFILE WHERE usuario = '$usuarioLogadoID'");
+  $perfilCriado = mysql_query("SELECT * FROM DL_PROFILE WHERE usuario = '$usuarioLogadoID'");
 
   if(mysql_num_rows($perfilCriado) > 0) {
   	header("Location: painel.php");
   } else {}
 
   // PEGA INFORMAÇÕES ===================================
-  $informacoesUsuario = mysql_query("SELECT 1 FROM DL_ADMIN_registered WHERE email = '$usuarioLogadoEmail'");
+  $informacoesUsuario = mysql_query("SELECT * FROM DL_ADMIN_registered WHERE email = '$usuarioLogadoEmail'");
   $nome;
   $cpf;
 

@@ -1,90 +1,5 @@
 <?php
-  require_once ("backend/seguranca.php");
-  protegePagina();
-
-  require_once("backend/conecta.php");
-  require_once("backend/executa.php");
-
-  // VARIAVEIS GLOBAIS ==================================
-  $usuarioLogadoID = $_SESSION['usuarioUserID'];
-  $usuarioLogadoEmail = $_SESSION['usuarioUserNome'];
-
-  // VALIDA PERFIL ======================================
-  $perfilCriado = mysql_query("SELECT * FROM DL_PROFILE WHERE usuario = '$usuarioLogadoID'");
-  $nome;
-  $foto;
-  $cpf;
-  $email;
-  $telefone;
-  $celular;
-  $fazenda;
-  $cnpj;
-  $endereco;
-  $latitude;
-  $longitude;
-  $cep;
-  $estado;
-  $uf;
-  $cidade;
-  $plantacoes;
-  $sobre;
-
-  if(mysql_num_rows($perfilCriado) > 0) {
-
-    while ($row=mysql_fetch_array($perfilCriado)) {
-      $nome=$row['nome'];
-      $foto=$row['foto'];
-      $cpf=$row['cpf'];
-      $email=$row['email'];
-	  $telefone=$row['telefone'];
-	  $celular=$row['celular'];
-	  $fazenda=$row['fazenda'];
-	  $cnpj=$row['cnpj'];
-	  $endereco=$row['endereco'];
-	  $latitude=$row['latitude'];
-	  $longitude=$row['longitude'];
-	  $cep=$row['cep'];
-	  $estado=$row['estado'];
-	  $cidade=$row['cidade'];
-	  $plantacoes=$row['plantacoes'];
-	  $sobre=$row['sobre'];
-
-      if($foto == null){ 
-        $foto = 'admin/assets/img/template/logo.gif'; 
-      } else {
-
-        $fotoId = explode('-', $foto);
-
-        $sqlPlantacaoimg = "SELECT * FROM DL_IMAGES WHERE id = '$fotoId[0]' order by id desc";
-        $resultPlantacaoimg = mysql_query($sqlPlantacaoimg);
-
-        while ($row=mysql_fetch_array($resultPlantacaoimg)) {
-          $foto = $row['caminho'] . $row['nome_imagem'];
-        }
-      }
-
-      if($sobre == null){
-      	$sobre = 'Não há nenhuma descrição cadastrada';
-      }
-
-      $sqlState = "SELECT * FROM DL_STATE WHERE id = '$estado' order by id asc";
-	  $resultState = mysql_query($sqlState);
-   	  while ($row=mysql_fetch_array($resultState)) {
-		  $uf=$row['uf'];
-	  }
-
-	  $sqlCity = "SELECT * FROM DL_CITY WHERE id = '$cidade' order by id asc";
-	  $resultCity = mysql_query($sqlCity);
-   	  while ($row=mysql_fetch_array($resultCity)) {
-		  $cidade=$row['cidade'];
-	  }
-
-    }
-
-  } else {
-  	header("Location: cadastroperfil.php");
-  }
-
+  require_once ("backend/header.php");
 ?><!DOCTYPE html>
 <html lang="pt_BR">
 <head>
@@ -186,7 +101,7 @@
 
 				<div class="l-row">
 					<header>
-						<h2>MEU PERFIL</h2>
+						<h2><?php if($produtor != null) { echo "PERFIL"; } else { echo "MEU PERFIL"; } ?></h2>
 					</header>
 					<img src="<?php echo $foto ?>" border="0" width="150" height="150" align="left" class="fotoperfil" />
 					<div id="perfil-content">

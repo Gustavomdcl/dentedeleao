@@ -16,7 +16,7 @@
     <p>Seu cadastro foi aprovado com sucesso!</p>
     <p>Para começar, acesse esse link para validar seu email:</p>
 	<p><a href="http://www.dentedeleao.agr.br/backend/envios/validaUsuario.php?usuario=' . $email . '&code=' . $senha . '" target="_blank">http://www.dentedeleao.agr.br/backend/envios/validaUsuario.php?usuario=' . $email . '&code=' . $senha . '</a></p>
-	<p>Qualquer dúvida, entre em contato: (011) 99973-5872</p>
+	<p>Qualquer dúvida, entre em contato: (011) 95603-8394</p>
     <br>
     <p>Dente de Leão. Cultive Ideias, Colha Conhecimento.</p>
 	<hr>');

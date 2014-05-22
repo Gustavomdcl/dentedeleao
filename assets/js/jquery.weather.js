@@ -62,13 +62,14 @@ if($('body').hasClass('index')) {} else {
 			var description = data.weather[0].description;
 
 			//$('#weather-desc').text(description);//<div id="weather-desc"></div>
-			$('#location').text(data.name);//local
+			//$('#location').text(data.name);//local
+			$('#location').text($('#browser_geo').data('cidade'));
 
 			$('#degreesCelsius .number').text(Math.round(tempCelcius));
 			$('#degreesCelsius .cel').text("°C ");
 			//$('#degreesFahrenheit').text(Math.round(tempFahrenheit) + "°F");//<div class="t" id="degreesFahrenheit"></div>
 			//cookies
-			var theWeather = 'clima-'+icon+'|'+Math.round(tempCelcius)+'|'+data.name;
+			var theWeather = 'clima-'+icon+'|'+Math.round(tempCelcius)+'|'+$('#browser_geo').data('cidade');
 			createCookie('ddlweather', theWeather,0.02);
 		});
 	   }

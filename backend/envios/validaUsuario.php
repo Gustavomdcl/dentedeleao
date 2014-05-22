@@ -35,7 +35,7 @@
 			    <p>Olá, ' . $nome . ' , tudo bem?</p>
 			    <p>Seu cadastro foi confirmado com sucesso!</p>
 			    <p>Para começar, acesse <a href="http://www.dentedeleao.agr.br" target="_blank">www.dentedeleao.agr.br</a> e insira seu usuário e senha!</p>
-				<p>Qualquer dúvida, entre em contato: (011) 99973-5872</p>
+				<p>Qualquer dúvida, entre em contato: (011) 95603-8394</p>
 			    <br>
 			    <p>Dente de Leão. Cultive Ideias, Colha Conhecimento.</p>
 				<hr>');

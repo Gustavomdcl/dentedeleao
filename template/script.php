@@ -14,6 +14,17 @@
 		window.location.assign("sair.php");
 	});
 	</script>
+	<!-- ckeditor http://ckeditor.com/license -->
+	<script src="assets/ckeditor/ckeditor.js"></script>
+	<script>
+
+		CKEDITOR.replace( 'ckeditor', {
+			fullPage: true,
+			allowedContent: true,
+			language: 'pt-br'
+		});
+
+	</script>
 	<!-- suiting -->
 	<script src="assets/min/jquery.suiting.min.js"></script><!-- GRUNT http://blog.henriquesilverio.com/javascript-e-jquery/grunt-js-automatize-tarefas-e-otimize-o-seu-workflow/ -->
 	<!-- mobile -->

@@ -1,4 +1,6 @@
-<!DOCTYPE html>
+<?php
+  require_once ("backend/header.php");
+?><!DOCTYPE html>
 <html lang="pt_BR">
 <head>
 

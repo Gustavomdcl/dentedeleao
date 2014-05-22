@@ -1,4 +1,6 @@
-<!DOCTYPE html>
+<?php
+  require_once ("backend/header.php");
+?><!DOCTYPE html>
 <html lang="pt_BR">
 <head>
 
@@ -47,25 +49,25 @@
 							<img src="" alt="nome do post" width="200" height="150" />
 							<p class="postnome">Nome da Postagem</p>
 							<a href="tag" title="Tag">Tag</a>
-							<a href="linkdapostagem.php" title="Saiba mais" class="bt-saibamais">Saiba mais</a>
+							<a href="duvida.php" title="Saiba mais" class="bt-saibamais">Saiba mais</a>
 						</li>
 						<li>
 							<img src="" alt="nome do post" width="200" height="150" />
 							<p class="postnome">Nome da Postagem</p>
 							<a href="tag" title="Tag">Tag</a>
-							<a href="linkdapostagem.php" title="Saiba mais" class="bt-saibamais">Saiba mais</a>
+							<a href="duvida.php" title="Saiba mais" class="bt-saibamais">Saiba mais</a>
 						</li>
 						<li>
 							<img src="" alt="nome do post" width="200" height="150" />
 							<p class="postnome">Nome da Postagem</p>
 							<a href="tag" title="Tag">Tag</a>
-							<a href="linkdapostagem.php" title="Saiba mais" class="bt-saibamais">Saiba mais</a>
+							<a href="duvida.php" title="Saiba mais" class="bt-saibamais">Saiba mais</a>
 						</li>
 						<li>
 							<img src="" alt="nome do post" width="200" height="150" />
 							<p class="postnome">Nome da Postagem</p>
 							<a href="tag" title="Tag">Tag</a>
-							<a href="linkdapostagem.php" title="Saiba mais" class="bt-saibamais">Saiba mais</a>
+							<a href="duvida.php" title="Saiba mais" class="bt-saibamais">Saiba mais</a>
 						</li>
 						
 					</ul><!-- .conteudoDuvidasResultado -->

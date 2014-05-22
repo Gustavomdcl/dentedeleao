@@ -33,7 +33,7 @@
 	    <p>Você está tentando alterar a sua senha, correto?</p>
 	    <p>Para continuar acesse <a href="http://www.dentedeleao.agr.br/alterar-senha.php?usuario=' . $usuarioAlterar . '&code=' . $senha . '" target="_blank">www.dentedeleao.agr.br/alterar-senha.php?usuario='.$usuarioAlterar.'&code=' . $senha . '</a> e insira sua nova senha!</p>
 	    <p>Se não, ignore essa mensagem. Houve uma solicitação para alterar a senha desse usuário.</p>
-		<p>Qualquer dúvida, entre em contato: (011) 99973-5872</p>
+		<p>Qualquer dúvida, entre em contato: (011) 95603-8394</p>
 	    <br>
 	    <p>Dente de Leão. Cultive Ideias, Colha Conhecimento.</p>
 		<hr>');

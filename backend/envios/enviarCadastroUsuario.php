@@ -48,7 +48,7 @@
 			    <p>Olá, ' . $nome . ' , tudo bem? Obrigado pelo cadastro!</p>
 			    <p>Para começar, acesse esse link para validar seu email:</p>
 				<p><a href="http://www.dentedeleao.agr.br/backend/envios/validaUsuario.php?usuario=' . $email . '&code=' . $senha . '" target="_blank">http://www.dentedeleao.agr.br/backend/envios/validaUsuario.php?usuario=' . $email . '&code=' . $senha . '</a></p>
-				<p>Qualquer dúvida, entre em contato: (011) 99973-5872</p>
+				<p>Qualquer dúvida, entre em contato: (011) 95603-8394</p>
 			    <br>
 			    <p>Dente de Leão. Cultive Ideias, Colha Conhecimento.</p>
 				<hr>');
@@ -66,7 +66,7 @@
 			    <p>Olá, ' . $nome . ', tudo bem? Obrigado pelo cadastro!</p>
 			    <p>Seu email está passando por um processo de validação, por favor aguarde.</p>
 			    <p>Assim que tudo estiver ok enviaremos um email.</p>
-			    <p>Qualquer dúvida, entre em contato: (011) 99973-5872</p>
+			    <p>Qualquer dúvida, entre em contato: (011) 95603-8394</p>
 			    <br>
 			    <p>Dente de Leão. Cultive Ideias, Colha Conhecimento.</p>
 				<hr>');
