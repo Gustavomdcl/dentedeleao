@@ -108,8 +108,8 @@
                 $MysqlDataSintaxe;
                 
                 if($value['data_fim']!=null){
-                  $deviceDataFim = $value['data_fim'];
-                  $MysqlDataSintaxe = "AND data LIKE '%$deviceDataFim%'";
+                  $deviceDataFim = $value['data_fim'] . "23:59:59";
+                  $MysqlDataSintaxe = "AND data <= '$deviceDataFim'";//LIKE '%$deviceDataFim%'
                 }
 
                 $sqlDeviceValue = "SELECT * FROM DL_DEVICE WHERE dispositivo = '$deviceCode' $MysqlDataSintaxe order by id desc limit 1";

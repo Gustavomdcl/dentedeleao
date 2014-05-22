@@ -132,6 +132,10 @@
 	</div><!-- #site -->
 	
 	<?php include 'template/script.php'; ?>
+	<!-- Enviar Interactions Cookies -->
+  	<script>
+  		createCookie('duvidaSituation', '',0);
+  	</script>
   	<script>
   		$('.scroll').jscroll();
   	</script>

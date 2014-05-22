@@ -45,21 +45,46 @@
 					
 					<h3>Cadastrar Dúvida</h3>
 					<p>Preencha os campos abaixo para publicar sua dúvida.</p>
-					<form>
-						<input type="text" name="titulopost" id="titulo" placeholder="Título" required><br>
+					<form id="enviarDuvida" method="post" action="backend/envios/enviarDuvida.php" enctype="multipart/form-data">
+						<input type="text" name="titulo" id="titulo" placeholder="Título" required><br>
 						<textarea id="ckeditor" rows="5" cols="60" name="conteudo" placeholder="Descrição" required></textarea>
+						<input type="hidden" name="perfil" id="perfil" value="<?php echo $usuarioLogadoID; ?>">
 						<p>Deseja marcar algum amigo em sua publicação? Digite as duas primeiras letras do nome e selecione.</p>
 						<div id="pessoas_container"></div><!-- #pessoas_container -->
 						<input type="hidden" name="pessoas" id="pessoas">
 						<input type="text" name="amigos" id="amigos"><br>
 						<p>Qual a data de início do problema?</p>
-						<input type="text" id="datepicker">
+						<input type="text" name="data" id="datepicker">
 						<p>A qual platação está relacionada a sua dúvida?</p>
+						<input type="hidden" name="deviceplantation" id="devicePlantation">
 						<span class="plantacoes">
-							<?php foreach ($plantacoesLista as $value) {  ?>
-								<label for="plantacao-<?php echo $value['id']; ?>"><img src="<?php echo $value['imagem']; ?>" alt="<?php echo $value['plantacao']; ?>" /><?php echo $value['plantacao']; ?></label>
-								<input type="checkbox" name="platacao[]" value="<?php echo $value['id']; ?>" id="plantacao-<?php echo $value['id']; ?>">
-							<?php }//foreach ?>
+							<?php
+								$sqlPlantacaoList = "SELECT * FROM DL_ADMIN_plantationList WHERE valido = '1' order by id desc";
+
+								$resultPlantacaoList = mysql_query($sqlPlantacaoList);
+
+							   	while ($row=mysql_fetch_array($resultPlantacaoList)) {
+							   		$id=$row['id'];
+									$plantacao=$row['plantacao'];
+									$imagem=$row['imagem'];
+
+									if($imagem == null){ 
+										$imagem = 'admin/assets/img/template/logo.gif'; 
+									} else { 
+
+										$imagemId = explode('-', $imagem);
+
+										$sqlPlantacaoimg = "SELECT * FROM DL_IMAGES WHERE id = '$imagemId[0]' order by id desc";
+										$resultPlantacaoimg = mysql_query($sqlPlantacaoimg);
+
+										while ($row=mysql_fetch_array($resultPlantacaoimg)) {
+											$imagem = $row['caminho'] . $row['nome_imagem'];
+										}
+									}
+							?>
+								<label for="plantacao-<?php echo $id ?>"><img src="<?php echo $imagem ?>" alt="<?php echo $plantacao ?>" /><?php echo $plantacao ?></label>
+								<input type="checkbox" name="plantacao[]" value="<?php echo $id ?>" id="plantacao-<?php echo $id ?>">
+							<?php }//while ?>
 						</span><!-- .plantacoes -->
 						<p>Deseja enviar fotos?</p>
 						<!--UL para upload das 5 fotos permitidas, peguei no airu e comentei-->
@@ -69,28 +94,7 @@
 								<div class="imageWrapper">
                                 	<img src="" alt="Ver imagem pequena" width="130" height="130">
                                 </div>
-                                <!--Clicar e visualizar a imagem no tamanho real-->
-                                <div class="previewButtonWrapper showFullImage" style="display: none;">
-                                <div>
-                                    <button type="button">Pré visualização</button>
-                                </div>
-                            	</div>
-                            	<!--Caso tenha subido a imagem errada, opção de excluir Só aparece depois que a imagem subiu-->
-                            	<a title="Excluir" style="display: none;" class="deleteImage" href="/"><span class="deleteIcon">X</span></a>
-                            	<!--Subir imagem-->
-                            	<div class="uploadImageHidden">
-	                                <form id="image_form_1">
-	                                	<!--<button type="button" class="addImageButton">Adicionar imagem</button>-->
-		                                <div class="fileUploadImage">
-		                                	<input type="file" name="image" style="" class="productImage" id="image_1">
-		                                </div>
-	                                	<input type="hidden" name="uploadImage" value="">
-		                                <div style="display: none;">
-		                                	<input type="hidden" name="" >
-		                                	<input type="hidden" name="" value="">
-		                                </div>
-                                	</form>
-                                </div>
+                                <input type="file" name="image[]" style="" class="productImage ignore" onchange="readURL(this);" accept="image/png, image/gif, image/bmp, image/jpeg, image/jpg" id="image_1">
                             </li><!-- #img_li_1 -->
 
                             <li id="img_li_2">
@@ -98,28 +102,7 @@
 								<div class="imageWrapper">
                                 	<img src="" alt="Ver imagem pequena" width="130" height="130">
                                 </div>
-                                <!--Clicar e visualizar a imagem no tamanho real-->
-                                <div class="previewButtonWrapper showFullImage" style="display: none;">
-                                <div>
-                                    <button type="button">Pré visualização</button>
-                                </div>
-                            	</div>
-                            	<!--Caso tenha subido a imagem errada, opção de excluir Só aparece depois que a imagem subiu-->
-                            	<a title="Excluir" style="display: none;" class="deleteImage" href="/"><span class="deleteIcon">X</span></a>
-                            	<!--Subir imagem-->
-                            	<div class="uploadImageHidden">
-	                                <form id="image_form_2">
-	                                	<!--<button type="button" class="addImageButton">Adicionar imagem</button>-->
-		                                <div class="fileUploadImage">
-		                                	<input type="file" name="image" style="" class="productImage" id="image_2">
-		                                </div>
-	                                	<input type="hidden" name="uploadImage" value="">
-		                                <div style="display: none;">
-		                                	<input type="hidden" name="" >
-		                                	<input type="hidden" name="" value="">
-		                                </div>
-                                	</form>
-                                </div>
+                                <input type="file" name="image[]" style="" class="productImage ignore" onchange="readURL(this);" accept="image/png, image/gif, image/bmp, image/jpeg, image/jpg" id="image_1">
                             </li><!-- #img_li_2 -->
 
                             <li id="img_li_3">
@@ -127,28 +110,7 @@
 								<div class="imageWrapper">
                                 	<img src="" alt="Ver imagem pequena" width="130" height="130">
                                 </div>
-                                <!--Clicar e visualizar a imagem no tamanho real-->
-                                <div class="previewButtonWrapper showFullImage" style="display: none;">
-                                <div>
-                                    <button type="button">Pré visualização</button>
-                                </div>
-                            	</div>
-                            	<!--Caso tenha subido a imagem errada, opção de excluir Só aparece depois que a imagem subiu-->
-                            	<a title="Excluir" style="display: none;" class="deleteImage" href="/"><span class="deleteIcon">X</span></a>
-                            	<!--Subir imagem-->
-                            	<div class="uploadImageHidden">
-	                                <form id="image_form_3">
-	                                	<!--<button type="button" class="addImageButton">Adicionar imagem</button>-->
-		                                <div class="fileUploadImage">
-		                                	<input type="file" name="image" style="" class="productImage" id="image_3">
-		                                </div>
-	                                	<input type="hidden" name="uploadImage" value="">
-		                                <div style="display: none;">
-		                                	<input type="hidden" name="" >
-		                                	<input type="hidden" name="" value="">
-		                                </div>
-                                	</form>
-                                </div>
+                                <input type="file" name="image[]" style="" class="productImage ignore" onchange="readURL(this);" accept="image/png, image/gif, image/bmp, image/jpeg, image/jpg" id="image_1">
                             </li><!-- #img_li_3 -->
 
                             <li id="img_li_4">
@@ -156,28 +118,7 @@
 								<div class="imageWrapper">
                                 	<img src="" alt="Ver imagem pequena" width="130" height="130">
                                 </div>
-                                <!--Clicar e visualizar a imagem no tamanho real-->
-                                <div class="previewButtonWrapper showFullImage" style="display: none;">
-                                <div>
-                                    <button type="button">Pré visualização</button>
-                                </div>
-                            	</div>
-                            	<!--Caso tenha subido a imagem errada, opção de excluir Só aparece depois que a imagem subiu-->
-                            	<a title="Excluir" style="display: none;" class="deleteImage" href="/"><span class="deleteIcon">X</span></a>
-                            	<!--Subir imagem-->
-                            	<div class="uploadImageHidden">
-	                                <form id="image_form_4">
-	                                	<!--<button type="button" class="addImageButton">Adicionar imagem</button>-->
-		                                <div class="fileUploadImage">
-		                                	<input type="file" name="image" style="" class="productImage" id="image_4">
-		                                </div>
-	                                	<input type="hidden" name="uploadImage" value="">
-		                                <div style="display: none;">
-		                                	<input type="hidden" name="" >
-		                                	<input type="hidden" name="" value="">
-		                                </div>
-                                	</form>
-                                </div>
+                                <input type="file" name="image[]" style="" class="productImage ignore" onchange="readURL(this);" accept="image/png, image/gif, image/bmp, image/jpeg, image/jpg" id="image_1">
                             </li><!-- #img_li_4 -->
 
                             <li id="img_li_5">
@@ -185,37 +126,12 @@
 								<div class="imageWrapper">
                                 	<img src="" alt="Ver imagem pequena" width="130" height="130">
                                 </div>
-                                <!--Clicar e visualizar a imagem no tamanho real-->
-                                <div class="previewButtonWrapper showFullImage" style="display: none;">
-                                <div>
-                                    <button type="button">Pré visualização</button>
-                                </div>
-                            	</div>
-                            	<!--Caso tenha subido a imagem errada, opção de excluir Só aparece depois que a imagem subiu-->
-                            	<a title="Excluir" style="display: none;" class="deleteImage" href="/"><span class="deleteIcon">X</span></a>
-                            	<!--Subir imagem-->
-                            	<div class="uploadImageHidden">
-	                                <form id="image_form_5">
-	                                	<!--<button type="button" class="addImageButton">Adicionar imagem</button>-->
-		                                <div class="fileUploadImage">
-		                                	<input type="file" name="image" style="" class="productImage" id="image_5">
-		                                </div>
-	                                	<input type="hidden" name="uploadImage" value="">
-		                                <div style="display: none;">
-		                                	<input type="hidden" name="" >
-		                                	<input type="hidden" name="" value="">
-		                                </div>
-                                	</form>
-                                </div>
+                                <input type="file" name="image[]" style="" class="productImage ignore" onchange="readURL(this);" accept="image/png, image/gif, image/bmp, image/jpeg, image/jpg" id="image_1">
                             </li><!-- #img_li_5 -->
 						</ul>
 						<p>E vídeo?</p>
 						<div id="uploadVideo">
-						  <input id="file" type="file" name="file"/>
-						  <div id="errMsg" style="display:none; color:red;">
-						    You need to specify a file.
-						  </div>
-						  <input type="hidden" name="token" value="TOKEN"/>
+						  <input id="file" type="file" name="video"/>
 						</div> <!-- #uploadVideo -->
 						<button type="submit">Publicar dúvida</button>
 					</form>
@@ -470,6 +386,24 @@
 		margin-right: -.3em;
 	}
 	</style>
+	<!-- cookies antigos sendo lidos -->
+	<script>
+  	if(readCookie('duvidaSituation')){
+  		var duvidaSituation = readCookie('duvidaSituation').split("|");
+  		if(duvidaSituation[0].indexOf("-") >= 0) {
+  			var duvidaSituationPlantation = duvidaSituation[0].split("-");
+  			$.each(duvidaSituationPlantation, function( index, value ) {
+			  $("#plantacao-"+value).attr('checked', true);
+			});
+  		} else {
+  			$("#plantacao-"+duvidaSituation[0]).attr('checked', true);
+  			$('#devicePlantation').val(duvidaSituation[0]);
+  		}
+  		if(duvidaSituation[1]!=""){
+  			$('#datepicker').val(duvidaSituation[1]);
+  		}
+  	}
+  	</script>
   	<script>
 	  $(function() {
 	    function split( val ) {

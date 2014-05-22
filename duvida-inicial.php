@@ -1,5 +1,8 @@
 <?php
-  require_once ("backend/header.php");
+	require_once ("backend/header.php");
+
+	// RESULTADO BUSCAS ======================================
+    $outrasPlantacoes 		=	$_POST['platacaoDevice'];
 ?><!DOCTYPE html>
 <html lang="pt_BR">
 <head>
@@ -44,14 +47,20 @@
 					</header>
 					<h3>Tenho uma dúvida sobre</h3>
 					<p>Notou algum problema em sua plantação ou está com dúvida sobre alguma cultura? Selecione uma opção abaixo e, caso a dúvida não esteja relacionada a nenhuma opção, selecione outra.</p>
-					<form method="post" action="duvida-resultado.php">
-						<input type="radio" name="platacao[]" value="Tomate">Tomate 
-						<input type="radio" name="platacao[]" value="Banana">Banana
-						<input type="radio" name="platacao[]" value="Batata">Batata
-					
-					<p>Quando você notou o problema referente a sua dúvida?</p>
-						<input type="text" id="datepicker" placeholder="Data">
-						<button type="submit">Buscar</button><!-- aqui deve direcionar para a duvida-resultado.php, que serão as dúvidas filtradas -->
+					<form id="duvidaSendSearch" method="post" action="duvida-resultado.php">
+						<?php
+						$sqlDispositivo = "SELECT * FROM DL_ADMIN_deviceuser WHERE usuario = '$idProfile' order by id desc";
+
+						$resultDispositivo = mysql_query($sqlDispositivo);
+						$deviceUserRow;
+						$devicePlantations;
+
+						if (mysql_num_rows($resultDispositivo) > 0 && $outrasPlantacoes == null) {
+							require_once ("backend/modules/duvidaDevice.php");
+						} else {
+							require_once ("backend/modules/duvidaNoDevice.php");
+						}
+						?>
 					</form>
 				</div><!-- .l-row -->
 
@@ -68,6 +77,60 @@
 	<?php include 'template/script.php'; ?>
   	<script src="assets/min/jquery.ui.min.js"></script>
   	<script src="//code.jquery.com/ui/1.10.4/jquery-ui.js"></script>
+  	<!-- Enviar Interactions Cookies -->
+  	<script>
+  	createCookie('duvidaSituation', '',0);
+  	$('#duvidaSendSearch').submit(function(e){
+		if ($(".devicePlantacao").length > 0){
+			$(".devicePlantacao").each(function(){
+				if($(this).is(':checked') && $(this).val() != "outra") {
+					var duvidaSituation = $(this).val() + '|' + $('#datepicker').val();
+					createCookie('duvidaSituation', duvidaSituation,100);
+				}
+			});
+		} else if ($(".nodevicePlantacao").length > 0){
+			var duvidaSituation;
+			var plantationCount = 0;
+			$(".nodevicePlantacao").each(function(e){
+				if($(this).is(':checked')) {
+					if(plantationCount==0){
+						duvidaSituation = $(this).val();
+					} else {
+						duvidaSituation = duvidaSituation + '-' + $(this).val();
+					}
+					plantationCount ++;
+				}
+			});
+			duvidaSituation = duvidaSituation + '|';
+			createCookie('duvidaSituation', duvidaSituation,100);
+		}
+		//e.preventDefault();
+  	});
+  	</script>
+  	<!-- Device Interactions -->
+  	<script>
+  	var primaryAction = $('#duvidaSendSearch').attr('action');
+  	$('.deviceData').hide();
+  	$('.devicePlantacao').change(function(){
+		if($(this).val()=="outra"){
+			$('#duvidaSendSearch').attr('action', 'duvida-inicial.php');
+			$('.deviceData').hide();
+			$('.deviceData').children('input').val('');
+			$('.sendDevice').removeAttr('disabled');
+		} else {
+			$('#duvidaSendSearch').attr('action', primaryAction);
+			$('.deviceData').show();
+			$('.sendDevice').attr('disabled', 'disabled');
+		}
+	});
+	$('#datepicker').change(function(){
+		if($(this).val()==""){
+			$('.sendDevice').attr('disabled', 'disabled');
+		} else {
+			$('.sendDevice').removeAttr('disabled');
+		}
+	});
+  	</script>
   	<script>
 	  $(function() {
 	    $("#datepicker").datepicker({
