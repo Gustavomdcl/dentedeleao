@@ -1,5 +1,12 @@
 <?php
   require_once ("backend/header.php");
+  // Id da Dúvida ======================================
+  $duvidaPost 		=	isset($_GET['numero']) ? $_GET['numero'] : null;
+  if($duvidaPost != null) {
+  	require_once ("backend/modules/duvidaPost.php");
+  } else {
+  	header("Location: duvidas.php");
+  }
 ?><!DOCTYPE html>
 <html lang="pt_BR">
 <head>
@@ -43,27 +50,49 @@
 						<h2>Minha Dúvida</h2>
 					</header>
 					
-					<h3>Nome da Postagem</h3>
-					<p>Por <a href="perfil.php" title="Nome da pessoa">Nome da pessoa</a> | <span>data da postagem</span> | <a href="" title="tag">Nome da categoria</a></p>
-					<p>Conteúdo da postagem  Nulla auctor malesuada nunc viverra faucibus. Nulla viverra commodo quam. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; </p>
-					<p>Já ouviram algo sobre? <b>Pessoa Marcada 1</b> <b>Pessoa marcada 2</b></p>
+					<h3><?php echo $tituloDuvida; ?></h3>
+					<p>Por <a href="perfil.php?produtor=<?php echo $idPerfilDuvida; ?>" title="<?php echo $perfilDuvida; ?>"><?php echo $perfilDuvida; ?></a> | <span><?php echo $dataDuvida; ?></span><?php if($plantacaoDuvida==''){} else { ?> | <?php foreach ($plantacaoDuvida as $plantacaoPart){ echo $plantacaoPart; } } ?></p>
+					<div class="conteudo">
+						<p><?php echo $textoDuvida; ?></p>
+					</div><!-- .conteudo -->
+					<?php if($tagDuvida==''){} else { ?>
+					<p>Já <?php if(count($tagDuvida)>1) { ?>ouviram<?php } else { ?>ouviu<?php } ?> algo sobre, 
+						<?php 
+						$pessoasCount = 0;
+						$pessoasTexto = '';
+						foreach ($tagDuvida as $tagPart){
+							$tagPart = explode("|",$tagPart);
+							if($pessoasCount==0){
+								$pessoasTexto = '';
+							} else if ($pessoasCount+1==count($tagDuvida)) {
+								$pessoasTexto = ' e ';
+							} else {
+								$pessoasTexto = ', ';
+							}
+						?><?php echo $pessoasTexto; ?><a href="perfil.php?produtor=<?php echo $tagPart[0]; ?>" title="<?php echo $tagPart[1]; ?>"><b><?php echo $tagPart[1]; ?></b></a><?php 
+							$pessoasCount = $pessoasCount + 1;
+						}//foreach 
+						?>?</p>
+					<?php }//else ?>
+
+					<?php if($imagemDuvida==''){} else { ?>
 					<hr />
-					<a class="galeria-imagens" rel="imagenspost" href="imagem-grande.jpg" title="Imagem 1"><img src="image_small_1.jpg" alt="Imagem 1" width="130" height="130"/></a>
-					<a class="galeria-imagens" rel="imagenspost" href="" title="Imagem 2"><img src="image_small_2.jpg" alt="Imagem 2" width="130" height="130"/></a>
-					<a class="galeria-imagens" rel="imagenspost" href="" title="Imagem 3"><img src="image_small_3.jpg" alt="Imagem 3" width="130" height="130"/></a>
-					<a class="galeria-imagens" rel="imagenspost" href="" title="Imagem 4"><img src="image_small_4.jpg" alt="Imagem 4" width="130" height="130"/></a>
-					<a class="galeria-imagens" rel="imagenspost" href="" title="Imagem 5"><img src="image_small_5.jpg" alt="Imagem 5" width="130" height="130"/></a>
+					<?php foreach ($imagemDuvida as $imagemPart){ ?>
+						<a class="galeria-imagens" rel="imagenspost" href="<?php echo $imagemPart; ?>"><img src="<?php echo $imagemPart; ?>" width="130" height="130"/></a>
+					<?php }//foreach ?>
+					<?php }//else ?>
+					<?php if($videoDuvida==''){} else { ?>
 					<hr />
 					<video width="480" height="360" controls>
 						Exibir video
-					  <!--<source src="movie.mp4" type="video/mp4">
-					  <source src="movie.ogg" type="video/ogg">-->
+					  <source src="<?php echo $videoDuvida; ?>" type="video/<?php echo $videoParts[1]; ?>">
 					
 					</video>
+					<?php }//else ?>
 					<hr />
 					<h3>Comentários</h3>
 					<form>
-						<textarea rows="4" cols="50" name="comment" > </textarea>
+						<textarea id="ckeditor" rows="4" cols="50" name="comment" > </textarea>
 						<button type="submit">Enviar Comentário</button>
 					</form>
 					<div id="comentario1" class="comentario">

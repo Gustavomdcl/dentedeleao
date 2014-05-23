@@ -94,7 +94,7 @@
 								<div class="imageWrapper">
                                 	<img src="" alt="Ver imagem pequena" width="130" height="130">
                                 </div>
-                                <input type="file" name="image[]" style="" class="productImage ignore" onchange="readURL(this);" accept="image/png, image/gif, image/bmp, image/jpeg, image/jpg" id="image_1">
+                                <input type="file" name="image[]" class="productImage ignore" onchange="readURL(this);" accept="image/png, image/gif, image/bmp, image/jpeg, image/jpg" id="image_1">
                             </li><!-- #img_li_1 -->
 
                             <li id="img_li_2">
@@ -102,7 +102,7 @@
 								<div class="imageWrapper">
                                 	<img src="" alt="Ver imagem pequena" width="130" height="130">
                                 </div>
-                                <input type="file" name="image[]" style="" class="productImage ignore" onchange="readURL(this);" accept="image/png, image/gif, image/bmp, image/jpeg, image/jpg" id="image_1">
+                                <input type="file" name="image[]" class="productImage ignore" onchange="readURL(this);" accept="image/png, image/gif, image/bmp, image/jpeg, image/jpg" id="image_1">
                             </li><!-- #img_li_2 -->
 
                             <li id="img_li_3">
@@ -110,7 +110,7 @@
 								<div class="imageWrapper">
                                 	<img src="" alt="Ver imagem pequena" width="130" height="130">
                                 </div>
-                                <input type="file" name="image[]" style="" class="productImage ignore" onchange="readURL(this);" accept="image/png, image/gif, image/bmp, image/jpeg, image/jpg" id="image_1">
+                                <input type="file" name="image[]" class="productImage ignore" onchange="readURL(this);" accept="image/png, image/gif, image/bmp, image/jpeg, image/jpg" id="image_1">
                             </li><!-- #img_li_3 -->
 
                             <li id="img_li_4">
@@ -118,7 +118,7 @@
 								<div class="imageWrapper">
                                 	<img src="" alt="Ver imagem pequena" width="130" height="130">
                                 </div>
-                                <input type="file" name="image[]" style="" class="productImage ignore" onchange="readURL(this);" accept="image/png, image/gif, image/bmp, image/jpeg, image/jpg" id="image_1">
+                                <input type="file" name="image[]" class="productImage ignore" onchange="readURL(this);" accept="image/png, image/gif, image/bmp, image/jpeg, image/jpg" id="image_1">
                             </li><!-- #img_li_4 -->
 
                             <li id="img_li_5">
@@ -126,12 +126,13 @@
 								<div class="imageWrapper">
                                 	<img src="" alt="Ver imagem pequena" width="130" height="130">
                                 </div>
-                                <input type="file" name="image[]" style="" class="productImage ignore" onchange="readURL(this);" accept="image/png, image/gif, image/bmp, image/jpeg, image/jpg" id="image_1">
+                                <input type="file" name="image[]" class="productImage ignore" onchange="readURL(this);" accept="image/png, image/gif, image/bmp, image/jpeg, image/jpg" id="image_1">
                             </li><!-- #img_li_5 -->
 						</ul>
-						<p>E vídeo?</p>
+						<p>E vídeo? (tamanho de até 20mb)</p>
 						<div id="uploadVideo">
-						  <input id="file" type="file" name="video"/>
+						  <input  accept="video/*" id="file_video" type="file" size="20" class="ignore" name="video[]"/>
+						  <p id="videoMensagem"></p>
 						</div> <!-- #uploadVideo -->
 						<button type="submit">Publicar dúvida</button>
 					</form>
@@ -397,6 +398,7 @@
 			});
   		} else {
   			$("#plantacao-"+duvidaSituation[0]).attr('checked', true);
+  			$("#plantacao-"+duvidaSituation[0]).attr('disabled', 'disabled');
   			$('#devicePlantation').val(duvidaSituation[0]);
   		}
   		if(duvidaSituation[1]!=""){
@@ -404,6 +406,32 @@
   		}
   	}
   	</script>
+  	<!-- tamanho arquivo -->
+  	<script>
+	$("#file_video").on("change", function (e) {
+
+	    var files = e.currentTarget.files; // puts all files into an array
+
+	    // call them as such files[0].size will get you the file size of the 0th file
+	    for (var x in files) {
+
+	        var filesize = ((files[x].size/1024)/1024).toFixed(4); // MB
+
+	        if (files[x].name != "item" && typeof files[x].name != "undefined") {
+	        	
+	        	if(filesize <= 20) {
+	        		//ok
+	        		$('#videoMensagem').text('Vídeo está dentro do limite de 20mb, ele possui: '+ filesize + 'mb');
+	        	} else {
+		        	$("#file_video").replaceWith($("#file_video").clone());
+		        	$('#videoMensagem').text('Vídeo excede o limite de 20mb, ele possui: '+ filesize + 'mb');
+		        }
+
+	        }
+	    }
+	});
+  	</script>
+  	<!-- busca para marcar pessoas -->
   	<script>
 	  $(function() {
 	    function split( val ) {
@@ -460,6 +488,18 @@
 			$('.pessoa-'+e).remove();
 		}
 	  </script>
+	<!-- Script do Input File imagem -->
+	<script>
+		function readURL(input){
+			if (input.files && input.files[0]){
+				var reader = new FileReader();
+				reader.onload = function (e) {
+	                $(input).parent('li').children('.imageWrapper').children('img').attr('src',e.target.result);
+				};
+				reader.readAsDataURL(input.files[0]);
+			}
+		}
+	</script>
   	<!-- datepieker -->
   	<script>
 	  $(function() {

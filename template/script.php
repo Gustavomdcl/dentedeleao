@@ -17,9 +17,8 @@
 	<!-- ckeditor http://ckeditor.com/license -->
 	<script src="assets/ckeditor/ckeditor.js"></script>
 	<script>
-
+	//http://www.aliaspooryorik.com/blog/index.cfm/e/posts.details/post/using-jquery-validate-plugin-with-ckeditor-396
 		CKEDITOR.replace( 'ckeditor', {
-			fullPage: true,
 			allowedContent: true,
 			language: 'pt-br'
 		});
