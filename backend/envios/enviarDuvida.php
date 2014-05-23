@@ -38,6 +38,15 @@
 
 	$imagens 			=	$_FILES['image'];
 	$nome_img			=	$imagens['name'];
+
+	for($i = 0; $i < count($nome_img); $i++){
+		if($nome_img[$i]==""){
+			unset($nome_img[$i]);
+			$nome_img = array_values($nome_img);
+			$i=0;
+		}
+	}
+
 	$tmps				=	$imagens['tmp_name'];
 	$types				=	$imagens['type'];
 	$error_img			=	$imagens['error'];
@@ -88,7 +97,7 @@
 				$nome_img[$i] = $nome_imgFinal . $increment . '.' . end($nameimg);
 
 				//SOBE NO SITE ===========
-
+				echo 'boss';
 				move_uploaded_file($tmps[$i], $uploadDir.$nome_img[$i]);
 				$insertimg = mysql_query("INSERT INTO DL_IMAGES(caminho, nome_imagem) VALUES('$dir', '$nome_img[$i]')");
 				$resultedimg = mysql_query($insertimg);	
