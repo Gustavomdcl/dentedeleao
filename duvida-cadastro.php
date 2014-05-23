@@ -398,7 +398,7 @@
 			});
   		} else {
   			$("#plantacao-"+duvidaSituation[0]).attr('checked', true);
-  			$("#plantacao-"+duvidaSituation[0]).attr('disabled', 'disabled');
+  			//$("#plantacao-"+duvidaSituation[0]).attr('disabled', 'disabled');
   			$('#devicePlantation').val(duvidaSituation[0]);
   		}
   		if(duvidaSituation[1]!=""){
