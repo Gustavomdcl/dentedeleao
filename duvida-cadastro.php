@@ -48,7 +48,7 @@
 					<form id="enviarDuvida" method="post" action="backend/envios/enviarDuvida.php" enctype="multipart/form-data">
 						<input type="text" name="titulo" id="titulo" placeholder="Título" required><br>
 						<textarea id="ckeditor" rows="5" cols="60" name="conteudo" placeholder="Descrição" required></textarea>
-						<input type="hidden" name="perfil" id="perfil" value="<?php echo $usuarioLogadoID; ?>">
+						<input type="hidden" name="perfil" id="perfil" value="<?php echo $profile_id; ?>">
 						<p>Deseja marcar algum amigo em sua publicação? Digite as duas primeiras letras do nome e selecione.</p>
 						<div id="pessoas_container"></div><!-- #pessoas_container -->
 						<input type="hidden" name="pessoas" id="pessoas">

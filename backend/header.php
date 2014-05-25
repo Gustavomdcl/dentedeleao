@@ -11,6 +11,7 @@
 
   // VALIDA PERFIL ======================================
   $perfilCriado = mysql_query("SELECT * FROM DL_PROFILE WHERE usuario = '$usuarioLogadoID'");
+  $profile_id;
   $nome;
   $foto;
   $idProfile;
@@ -34,6 +35,7 @@
   if(mysql_num_rows($perfilCriado) > 0) {
 
     while ($row=mysql_fetch_array($perfilCriado)) {
+      $profile_id=$row['id'];
       $nome=$row['nome'];
       $foto=$row['foto'];
       $idProfile=$row['id'];
