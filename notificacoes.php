@@ -42,48 +42,79 @@
 					<header>
 						<h2>Notificações</h2>
 					</header>
+
+					<?php
+
+			        $sqlNotificacaoNome = "SELECT * FROM DL_NOTIFICATION WHERE tomador = '$profile_id' order by id desc";
+			        $resultNotificacaoNome = mysql_query($sqlNotificacaoNome);
+
+			        if (mysql_num_rows($resultNotificacaoNome) > 0) {
+			          $id_notificacao;
+			          $prestador;
+			          $prestador_foto;
+			          $forum;
+			          $forum_nome;
+			          $tipo;
+
+			        ?>
 					
 					<h3>Dúvidas em que você foi marcado</h3>
 					
-					<ul id="conteudoNotificacoes" class="scroll">
+					<ul id="conteudoNotificacoes"><!-- class="scroll" pq essa class? -->
 						
-				            <li><img src="" alt="Pessoa" width="100" height="100" align="left" border="0" />
-				              <b>Nome da pessoa</b>
-				              <p>Nome da postagem</p>
-				              <a href="link" >Saiba mais</a>
-				            </li>
+			            <?php
+			            while ($row=mysql_fetch_array($resultNotificacaoNome)) {
+			              $id_notificacao = $row['id'];
+			              $prestador = $row['prestador'];
+			              $forum = $row['forum'];
+			              $tipo = $row['tipo'];
 
-				            <li><img src="" alt="Pessoa" width="100" height="100" align="left" border="0" />
-				              <b>Nome da pessoa</b>
-				              <p>Nome da postagem</p>
-				              <a href="link" >Saiba mais</a>
-				            </li>
+			              //Prestador Nome
+			              $sqlPrestadorNome = "SELECT `nome`, `foto` FROM DL_PROFILE WHERE id = '$prestador' order by id desc limit 1";
+			              $resultPrestadorNome = mysql_query($sqlPrestadorNome);
+			              while ($row=mysql_fetch_array($resultPrestadorNome)) {
+			                $prestador = $row['nome'];
+			                $prestador_foto = substr($row['foto'], 0, -1);
+			              }
+			              //Prestador Foto
+			              if($prestador_foto == '' || $prestador_foto == null) {
+			                $prestador_foto = 'admin/assets/img/template/logo.gif';
+			              } else {
+			                $sqlPrestadorFoto = "SELECT `caminho`, `nome_imagem` FROM DL_IMAGES WHERE id = '$prestador_foto' order by id desc limit 1";
+			                $resultPrestadorFoto = mysql_query($sqlPrestadorFoto);
+			                while ($row=mysql_fetch_array($resultPrestadorFoto)) {
+			                  $prestador_foto = $row['caminho'] . $row['nome_imagem'];
+			                }
+			              }
+			              //Fórum Nome
+			              $sqlForumNome = "SELECT `titulo` FROM DL_FORUM WHERE id = '$forum' order by id desc limit 1";
+			              $resultForumNome = mysql_query($sqlForumNome);
+			              while ($row=mysql_fetch_array($resultForumNome)) {
+			                $forum_nome = $row['titulo'];
+			              }
+			              //Marcação
+			              if ($tipo == '1') {
+			                $tipo = ' marcou você na dúvida:';
+			              } else if ($tipo == '0') {
+			                $tipo = ' comentou na sua dúvida:';
+			              }
+			            ?>
 
-				            <li><img src="" alt="Pessoa" width="100" height="100" align="left" border="0" />
-				              <b>Nome da pessoa</b>
-				              <p>Nome da postagem</p>
-				              <a href="link" >Saiba mais</a>
-				            </li>
+			            <li id="notification-<?php echo $id_notificacao; ?>"><img src="<?php echo $prestador_foto; ?>" alt="Pessoa" width="100" height="100" align="left" border="0" />
+			              <b><?php echo $prestador; echo $tipo; ?></b>
+			              <p><?php echo $forum_nome; ?></p>
+			              <a href="duvida.php?numero=<?php echo $forum; ?>" >Saiba mais</a>
+			            </li>
 
-				            <li><img src="" alt="Pessoa" width="100" height="100" align="left" border="0" />
-				              <b>Nome da pessoa</b>
-				              <p>Nome da postagem</p>
-				              <a href="link" >Saiba mais</a>
-				            </li>
-
-				            <li><img src="" alt="Pessoa" width="100" height="100" align="left" border="0" />
-				              <b>Nome da pessoa</b>
-				              <p>Nome da postagem</p>
-				              <a href="link" >Saiba mais</a>
-				            </li>
-
-				            <li><img src="" alt="Pessoa" width="100" height="100" align="left" border="0" />
-				              <b>Nome da pessoa</b>
-				              <p>Nome da postagem</p>
-				              <a href="link" >Saiba mais</a>
-				            </li>
+			            <?php }//while ?>
 				        
 					</ul> <!-- #conteudoNotificacoes -->
+
+					<?php } else { ?>
+
+					<h3>Ainda não há notificações</h3>
+
+					<?php }//else ?>
 					
 				</div><!-- .l-row -->
 

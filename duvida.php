@@ -91,18 +91,63 @@
 					<?php }//else ?>
 					<hr />
 					<h3>Comentários</h3>
-					<form>
+					<form id="enviarComentarioDuvida" method="post" action="backend/envios/enviarComentarioDuvida.php">
 						<textarea id="ckeditor" rows="4" cols="50" name="comment" > </textarea>
+						<input type="hidden" name="duvida" value="<?php echo $duvidaPost; ?>">
+						<input type="hidden" name="perfil" value="<?php echo $profile_id; ?>">
+						<input type="hidden" name="dono" value="<?php echo $idPerfilDuvida; ?>">
 						<button type="submit">Enviar Comentário</button>
 					</form>
-					<div id="comentario1" class="comentario">
-						<p class="titulo"><b>Nome da pessoa</b> | data | horário </p>
-						<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla auctor malesuada nunc viverra faucibus. Nulla viverra commodo quam. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Nullam posuere lorem ipsum, at varius eros condimentum ac. Aenean eget elit vitae lacus tempus pretium. Integer vitae libero magna. Aenean sit amet ligula at dui tristique mattis. Suspendisse cursus rhoncus sem, eget fermentum ante hendrerit vel.</p>
-					</div><!-- #comentario1-->
-					<div id="comentario2" class="comentario">
-						<p class="titulo"><b>Nome da pessoa</b> | data | horário </p>
-						<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla auctor malesuada nunc viverra faucibus. Nulla viverra commodo quam. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Nullam posuere lorem ipsum, at varius eros condimentum ac. </p>
-					</div><!-- #comentario2-->
+					<?php
+
+			          $sqlCommentsDuvida = "SELECT * FROM DL_FORUM_coments WHERE forum = '$duvidaPost' order by id desc";
+			          $resultCommentsDuvida = mysql_query($sqlCommentsDuvida);
+
+			          if (mysql_num_rows($resultCommentsDuvida) > 0) {
+			            $perfilCommentId;
+			            $perfilCommentNome;
+			            $textoComment;
+			            $dataComment;
+			            $commentCount = 1;
+
+			            while ($row=mysql_fetch_array($resultCommentsDuvida)) {
+			              $perfilCommentId = $row['perfil'];
+			              $textoComment = $row['texto'];
+			              $dataComment = $row['data'];
+
+			              //DATA ===============
+					      $dataCommentPartes          =   explode(" ", $dataComment);
+					      $dataCommentUnidades        =   explode("-", $dataCommentPartes[0]);
+					      if ($dataCommentUnidades[1]=='01'){ $dataCommentUnidades[1] = 'Janeiro'; }
+					      else if ($dataCommentUnidades[1]=='02'){ $dataCommentUnidades[1] = 'Fevereiro'; }
+					      else if ($dataCommentUnidades[1]=='03'){ $dataCommentUnidades[1] = 'Março'; }
+					      else if ($dataCommentUnidades[1]=='04'){ $dataCommentUnidades[1] = 'Abril'; }
+					      else if ($dataCommentUnidades[1]=='05'){ $dataCommentUnidades[1] = 'Maio'; }
+					      else if ($dataCommentUnidades[1]=='06'){ $dataCommentUnidades[1] = 'Junho'; }
+					      else if ($dataCommentUnidades[1]=='07'){ $dataCommentUnidades[1] = 'Julho'; }
+					      else if ($dataCommentUnidades[1]=='08'){ $dataCommentUnidades[1] = 'Agosto'; }
+					      else if ($dataCommentUnidades[1]=='09'){ $dataCommentUnidades[1] = 'Setembro'; }
+					      else if ($dataCommentUnidades[1]=='10'){ $dataCommentUnidades[1] = 'Outubro'; }
+					      else if ($dataCommentUnidades[1]=='11'){ $dataCommentUnidades[1] = 'Novembro'; }
+					      else if ($dataCommentUnidades[1]=='12'){ $dataCommentUnidades[1] = 'Dezembro'; }
+					      $dataComment          =   $dataCommentUnidades[2] . ' de ' . $dataCommentUnidades[1] . ' de ' . $dataCommentUnidades[0];
+
+					      //PERFIL ===============
+					      $sqlProfileComment = mysql_query("SELECT `nome` FROM DL_PROFILE WHERE id = '$perfilCommentId' limit 1");
+					      while ($row=mysql_fetch_array($sqlProfileComment)) {
+					          $perfilCommentNome       =   $row['nome'];
+					      }
+		            ?>
+					<div id="comentario<?php echo $commentCount; ?>" class="comentario">
+						<p class="titulo"><b><a href="perfil.php?produtor=<?php echo $perfilCommentId; ?>"><?php echo $perfilCommentNome; ?></b> | <?php echo $dataComment; ?></p>
+						<div class="contetComment"><?php echo $textoComment; ?></div><!-- .contetComment -->
+					</div><!-- #comentario -->
+					<?php $commentCount = $commentCount + 1; }//while ?>
+					<?php } else { ?>
+					<div id="comentario0" class="comentario">
+						<p>Ninguém comentou essa dúvida. Seja o primeiro!</p>
+					</div><!-- #comentario0-->
+					<?php }//else ?>
 				</div><!-- .l-row -->
 
 			</div><!-- .l-container.cf -->

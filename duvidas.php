@@ -48,64 +48,88 @@
 					</form><!-- barra de busca -->
 
 					<h3>Dúvidas Recentes</h3>
+
+					<?php
+
+			          $sqlDuvidaPosts = "SELECT * FROM DL_FORUM order by id desc limit 3";
+			          $resultDuvidaPosts = mysql_query($sqlDuvidaPosts);
+
+			          if (mysql_num_rows($resultDuvidaPosts) > 0) {
+			            $id_duvida;
+			            $titulo;
+			            $plantacao;
+			            $imagem_duvida;
+
+			        ?>
 					
 					<ul id="conteudoDuvidas">
-						<li>
-							<img src="" alt="nome do post" width="200" height="150" />
-							<p class="postnome">Nome da Postagem</p>
-							<a href="tag" title="Tag">Tag</a>
-							<a href="duvida.php" title="Saiba mais" class="bt-saibamais">Saiba mais</a>
-						</li>
-						<li>
-							<img src="" alt="nome do post" width="200" height="150" />
-							<p class="postnome">Nome da Postagem</p>
-							<a href="tag" title="Tag">Tag</a>
-							<a href="duvida.php" title="Saiba mais" class="bt-saibamais">Saiba mais</a>
-						</li>
-						<li>
-							<img src="" alt="nome do post" width="200" height="150" />
-							<p class="postnome">Nome da Postagem</p>
-							<a href="tag" title="Tag">Tag</a>
-							<a href="duvida.php" title="Saiba mais" class="bt-saibamais">Saiba mais</a>
-						</li>
-						<li>
-							<img src="" alt="nome do post" width="200" height="150" />
-							<p class="postnome">Nome da Postagem</p>
-							<a href="tag" title="Tag">Tag</a>
-							<a href="duvida.php" title="Saiba mais" class="bt-saibamais">Saiba mais</a>
-						</li>
-						<li>
-							<img src="" alt="nome do post" width="200" height="150" />
-							<p class="postnome">Nome da Postagem</p>
-							<a href="tag" title="Tag">Tag</a>
-							<a href="duvida.php" title="Saiba mais" class="bt-saibamais">Saiba mais</a>
-						</li>
-						<li>
-							<img src="" alt="nome do post" width="200" height="150" />
-							<p class="postnome">Nome da Postagem</p>
-							<a href="tag" title="Tag">Tag</a>
-							<a href="duvida.php" title="Saiba mais" class="bt-saibamais">Saiba mais</a>
-						</li>
-						<li>
-							<img src="" alt="nome do post" width="200" height="150" />
-							<p class="postnome">Nome da Postagem</p>
-							<a href="tag" title="Tag">Tag</a>
-							<a href="duvida.php" title="Saiba mais" class="bt-saibamais">Saiba mais</a>
-						</li>
-						<li>
-							<img src="" alt="nome do post" width="200" height="150" />
-							<p class="postnome">Nome da Postagem</p>
-							<a href="tag" title="Tag">Tag</a>
-							<a href="duvida.php" title="Saiba mais" class="bt-saibamais">Saiba mais</a>
-						</li>
-						<li>
-							<img src="" alt="nome do post" width="200" height="150" />
-							<p class="postnome">Nome da Postagem</p>
-							<a href="tag" title="Tag">Tag</a>
-							<a href="duvida.php" title="Saiba mais" class="bt-saibamais">Saiba mais</a>
-						</li>
+
+						<?php
+			            while ($row=mysql_fetch_array($resultDuvidaPosts)) {
+			              $id_duvida = $row['id'];
+			              $titulo = $row['titulo'];
+			              $plantacaoDuvida = $row['plantacao'];
+			              $imagem_duvida = $row['imagem'];
+
+			              //PLANTAÇÃO ===============
+			              if($plantacaoDuvida==''){} else {
+			                  $plantacaoDuvida     =   explode("/", $plantacaoDuvida);
+			                  $plantacaoCount      =   0;
+			                  foreach ($plantacaoDuvida as $plantacaoUnidade) {
+			                      $sqlPlantacoesCategorias = mysql_query("SELECT `plantacao` FROM DL_ADMIN_plantationList WHERE id = '$plantacaoDuvida[$plantacaoCount]'");
+			                      while ($row=mysql_fetch_array($sqlPlantacoesCategorias)) {
+			                          $plantacaoNome       =   $row['plantacao'];
+			                          if($plantacaoCount==0){
+			                              $plantacaoDuvida[$plantacaoCount] = $plantacaoNome;
+			                          } else {
+			                              if($plantacaoCount+1==count($plantacaoDuvida)){
+			                                  $plantacaoDuvida[$plantacaoCount] = ' e ' . $plantacaoNome;
+			                              } else {
+			                                  $plantacaoDuvida[$plantacaoCount] = ', ' . $plantacaoNome;
+			                              }
+			                          }
+			                      }
+			                      $plantacaoCount  =   $plantacaoCount + 1;
+			                  }
+			              }
+			              //Prestador Foto
+			              if($imagem_duvida == '' || $imagem_duvida == null) {
+			                $imagem_duvida[0] = 'admin/assets/img/template/logo.gif';
+			              } else {
+			                $imagem_duvida     =   $imagem_duvida . '-';
+			                $imagem_duvida     =   explode("-", $imagem_duvida);
+			                $sqlDuvidaFoto = "SELECT `caminho`, `nome_imagem` FROM DL_IMAGES WHERE id = '$imagem_duvida[0]' order by id desc limit 1";
+			                $resultDuvidaFoto = mysql_query($sqlDuvidaFoto);
+			                while ($row=mysql_fetch_array($resultDuvidaFoto)) {
+			                  $imagem_duvida[0] = $row['caminho'] . $row['nome_imagem'];
+			                }
+			              } 
+			            ?>
+						 <li>
+			              <img src="<?php echo $imagem_duvida[0]; ?>" alt="nome do post" width="200" height="150" />
+			              <p class="postnome"><?php echo $titulo; ?></p>
+			              <?php 
+			              if($plantacaoDuvida==''){} else {
+			                echo '<a title="Tag">';
+			                foreach ($plantacaoDuvida as $plantacaoPart){ 
+			                  echo $plantacaoPart; 
+			                } 
+			                echo '</a>';
+			              } 
+			              ?>
+			              <a href="duvida.php?numero=<?php echo $id_duvida; ?>" title="Saiba mais" class="bt-saibamais">Saiba mais</a>
+			            </li>
+
+						<?php }//while ?>
 						
 					</ul> <!-- #conteudoDuvidas -->
+
+					<?php } else { ?>
+
+			        <p>Ainda não há dúvidas cadastradas</p>
+
+			        <?php }//else ?>
+
 					<div id="paginacao">
 						<ul>
 							<li>1</li>
