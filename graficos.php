@@ -160,7 +160,7 @@
               $deviceNumberName = $value['dispositivo'];
               $data_inicio = $value['data_inicio'];//00:00:00
               $data_fim = $deviceDataFim . "23:59:59";
-              $sqlDispositivoBeta = "SELECT * FROM DL_DEVICE WHERE data BETWEEN '$data_inicio' and '$data_fim' AND dispositivo = '$deviceNumberName' order by id asc";
+              $sqlDispositivoBeta = "SELECT * FROM DL_DEVICE WHERE data BETWEEN '$data_inicio' and '$data_fim' AND dispositivo = '$deviceNumberName' order by id asc limit 2002";
               $resultDispositivoBeta = mysql_query($sqlDispositivoBeta);
               while ($row=mysql_fetch_array($resultDispositivoBeta)) {
           ?>

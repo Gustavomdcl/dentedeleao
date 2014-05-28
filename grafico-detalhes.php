@@ -101,23 +101,29 @@
           <div id="plantacao-<?php echo $plantacaoId; ?>" class="target" data-plantacao="<?php echo $plantacaoId; ?>">
             <h3>Chuva</h3>
             <div id="chuva-<?php echo $plantacaoId; ?>">
-              <div id="chart" style='width: 735px; height: 300px;'></div>
-              <div id="control" style='width: 735px; height: 50px;'></div>
+              <div id="chart-chuva" style='width: 735px; height: 300px;'></div>
+              <div id="control-chuva" style='width: 735px; height: 50px;'></div>
             </div>
 
           <hr style="clear:both" />
             <h3>Umidade</h3>
             <div id="umidade-<?php echo $plantacaoId; ?>" style="width: 735px; height: 350px;">
+              <div id="chart-umidade" style='width: 735px; height: 300px;'></div>
+              <div id="control-umidade" style='width: 735px; height: 50px;'></div>
             </div>
 
           <hr style="clear:both" />
             <h3>Umidade do Solo</h3>
             <div id="umidade_do_solo-<?php echo $plantacaoId; ?>" style="width: 735px; height: 350px;">
+              <div id="chart-umidade_do_solo" style='width: 735px; height: 300px;'></div>
+              <div id="control-umidade_do_solo" style='width: 735px; height: 50px;'></div>
             </div>
 
           <hr style="clear:both" />
             <h3>Temperatura</h3>
             <div id="temperatura-<?php echo $plantacaoId; ?>" style="width: 735px; height: 350px;">
+              <div id="chart-temperatura" style='width: 735px; height: 300px;'></div>
+              <div id="control-temperatura" style='width: 735px; height: 50px;'></div>
             </div>
 
           <div class="values-container">
@@ -168,19 +174,27 @@
       function drawChart() {
         jQuery(".target").each(function(e){
 
-          var chartChuva = new google.visualization.Dashboard(document.getElementById('chuva-' + jQuery(this).data('plantacao')));
+          var dateFormatter = new google.visualization.DateFormat({pattern: "dd/MM/yyyy 'às' HH:mm"});
+          var anoFinal = []; var mesFinal = []; var diaFinal = []; var horaFinal = []; var minutoFinal = []; var segundoFinal = [];
 
-          var anoFinal = [];
-          var mesFinal = [];
-          var diaFinal = [];
-          var horaFinal = [];
-          var minutoFinal = [];
-          var segundoFinal = [];
+          var chartChuva = new google.visualization.Dashboard(document.getElementById('chuva-' + jQuery(this).data('plantacao')));
+          var chartUmidade = new google.visualization.Dashboard(document.getElementById('umidade-' + jQuery(this).data('plantacao')));
+          var chartUmidadeDoSolo = new google.visualization.Dashboard(document.getElementById('umidade_do_solo-' + jQuery(this).data('plantacao')));
+          var chartTemperatura = new google.visualization.Dashboard(document.getElementById('temperatura-' + jQuery(this).data('plantacao')));
 
           var valueChuva = new google.visualization.DataTable();
+          var valueUmidade = new google.visualization.DataTable();
+          var valueUmidadeDoSolo = new google.visualization.DataTable();
+          var valueTemperatura = new google.visualization.DataTable();
 
-          valueChuva.addColumn('datetime', 'Date');
+          valueChuva.addColumn('datetime', 'Data');
           valueChuva.addColumn('number', 'Mililitros');
+          valueUmidade.addColumn('datetime', 'Data');
+          valueUmidade.addColumn('number', 'Mililitros');
+          valueUmidadeDoSolo.addColumn('datetime', 'Data');
+          valueUmidadeDoSolo.addColumn('number', 'Mililitros');
+          valueTemperatura.addColumn('datetime', 'Data');
+          valueTemperatura.addColumn('number', 'Celsius');
 
           jQuery(".value-" + jQuery(this).data('plantacao')).each(function(f){
 
@@ -192,46 +206,186 @@
             var minuto = valueSecond[1];
             var segundos = valueSecond[2];
 
-            anoFinal.push(ano);
-            mesFinal.push(mes);
-            diaFinal.push(dia);
-            horaFinal.push(hora);
-            minutoFinal.push(minuto);
-            segundoFinal.push(segundos);
-
+            anoFinal.push(ano); mesFinal.push(mes); diaFinal.push(dia); horaFinal.push(hora); minutoFinal.push(minuto); segundoFinal.push(segundos);
             var dateUnidade = new Date(ano, mes, dia, hora, minuto, segundos);
 
-            valueChuva.addRow([dateUnidade,  Number(jQuery(this).data('umidade'))]);           
+            valueChuva.addRow([dateUnidade,  Number(jQuery(this).data('chuva'))]);
+            valueUmidade.addRow([dateUnidade,  Number(jQuery(this).data('umidade'))]);
+            valueUmidadeDoSolo.addRow([dateUnidade,  Number(jQuery(this).data('umidadedosolo'))]);
+            valueTemperatura.addRow([dateUnidade,  Number(jQuery(this).data('temperatura'))]);
           });
 
-          var control = new google.visualization.ControlWrapper({
-           'controlType': 'ChartRangeFilter',
-           'containerId': 'control',
+          dateFormatter.format(valueChuva, 0);
+          dateFormatter.format(valueUmidade, 0);
+          dateFormatter.format(valueUmidadeDoSolo, 0);
+          dateFormatter.format(valueTemperatura, 0);
+
+          var control_chuva = new google.visualization.ControlWrapper({
+           'controlType': 'ChartRangeFilter',//DateRangeFilter
+           'containerId': 'control-chuva',
            'options': {
              // Filter by the date axis.
              'filterColumnIndex': 0,
              'ui': {
                'chartType': 'LineChart',
                'chartOptions': {
-                 'chartArea': {'width': '90%'},
+                 'chartArea': {'width': '95%'},
+                 'hAxis': {'baselineColor': 'none'},
+               },
+               // Display a single series that shows the closing value of the stock.
+               // Thus, this view has two columns: the date (axis) and the stock value (line series).
+               'chartView': {
+                 'columns': [0, 1],
+               }
+               // 1 day in milliseconds = 24 * 60 * 60 * 1000 = 86,400,000
+               //'minRangeSize': 86400000
+             }
+           },
+           // Initial range: 2012-02-09 to 2012-03-20.
+           'state': {'range': {'start': new Date(anoFinal[0], mesFinal[0], diaFinal[0], horaFinal[0], minutoFinal[0], segundoFinal[0]), 'end': new Date(anoFinal[anoFinal.length-1], mesFinal[mesFinal.length-1], diaFinal[diaFinal.length-1], horaFinal[horaFinal.length-1], minutoFinal[minutoFinal.length-1], segundoFinal[segundoFinal.length-1])}}
+         });
+
+        var control_umidade = new google.visualization.ControlWrapper({
+           'controlType': 'ChartRangeFilter',//DateRangeFilter
+           'containerId': 'control-umidade',
+           'options': {
+             // Filter by the date axis.
+             'filterColumnIndex': 0,
+             'ui': {
+               'chartType': 'LineChart',
+               'chartOptions': {
+                 'chartArea': {'width': '95%'},
                  'hAxis': {'baselineColor': 'none'}
                },
                // Display a single series that shows the closing value of the stock.
                // Thus, this view has two columns: the date (axis) and the stock value (line series).
                'chartView': {
-                 'columns': [0, 1]
-               },
+                 'columns': [0, 1],
+               }
                // 1 day in milliseconds = 24 * 60 * 60 * 1000 = 86,400,000
-               'minRangeSize': 86400000
+               //'minRangeSize': 86400000
+             }
+           },
+           // Initial range: 2012-02-09 to 2012-03-20.
+           'state': {'range': {'start': new Date(anoFinal[0], mesFinal[0], diaFinal[0], horaFinal[0], minutoFinal[0], segundoFinal[0]), 'end': new Date(anoFinal[anoFinal.length-1], mesFinal[mesFinal.length-1], diaFinal[diaFinal.length-1], horaFinal[horaFinal.length-1], minutoFinal[minutoFinal.length-1], segundoFinal[segundoFinal.length-1])}}
+         });
+
+        var control_umidade_do_solo = new google.visualization.ControlWrapper({
+           'controlType': 'ChartRangeFilter',//DateRangeFilter
+           'containerId': 'control-umidade_do_solo',
+           'options': {
+             // Filter by the date axis.
+             'filterColumnIndex': 0,
+             'ui': {
+               'chartType': 'LineChart',
+               'chartOptions': {
+                 'chartArea': {'width': '95%'},
+                 'hAxis': {'baselineColor': 'none'}
+               },
+               // Display a single series that shows the closing value of the stock.
+               // Thus, this view has two columns: the date (axis) and the stock value (line series).
+               'chartView': {
+                 'columns': [0, 1],
+               }
+               // 1 day in milliseconds = 24 * 60 * 60 * 1000 = 86,400,000
+               //'minRangeSize': 86400000
+             }
+           },
+           // Initial range: 2012-02-09 to 2012-03-20.
+           'state': {'range': {'start': new Date(anoFinal[0], mesFinal[0], diaFinal[0], horaFinal[0], minutoFinal[0], segundoFinal[0]), 'end': new Date(anoFinal[anoFinal.length-1], mesFinal[mesFinal.length-1], diaFinal[diaFinal.length-1], horaFinal[horaFinal.length-1], minutoFinal[minutoFinal.length-1], segundoFinal[segundoFinal.length-1])}}
+         });
+
+        var control_temperatura = new google.visualization.ControlWrapper({
+           'controlType': 'ChartRangeFilter',//DateRangeFilter
+           'containerId': 'control-temperatura',
+           'options': {
+             // Filter by the date axis.
+             'filterColumnIndex': 0,
+             'ui': {
+               'chartType': 'LineChart',
+               'chartOptions': {
+                 'chartArea': {'width': '95%'},
+                 'hAxis': {'baselineColor': 'none'}
+               },
+               // Display a single series that shows the closing value of the stock.
+               // Thus, this view has two columns: the date (axis) and the stock value (line series).
+               'chartView': {
+                 'columns': [0, 1],
+               }
+               // 1 day in milliseconds = 24 * 60 * 60 * 1000 = 86,400,000
+               //'minRangeSize': 86400000
              }
            },
            // Initial range: 2012-02-09 to 2012-03-20.
            'state': {'range': {'start': new Date(anoFinal[0], mesFinal[0], diaFinal[0], horaFinal[0], minutoFinal[0], segundoFinal[0]), 'end': new Date(anoFinal[anoFinal.length-1], mesFinal[mesFinal.length-1], diaFinal[diaFinal.length-1], horaFinal[horaFinal.length-1], minutoFinal[minutoFinal.length-1], segundoFinal[segundoFinal.length-1])}}
          });
       
-         var chart = new google.visualization.ChartWrapper({
+         var chart_chuva = new google.visualization.ChartWrapper({
            'chartType': 'LineChart',
-           'containerId': 'chart',
+           'containerId': 'chart-chuva',
+           'options': {
+             // Use the same chart area width as the control for axis alignment.
+             'chartArea': {'height': '80%', 'width': '90%'},
+             'hAxis': {'slantedText': false},
+             'legend': {'position': 'none'}
+           },
+           // Convert the first column from 'date' to 'string'.
+           'view': {
+             'columns': [
+               {
+                 'calc': function(dataTable, rowIndex) {
+                   return dataTable.getFormattedValue(rowIndex, 0);
+                 },
+                 'type': 'string'
+               }, 1]
+           }
+         });
+
+         var chart_umidade = new google.visualization.ChartWrapper({
+           'chartType': 'LineChart',
+           'containerId': 'chart-umidade',
+           'options': {
+             // Use the same chart area width as the control for axis alignment.
+             'chartArea': {'height': '80%', 'width': '90%'},
+             'hAxis': {'slantedText': false},
+             'legend': {'position': 'none'}
+           },
+           // Convert the first column from 'date' to 'string'.
+           'view': {
+             'columns': [
+               {
+                 'calc': function(dataTable, rowIndex) {
+                   return dataTable.getFormattedValue(rowIndex, 0);
+                 },
+                 'type': 'string'
+               }, 1]
+           }
+         });
+
+         var chart_umidade_do_solo = new google.visualization.ChartWrapper({
+           'chartType': 'LineChart',
+           'containerId': 'chart-umidade_do_solo',
+           'options': {
+             // Use the same chart area width as the control for axis alignment.
+             'chartArea': {'height': '80%', 'width': '90%'},
+             'hAxis': {'slantedText': false},
+             'legend': {'position': 'none'}
+           },
+           // Convert the first column from 'date' to 'string'.
+           'view': {
+             'columns': [
+               {
+                 'calc': function(dataTable, rowIndex) {
+                   return dataTable.getFormattedValue(rowIndex, 0);
+                 },
+                 'type': 'string'
+               }, 1]
+           }
+         });
+
+         var chart_temperatura = new google.visualization.ChartWrapper({
+           'chartType': 'LineChart',
+           'containerId': 'chart-temperatura',
            'options': {
              // Use the same chart area width as the control for axis alignment.
              'chartArea': {'height': '80%', 'width': '90%'},
@@ -254,10 +408,15 @@
             title: jQuery(this).data('nome')
           };
 
-          chartChuva.bind(control, chart);
-
+          chartChuva.bind(control_chuva, chart_chuva);
+          chartUmidade.bind(control_umidade, chart_umidade);
+          chartUmidadeDoSolo.bind(control_umidade_do_solo, chart_umidade_do_solo);
+          chartTemperatura.bind(control_temperatura, chart_temperatura);
 
           chartChuva.draw(valueChuva, options);
+          chartUmidade.draw(valueUmidade, options);
+          chartUmidadeDoSolo.draw(valueUmidadeDoSolo, options);
+          chartTemperatura.draw(valueTemperatura, options);
 
         });
       }
