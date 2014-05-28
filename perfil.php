@@ -113,7 +113,7 @@
 						<p><span>E-mail</span> <?php echo $email; ?></p>
 						<p><span>Sobre</span></p>
 						<p><?php echo $sobre; ?></p>
-						
+							
 						<p><span>Localização</span></p>
 						<div id="map-canvas" style="width:100%;height:500px;"></div><!-- div#map-canvas -->
 						<!-- Unidade de Local -->

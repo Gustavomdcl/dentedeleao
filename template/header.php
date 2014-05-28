@@ -64,7 +64,7 @@
 					<h1><img src="assets/img/template/dente-de-leao-logo.png" border="0" width="200" height="123" /></h1>
 					<h2>Cultive Ideias. Colha conhecimento.</h2>
 					<hr />
-					<p><img src="<?php echo $foto ?>" alt="icone" width="38" height="38" border="0" /> <?php echo $nome ?> <img src="" alt="editar perfil" width="20" height="20" /><br>
+					<p><img src="<?php echo $foto ?>" alt="icone" width="38" height="38" border="0" /> <?php echo $nome ?> <a href="editar-perfil.php"><img src="" alt="editar perfil" width="20" height="20" /></a><br>
 					<div id="all-weather">
 		                <div id="browser_geo" data-cidade="<?php echo $cidade ?>" data-latitude="<?php echo $latitude ?>" data-longitude="<?php echo $longitude ?>"></div><!-- Localizar -->
 		                <div id="location"></div>
