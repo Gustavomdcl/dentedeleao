@@ -17,6 +17,7 @@
             <!-- Suas Plantações -->
             <div class="deviceData">
                 <p>Quando você notou o problema referente a sua dúvida?</p>
-                <input type="text" id="datepicker" placeholder="Data">
+                <input type="text" name="data_inicio" id="datepicker" placeholder="Data">
+                <input type="hidden" name="perfil" id="perfil" value="<?php echo $profile_id; ?>">
             </div><!-- .deviceData -->
             <button class="sendDevice" type="submit" disabled>Buscar</button><!-- aqui deve direcionar para a duvida-resultado.php, que serão as dúvidas filtradas -->

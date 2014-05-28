@@ -1,5 +1,23 @@
 <?php
   require_once ("backend/header.php");
+  // RESULTADO BUSCA ======================================
+  $buscaPalavra     = $_POST['busca'];
+  $devicePlantacao  = $_POST['platacaoDevice'];
+  $data_inicio      = $_POST['data_inicio'];
+  $perfil			= $_POST['perfil'];
+  $simplesPlantacao = null;
+  $simplesPlantacaoNome;
+  if($_POST['platacao']!=null){
+  	$simplesPlantacao	= $_POST['platacao'];
+  	$simplesPlantacao	= $simplesPlantacao[0];
+  } else if ($_GET['plantacao']!=null) {
+  	$simplesPlantacao	= $_GET['plantacao'];
+  }
+
+  if($buscaPalavra!=null){
+  } else if($devicePlantacao!=null && $data_inicio!=null) {
+  } else if($simplesPlantacao!=null) {
+  } else { header("Location: duvidas.php"); }
 ?><!DOCTYPE html>
 <html lang="pt_BR">
 <head>
@@ -42,42 +60,24 @@
 					<header>
 						<h2>Dúvidas</h2>
 					</header>
-					<h3>Resultado</h3>
-					<p>Foram encontradas algumas dúvidas relacionadas a sua busca, clique em saiba mais para visualizar ou inicie uma nova dúvida.</p>
-					<ul class="conteudoDuvidasResultado" >
-						<li>
-							<img src="" alt="nome do post" width="200" height="150" />
-							<p class="postnome">Nome da Postagem</p>
-							<a href="tag" title="Tag">Tag</a>
-							<a href="duvida.php" title="Saiba mais" class="bt-saibamais">Saiba mais</a>
-						</li>
-						<li>
-							<img src="" alt="nome do post" width="200" height="150" />
-							<p class="postnome">Nome da Postagem</p>
-							<a href="tag" title="Tag">Tag</a>
-							<a href="duvida.php" title="Saiba mais" class="bt-saibamais">Saiba mais</a>
-						</li>
-						<li>
-							<img src="" alt="nome do post" width="200" height="150" />
-							<p class="postnome">Nome da Postagem</p>
-							<a href="tag" title="Tag">Tag</a>
-							<a href="duvida.php" title="Saiba mais" class="bt-saibamais">Saiba mais</a>
-						</li>
-						<li>
-							<img src="" alt="nome do post" width="200" height="150" />
-							<p class="postnome">Nome da Postagem</p>
-							<a href="tag" title="Tag">Tag</a>
-							<a href="duvida.php" title="Saiba mais" class="bt-saibamais">Saiba mais</a>
-						</li>
-						
-					</ul><!-- .conteudoDuvidasResultado -->
-					<div id="paginacao">
-						<ul>
-							<li>1</li>
-							<li>| <a href="#">2</a> |</li>
-							<li><a href="#">3</a></li>
-						</ul>
-					</div><!-- #paginacao -->
+
+					<?php 
+
+					if($buscaPalavra!=null){
+						require_once ("backend/modules/duvidaBuscaPalavra.php");
+					} else if($devicePlantacao!=null && $data_inicio!=null) {
+						require_once ("backend/modules/duvidaBuscaDevice.php");
+					} else if($simplesPlantacao!=null) {
+						$sqlSimplesPlantacao = "SELECT `plantacao` FROM DL_ADMIN_plantationList WHERE id = '$simplesPlantacao' order by id desc limit 1";
+                        $resultSimplesPlantacao = mysql_query($sqlSimplesPlantacao);
+                        while ($row=mysql_fetch_array($resultSimplesPlantacao)) {
+                        	$simplesPlantacaoNome = $row['plantacao'];
+                        }
+						require_once ("backend/modules/duvidaBuscaPlantacao.php");
+					}
+
+					?>
+
 					<hr />
 					<div id="cadastrarDuvida">
 						<p>As sugestões não te ajudaram? Preencha sua dúvida.</p>

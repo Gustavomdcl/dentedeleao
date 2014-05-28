@@ -51,7 +51,7 @@
 
 					<?php
 
-			          $sqlDuvidaPosts = "SELECT * FROM DL_FORUM order by id desc limit 3";
+			          $sqlDuvidaPosts = "SELECT * FROM DL_FORUM order by id desc";
 			          $resultDuvidaPosts = mysql_query($sqlDuvidaPosts);
 
 			          if (mysql_num_rows($resultDuvidaPosts) > 0) {
@@ -124,19 +124,20 @@
 						
 					</ul> <!-- #conteudoDuvidas -->
 
-					<?php } else { ?>
-
-			        <p>Ainda não há dúvidas cadastradas</p>
-
-			        <?php }//else ?>
-
-					<div id="paginacao">
+					<!--div id="paginacao">
 						<ul>
 							<li>1</li>
 							<li>| <a href="#">2</a> |</li>
 							<li><a href="#">3</a></li>
 						</ul>
 					</div><!-- #paginacao -->
+
+					<?php } else { ?>
+
+			        <p>Ainda não há dúvidas cadastradas</p>
+
+			        <?php }//else ?>
+
 					<hr />
 					<div id="cadastrarDuvida">
 						<p>Não encontrou uma solução para seu problema? Inicie uma nova dúvida!</p>
