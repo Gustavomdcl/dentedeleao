@@ -56,7 +56,8 @@
 
 		// Verifica se encontrou algum registro
 		if (empty($resultado)) {
-			echo "// Nenhum registro foi encontrado => o usuário é inválido";
+			//echo "// Nenhum registro foi encontrado => o usuário é inválido";
+			header("Location: ../index.php?error=usuarionaoexiste");
 			die;
 			return false;
 		} else {
