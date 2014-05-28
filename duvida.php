@@ -145,7 +145,7 @@
 					<?php $commentCount = $commentCount + 1; }//while ?>
 					<?php } else { ?>
 					<div id="comentario0" class="comentario">
-						<p>Ninguém comentou essa dúvida. Seja o primeiro!</p>
+						<p>Ninguém comentou nessa dúvida. Seja o primeiro!</p>
 					</div><!-- #comentario0-->
 					<?php }//else ?>
 				</div><!-- .l-row -->

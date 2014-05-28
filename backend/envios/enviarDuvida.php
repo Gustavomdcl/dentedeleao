@@ -171,6 +171,11 @@
 			}
 		}
 
+		echo $umidade;//String 00
+		echo $umidade_do_solo;//String 00
+		echo $temperatura;//String 00
+		echo $chuva;//String 00
+
 		// VIDEOS ===========
 
 		if($nome_video[0]==null){} else {//Se video foi enviado

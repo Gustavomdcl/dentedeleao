@@ -93,11 +93,7 @@
 			var plantationCount = 0;
 			$(".nodevicePlantacao").each(function(e){
 				if($(this).is(':checked')) {
-					if(plantationCount==0){
-						duvidaSituation = $(this).val();
-					} else {
-						duvidaSituation = duvidaSituation + '-' + $(this).val();
-					}
+					duvidaSituation = duvidaSituation + '-' + $(this).val();
 					plantationCount ++;
 				}
 			});
