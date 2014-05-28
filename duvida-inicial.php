@@ -120,7 +120,9 @@
 		} else {
 			$('#duvidaSendSearch').attr('action', primaryAction);
 			$('.deviceData').show();
-			$('.sendDevice').attr('disabled', 'disabled');
+			if($('#datepicker').val()==""){
+				$('.sendDevice').attr('disabled', 'disabled');
+			}
 		}
 	});
 	$('#datepicker').change(function(){

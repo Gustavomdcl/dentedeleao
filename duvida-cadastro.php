@@ -83,7 +83,7 @@
 									}
 							?>
 								<label for="plantacao-<?php echo $id ?>"><img src="<?php echo $imagem ?>" alt="<?php echo $plantacao ?>" /><?php echo $plantacao ?></label>
-								<input type="checkbox" name="plantacao[]" value="<?php echo $id ?>" id="plantacao-<?php echo $id ?>">
+								<input type="radio" name="plantacao[]" value="<?php echo $id ?>" id="plantacao-<?php echo $id ?>">
 							<?php }//while ?>
 						</span><!-- .plantacoes -->
 						<p>Deseja enviar fotos?</p>

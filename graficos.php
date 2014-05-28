@@ -120,23 +120,29 @@
 
           <div id="plantacao-<?php echo $value['plantacao']; ?>" class="target" data-plantacao="<?php echo $value['plantacao']; ?>">
             <h3>Chuva</h3>
-            <div id="chuva-<?php echo $value['plantacao']; ?>" style="width: 735px; height: 300px;"></div>
-            <a href="interna1" class="bt-vermais">Ver mais </a>
+            <div id="chuva-<?php echo $value['plantacao']; ?>">
+              <div id="chart" style='width: 735px; height: 300px;'></div>
+              <div id="control" style='width: 735px; height: 50px;'></div>
+            </div>
+            <!--a href="interna1" class="bt-vermais">Ver mais </a-->
 
           <hr style="clear:both" />
             <h3>Umidade</h3>
             <div id="umidade-<?php echo $value['plantacao']; ?>" style="width: 735px; height: 300px;"></div>
-            <a href="interna1" class="bt-vermais">Ver mais </a>
+            <!--a href="interna1" class="bt-vermais">Ver mais </a-->
 
           <hr style="clear:both" />
             <h3>Umidade do Solo</h3>
             <div id="umidade_do_solo-<?php echo $value['plantacao']; ?>" style="width: 735px; height: 300px;"></div>
-            <a href="interna1" class="bt-vermais">Ver mais </a>
+            <!--a href="interna1" class="bt-vermais">Ver mais </a-->
 
           <hr style="clear:both" />
             <h3>Temperatura</h3>
             <div id="temperatura-<?php echo $value['plantacao']; ?>" style="width: 735px; height: 300px;"></div>
-            <a href="interna1" class="bt-vermais">Ver mais </a>
+            <form id="verGrafico" method="post" action="grafico-detalhes.php">
+              <input type="hidden" value="<?php echo $value['id']; ?>" name="grafico">
+              <button type="submit" href="grafico-detalhes.php?dados=" class="bt-vermais">Ver mais </button>
+            </form>
 
           <div class="values-container">
 
