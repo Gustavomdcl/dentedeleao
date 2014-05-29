@@ -3,9 +3,6 @@
   	margin: 0 auto;
 	
 	h2 {
-		font-size:0.86em;
-		text-align:center;
-		margin:5px auto;
 		font-family: 'Permanent Marker', sans-serif;
 	}
 	h1 {
@@ -36,22 +33,40 @@
 	}
 
 	.beneficios{
+		margin:210px auto 0;;
+
 		li{
 			font-family: 'Sophie', sans-serif;
-			width: 130px;
+			width: 170px;
 			-webkit-transform: rotate(-12deg);
 			-moz-transform: rotate(-12deg);
 			-ms-transform: rotate(-12deg);
 			display: block;
-			margin:5px;
+			margin:0px 10px;
 			float: left;
 			text-align:center;
+			font-size:1.45em;
+			color:#58595b;
+			line-height:24px;
 	}
 		h2{
 			color:#ff921e;
-			font-size:70px;
+			font-size:5.7em;
 			-webkit-transform: rotate(-12deg);
 			-moz-transform: rotate(-12deg);
-			-ms-transform: rotate(-12deg);}
+			-ms-transform: rotate(-12deg);
+			margin-left:100px
+		}
+
+		ol{
+			margin:40px 0 0 45px;
+
+			
+		}
 	}
+	.como-funciona{
+		clear:both;
+	}
+
 }
+body{background: url(../img/template/bg-home.png) center top no-repeat;}
