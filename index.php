@@ -59,7 +59,7 @@ if($sucesso == "aprovado") {
 	<div id="site">
 
 		
-		<?php echo $mensagem; ?>
+		<!--<?php echo $mensagem; ?>-->
 		<!-- MENSAGEM DE ERRO ADRIANA ARRASTE PARA ONDE PREFERIR. AS MENSAGENS ESTÃO NO TOPO DO ARQUIVO -->
 
 		<!-- login ADRIAN: Essa section é um exemplo de como você vai colocando as áreas do site. você pode alterar o nome da class .l-login para .l-login ou algo assim, dependendo do que for fazer. Preciso que cada sessão (nesse caso sessão tem o valor de corte, área. Um exemplo considere o wireframe do painel. Cada área dele, sendo a parte dos gráficos, a parte das notificações e dúvidas são sessões diferentes) do site seja feita pela tag <section>, pois isso agora é importante.
@@ -76,16 +76,16 @@ if($sucesso == "aprovado") {
 							<h2>Benefícios:</h2>
 							<ol>
 								<li style="margin-top:65px;">Conversar com outros produtores que possuem o mesmo orgulho e prazer em cultivar alimentos saudáveis.<br><img src="assets/img/template/ondinhas.png" alt="ornamento" /></li>
-								<li style="margin-top:125px;"><img src="assets/img/template/ondinhas.png" alt="ornamento" /><br>
+								<li style="margin-top:95px;"><img src="assets/img/template/ondinhas.png" alt="ornamento" /><br>
 									Obter respostas de colegas empenhados como você em ter uma plantação melhor a cada dia.</li> 								
 								<li>Monitorar em tempo real dados como a umidade do ar e do solo temperatura e chuvas relacionadas a sua plantação. <br><img src="assets/img/template/ondinhas.png" alt="ornamento" /></li>
-								<li style="margin-top:25px;">Ler artigos e notícias sobre diversos assuntos para ampliar sua visão de mercado, soluções, legislação entre outros <br><img src="assets/img/template/ondinhas.png" alt="ornamento" /></li>
+								<li>Ler artigos e notícias sobre diversos assuntos para ampliar sua visão de mercado, soluções, legislação entre outros <br><img src="assets/img/template/ondinhas.png" alt="ornamento" /></li>
 								
 							</ol>
 						</section><!-- .beneficios -->
 						<section class="como-funciona">
-							<h2>Como funciona:</h2>
-							<p>Você precisa ser um agricultor orgânico certificado para se cadastrar. Seu cadastro será validado e você terá acesso ao ambiente online onde encontrará, entre outras, páginas de dúvidas, criação de eventos, e uma interface com gráficos relacionados ao monitoramento da sua terra. Para ter acesso a estes dados, será preciso adquirir um dispositivo que será instalado por nossa equipe e, além do monitoramento, estes dados serão responsáveis por um filtro de busca para questões relacionadas as suas, trazendo assim resultados mais efetivos.</p>
+							<a id="videohome" href="https://www.youtube.com/watch?v=YJKESYJ4QW8?iframe">Como blevers</a>
+							
 						</section><!-- .como-funciona -->
 						<!--<section class="contato">
 							<h2>Contato</h2>
@@ -105,7 +105,7 @@ if($sucesso == "aprovado") {
 							<p>Com o objetivo de auxiliar produtores orgânicos em suas dúvidas e dificuldades cotidianas relacionadas a plantação, surgiu o projeto Dente de Leão. Nele você poderá trocar informações e conhecimentos com pessoas diretamente relacionadas às plantações e que possam ter passado pelas mesmas situações. A sabedoria que só se adquire na prática está aqui.</p>
 						</section><!-- .sobre-projeto -->
 						<section class="login">
-							<header><h1><img src ="assets/img/template/dente-de-leao-logo.png" alt="Dente de Leão" border="none"></h1>
+							<header><h1><img src ="assets/img/template/logo-home.png" alt="Dente de Leão" border="none"></h1>
 							<h2>Cultive ideias. Colha conhecimento.</h2></header>
 								<div id="accordion">
 									<a class="btcadastrar">Cadastrar</a>
@@ -185,6 +185,27 @@ if($sucesso == "aprovado") {
 			'scrolling'		: 'no',
 			'titleShow'		: false,
 		});
+
+		$("#videohome").click(function() {
+	$.fancybox({
+			'padding'		: 0,
+			'autoScale'		: false,
+			'transitionIn'	: 'none',
+			'transitionOut'	: 'none',
+			'title'			: this.title,
+			'width'		: 680,
+			'height'		: 495,
+			'href'			: this.href.replace(new RegExp("watch\\?v=", "i"), 'v/'),
+			'type'			: 'swf',
+			'swf'			: {
+			   	 'wmode'		: 'transparent',
+				'allowfullscreen'	: 'true'
+			}
+		});
+
+	return false;
+});
+
 		jQuery(function($){
 		   $("#cpf").mask("999.999.999-99");
 		});
