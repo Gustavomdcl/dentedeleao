@@ -6,6 +6,7 @@
 		font-size:0.86em;
 		text-align:center;
 		margin:5px auto;
+		font-family: 'Permanent Marker', sans-serif;
 	}
 	h1 {
 		margin:0 auto;
@@ -32,5 +33,25 @@
 	}
 	.btcadastrar{
 		cursor:pointer;
+	}
+
+	.beneficios{
+		li{
+			font-family: 'Sophie', sans-serif;
+			width: 130px;
+			-webkit-transform: rotate(-12deg);
+			-moz-transform: rotate(-12deg);
+			-ms-transform: rotate(-12deg);
+			display: block;
+			margin:5px;
+			float: left;
+			text-align:center;
+	}
+		h2{
+			color:#ff921e;
+			font-size:70px;
+			-webkit-transform: rotate(-12deg);
+			-moz-transform: rotate(-12deg);
+			-ms-transform: rotate(-12deg);}
 	}
 }

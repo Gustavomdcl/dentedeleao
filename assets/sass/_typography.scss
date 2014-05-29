@@ -1,11 +1,24 @@
 //http://www.fontsquirrel.com , http://www.fontsquirrel.com/tools/webfont-generator , www.google.com/fonts
 @font-face {
-  font-family: 'Font';
-  src: url('font/font-regular.eot');
-  src: url('font/font-regular.eot?#iefix') format('embedded-opentype'),
-       url('font/font-regular.woff') format('woff'),
-       url('font/font-regular.ttf') format('truetype'),
-       url('font/font-regular.svg#oswaldbook') format('svg');
-  font-weight: normal;
-  font-style: normal;
+    font-family: 'permanent_markerregular';
+    src: url('permanentmarker.eot');
+    src: url('permanentmarker.eot?#iefix') format('embedded-opentype'),
+         url('permanentmarker.woff') format('woff'),
+         url('permanentmarker.ttf') format('truetype'),
+         url('permanentmarker.svg#permanent_markerregular') format('svg');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@import url(http://fonts.googleapis.com/css?family=Maven+Pro);
+
+@font-face {
+    font-family: 'sophieregular';
+    src: url('sophie.eot');
+    src: url('sophie.eot?#iefix') format('embedded-opentype'),
+         url('sophie.woff') format('woff'),
+         url('sophie.ttf') format('truetype'),
+         url('sophie.svg#sophieregular') format('svg');
+    font-weight: normal;
+    font-style: normal;
 }

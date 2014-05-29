@@ -58,9 +58,7 @@ if($sucesso == "aprovado") {
 	======================================================== -->
 	<div id="site">
 
-		<!-- ADRIAN: ÁREA PARA COLOCAR SEU CÓDIGO, QUE VAI MUDAR EM CADA PÁGINA -->
-
-		<!-- MENSAGEM DE ERRO ADRIANA ARRASTE PARA ONDE PREFERIR. AS MENSAGENS ESTÃO NO TOPO DO ARQUIVO -->
+		
 		<?php echo $mensagem; ?>
 		<!-- MENSAGEM DE ERRO ADRIANA ARRASTE PARA ONDE PREFERIR. AS MENSAGENS ESTÃO NO TOPO DO ARQUIVO -->
 
@@ -71,79 +69,25 @@ if($sucesso == "aprovado") {
 			<div class="l-container cf"><!-- ADRIAN: Essa div com class l-container centraliza em 960px e centraliza, no sass você pode observar isso. a class cf desconsidera os floats, sabe? as vezes quando você da um float left dentro de uma div o seu height não considera esses elementos. a class cf acaba considerando. -->
 
 				<div class="l-row">
-
-					<header><h1><img src ="assets/img/template/dente-de-leao-logo.png" alt="Dente de Leão" border="none"></h1>
-					<h2>Cultive ideias. Colha conhecimento.</h2></header>
-						<div id="accordion">
-							<a class="btcadastrar">Cadastrar</a>
-							<form id="formCadastroUsuario" method="post" action="backend/envios/enviarCadastroUsuario.php" style="display:none;">
-
-								<input type="text" name="nome" placeholder="Nome" id="nome" required><br>
-
-								<input type="text" name="cpf" id="cpf" placeholder="CPF" required><br>
-
-								<input type="email" name="email" placeholder="Email" id="email" required><br>
-
-								<input type="password" name="senha" placeholder="Senha" id="senha" required><br>
-
-								<p><input type="checkbox" name="termos" value="Termos e condições" class="termos" id="termos" required >Li e estou de acordo com os <a href="" title="termos e condições">Termos e condições</a> </p><br>
-
-								<button type="submit">Cadastrar</button>
-							</form>
-						</div><!-- #accordion -->
 						
-					<p>ou <a href="#login_form" class="btLogar" id="homeLogin">Logar</a></p>
-
-					<div style="display:none" >
-
-						<form id="login_form" method="post" action="backend/valida.php">
-						    
-							<input type="text" name="usuario" id="usuario" placeholder="Usuário" required><br>
-
-							<input type="password" name="senha" id="senha" placeholder="Senha" required><br>
-
-							<input type="checkbox" name="conectado" value="Continuar Conectado">Continuar Conectado 
-							
-							<p><button type="submit">Fazer Login</button></p>
-							
-							<a href="#lembrar_form" id="lembrarSenha">Esqueceu sua senha?</a>
-							
-						</form>
-					</div><!-- Div do formulario de login que abre com fancybox-->
-
-					<div style="display:none" >
-
-						<form id="lembrar_form" method="post" action="backend/envios/mudarSenha.php">
-							<p>Não consegue lembrar sua senha? Digite abaixo seu e-mail que a enviaremos para você.</p>
-							<input type="email" name="email" placeholder="Digite aqui seu e-mail" id="email"><br>
-							<p><button type="submit">Enviar</button></p>
-	
-						</form>
-					</div><!--Div reenvio de senha-->
-					
-					<footer><a class="bt-saiba-mais">Saiba mais</a></footer>
-					<div id="saiba-mais" style="display:none;">
-						<div class="sobre-projeto">
-							<h2>Sobre o Projeto:</h2>
-							<p>Com o objetivo de auxiliar produtores orgânicos em suas dúvidas e dificuldades cotidianas relacionadas a plantação, surgiu o projeto Dente de Leão. Nele você poderá trocar informações e conhecimentos com pessoas diretamente relacionadas às plantações e que possam ter passado pelas mesmas situações. A sabedoria que só se adquire na prática está aqui.</p>
-
-						</div><!-- .sobre-projeto -->
-						<div class="beneficios">
+						
+						
+						<section class="beneficios">
 							<h2>Benefícios:</h2>
-							<p>Cadastrando-se aqui, você terá diversos benefícios como:</p>
 							<ol>
-								<li>Poder conversar com pessoas que possuem o mesmo orgulho e prazer em cultivar alimentos saudáveis e social responsáveis.</li>
-								<li>Ter dúvidas respondidas por colegas que estão empenhados como você numa plantação que melhora a cada dia.</li>
-								<li>Poder expor o conhecimento adquirido em seu cotidiano e auxiliar pessoas.</li>
-								<li>Ter um monitoramento em tempo real de dados como umidade do ar, umidade do solo, temperatura e chuva relacionados a sua plantação.</li>
-								<li>Poder ler a respeito de diversos assuntos para ampliar sua visão de mercado, soluções, legislação entre outros.</li>
+								<li style="margin-top:65px;">Conversar com outros produtores que possuem o mesmo orgulho e prazer em cultivar alimentos saudáveis.<br><img src="assets/img/template/ondinhas.png" alt="ornamento" /></li>
+								<li style="margin-top:125px;"><img src="assets/img/template/ondinhas.png" alt="ornamento" /><br>
+									Obter respostas de colegas empenhados como você em ter uma plantação melhor a cada dia.</li> 								
+								<li>Monitorar em tempo real dados como a umidade do ar e do solo temperatura e chuvas relacionadas a sua plantação. <br><img src="assets/img/template/ondinhas.png" alt="ornamento" /></li>
+								<li style="margin-top:25px;">Ler artigos e notícias sobre diversos assuntos para ampliar sua visão de mercado, soluções, legislação entre outros <br><img src="assets/img/template/ondinhas.png" alt="ornamento" /></li>
+								
 							</ol>
-						</div><!-- .beneficios -->
-						<div class="como-funciona">
+						</section><!-- .beneficios -->
+						<section class="como-funciona">
 							<h2>Como funciona:</h2>
 							<p>Você precisa ser um agricultor orgânico certificado para se cadastrar. Seu cadastro será validado e você terá acesso ao ambiente online onde encontrará, entre outras, páginas de dúvidas, criação de eventos, e uma interface com gráficos relacionados ao monitoramento da sua terra. Para ter acesso a estes dados, será preciso adquirir um dispositivo que será instalado por nossa equipe e, além do monitoramento, estes dados serão responsáveis por um filtro de busca para questões relacionadas as suas, trazendo assim resultados mais efetivos.</p>
-						</div><!-- .como-funciona -->
-						<div class="contato">
+						</section><!-- .como-funciona -->
+						<!--<section class="contato">
 							<h2>Contato</h2>
 							<p>Ficou interessado ou quer saber mais sobre este projeto? Envie-nos uma mensagem respondendo ao formulário abaixo.</p>
 							<form id="contatoHome">
@@ -155,8 +99,61 @@ if($sucesso == "aprovado") {
 
 								<button type="submit">Enviar</button>
 							</form>
-						</div><!-- .contato-->
-					</div><!-- #saiba-mais -->
+						</section> contato-->
+						<section class="sobre-projeto">
+							<h2>Sobre o Projeto:</h2>
+							<p>Com o objetivo de auxiliar produtores orgânicos em suas dúvidas e dificuldades cotidianas relacionadas a plantação, surgiu o projeto Dente de Leão. Nele você poderá trocar informações e conhecimentos com pessoas diretamente relacionadas às plantações e que possam ter passado pelas mesmas situações. A sabedoria que só se adquire na prática está aqui.</p>
+						</section><!-- .sobre-projeto -->
+						<section class="login">
+							<header><h1><img src ="assets/img/template/dente-de-leao-logo.png" alt="Dente de Leão" border="none"></h1>
+							<h2>Cultive ideias. Colha conhecimento.</h2></header>
+								<div id="accordion">
+									<a class="btcadastrar">Cadastrar</a>
+									<form id="formCadastroUsuario" method="post" action="backend/envios/enviarCadastroUsuario.php" style="display:none;">
+
+										<input type="text" name="nome" placeholder="Nome" id="nome" required><br>
+
+										<input type="text" name="cpf" id="cpf" placeholder="CPF" required><br>
+
+										<input type="email" name="email" placeholder="Email" id="email" required><br>
+
+										<input type="password" name="senha" placeholder="Senha" id="senha" required><br>
+
+										<p><input type="checkbox" name="termos" value="Termos e condições" class="termos" id="termos" required >Li e estou de acordo com os <a href="" title="termos e condições">Termos e condições</a> </p><br>
+
+										<button type="submit">Cadastrar</button>
+									</form>
+								</div><!-- #accordion -->
+							<p>ou <a href="#login_form" class="btLogar" id="homeLogin">Logar</a></p>
+
+							<div style="display:none" >
+
+								<form id="login_form" method="post" action="backend/valida.php">
+								    
+									<input type="text" name="usuario" id="usuario" placeholder="Usuário" required><br>
+
+									<input type="password" name="senha" id="senha" placeholder="Senha" required><br>
+
+									<input type="checkbox" name="conectado" value="Continuar Conectado">Continuar Conectado 
+									
+									<p><button type="submit">Fazer Login</button></p>
+									
+									<a href="#lembrar_form" id="lembrarSenha">Esqueceu sua senha?</a>
+									
+								</form>
+							</div><!-- Div do formulario de login que abre com fancybox-->
+
+							<div style="display:none" >
+
+								<form id="lembrar_form" method="post" action="backend/envios/mudarSenha.php">
+									<p>Não consegue lembrar sua senha? Digite abaixo seu e-mail que a enviaremos para você.</p>
+									<input type="email" name="email" placeholder="Digite aqui seu e-mail" id="email"><br>
+									<p><button type="submit">Enviar</button></p>
+			
+								</form>
+							</div><!--Div reenvio de senha-->
+						</section>
+					
 				</div><!-- .l-row -->
 
 			</div><!-- .l-container.cf -->
