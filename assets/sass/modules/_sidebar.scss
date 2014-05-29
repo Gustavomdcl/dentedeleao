@@ -5,6 +5,52 @@
 	padding: 20px;
 	.l-sidebar-top {
 		position: relative;
+		padding-top: 30px;
+		.round-img.foto-perfil {
+			width: 90px;
+			height: 90px;
+			position: absolute;
+			top: -69px;
+			left: 38px;
+			img {
+				width: 90px;
+				height: 90px;
+				border-radius: 50%;
+				behavior: url(assets/css/suiting/pie.htc);
+			}
+			&::after {
+				content: ' ';
+				display: block;
+				position: absolute;
+				top: -13px;
+				left: -14px;
+				@include sprite(round-perfil);
+			}
+		}
+		.content-perfil {
+			text-align: center;
+			padding-right: 5px;
+			color: $color-brown;
+			font-family: 'Sophie', sans-serif;
+			margin-bottom: 11px;
+			.nome-perfil {
+				font-family: 'Permanent Marker', sans-serif;
+				text-transform: uppercase;
+				font-size: 1.14em;
+				letter-spacing: 0.05em
+			}
+			.fazenda-perfil {
+				font-size: 1.30em;
+			}
+			#location {
+				font-size: 1.07em;
+				line-height: 15px;
+			}
+			#degreesCelsius {
+				line-height: 40px;
+				font-size: 1.85em;
+			}
+		}
 	}
 	.l-sidebar-center {
 	}
