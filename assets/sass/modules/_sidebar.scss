@@ -1,0 +1,13 @@
+.l-sidebar {
+	@include box-sizing(border-box);
+	@include sprite(menu);
+	position: absolute;
+	padding: 20px;
+	.l-sidebar-top {
+		position: relative;
+	}
+	.l-sidebar-center {
+	}
+	.l-sidebar-bottom {
+	}
+}

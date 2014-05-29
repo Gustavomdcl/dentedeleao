@@ -36,14 +36,24 @@ $column_width: percentage(1/$num_columns);
 
 // header --------------------------------
 
-.l-header {}
+.l-header {
+  .l-container {
+    height: 160px;
+    text-align: center;
+    .logo-interna {
+      margin-top: 40px;
+    }
+  }
+}
 .l-header-top {}
 .l-header-center {}
 .l-header-bottom {}
 
 // main ----------------------------------
 
-.l-main {}
+.l-main {
+  position: relative;
+}
 .l-main-sidebar {}
 .l-main-content {}
 
