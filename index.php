@@ -73,7 +73,7 @@ if($sucesso == "aprovado") {
 						
 						
 						<section class="beneficios">
-							<h2>Benefícios:</h2>
+							<h2>Benefícios</h2>
 							<ol>
 								<li style="margin-top:65px;">Conversar com outros produtores que possuem o mesmo orgulho e prazer em cultivar alimentos saudáveis.<br><img src="assets/img/template/ondinhas.png" alt="ornamento" /></li>
 								<li style="margin-top:95px;"><img src="assets/img/template/ondinhas.png" alt="ornamento" /><br>
@@ -84,9 +84,15 @@ if($sucesso == "aprovado") {
 							</ol>
 						</section><!-- .beneficios -->
 						<section class="como-funciona">
-							<a id="videohome" href="https://www.youtube.com/watch?v=YJKESYJ4QW8?iframe">Como blevers</a>
-							
-						</section><!-- .como-funciona -->
+							<!--<h2>Como Funciona</h2>-->
+                            
+						
+							<a class="videohome"><img src="assets/img/template/como-funciona.png" border="0" usemap="#Map" alt="Sobre o Projeto" /></a>
+							<map name="Map">
+	                          <area shape="poly" class="videohome" coords="34,137,109,47,195,5,281,0,365,11,400,25,429,44,446,63,460,89,469,122,440,152,410,193,394,231,404,272,330,385,242,453,134,506,51,402,12,341,-3,253" href="https://www.youtube.com/watch?v=YJKESYJ4QW8?iframe">
+	                        </map>
+                        </section>
+						<!-- .como-funciona -->
 						<!--<section class="contato">
 							<h2>Contato</h2>
 							<p>Ficou interessado ou quer saber mais sobre este projeto? Envie-nos uma mensagem respondendo ao formulário abaixo.</p>
@@ -101,12 +107,12 @@ if($sucesso == "aprovado") {
 							</form>
 						</section> contato-->
 						<section class="sobre-projeto">
-							<h2>Sobre o Projeto:</h2>
-							<p>Com o objetivo de auxiliar produtores orgânicos em suas dúvidas e dificuldades cotidianas relacionadas a plantação, surgiu o projeto Dente de Leão. Nele você poderá trocar informações e conhecimentos com pessoas diretamente relacionadas às plantações e que possam ter passado pelas mesmas situações. A sabedoria que só se adquire na prática está aqui.</p>
+							<h2>Sobre o <br><span>Projeto</span></h2>
+							<p>Com o objetivo de auxiliar produtores orgânicos em suas dúvidas e dificuldades cotidianas relacionadas a plantação, surgiu o projeto Dente de Leão. </p><p><span>Nele você poderá trocar informações e conhecimentos com pessoas diretamente relacionadas às plantações e que possam ter passado pelas mesmas situações. A sabedoria que só se adquire na prática está aqui. <br><img src="assets/img/template/ondinhas2.png" alt="ornamento" /></span></p>
 						</section><!-- .sobre-projeto -->
 						<section class="login">
-							<header><h1><img src ="assets/img/template/logo-home.png" alt="Dente de Leão" border="none"></h1>
-							<h2>Cultive ideias. Colha conhecimento.</h2></header>
+							<h1><img src ="assets/img/template/logo-home.png" alt="Dente de Leão" border="none" /></h1>
+							<h2>Cultive ideias. Colha conhecimento.</h2>
 								<div id="accordion">
 									<a class="btcadastrar">Cadastrar</a>
 									<form id="formCadastroUsuario" method="post" action="backend/envios/enviarCadastroUsuario.php" style="display:none;">
@@ -152,7 +158,7 @@ if($sucesso == "aprovado") {
 			
 								</form>
 							</div><!--Div reenvio de senha-->
-						</section>
+						</section><!-- .login -->
 					
 				</div><!-- .l-row -->
 
@@ -186,7 +192,7 @@ if($sucesso == "aprovado") {
 			'titleShow'		: false,
 		});
 
-		$("#videohome").click(function() {
+		$(".videohome").click(function() {
 			$.fancybox({
 			'padding'		: 0,
 			'autoScale'		: false,
