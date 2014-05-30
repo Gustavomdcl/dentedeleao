@@ -1,12 +1,15 @@
 .l-footer {
 	height:30px;
-	background-color:#ccc;
-	padding-top:10px;
+	background: url(./../img/template/bg-rodape.png) repeat-x;
+	padding-top:17px;
+	width:100%;
 	.l-footer-bottom{
 		text-align:center;
 		margin:0 auto;
 	}
-	p{
-		margin:2px 0;
+	p, p a{
+		font-family: 'Maven Pro', sans serif;
+		font-size:0.87em;
+		color:#fff;
 	}
 }
