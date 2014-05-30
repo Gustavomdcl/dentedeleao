@@ -76,7 +76,7 @@ if($sucesso == "aprovado") {
 							<h2>Benefícios</h2>
 							<ol>
 								<li style="margin-top:65px;">Conversar com outros produtores que possuem o mesmo orgulho e prazer em cultivar alimentos saudáveis.<br><img src="assets/img/template/ondinhas.png" alt="ornamento" /></li>
-								<li style="margin-top:95px;"><img src="assets/img/template/ondinhas.png" alt="ornamento" /><br>
+								<li style="margin-top:80px;"><img src="assets/img/template/ondinhas.png" alt="ornamento" /><br>
 									Obter respostas de colegas empenhados como você em ter uma plantação melhor a cada dia.</li> 								
 								<li>Monitorar em tempo real dados como a umidade do ar e do solo temperatura e chuvas relacionadas a sua plantação. <br><img src="assets/img/template/ondinhas.png" alt="ornamento" /></li>
 								<li>Ler artigos e notícias sobre diversos assuntos para ampliar sua visão de mercado, soluções, legislação entre outros <br><img src="assets/img/template/ondinhas.png" alt="ornamento" /></li>
@@ -113,8 +113,12 @@ if($sucesso == "aprovado") {
 						<section class="login">
 							<h1><img src ="assets/img/template/logo-home.png" alt="Dente de Leão" border="none" /></h1>
 							<h2>Cultive ideias.<br>Colha conhecimento.</h2>
+							<div class="bts-home">
+								<a class="btcadastrar">Cadastrar</a>
+								<a href="#login_form" class="btLogar" id="homeLogin">Logar</a>
+							</div>
 								<div id="accordion">
-									<a class="btcadastrar">Cadastrar</a>
+									
 									<form id="formCadastroUsuario" method="post" action="backend/envios/enviarCadastroUsuario.php" style="display:none;">
 
 										<input type="text" name="nome" placeholder="Nome" id="nome" required><br>
@@ -130,7 +134,7 @@ if($sucesso == "aprovado") {
 										<button type="submit">Cadastrar</button>
 									</form>
 								</div><!-- #accordion -->
-							<p>ou <a href="#login_form" class="btLogar" id="homeLogin">Logar</a></p>
+							
 
 							<div style="display:none" >
 
@@ -158,6 +162,14 @@ if($sucesso == "aprovado") {
 			
 								</form>
 							</div><!--Div reenvio de senha-->
+
+							<ul class="nav">
+					             <li><a class="bt-beneficios">Benefícios</a></li>
+					             <li><a class="bt-como-funciona">Como funciona</a></li>
+					             <li><a class="bt-sobre-projeto">Sobre o Projeto</a></li>
+					             <li><a class="bt-login">Login</a></li>
+					        </ul>
+
 						</section><!-- .login -->
 					
 				</div><!-- .l-row -->
@@ -165,7 +177,7 @@ if($sucesso == "aprovado") {
 			</div><!-- .l-container.cf -->
 
 		</section><!-- .l-login -->
-
+		<?php include 'template/footer.php'; ?>
 	</div><!-- #site -->
 
 	<?php include 'template/script.php'; ?>
@@ -173,7 +185,7 @@ if($sucesso == "aprovado") {
   	<script src="assets/min/jquery.fancybox.min.js"></script>
   	<!-- Script do accordion -->
 	<script>
-		  $('#accordion a').click(function() {
+		  $('.btcadastrar').click(function() {
 		    $('#accordion form').slideDown();
 		    $('.btcadastrar').hide();
 		  });
@@ -219,6 +231,34 @@ if($sucesso == "aprovado") {
 		    $('#saiba-mais').show();
 		    $('.bt-saiba-mais').hide();
 		  });
+
+//scroll pagina
+		$(function() {
+            $(".bt-beneficios").click(function() {
+				  $('html, body').animate({'scrollTop': '0px'},1000, "easeInOutExpo");
+		   });
+
+            $(".bt-como-funciona").click(function() {
+				  $('html, body').animate({'scrollTop': '780px'},1000, "easeInOutExpo");
+		   });
+
+            $(".bt-sobre-projeto").click(function() {
+				  $('html, body').animate({'scrollTop': '1255px'},1000, "easeInOutExpo");
+		   });
+
+            $(".bt-login").click(function() {
+				  $('html, body').animate({'scrollTop': '2010px'},1000, "easeInOutExpo");
+		   });
+
+
+          //  $("ul.nav a").click(function() {
+			  // remove classes from all
+		//	  $("ul.nav a").removeClass("ativo");
+			  // add class to the one we clicked
+		//	  $(this).addClass("ativo");
+		 //  });
+		});
+
 	</script>
 
 </body>

@@ -19,9 +19,32 @@
 		text-align:center;
 		
 	}
+	.bts-home{
+		width:407px;
+		margin:30px auto 0;;
+	}
+	
 	.btcadastrar{
 		cursor:pointer;
+		background: url(../img/template/bt-cadastrar.png) bottom no-repeat;
+		width:189px;
+		height:34px;
+		text-indent:-9000px;
+		display:block;
+		float:left; 
+		margin-right:25px;
 	}
+	.btLogar{
+		cursor:pointer;
+		background: url(../img/template/bt-entrar.png) bottom no-repeat;	
+		width:190px;
+		height:34px;
+		text-indent:-9000px;
+		display:block;
+		float: right;
+	}
+
+	.btcadastrar:hover, .btLogar:hover {background-position:top;}
 
 	.beneficios{
 		margin:210px auto 0;
@@ -37,13 +60,13 @@
 			margin:0px 10px;
 			float: left;
 			text-align:center;
-			font-size:1.45em;
+			font-size:1.57em;
 			color: #58595b;
-			line-height:24px;
+			line-height:28px;
 		}
 		h2{
 			color:#ff921e;
-			font-size:5.6em;
+			font-size:5.7em;
 			-webkit-transform: rotate(-12deg);
 			-moz-transform: rotate(-12deg);
 			-ms-transform: rotate(-12deg);
@@ -51,7 +74,7 @@
 		}
 
 		ol{
-			margin:40px 0 0 45px;
+			margin:40px 0 0 50px;
 		}
 	}
 	.como-funciona{
@@ -74,26 +97,25 @@
 		right:30px;
 		float:right;
 		width:470px;
-		margin:-70px 0 430px;
-		border-bottom:1px solid red;
-
+		margin:-80px 0 430px;
 		h2{
 			color:#ff921e;
-			font-size:5.6em;
+			font-size:5.5em;
 			width:380px;
 			text-align:right;
-			line-height:80px;
+			line-height:70px;
 			clear:both;
 			span{
 				margin-right:-70px;
 			}
 		}
 		p{
-			width:360px;
+			width:365px;
 			text-align:center;
 			float:left;
 			margin:5px 0;
 			color:#58595b;
+			font-size:1em;
 			span{
 				font-family: 'Sophie', sans-serif;
 				font-size:1.45em;
@@ -104,10 +126,11 @@
 		
 	}
 	.login {
-			height:650px;
+			height:590px;
 			width:960px;
 			margin:0 auto;
 			clear:both;
+			padding-top:60px;
 			h2{
 				color:#8e9924;
 				text-align:center;
@@ -118,6 +141,33 @@
 				margin:0 auto;
 			}
 		}
+		ul.nav{
+			position:fixed;
+			height:32px;
+			display:block;
+			width:600px;
+			margin:0 auto;
+			top:0;
+			border:1px solid red;
+			li{
+				text-indent:-9000px;
+				display:inline;
+				a{
+					display:block;
+					float:left;
+					width:150px;
+				}
+			}
+			.bt-beneficios{background: url(../img/template/bt-beneficios.png) top left no-repeat;}
+
+			.bt-como-funciona{background: url(../img/template/bt-como-funciona.png) top left no-repeat;}
+
+			.bt-sobre-projeto{background: url(../img/template/bt-sobre-projeto.png) top left no-repeat;}
+
+			.bt-login{background: url(../img/template/bt-home.png) top left no-repeat;}
+		}
+
+
 
 }
 body.index{background: url(../img/template/bg-home.png) center top no-repeat;}

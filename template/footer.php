@@ -12,7 +12,7 @@
 
 				<div class="l-footer-bottom">
 					<div class="l-container cf">
-						<p>Dente de Leão - <a href="termos.php" title="Termos e Condições" target="">Termos e Condições</a> - Direitos Reservados - Brasil 2014</p>
+						<p>Dente de Leão | <a href="termos.php" title="Termos e Condições" target="">Termos e Condições</a> &bull; Direitos Reservados &bull; Brasil 2014</p>
 					</div><!-- .l-container.cf -->
 				</div><!-- .l-footer-bottom -->
 
