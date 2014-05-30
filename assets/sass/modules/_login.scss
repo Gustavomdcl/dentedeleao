@@ -6,7 +6,7 @@
 		font-family: 'Permanent Marker', sans-serif;
 	}
 	h1 {
-		margin:0 auto 20px;
+		margin:30px auto 20px;
 		width:421px;
 		height:108px;
 	}
@@ -74,7 +74,9 @@
 		right:30px;
 		float:right;
 		width:470px;
-		margin-top:-70px;
+		margin:-70px 0 430px;
+		border-bottom:1px solid red;
+
 		h2{
 			color:#ff921e;
 			font-size:5.6em;
@@ -99,7 +101,9 @@
 				line-height:24px;
 			}
 		}
-		.login {
+		
+	}
+	.login {
 			height:650px;
 			width:960px;
 			margin:0 auto;
@@ -107,13 +111,13 @@
 			h2{
 				color:#8e9924;
 				text-align:center;
-				font-size:3.4em;
+				font-size:3.2em;
 				clear:both;
+				width:550px;
+				line-height:40px;
+				margin:0 auto;
 			}
 		}
-		
-
-	}	
 
 }
 body.index{background: url(../img/template/bg-home.png) center top no-repeat;}

@@ -112,7 +112,7 @@ if($sucesso == "aprovado") {
 						</section><!-- .sobre-projeto -->
 						<section class="login">
 							<h1><img src ="assets/img/template/logo-home.png" alt="Dente de Leão" border="none" /></h1>
-							<h2>Cultive ideias. Colha conhecimento.</h2>
+							<h2>Cultive ideias.<br>Colha conhecimento.</h2>
 								<div id="accordion">
 									<a class="btcadastrar">Cadastrar</a>
 									<form id="formCadastroUsuario" method="post" action="backend/envios/enviarCadastroUsuario.php" style="display:none;">
