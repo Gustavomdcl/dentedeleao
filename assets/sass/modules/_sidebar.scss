@@ -3,9 +3,14 @@
 	@include sprite(menu);
 	position: absolute;
 	padding: 20px;
+	&.stuck {
+		position: fixed;
+		top: 70px;
+		z-index:1000;
+	}
 	.l-sidebar-top {
 		position: relative;
-		padding-top: 30px;
+		padding-top: 38px;
 		.round-img.foto-perfil {
 			width: 90px;
 			height: 90px;
@@ -22,8 +27,8 @@
 				content: ' ';
 				display: block;
 				position: absolute;
-				top: -13px;
-				left: -14px;
+				top: -12px;
+				left: -13px;
 				@include sprite(round-perfil);
 			}
 		}
@@ -32,7 +37,7 @@
 			padding-right: 5px;
 			color: $color-brown;
 			font-family: 'Sophie', sans-serif;
-			margin-bottom: 11px;
+			margin-bottom: 22px;
 			.nome-perfil {
 				font-family: 'Permanent Marker', sans-serif;
 				text-transform: uppercase;
@@ -40,22 +45,64 @@
 				letter-spacing: 0.05em
 			}
 			.fazenda-perfil {
-				font-size: 1.30em;
+				font-size: 1.42em;
 			}
 			#location {
 				font-size: 1.07em;
-				line-height: 15px;
 			}
 			#degreesCelsius {
-				line-height: 40px;
+				line-height: 25px;
 				font-size: 1.85em;
 			}
 		}
 	}
-	.l-sidebar-center {
+	.l-sidebar-center, .l-sidebar-bottom {
 		color: $color-white; a { color: $color-white; }
+		h3 {
+			font-weight: 700;
+			text-transform: uppercase;
+			font-size: 1.14em;
+		}
+		ul {
+			list-style: none;
+			li {
+				list-style: none;
+				margin: 0.5px 0px;
+				a {
+					img {
+						display: inline-block;
+						margin-right: 7px;
+					}
+					font-size: 1em;
+					vertical-align: top;
+					line-height: 26px;
+					&:hover {
+						text-decoration: underline;
+					}
+				}
+			}
+		}
+	}
+	.l-sidebar-center {
 	}
 	.l-sidebar-bottom {
-		color: $color-white; a { color: $color-white; }
+		margin-top: 20px;
+		.logout {
+			font-weight: 700;
+			text-transform: uppercase;
+			text-decoration: underline;
+			margin-top: 20px;
+			display: inline-block;
+			img {
+				display: inline-block;
+				margin-right: 7px;
+			}
+			font-size: 1em;
+			vertical-align: top;
+			line-height: 26px;
+			&:hover {
+				text-decoration: underline;
+			}
+		}
 	}
 }

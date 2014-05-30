@@ -21,20 +21,24 @@
 
 			<div class="l-sidebar-center">
 				<h3>Painel</h3>
-				<li><img src="" width="20" height="20" /> <a href="perfil.php" title="Perfil Pessoal">Perfil Pessoal</a></li>
-				<li><img src="" width="20" height="20" /> <a href="notificacoes.php" title="Notificações">Notificações</a></li>
-				<li><img src="" width="20" height="20" /> <a href="graficos.php" title="Gráficos">Gráficos</a></li>
-				<li><img src="" width="20" height="20" /> <a href="duvidas.php" title="Dúvidas">Dúvidas</a></li>
-				<li><img src="" width="20" height="20" /> <a href="produtores.php" title="Produtores">Produtores</a></li>
+				<ul>
+					<li><a href="perfil.php" title="Perfil Pessoal"><img src="assets/img/template/perfil-menu.png" />Perfil Pessoal</a></li>
+					<li><a href="notificacoes.php" title="Notificações"><img src="assets/img/template/notificacoes-menu.png" />Notificações</a></li>
+					<li><a href="graficos.php" title="Gráficos"><img src="assets/img/template/dados-menu.png" />Gráficos</a></li>
+					<li><a href="duvidas.php" title="Dúvidas"><img src="assets/img/template/duvidas-menu.png" />Dúvidas</a></li>
+					<li><a href="produtores.php" title="Produtores"><img src="assets/img/template/produtores-menu.png" />Produtores</a></li>
+					<li><a href="artigos.php" title="Artigos e Noticias"><img src="assets/img/template/artigos-menu.png" />Artigos e Noticias</a></li>
+				</ul>
 			</div><!-- .l-sidebar-center -->
 
 			<div class="l-sidebar-bottom">
 				<h3>Eventos</h3>
-				<li><img src="" width="20" height="20" /> <a href=".php" title="Eventos Anteriores">Eventos Anteriores</a></li>
-				<li><img src="" width="20" height="20" /> <a href=".php" title="Participar do Próximo">Participar do Próximo</a></li>
-				<li><img src="" width="20" height="20" /> <a href=".php" title="Sediar Evento">Sediar Evento</a></li>
-				<hr />
-				<a href="sair.php" Title="Sair" class="logout">Sair</a>
+				<ul>
+					<li><a href=".php" title="Eventos Anteriores"><img src="assets/img/template/eventos-anteriores-menu.png" />Eventos Anteriores</a></li>
+					<li><a href=".php" title="Participar do Próximo"><img src="assets/img/template/evento-participar-menu.png" />Participar do Próximo</a></li>
+					<li><a href=".php" title="Sediar Evento"><img src="assets/img/template/evento-sediar-menu.png" />Sediar Evento</a></li>
+				</ul>
+				<a href="sair.php" Title="Sair" class="logout"><img src="assets/img/template/logout.png" />Sair</a>
 			</div><!-- .l-sidebar-bottom -->
 
 		</section><!-- .l-sidebar -->
