@@ -6,18 +6,9 @@
 		font-family: 'Permanent Marker', sans-serif;
 	}
 	h1 {
-		margin:0 auto;
-		text-align:center;
-		font-size:2em;
-	}
-	.bt-saiba-mais{
-		bottom:50px;
-		position:absolute;
-		text-align:center;
-		cursor:pointer;
-		width:100px;
-		margin-left:-50px;
-		left:50%;
+		margin:0 auto 20px;
+		width:421px;
+		height:108px;
 	}
 	#accordion{
 		width:260px;
@@ -33,7 +24,8 @@
 	}
 
 	.beneficios{
-		margin:210px auto 0;;
+		margin:210px auto 0;
+		height:650px;
 
 		li{
 			font-family: 'Sophie', sans-serif;
@@ -46,27 +38,82 @@
 			float: left;
 			text-align:center;
 			font-size:1.45em;
-			color:#58595b;
+			color: #58595b;
 			line-height:24px;
-	}
+		}
 		h2{
 			color:#ff921e;
-			font-size:5.7em;
+			font-size:5.6em;
 			-webkit-transform: rotate(-12deg);
 			-moz-transform: rotate(-12deg);
 			-ms-transform: rotate(-12deg);
-			margin-left:100px
+			margin-left:100px;
 		}
 
 		ol{
 			margin:40px 0 0 45px;
-
-			
 		}
 	}
 	.como-funciona{
 		clear:both;
+		height:510px;
+		margin-left:-21px;
+		margin-top:5px;
+		
+		h2{
+			color: #fff;
+			font-size: 4.2em;
+			width:310px;
+			-webkit-transform: rotate(-12deg);
+			-moz-transform: rotate(-12deg);
+			-ms-transform: rotate(-12deg);
+		}
+	
 	}
+	.sobre-projeto{
+		right:30px;
+		float:right;
+		width:470px;
+		margin-top:-70px;
+		h2{
+			color:#ff921e;
+			font-size:5.6em;
+			width:380px;
+			text-align:right;
+			line-height:80px;
+			clear:both;
+			span{
+				margin-right:-70px;
+			}
+		}
+		p{
+			width:360px;
+			text-align:center;
+			float:left;
+			margin:5px 0;
+			color:#58595b;
+			span{
+				font-family: 'Sophie', sans-serif;
+				font-size:1.45em;
+				color: #58595b;
+				line-height:24px;
+			}
+		}
+		.login {
+			height:650px;
+			width:960px;
+			margin:0 auto;
+			clear:both;
+			h2{
+				color:#8e9924;
+				text-align:center;
+				font-size:3.4em;
+				clear:both;
+			}
+		}
+		
+
+	}	
 
 }
 body.index{background: url(../img/template/bg-home.png) center top no-repeat;}
