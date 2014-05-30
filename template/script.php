@@ -24,6 +24,13 @@
 		});
 
 	</script>
+	<!-- waypoints -->
+	<!-- waypoints -->
+	<script src="assets/min/jquery.waypoints.min.js" type="text/javascript"></script>
+	<script src="assets/min/jquery.waypoints-sticky.min.js" type="text/javascript"></script>
+	<script>
+		$('.l-sidebar').waypoint('sticky', {offset: '70'});
+	</script>
 	<!-- suiting -->
 	<script src="assets/min/jquery.suiting.min.js"></script><!-- GRUNT http://blog.henriquesilverio.com/javascript-e-jquery/grunt-js-automatize-tarefas-e-otimize-o-seu-workflow/ -->
 	<!-- mobile -->
