@@ -55,8 +55,9 @@
 					<header>
 						<h2>Produtores</h2>
 					</header>
+				<div id="formulario">
+					<h3>Buscar produtores</h3>
 					<form method="post" action="produtores.php">
-						<p>Buscar produtores</p>
 						<select name="cultivo" id="cultivo">
 							<option selected disabled>Plantação</option>
 							<?php
@@ -101,6 +102,7 @@
 						</select>
 						<button type="submit">Buscar</button>
 					</form>
+				</div><!-- #formulario-->
 					<hr />
 					<div id="resultadoprodutores">
 						<div id="map-canvas" style="width:100%;height:500px;"></div><!-- div#map-canvas -->
