@@ -1,4 +1,4 @@
-                    <h3>Resultado<?php if($buscaPalavra!=null){ echo ' por "' . $buscaPalavra . '"'; } ?></h3>
+                    <h3 class="title">Resultado<?php if($buscaPalavra!=null){ echo ' por "' . $buscaPalavra . '"'; } ?></h3>
 
                     <?php
 
@@ -24,14 +24,27 @@
 
                     ?>
 
-                    <p>Foram encontradas algumas dúvidas relacionadas a sua busca<?php if($buscaPalavra!=null){ echo ' por "' . $buscaPalavra . '"'; } ?>, clique em saiba mais para visualizar ou inicie uma nova dúvida.</p>
-                    <ul class="conteudoDuvidasResultado" >
+                    <p class="subtitle">Foram encontradas algumas dúvidas relacionadas a sua busca<?php if($buscaPalavra!=null){ echo ' por "' . $buscaPalavra . '"'; } ?>,<br>
+                    clique em saiba mais para visualizar ou inicie uma nova dúvida.</p>
+
+                    <ul id="duvidas-recentes" class="l-row">
+
                         <?php
                         while ($row=mysql_fetch_array($resultDuvidaPosts)) {
                           $id_duvida = $row['id'];
                           $titulo = $row['titulo'];
+                          $textoDuvida = $row['texto'];
                           $plantacaoDuvida = $row['plantacao'];
+                          $plantacaoDuvidaId = $plantacaoDuvida;
                           $imagem_duvida = $row['imagem'];
+
+                          //TITULO
+                          $titulo = explode(" ", $titulo);
+
+                          //TEXTO
+                          $the_tag = array('<p>', '</p>', '<br>', '<br/>', '<br />');
+                          $textoDuvida = str_replace($the_tag, '', $textoDuvida);
+                          $textoDuvida = explode(" ", $textoDuvida);
 
                           //PLANTAÇÃO ===============
                           if($plantacaoDuvida==''){} else {
@@ -67,23 +80,54 @@
                             }
                           } 
                         ?>
-                        <li>
-                          <img src="<?php echo $imagem_duvida[0]; ?>" alt="nome do post" width="200" height="150" />
-                          <p class="postnome"><?php echo $titulo; ?></p>
-                          <?php 
-                          if($plantacaoDuvida==''){} else {
-                            echo '<a title="Tag">';
-                            foreach ($plantacaoDuvida as $plantacaoPart){ 
-                              echo $plantacaoPart; 
+
+                        <li class="l-col4">
+                          <div class="squared-img">
+                            <img src="<?php echo $imagem_duvida[0]; ?>" alt="nome do post" />
+                            <?php 
+                            if($plantacaoDuvida==''){} else {
+                              echo '<a class="the_tag" href="duvida-resultado.php?plantacao=';
+                              echo $plantacaoDuvidaId;
+                              echo '" title="Tag">';
+                              foreach ($plantacaoDuvida as $plantacaoPart){
+                                echo $plantacaoPart; 
+                              } 
+                              echo '</a>';
                             } 
-                            echo '</a>';
-                          } 
-                          ?>
-                          <a href="duvida.php?numero=<?php echo $id_duvida; ?>" title="Saiba mais" class="bt-saibamais">Saiba mais</a>
-                        </li>
+                            ?>
+                          </div><!-- .squared-img -->
+                          <p class="postnome">
+                            <?php
+                            for($i=0;$i<=5;$i++){
+                              if($i==5){
+                                echo '...';
+                              } else if($i==4) {
+                                echo $titulo[$i];
+                              } else {
+                                echo $titulo[$i] . ' ';
+                              }
+                            }
+                            ?>
+                          </p>
+                          <p class="posttexto">
+                            <?php
+                            for($i=0;$i<=5;$i++){
+                              if($i==5){
+                                echo '...';
+                              } else if($i==4) {
+                                echo $textoDuvida[$i];
+                              } else {
+                                echo $textoDuvida[$i] . ' ';
+                              }
+                            }
+                            ?>
+                          </p>
+                          <a href="duvida.php?numero=<?php echo $id_duvida; ?>" title="Ver Dúvida" class="bt-saibamais ver-duvida button">Ver Dúvida</a>
+                        </li><!-- .l-col4 -->
+
                         <?php }//while ?>
                         
-                    </ul><!-- .conteudoDuvidasResultado -->
+                    </ul><!-- #duvidas-recentes.l-row -->
 
                     <!--div id="paginacao">
                         <ul>
@@ -95,6 +139,6 @@
 
                     <?php } else { ?>
 
-                    <p>Não foram encontradas dúvidas relacionadas a sua busca<?php if($buscaPalavra!=null){ echo ' por "' . $buscaPalavra . '"'; } ?>, inicie uma nova dúvida.</p>
+                    <p class="subtitle">Não foram encontradas dúvidas relacionadas a sua busca<?php if($buscaPalavra!=null){ echo ' por "' . $buscaPalavra . '"'; } ?>, inicie uma nova dúvida.</p>
 
                     <?php }//else ?>

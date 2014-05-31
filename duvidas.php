@@ -44,17 +44,21 @@
 
 				<!-- login ADRIAN: Essa section é um exemplo de como você vai colocando as áreas do site. você pode alterar o nome da class .l-duvida-resultado para .l-duvida-resultado ou algo assim, dependendo do que for fazer. Preciso que cada sessão (nesse caso sessão tem o valor de corte, área. Um exemplo considere o wireframe do painel. Cada área dele, sendo a parte dos gráficos, a parte das notificações e dúvidas são sessões diferentes) do site seja feita pela tag <section>, pois isso agora é importante.
 				======================================================== -->
-				<section class="l-duvida-inicial">
+				<section class="l-duvida-busca block">
 
-					<header>
-						<h2>Dúvidas</h2>
-					</header>
+					<h3 class="title">Dúvidas</h3>
 					
 					<form method="post" action="duvida-resultado.php">
-						<input type="text" name="busca" placeholder="Pesquise aqui"><button type="submit">Buscar</button>
+						<div class="input-container">
+							<input type="text" name="busca" placeholder="Digite aqui a sua dúvida..."><button type="submit">Buscar</button>
+						</div><!-- .input-container -->
 					</form><!-- barra de busca -->
 
-					<h3>Dúvidas Recentes</h3>
+				</section><!-- .l-duvida-busca -->
+
+				 <section class="l-duvidas block">
+
+					<h3 class="title">Dúvidas Recentes</h3>
 
 					<?php
 
@@ -68,15 +72,27 @@
 			            $imagem_duvida;
 
 			        ?>
+
+			        <p class="subtitle">Sabe algo a respeito destas últimas dúvidas postadas? Contribua!</p>
 					
-					<ul id="conteudoDuvidas">
+					<ul id="duvidas-recentes" class="l-row">
 
 						<?php
 			            while ($row=mysql_fetch_array($resultDuvidaPosts)) {
 			              $id_duvida = $row['id'];
 			              $titulo = $row['titulo'];
+			              $textoDuvida = $row['texto'];
 			              $plantacaoDuvida = $row['plantacao'];
+			              $plantacaoDuvidaId = $plantacaoDuvida;
 			              $imagem_duvida = $row['imagem'];
+
+			              //TITULO
+			              $titulo = explode(" ", $titulo);
+
+			              //TEXTO
+			              $the_tag = array('<p>', '</p>', '<br>', '<br/>', '<br />');
+			              $textoDuvida = str_replace($the_tag, '', $textoDuvida);
+			              $textoDuvida = explode(" ", $textoDuvida);
 
 			              //PLANTAÇÃO ===============
 			              if($plantacaoDuvida==''){} else {
@@ -112,24 +128,54 @@
 			                }
 			              } 
 			            ?>
-						 <li>
-			              <img src="<?php echo $imagem_duvida[0]; ?>" alt="nome do post" width="200" height="150" />
-			              <p class="postnome"><?php echo $titulo; ?></p>
-			              <?php 
-			              if($plantacaoDuvida==''){} else {
-			                echo '<a title="Tag">';
-			                foreach ($plantacaoDuvida as $plantacaoPart){ 
-			                  echo $plantacaoPart; 
-			                } 
-			                echo '</a>';
-			              } 
-			              ?>
-			              <a href="duvida.php?numero=<?php echo $id_duvida; ?>" title="Saiba mais" class="bt-saibamais">Saiba mais</a>
-			            </li>
+
+						 <li class="l-col4">
+			                <div class="squared-img">
+			                  <img src="<?php echo $imagem_duvida[0]; ?>" alt="nome do post" />
+			                  <?php 
+			                  if($plantacaoDuvida==''){} else {
+			                    echo '<a class="the_tag" href="duvida-resultado.php?plantacao=';
+			                    echo $plantacaoDuvidaId;
+			                    echo '" title="Tag">';
+			                    foreach ($plantacaoDuvida as $plantacaoPart){
+			                      echo $plantacaoPart; 
+			                    } 
+			                    echo '</a>';
+			                  } 
+			                  ?>
+			                </div><!-- .squared-img -->
+			                <p class="postnome">
+			                  <?php
+			                  for($i=0;$i<=5;$i++){
+			                    if($i==5){
+			                      echo '...';
+			                    } else if($i==4) {
+			                      echo $titulo[$i];
+			                    } else {
+			                      echo $titulo[$i] . ' ';
+			                    }
+			                  }
+			                  ?>
+			                </p>
+			                <p class="posttexto">
+			                  <?php
+			                  for($i=0;$i<=5;$i++){
+			                    if($i==5){
+			                      echo '...';
+			                    } else if($i==4) {
+			                      echo $textoDuvida[$i];
+			                    } else {
+			                      echo $textoDuvida[$i] . ' ';
+			                    }
+			                  }
+			                  ?>
+			                </p>
+			                <a href="duvida.php?numero=<?php echo $id_duvida; ?>" title="Ver Dúvida" class="bt-saibamais ver-duvida button">Ver Dúvida</a>
+			              </li><!-- .l-col4 -->
 
 						<?php }//while ?>
 						
-					</ul> <!-- #conteudoDuvidas -->
+					</ul> <!-- #duvidas-recentes.l-row -->
 
 					<!--div id="paginacao">
 						<ul>
@@ -141,17 +187,19 @@
 
 					<?php } else { ?>
 
-			        <p>Ainda não há dúvidas cadastradas</p>
+			        <p class="subtitle">Ainda não há dúvidas cadastradas</p>
 
 			        <?php }//else ?>
 
-					<hr />
-					<div id="cadastrarDuvida">
-						<p>Não encontrou uma solução para seu problema? Inicie uma nova dúvida!</p>
-						<a href="duvida-inicial.php" title="Quero cadastrar minha dúvida" class="btCadastrarDuvida">Quero cadastrar minha dúvida</a>
-					</div> <!-- #cadastrarDuvida -->
+			    </section><!-- .l-duvidas -->
 
-				</section><!-- .l-duvida-inicial -->
+			    <section class="l-duvidas-cadastrar-button block">
+
+					<p class="subtitle">Ainda não encontrou uma solução para o seu problema?<br>
+					Inicie uma nova dúvida!</p>
+					<a href="duvida-inicial.php" title="Quero cadastrar minha dúvida" class="btCadastrarDuvida">Quero cadastrar minha dúvida</a>
+
+				</section><!-- .l-duvidas-cadastrar-button -->
 
 			</section><!-- .l-content -->
 
