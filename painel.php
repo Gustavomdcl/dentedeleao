@@ -65,32 +65,52 @@
         <!-- ================= COM SENSOR ================== -->
 
         <div id="com-sensor">
-          <p>Meus Cultivos:</p>
-          
-          <ul id="abas" class="nav">
-            <?php 
 
-            foreach ($deviceUserRow as $value) { 
+          <div class="abas-nav">
+            <h3 class="title">Meus Cultivos:</h3>
+            
+            <ul id="abas" class="nav">
+              <?php 
 
-              $plantationNameId = $value['plantacao'];
+              foreach ($deviceUserRow as $value) { 
 
-              $sqlPlantacaoNome = "SELECT plantacao FROM DL_ADMIN_plantationList WHERE id = '$plantationNameId' order by id desc limit 1";
-              $resultPlantacaoNome = mysql_query($sqlPlantacaoNome);
-              while ($row=mysql_fetch_array($resultPlantacaoNome)) {
+                $plantationNameId = $value['plantacao'];
 
-            ?>
+                $sqlPlantacaoNome = "SELECT `plantacao`, `imagem` FROM DL_ADMIN_plantationList WHERE id = '$plantationNameId' order by id desc limit 1";
+                $resultPlantacaoNome = mysql_query($sqlPlantacaoNome);
+                while ($row=mysql_fetch_array($resultPlantacaoNome)) {
+                  $plantacaoNome = $row['plantacao'];
+                  $plantacaoImg = $row['imagem'];
 
-            <li><a href="plantacao-<?php echo $value['plantacao']; ?>"><?php echo $row['plantacao']; ?></a></li> 
+                  if($plantacaoImg == null){
+                    $plantacaoImg = 'admin/assets/img/template/logo.gif'; 
+                  } else {
 
-            <?php 
+                    $plantacaoImgContainer = explode('-', $plantacaoImg);
 
-              }//while
+                    $sqlImagemPlantationTag = "SELECT * FROM DL_IMAGES WHERE id = '$plantacaoImgContainer[0]' order by id desc";
+                    $resultImagemPlantationTag = mysql_query($sqlImagemPlantationTag);
 
-            }//foreach
+                    while ($rowImagem=mysql_fetch_array($resultImagemPlantationTag)) {
+                      $plantacaoImg = $rowImagem['caminho'] . $rowImagem['nome_imagem'];
+                    }
+                  }
 
-            ?>
+              ?>
 
-          </ul> <!-- #abas -->
+              <li><a href="plantacao-<?php echo $value['plantacao']; ?>" style="background-image: url(<?php echo $plantacaoImg; ?>);"><?php echo $plantacaoNome; ?></a></li> 
+
+              <?php 
+
+                }//while
+
+              }//foreach
+
+              ?>
+            </ul> <!-- #abas -->
+
+          </div><!-- .abas-nav -->
+
           <div id="resultados">
             <?php 
 
@@ -112,13 +132,44 @@
             ?>
 
             <div id="plantacao-<?php echo $value['plantacao']; ?>" class="aba-device-plantacao">
-              <ul>
-                <li>Dados da chuva: <?php echo $row['chuva']; ?></li>
-                <li>Umidade do Solo: <?php echo $row['umidade_do_solo']; ?></li>
-                <li>Umidade: <?php echo $row['umidade']; ?></li>
-                <li>Temperatura: <?php echo $row['temperatura']; ?></li>
+              <ul class="nav">
+                <li class="chuva-dados">
+                  <div class="dados-content">
+                    <img src="assets/img/template/chuva-dados.png" alt="Chuva" />
+                    <p class="data-right"><?php echo $row['chuva']; ?><span class="data-value">%</span><br>
+                      <span class="data-type">Chuva</span>
+                    </p><!-- .data-right -->
+                  </div><!-- .dados-content -->
+                </li>
+                <li class="umidade-dados">
+                  <div class="dados-content">
+                    <img src="assets/img/template/umidade-dados.png" alt="Umidade" />
+                    <p class="data-right"><?php echo $row['umidade']; ?><span class="data-value">%</span><br>
+                      <span class="data-type">Umidade</span>
+                    </p><!-- .data-right -->
+                  </div><!-- .dados-content -->
+                </li>
+                <li class="umidadedosolo-dados">
+                  <div class="dados-content">
+                    <img src="assets/img/template/umidadedosolo-dados.png" alt="Umidade do Solo" />
+                    <p class="data-right"><?php echo $row['umidade_do_solo']; ?><span class="data-value">%</span><br>
+                      <span class="data-type">
+                        Umidade<br>
+                        <span>do Solo</span>
+                      </span>
+                    </p><!-- .data-right -->
+                  </div><!-- .dados-content -->
+                </li>
+                <li class="temperatura-dados">
+                  <div class="dados-content">
+                    <img src="assets/img/template/temperatura-dados.png" alt="Temperatura" />
+                    <p class="data-right"><?php echo $row['temperatura']; ?><span class="data-value">°C</span><br>
+                      <span class="data-type">Temperatura</span>
+                    </p><!-- .data-right -->
+                  </div><!-- .dados-content -->
+                </li>
               </ul>
-              <a href="#" title="Veja mais">Veja mais</a>
+              <!--a href="graficos.php" title="Veja mais">Veja mais</a-->
             </div>
 
             <?php 

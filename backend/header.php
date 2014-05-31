@@ -96,8 +96,8 @@
 
           $imagemPlantation = $row['imagem'];
 
-          if($foto == null){
-            $foto = 'admin/assets/img/template/logo.gif'; 
+          if($imagemPlantation == null){
+            $imagemPlantation = 'admin/assets/img/template/logo.gif'; 
           } else {
 
             $imagemPlantation = explode('-', $imagemPlantation);

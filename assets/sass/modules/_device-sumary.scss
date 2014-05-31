@@ -1,0 +1,130 @@
+.l-device-sumary {
+	.abas-nav {
+		@include box-sizing(border-box);
+		@include sprite(abas-nav);
+		display: table-cell;
+		vertical-align: middle;
+		padding: 0px 0px 0px 111px;
+		h3 {
+			color: $color-white;
+			display: inline-block;
+		}
+		ul {
+			display: inline-block;
+			vertical-align: super;
+			li {
+				margin: 0px 15px;
+				a {
+					display: inline-block;
+					min-height: 50px;
+					min-width: 50px;
+					font-family: 'Sophie', sans-serif;
+					font-size: 1.71em;
+					color: transparent;
+					text-transform: uppercase;
+					vertical-align: middle;
+					line-height: 50px;
+					background-repeat: no-repeat;
+					background-position: 50% 50%;
+					&:hover {
+						color: $color-white;
+						background-position: 50% 10000px;
+					}
+					&.active {
+						color: $color-white;
+						background-position: 50% 10000px;
+						cursor: default;
+					}
+				}
+			}
+		}
+	}
+	#resultados {
+		.aba-device-plantacao {
+			.dados-content {
+				display: table-cell;
+				text-align: center;
+				vertical-align: middle;
+				padding-top: 34px;
+				img {
+					display: inline-block;
+				}
+				.data-right {
+					display: inline-block;
+					font-weight: 700;
+					text-transform: uppercase;
+					font-size: 30px;
+					color: $color-white;
+					line-height: 18px;
+					.data-value {
+						font-size: 35px;
+					}
+					.data-type {
+						font-size: 18px;
+					}
+				}
+			}
+			.chuva-dados {
+				@include sprite(chuva-dados-tomate);
+				.dados-content {
+					height: 216px;
+					width: 189px;
+					.data-right {
+						.data-value {
+							font-size: 25px;
+						}
+						.data-type {
+							padding-right: 23px;
+						}
+					}
+				}
+			}
+			.umidade-dados {
+				@include sprite(umidade-dados-tomate);
+				.dados-content {
+					height: 211px;
+					width: 188px;
+					.data-right {
+						font-size: 43px;
+					}
+				}
+			}
+			.umidadedosolo-dados {
+				.dados-content {
+					padding-top: 42px;
+				}
+				@include sprite(umidadedosolo-dados-tomate);
+				img {
+					margin-bottom: 18px;
+				}
+				.dados-content {
+					height: 213px;
+					width: 188px;
+					.data-right {
+						font-size: 37px;
+						.data-type {
+							line-height: 0px;
+							span {
+								font-size: 14px;
+								padding-right: 16px;
+							}
+						}
+					}
+				}
+			}
+			.temperatura-dados {
+				@include sprite(temperatura-dados-tomate);
+				.dados-content {
+					height: 217px;
+					width: 189px;
+					.data-right {
+						font-size: 43px;
+					}
+					.data-type {
+						font-size: 13px;
+					}
+				}
+			}
+		}
+	}
+}
