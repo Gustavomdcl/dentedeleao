@@ -30,15 +30,22 @@
 
 		<?php include 'template/header.php'; ?>
 
-		<!-- ADRIAN: ÁREA PARA COLOCAR SEU CÓDIGO, QUE VAI MUDAR EM CADA PÁGINA -->
+		<!-- .l-main
+	    ======================================================== -->
+	    <section class="l-main">
 
-		<!-- login ADRIAN: Essa section é um exemplo de como você vai colocando as áreas do site. você pode alterar o nome da class .l-cadastrarperfil para .l-cadastrarperfil ou algo assim, dependendo do que for fazer. Preciso que cada sessão (nesse caso sessão tem o valor de corte, área. Um exemplo considere o wireframe do painel. Cada área dele, sendo a parte dos gráficos, a parte das notificações e dúvidas são sessões diferentes) do site seja feita pela tag <section>, pois isso agora é importante.
-		======================================================== -->
-		<section class="l-duvida-cadastro">
+	      <div class="l-container cf">
 
-			<div class="l-container cf"><!-- ADRIAN: Essa div com class l-container centraliza em 960px e centraliza, no sass você pode observar isso. a class cf desconsidera os floats, sabe? as vezes quando você da um float left dentro de uma div o seu height não considera esses elementos. a class cf acaba considerando. -->
+	        <?php include 'template/sidebar.php'; ?>
 
-				<div class="l-row">
+	        <!-- .l-content
+	        =================================================== -->
+	        <section class="l-content">
+
+				<!-- login ADRIAN: Essa section é um exemplo de como você vai colocando as áreas do site. você pode alterar o nome da class .l-cadastrarperfil para .l-cadastrarperfil ou algo assim, dependendo do que for fazer. Preciso que cada sessão (nesse caso sessão tem o valor de corte, área. Um exemplo considere o wireframe do painel. Cada área dele, sendo a parte dos gráficos, a parte das notificações e dúvidas são sessões diferentes) do site seja feita pela tag <section>, pois isso agora é importante.
+				======================================================== -->
+				<section class="l-duvida-cadastro">
+
 					<header>
 						<h2>Editar Perfil</h2>
 					</header>
@@ -149,15 +156,14 @@
 						<input type="text" name="demaisplantacoes"><br>
 						<button type="submit">Salvar Informações</button>
 					</form>
-					
 
-				</div><!-- .l-row -->
+					</section><!-- .l-duvida-cadastro -->
 
-			</div><!-- .l-container.cf -->
+				</section><!-- .l-content -->
 
-		</section><!-- .l-duvida-cadastro -->
+    		</div><!-- .l-container.cf -->
 
-		<!-- ADRIAN: FINAL DA ÁREA PARA COLOCAR SEU CÓDIGO, QUE VAI MUDAR EM CADA PÁGINA -->
+    	</section><!-- .l-main -->
 
 		<?php include 'template/footer.php'; ?>
 

@@ -30,178 +30,187 @@
 
     <?php include 'template/header.php'; ?>
 
-    <!-- ADRIAN: ÁREA PARA COLOCAR SEU CÓDIGO, QUE VAI MUDAR EM CADA PÁGINA -->
+    <!-- .l-main
+      ======================================================== -->
+      <section class="l-main">
 
-      <?php
+        <div class="l-container cf">
 
-      $sqlDispositivo = "SELECT * FROM DL_ADMIN_deviceuser WHERE usuario = '$idProfile' order by id desc";
+          <?php include 'template/sidebar.php'; ?>
 
-      $resultDispositivo = mysql_query($sqlDispositivo);
-      $deviceUserRow;
-      $devicePlantations;
+          <!-- .l-content
+          =================================================== -->
+          <section class="l-content">
 
-      if (mysql_num_rows($resultDispositivo) > 0) {
+            <?php
 
-        while ($row=mysql_fetch_array($resultDispositivo)) {
-          if(in_array($row['plantacao'], (array) $devicePlantations)){//Se a plantação já existe
-          } else {
-            $deviceUserRow[] = array(
-              'id'              => $row['id'],
-              'dispositivo'     => $row['dispositivo'],
-              'plantacao'       => $row['plantacao'],
-              'data_inicio'     => $row['data_inicio'],
-              'data_fim'        => $row['data_fim'],
-            );
-            $devicePlantations[] = $row['plantacao'];
-          }
-        }
+            $sqlDispositivo = "SELECT * FROM DL_ADMIN_deviceuser WHERE usuario = '$idProfile' order by id desc";
 
-        ?>
+            $resultDispositivo = mysql_query($sqlDispositivo);
+            $deviceUserRow;
+            $devicePlantations;
 
-    <!-- login ADRIAN: Essa section é um exemplo de como você vai colocando as áreas do site. você pode alterar o nome da class .l-duvida-exibicao para .l-duvida-exibicao ou algo assim, dependendo do que for fazer. Preciso que cada sessão (nesse caso sessão tem o valor de corte, área. Um exemplo considere o wireframe do painel. Cada área dele, sendo a parte dos gráficos, a parte das notificações e dúvidas são sessões diferentes) do site seja feita pela tag <section>, pois isso agora é importante.
-    ======================================================== -->
-    <section class="l-graficos">
+            if (mysql_num_rows($resultDispositivo) > 0) {
 
-      <div class="l-container cf"><!-- ADRIAN: Essa div com class l-container centraliza em 960px e centraliza, no sass você pode observar isso. a class cf desconsidera os floats, sabe? as vezes quando você da um float left dentro de uma div o seu height não considera esses elementos. a class cf acaba considerando. -->
-
-        <div class="l-row">
-          <header>
-            <h2>Dados da Plantação</h2>
-          </header>
-          <p>Selecione abaixo a aba correspondente ao cultivo que deseja visualizar.</p>
-
-          <ul id="plantacoes">
-            <?php 
-
-            foreach ($deviceUserRow as $value) { 
-
-              $plantationNameId = $value['plantacao'];
-              $imagem=$row['imagem'];
-
-              $sqlPlantacaoNome = "SELECT * FROM DL_ADMIN_plantationList WHERE id = '$plantationNameId' order by id desc limit 1";
-              $resultPlantacaoNome = mysql_query($sqlPlantacaoNome);
-              while ($row=mysql_fetch_array($resultPlantacaoNome)) {
-
-                $imagem=$row['imagem'];
-                $plantationName=$row['plantacao'];
-
-                if($imagem == null){ 
-                      $imagem = 'admin/assets/img/template/logo.gif'; 
-                    } else { 
-
-                      $imagemId = explode('-', $imagem);
-
-                      $sqlPlantacaoimg = "SELECT * FROM DL_IMAGES WHERE id = '$imagemId[0]' order by id desc";
-                      $resultPlantacaoimg = mysql_query($sqlPlantacaoimg);
-
-                      while ($row=mysql_fetch_array($resultPlantacaoimg)) {
-                        $imagem = $row['caminho'] . $row['nome_imagem'];
-                      }
-                    }
-
-            ?>
-            <li class="plantacao" target="<?php echo $value['plantacao']; ?>"><img src="<?php echo $imagem ?>" alt="<?php echo $plantationName; ?>" /></li>
-            <?php 
-
-              }//while
-
-            }//foreach
-
-            ?>
-          </ul><!-- #plantacoes -->
-
-          <hr />
-
-          <?php
-
-          foreach ($deviceUserRow as $value) {
-
-          ?>
-
-          <div id="plantacao-<?php echo $value['plantacao']; ?>" class="target" data-plantacao="<?php echo $value['plantacao']; ?>">
-            <h3>Chuva</h3>
-            <div id="chuva-<?php echo $value['plantacao']; ?>">
-              <div id="chart" style='width: 735px; height: 300px;'></div>
-              <div id="control" style='width: 735px; height: 50px;'></div>
-            </div>
-            <!--a href="interna1" class="bt-vermais">Ver mais </a-->
-
-          <hr style="clear:both" />
-            <h3>Umidade</h3>
-            <div id="umidade-<?php echo $value['plantacao']; ?>" style="width: 735px; height: 300px;"></div>
-            <!--a href="interna1" class="bt-vermais">Ver mais </a-->
-
-          <hr style="clear:both" />
-            <h3>Umidade do Solo</h3>
-            <div id="umidade_do_solo-<?php echo $value['plantacao']; ?>" style="width: 735px; height: 300px;"></div>
-            <!--a href="interna1" class="bt-vermais">Ver mais </a-->
-
-          <hr style="clear:both" />
-            <h3>Temperatura</h3>
-            <div id="temperatura-<?php echo $value['plantacao']; ?>" style="width: 735px; height: 300px;"></div>
-            <form id="verGrafico" method="post" action="grafico-detalhes.php">
-              <input type="hidden" value="<?php echo $value['id']; ?>" name="grafico">
-              <button type="submit" href="grafico-detalhes.php?dados=" class="bt-vermais">Ver mais </button>
-            </form>
-
-          <div class="values-container">
-
-          <?php
-
-              $deviceCode = $value['dispositivo'];
-              $deviceDataFim;
-              $MysqlDataSintaxe;
-              
-              if($value['data_fim']!=null){
-                $deviceDataFim = $value['data_fim'];
-              } else {
-                $deviceDataFim = date('o\-m\-d');
+              while ($row=mysql_fetch_array($resultDispositivo)) {
+                if(in_array($row['plantacao'], (array) $devicePlantations)){//Se a plantação já existe
+                } else {
+                  $deviceUserRow[] = array(
+                    'id'              => $row['id'],
+                    'dispositivo'     => $row['dispositivo'],
+                    'plantacao'       => $row['plantacao'],
+                    'data_inicio'     => $row['data_inicio'],
+                    'data_fim'        => $row['data_fim'],
+                  );
+                  $devicePlantations[] = $row['plantacao'];
+                }
               }
-              $deviceNumberName = $value['dispositivo'];
-              $data_inicio = $value['data_inicio'];//00:00:00
-              $data_fim = $deviceDataFim . "23:59:59";
-              $sqlDispositivoBeta = "SELECT * FROM DL_DEVICE WHERE data BETWEEN '$data_inicio' and '$data_fim' AND dispositivo = '$deviceNumberName' order by id asc limit 2002";
-              $resultDispositivoBeta = mysql_query($sqlDispositivoBeta);
-              while ($row=mysql_fetch_array($resultDispositivoBeta)) {
-          ?>
-            <div class="value-<?php echo $value['plantacao']; ?>" data-plantacao="<?php echo $value['plantacao']; ?>" data-id="<?php echo $row['id']; ?>" data-device="<?php echo $row['dispositivo']; ?>" data-umidade="<?php echo $row['umidade']; ?>" data-umidadedosolo="<?php echo $row['umidade_do_solo']; ?>" data-temperatura="<?php echo $row['temperatura']; ?>" data-chuva="<?php echo $row['chuva']; ?>" data-date="<?php echo $row['data']; ?>"></div>
-          <?php 
-              }//while
-          ?>
-            </div><!-- .values-container -->
-          </div><!-- #plantacao -->
-          <?php
-            }//foreach
-          ?>
 
-          <?php } else { ?>
+              ?>
 
           <!-- login ADRIAN: Essa section é um exemplo de como você vai colocando as áreas do site. você pode alterar o nome da class .l-duvida-exibicao para .l-duvida-exibicao ou algo assim, dependendo do que for fazer. Preciso que cada sessão (nesse caso sessão tem o valor de corte, área. Um exemplo considere o wireframe do painel. Cada área dele, sendo a parte dos gráficos, a parte das notificações e dúvidas são sessões diferentes) do site seja feita pela tag <section>, pois isso agora é importante.
           ======================================================== -->
           <section class="l-graficos">
 
-            <div class="l-container cf"><!-- ADRIAN: Essa div com class l-container centraliza em 960px e centraliza, no sass você pode observar isso. a class cf desconsidera os floats, sabe? as vezes quando você da um float left dentro de uma div o seu height não considera esses elementos. a class cf acaba considerando. -->
+                <header>
+                  <h2>Dados da Plantação</h2>
+                </header>
+                <p>Selecione abaixo a aba correspondente ao cultivo que deseja visualizar.</p>
 
-              <div class="l-row">
+                <ul id="plantacoes">
+                  <?php 
 
-              <!-- ================= SEM SENSOR ================== -->
-              <header>
-                <h2>Dados da Plantação</h2>
-              </header>
-              <div id="sem-sensor">
-                <h3>Ainda não conhece o dispositivo?</h3>
-                <p>Monitore sua plantação 24h por dia, tenha acesso a gráficos e comece um banco de dados de informações para saber como resolver seus problemas em qualquer situação.</p>
-                <img src="" width="735" height="300" />
-              </div><!-- #sem-sensor  -->
-              <!-- ================= SEM SENSOR ================== -->
+                  foreach ($deviceUserRow as $value) { 
 
-          <?php }//Não existe device ?> 
-          
-        </div><!-- .l-row -->
+                    $plantationNameId = $value['plantacao'];
+                    $imagem=$row['imagem'];
+
+                    $sqlPlantacaoNome = "SELECT * FROM DL_ADMIN_plantationList WHERE id = '$plantationNameId' order by id desc limit 1";
+                    $resultPlantacaoNome = mysql_query($sqlPlantacaoNome);
+                    while ($row=mysql_fetch_array($resultPlantacaoNome)) {
+
+                      $imagem=$row['imagem'];
+                      $plantationName=$row['plantacao'];
+
+                      if($imagem == null){ 
+                            $imagem = 'admin/assets/img/template/logo.gif'; 
+                          } else { 
+
+                            $imagemId = explode('-', $imagem);
+
+                            $sqlPlantacaoimg = "SELECT * FROM DL_IMAGES WHERE id = '$imagemId[0]' order by id desc";
+                            $resultPlantacaoimg = mysql_query($sqlPlantacaoimg);
+
+                            while ($row=mysql_fetch_array($resultPlantacaoimg)) {
+                              $imagem = $row['caminho'] . $row['nome_imagem'];
+                            }
+                          }
+
+                  ?>
+                  <li class="plantacao" target="<?php echo $value['plantacao']; ?>"><img src="<?php echo $imagem ?>" alt="<?php echo $plantationName; ?>" /></li>
+                  <?php 
+
+                    }//while
+
+                  }//foreach
+
+                  ?>
+                </ul><!-- #plantacoes -->
+
+                <hr />
+
+                <?php
+
+                foreach ($deviceUserRow as $value) {
+
+                ?>
+
+                <div id="plantacao-<?php echo $value['plantacao']; ?>" class="target" data-plantacao="<?php echo $value['plantacao']; ?>">
+                  <h3>Chuva</h3>
+                  <div id="chuva-<?php echo $value['plantacao']; ?>">
+                    <div id="chart" style='width: 735px; height: 300px;'></div>
+                    <div id="control" style='width: 735px; height: 50px;'></div>
+                  </div>
+                  <!--a href="interna1" class="bt-vermais">Ver mais </a-->
+
+                <hr style="clear:both" />
+                  <h3>Umidade</h3>
+                  <div id="umidade-<?php echo $value['plantacao']; ?>" style="width: 735px; height: 300px;"></div>
+                  <!--a href="interna1" class="bt-vermais">Ver mais </a-->
+
+                <hr style="clear:both" />
+                  <h3>Umidade do Solo</h3>
+                  <div id="umidade_do_solo-<?php echo $value['plantacao']; ?>" style="width: 735px; height: 300px;"></div>
+                  <!--a href="interna1" class="bt-vermais">Ver mais </a-->
+
+                <hr style="clear:both" />
+                  <h3>Temperatura</h3>
+                  <div id="temperatura-<?php echo $value['plantacao']; ?>" style="width: 735px; height: 300px;"></div>
+                  <form id="verGrafico" method="post" action="grafico-detalhes.php">
+                    <input type="hidden" value="<?php echo $value['id']; ?>" name="grafico">
+                    <button type="submit" href="grafico-detalhes.php?dados=" class="bt-vermais">Ver mais </button>
+                  </form>
+
+                <div class="values-container">
+
+                <?php
+
+                    $deviceCode = $value['dispositivo'];
+                    $deviceDataFim;
+                    $MysqlDataSintaxe;
+                    
+                    if($value['data_fim']!=null){
+                      $deviceDataFim = $value['data_fim'];
+                    } else {
+                      $deviceDataFim = date('o\-m\-d');
+                    }
+                    $deviceNumberName = $value['dispositivo'];
+                    $data_inicio = $value['data_inicio'];//00:00:00
+                    $data_fim = $deviceDataFim . "23:59:59";
+                    $sqlDispositivoBeta = "SELECT * FROM DL_DEVICE WHERE data BETWEEN '$data_inicio' and '$data_fim' AND dispositivo = '$deviceNumberName' order by id asc limit 2002";
+                    $resultDispositivoBeta = mysql_query($sqlDispositivoBeta);
+                    while ($row=mysql_fetch_array($resultDispositivoBeta)) {
+                ?>
+                  <div class="value-<?php echo $value['plantacao']; ?>" data-plantacao="<?php echo $value['plantacao']; ?>" data-id="<?php echo $row['id']; ?>" data-device="<?php echo $row['dispositivo']; ?>" data-umidade="<?php echo $row['umidade']; ?>" data-umidadedosolo="<?php echo $row['umidade_do_solo']; ?>" data-temperatura="<?php echo $row['temperatura']; ?>" data-chuva="<?php echo $row['chuva']; ?>" data-date="<?php echo $row['data']; ?>"></div>
+                <?php 
+                    }//while
+                ?>
+                  </div><!-- .values-container -->
+                </div><!-- #plantacao -->
+                <?php
+                  }//foreach
+                ?>
+
+                <?php } else { ?>
+
+                <!-- login ADRIAN: Essa section é um exemplo de como você vai colocando as áreas do site. você pode alterar o nome da class .l-duvida-exibicao para .l-duvida-exibicao ou algo assim, dependendo do que for fazer. Preciso que cada sessão (nesse caso sessão tem o valor de corte, área. Um exemplo considere o wireframe do painel. Cada área dele, sendo a parte dos gráficos, a parte das notificações e dúvidas são sessões diferentes) do site seja feita pela tag <section>, pois isso agora é importante.
+                ======================================================== -->
+                <section class="l-graficos">
+
+                  <div class="l-container cf"><!-- ADRIAN: Essa div com class l-container centraliza em 960px e centraliza, no sass você pode observar isso. a class cf desconsidera os floats, sabe? as vezes quando você da um float left dentro de uma div o seu height não considera esses elementos. a class cf acaba considerando. -->
+
+                    <div class="l-row">
+
+                    <!-- ================= SEM SENSOR ================== -->
+                    <header>
+                      <h2>Dados da Plantação</h2>
+                    </header>
+                    <div id="sem-sensor">
+                      <h3>Ainda não conhece o dispositivo?</h3>
+                      <p>Monitore sua plantação 24h por dia, tenha acesso a gráficos e comece um banco de dados de informações para saber como resolver seus problemas em qualquer situação.</p>
+                      <img src="" width="735" height="300" />
+                    </div><!-- #sem-sensor  -->
+                    <!-- ================= SEM SENSOR ================== -->
+
+                <?php }//Não existe device ?> 
+
+          </section><!-- .l-graficos -->
+
+        </section><!-- .l-content -->
 
       </div><!-- .l-container.cf -->
 
-    </section><!-- .l-graficos -->
+    </section><!-- .l-main -->
 
     <!-- ADRIAN: FINAL DA ÁREA PARA COLOCAR SEU CÓDIGO, QUE VAI MUDAR EM CADA PÁGINA -->
 

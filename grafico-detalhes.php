@@ -35,130 +35,137 @@
 
     <?php include 'template/header.php'; ?>
 
-    <!-- ADRIAN: ÁREA PARA COLOCAR SEU CÓDIGO, QUE VAI MUDAR EM CADA PÁGINA -->
+    <!-- .l-main
+      ======================================================== -->
+      <section class="l-main">
 
-      <?php
+        <div class="l-container cf">
 
-      $sqlDispositivo = "SELECT * FROM DL_ADMIN_deviceuser WHERE id = '$graficoDetalhado' order by id desc limit 1";
+          <?php include 'template/sidebar.php'; ?>
 
-      $resultDispositivo = mysql_query($sqlDispositivo);
+          <!-- .l-content
+          =================================================== -->
+          <section class="l-content">
 
-      while ($row=mysql_fetch_array($resultDispositivo)) {
-            $idDeviceUser    = $row['id'];
-            $dispositivo     = $row['dispositivo'];
-            $plantacao       = $row['plantacao'];
-            $data_inicio     = $row['data_inicio'];
-            $data_fim        = $row['data_fim'];
+            <?php
 
-      ?>
+            $sqlDispositivo = "SELECT * FROM DL_ADMIN_deviceuser WHERE id = '$graficoDetalhado' order by id desc limit 1";
 
-    <!-- login ADRIAN: Essa section é um exemplo de como você vai colocando as áreas do site. você pode alterar o nome da class .l-duvida-exibicao para .l-duvida-exibicao ou algo assim, dependendo do que for fazer. Preciso que cada sessão (nesse caso sessão tem o valor de corte, área. Um exemplo considere o wireframe do painel. Cada área dele, sendo a parte dos gráficos, a parte das notificações e dúvidas são sessões diferentes) do site seja feita pela tag <section>, pois isso agora é importante.
-    ======================================================== -->
-    <section class="l-graficos">
+            $resultDispositivo = mysql_query($sqlDispositivo);
 
-      <div class="l-container cf"><!-- ADRIAN: Essa div com class l-container centraliza em 960px e centraliza, no sass você pode observar isso. a class cf desconsidera os floats, sabe? as vezes quando você da um float left dentro de uma div o seu height não considera esses elementos. a class cf acaba considerando. -->
-
-        <div class="l-row">
-          <header>
-            <h2>Dados da Plantação</h2>
-          </header>
-          <p>Selecione abaixo a aba correspondente ao cultivo que deseja visualizar.</p>
-
-          <ul id="plantacoes">
-            <?php 
-
-              $plantacaoId = $plantacao;
-              $imagem;
-
-              $sqlPlantacaoNome = "SELECT * FROM DL_ADMIN_plantationList WHERE id = '$plantacaoId' order by id desc limit 1";
-              $resultPlantacaoNome = mysql_query($sqlPlantacaoNome);
-              while ($row=mysql_fetch_array($resultPlantacaoNome)) {
-
-                $imagem=$row['imagem'];
-                $plantacao=$row['plantacao'];
-
-                if($imagem == null){ 
-                      $imagem = 'admin/assets/img/template/logo.gif'; 
-                    } else {
-
-                      $imagemId = explode('-', $imagem);
-
-                      $sqlPlantacaoimg = "SELECT * FROM DL_IMAGES WHERE id = '$imagemId[0]' order by id desc limit 1";
-                      $resultPlantacaoimg = mysql_query($sqlPlantacaoimg);
-
-                      while ($row=mysql_fetch_array($resultPlantacaoimg)) {
-                        $imagem = $row['caminho'] . $row['nome_imagem'];
-                      }
-                    }
+            while ($row=mysql_fetch_array($resultDispositivo)) {
+                  $idDeviceUser    = $row['id'];
+                  $dispositivo     = $row['dispositivo'];
+                  $plantacao       = $row['plantacao'];
+                  $data_inicio     = $row['data_inicio'];
+                  $data_fim        = $row['data_fim'];
 
             ?>
-            <li class="plantacao"><img src="<?php echo $imagem; ?>" alt="<?php echo $plantacao; ?>" /><?php echo $plantacao; ?></li>
-            <?php }//while ?>
-          </ul><!-- #plantacoes -->
 
-          <hr />
+          <!-- login ADRIAN: Essa section é um exemplo de como você vai colocando as áreas do site. você pode alterar o nome da class .l-duvida-exibicao para .l-duvida-exibicao ou algo assim, dependendo do que for fazer. Preciso que cada sessão (nesse caso sessão tem o valor de corte, área. Um exemplo considere o wireframe do painel. Cada área dele, sendo a parte dos gráficos, a parte das notificações e dúvidas são sessões diferentes) do site seja feita pela tag <section>, pois isso agora é importante.
+          ======================================================== -->
+          <section class="l-graficos">
 
-          <div id="plantacao-<?php echo $plantacaoId; ?>" class="target" data-plantacao="<?php echo $plantacaoId; ?>">
-            <h3>Chuva</h3>
-            <div id="chuva-<?php echo $plantacaoId; ?>">
-              <div id="chart-chuva" style='width: 735px; height: 300px;'></div>
-              <div id="control-chuva" style='width: 735px; height: 50px;'></div>
-            </div>
+                <header>
+                  <h2>Dados da Plantação</h2>
+                </header>
+                <p>Selecione abaixo a aba correspondente ao cultivo que deseja visualizar.</p>
 
-          <hr style="clear:both" />
-            <h3>Umidade</h3>
-            <div id="umidade-<?php echo $plantacaoId; ?>" style="width: 735px; height: 350px;">
-              <div id="chart-umidade" style='width: 735px; height: 300px;'></div>
-              <div id="control-umidade" style='width: 735px; height: 50px;'></div>
-            </div>
+                <ul id="plantacoes">
+                  <?php 
 
-          <hr style="clear:both" />
-            <h3>Umidade do Solo</h3>
-            <div id="umidade_do_solo-<?php echo $plantacaoId; ?>" style="width: 735px; height: 350px;">
-              <div id="chart-umidade_do_solo" style='width: 735px; height: 300px;'></div>
-              <div id="control-umidade_do_solo" style='width: 735px; height: 50px;'></div>
-            </div>
+                    $plantacaoId = $plantacao;
+                    $imagem;
 
-          <hr style="clear:both" />
-            <h3>Temperatura</h3>
-            <div id="temperatura-<?php echo $plantacaoId; ?>" style="width: 735px; height: 350px;">
-              <div id="chart-temperatura" style='width: 735px; height: 300px;'></div>
-              <div id="control-temperatura" style='width: 735px; height: 50px;'></div>
-            </div>
+                    $sqlPlantacaoNome = "SELECT * FROM DL_ADMIN_plantationList WHERE id = '$plantacaoId' order by id desc limit 1";
+                    $resultPlantacaoNome = mysql_query($sqlPlantacaoNome);
+                    while ($row=mysql_fetch_array($resultPlantacaoNome)) {
 
-          <div class="values-container">
+                      $imagem=$row['imagem'];
+                      $plantacao=$row['plantacao'];
 
-          <?php
+                      if($imagem == null){ 
+                            $imagem = 'admin/assets/img/template/logo.gif'; 
+                          } else {
 
-              $deviceDataFim;
-              
-              if($data_fim!=null){
-                $deviceDataFim = $data_fim;
-              } else {
-                $deviceDataFim = date('o\-m\-d');
-              }
-              $data_fim = $deviceDataFim . "23:59:59";
-              $sqlDispositivoBeta = "SELECT * FROM DL_DEVICE WHERE data BETWEEN '$data_inicio' and '$data_fim' AND dispositivo = '$dispositivo' order by id asc";
-              $resultDispositivoBeta = mysql_query($sqlDispositivoBeta);
-              while ($row=mysql_fetch_array($resultDispositivoBeta)) {
-          ?>
-            <div class="value-<?php echo $plantacaoId; ?>" data-plantacao="<?php echo $plantacaoId; ?>" data-id="<?php echo $row['id']; ?>" data-device="<?php echo $row['dispositivo']; ?>" data-umidade="<?php echo $row['umidade']; ?>" data-umidadedosolo="<?php echo $row['umidade_do_solo']; ?>" data-temperatura="<?php echo $row['temperatura']; ?>" data-chuva="<?php echo $row['chuva']; ?>" data-date="<?php echo $row['data']; ?>"></div>
-          <?php 
-              }//while
-          ?>
-            </div><!-- .values-container -->
-          </div><!-- #plantacao -->
-          <?php
-            }//while
-          ?>
-          
-        </div><!-- .l-row -->
+                            $imagemId = explode('-', $imagem);
+
+                            $sqlPlantacaoimg = "SELECT * FROM DL_IMAGES WHERE id = '$imagemId[0]' order by id desc limit 1";
+                            $resultPlantacaoimg = mysql_query($sqlPlantacaoimg);
+
+                            while ($row=mysql_fetch_array($resultPlantacaoimg)) {
+                              $imagem = $row['caminho'] . $row['nome_imagem'];
+                            }
+                          }
+
+                  ?>
+                  <li class="plantacao"><img src="<?php echo $imagem; ?>" alt="<?php echo $plantacao; ?>" /><?php echo $plantacao; ?></li>
+                  <?php }//while ?>
+                </ul><!-- #plantacoes -->
+
+                <hr />
+
+                <div id="plantacao-<?php echo $plantacaoId; ?>" class="target" data-plantacao="<?php echo $plantacaoId; ?>">
+                  <h3>Chuva</h3>
+                  <div id="chuva-<?php echo $plantacaoId; ?>">
+                    <div id="chart-chuva" style='width: 735px; height: 300px;'></div>
+                    <div id="control-chuva" style='width: 735px; height: 50px;'></div>
+                  </div>
+
+                <hr style="clear:both" />
+                  <h3>Umidade</h3>
+                  <div id="umidade-<?php echo $plantacaoId; ?>" style="width: 735px; height: 350px;">
+                    <div id="chart-umidade" style='width: 735px; height: 300px;'></div>
+                    <div id="control-umidade" style='width: 735px; height: 50px;'></div>
+                  </div>
+
+                <hr style="clear:both" />
+                  <h3>Umidade do Solo</h3>
+                  <div id="umidade_do_solo-<?php echo $plantacaoId; ?>" style="width: 735px; height: 350px;">
+                    <div id="chart-umidade_do_solo" style='width: 735px; height: 300px;'></div>
+                    <div id="control-umidade_do_solo" style='width: 735px; height: 50px;'></div>
+                  </div>
+
+                <hr style="clear:both" />
+                  <h3>Temperatura</h3>
+                  <div id="temperatura-<?php echo $plantacaoId; ?>" style="width: 735px; height: 350px;">
+                    <div id="chart-temperatura" style='width: 735px; height: 300px;'></div>
+                    <div id="control-temperatura" style='width: 735px; height: 50px;'></div>
+                  </div>
+
+                <div class="values-container">
+
+                <?php
+
+                    $deviceDataFim;
+                    
+                    if($data_fim!=null){
+                      $deviceDataFim = $data_fim;
+                    } else {
+                      $deviceDataFim = date('o\-m\-d');
+                    }
+                    $data_fim = $deviceDataFim . "23:59:59";
+                    $sqlDispositivoBeta = "SELECT * FROM DL_DEVICE WHERE data BETWEEN '$data_inicio' and '$data_fim' AND dispositivo = '$dispositivo' order by id asc";
+                    $resultDispositivoBeta = mysql_query($sqlDispositivoBeta);
+                    while ($row=mysql_fetch_array($resultDispositivoBeta)) {
+                ?>
+                  <div class="value-<?php echo $plantacaoId; ?>" data-plantacao="<?php echo $plantacaoId; ?>" data-id="<?php echo $row['id']; ?>" data-device="<?php echo $row['dispositivo']; ?>" data-umidade="<?php echo $row['umidade']; ?>" data-umidadedosolo="<?php echo $row['umidade_do_solo']; ?>" data-temperatura="<?php echo $row['temperatura']; ?>" data-chuva="<?php echo $row['chuva']; ?>" data-date="<?php echo $row['data']; ?>"></div>
+                <?php 
+                    }//while
+                ?>
+                  </div><!-- .values-container -->
+                </div><!-- #plantacao -->
+                <?php
+                  }//while
+                ?>
+
+          </section><!-- .l-graficos -->
+
+        </section><!-- .l-content -->
 
       </div><!-- .l-container.cf -->
 
-    </section><!-- .l-graficos -->
-
-    <!-- ADRIAN: FINAL DA ÁREA PARA COLOCAR SEU CÓDIGO, QUE VAI MUDAR EM CADA PÁGINA -->
+    </section><!-- .l-main -->
 
   <?php include 'template/footer.php'; ?>
 

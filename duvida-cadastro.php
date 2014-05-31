@@ -30,15 +30,22 @@
 
 		<?php include 'template/header.php'; ?>
 
-		<!-- ADRIAN: ÁREA PARA COLOCAR SEU CÓDIGO, QUE VAI MUDAR EM CADA PÁGINA -->
+		<!-- .l-main
+	    ======================================================== -->
+	    <section class="l-main">
 
-		<!-- login ADRIAN: Essa section é um exemplo de como você vai colocando as áreas do site. você pode alterar o nome da class .l-duvida-exibicao para .l-duvida-exibicao ou algo assim, dependendo do que for fazer. Preciso que cada sessão (nesse caso sessão tem o valor de corte, área. Um exemplo considere o wireframe do painel. Cada área dele, sendo a parte dos gráficos, a parte das notificações e dúvidas são sessões diferentes) do site seja feita pela tag <section>, pois isso agora é importante.
-		======================================================== -->
-		<section class="l-duvida-cadastro">
+	      <div class="l-container cf">
 
-			<div class="l-container cf"><!-- ADRIAN: Essa div com class l-container centraliza em 960px e centraliza, no sass você pode observar isso. a class cf desconsidera os floats, sabe? as vezes quando você da um float left dentro de uma div o seu height não considera esses elementos. a class cf acaba considerando. -->
+	        <?php include 'template/sidebar.php'; ?>
 
-				<div class="l-row">
+	        <!-- .l-content
+	        =================================================== -->
+	        <section class="l-content">
+
+				<!-- login ADRIAN: Essa section é um exemplo de como você vai colocando as áreas do site. você pode alterar o nome da class .l-duvida-exibicao para .l-duvida-exibicao ou algo assim, dependendo do que for fazer. Preciso que cada sessão (nesse caso sessão tem o valor de corte, área. Um exemplo considere o wireframe do painel. Cada área dele, sendo a parte dos gráficos, a parte das notificações e dúvidas são sessões diferentes) do site seja feita pela tag <section>, pois isso agora é importante.
+				======================================================== -->
+				<section class="l-duvida-cadastro">
+
 					<header>
 						<h2>Dúvidas</h2>
 					</header>
@@ -92,42 +99,42 @@
 							<li id="img_li_1">
 								<!--Visualizar thumbnail-->
 								<div class="imageWrapper">
-                                	<img src="" alt="Ver imagem pequena" width="130" height="130">
-                                </div>
-                                <input type="file" name="image[]" class="productImage ignore" onchange="readURL(this);" accept="image/png, image/gif, image/bmp, image/jpeg, image/jpg" id="image_1">
-                            </li><!-- #img_li_1 -->
+		                        	<img src="" alt="Ver imagem pequena" width="130" height="130">
+		                        </div>
+		                        <input type="file" name="image[]" class="productImage ignore" onchange="readURL(this);" accept="image/png, image/gif, image/bmp, image/jpeg, image/jpg" id="image_1">
+		                    </li><!-- #img_li_1 -->
 
-                            <li id="img_li_2">
+		                    <li id="img_li_2">
 								<!--Visualizar thumbnail-->
 								<div class="imageWrapper">
-                                	<img src="" alt="Ver imagem pequena" width="130" height="130">
-                                </div>
-                                <input type="file" name="image[]" class="productImage ignore" onchange="readURL(this);" accept="image/png, image/gif, image/bmp, image/jpeg, image/jpg" id="image_1">
-                            </li><!-- #img_li_2 -->
+		                        	<img src="" alt="Ver imagem pequena" width="130" height="130">
+		                        </div>
+		                        <input type="file" name="image[]" class="productImage ignore" onchange="readURL(this);" accept="image/png, image/gif, image/bmp, image/jpeg, image/jpg" id="image_1">
+		                    </li><!-- #img_li_2 -->
 
-                            <li id="img_li_3">
+		                    <li id="img_li_3">
 								<!--Visualizar thumbnail-->
 								<div class="imageWrapper">
-                                	<img src="" alt="Ver imagem pequena" width="130" height="130">
-                                </div>
-                                <input type="file" name="image[]" class="productImage ignore" onchange="readURL(this);" accept="image/png, image/gif, image/bmp, image/jpeg, image/jpg" id="image_1">
-                            </li><!-- #img_li_3 -->
+		                        	<img src="" alt="Ver imagem pequena" width="130" height="130">
+		                        </div>
+		                        <input type="file" name="image[]" class="productImage ignore" onchange="readURL(this);" accept="image/png, image/gif, image/bmp, image/jpeg, image/jpg" id="image_1">
+		                    </li><!-- #img_li_3 -->
 
-                            <li id="img_li_4">
+		                    <li id="img_li_4">
 								<!--Visualizar thumbnail-->
 								<div class="imageWrapper">
-                                	<img src="" alt="Ver imagem pequena" width="130" height="130">
-                                </div>
-                                <input type="file" name="image[]" class="productImage ignore" onchange="readURL(this);" accept="image/png, image/gif, image/bmp, image/jpeg, image/jpg" id="image_1">
-                            </li><!-- #img_li_4 -->
+		                        	<img src="" alt="Ver imagem pequena" width="130" height="130">
+		                        </div>
+		                        <input type="file" name="image[]" class="productImage ignore" onchange="readURL(this);" accept="image/png, image/gif, image/bmp, image/jpeg, image/jpg" id="image_1">
+		                    </li><!-- #img_li_4 -->
 
-                            <li id="img_li_5">
+		                    <li id="img_li_5">
 								<!--Visualizar thumbnail-->
 								<div class="imageWrapper">
-                                	<img src="" alt="Ver imagem pequena" width="130" height="130">
-                                </div>
-                                <input type="file" name="image[]" class="productImage ignore" onchange="readURL(this);" accept="image/png, image/gif, image/bmp, image/jpeg, image/jpg" id="image_1">
-                            </li><!-- #img_li_5 -->
+		                        	<img src="" alt="Ver imagem pequena" width="130" height="130">
+		                        </div>
+		                        <input type="file" name="image[]" class="productImage ignore" onchange="readURL(this);" accept="image/png, image/gif, image/bmp, image/jpeg, image/jpg" id="image_1">
+		                    </li><!-- #img_li_5 -->
 						</ul>
 						<p>E vídeo? (tamanho de até 20mb)</p>
 						<div id="uploadVideo">
@@ -136,14 +143,14 @@
 						</div> <!-- #uploadVideo -->
 						<button type="submit">Publicar dúvida</button>
 					</form>
-					
-				</div><!-- .l-row -->
 
-			</div><!-- .l-container.cf -->
+				</section><!-- .l-duvida-exibicao -->
 
-		</section><!-- .l-duvida-exibicao -->
+			</section><!-- .l-content -->
 
-		<!-- ADRIAN: FINAL DA ÁREA PARA COLOCAR SEU CÓDIGO, QUE VAI MUDAR EM CADA PÁGINA -->
+    	</div><!-- .l-container.cf -->
+
+    </section><!-- .l-main -->
 
 	<?php include 'template/footer.php'; ?>
 

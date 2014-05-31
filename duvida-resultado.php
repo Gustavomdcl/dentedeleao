@@ -48,15 +48,22 @@
 
 		<?php include 'template/header.php'; ?>
 
-		<!-- ADRIAN: ÁREA PARA COLOCAR SEU CÓDIGO, QUE VAI MUDAR EM CADA PÁGINA -->
+		<!-- .l-main
+	    ======================================================== -->
+	    <section class="l-main">
 
-		<!-- login ADRIAN: Essa section é um exemplo de como você vai colocando as áreas do site. você pode alterar o nome da class .l-duvida-resultado para .l-duvida-resultado ou algo assim, dependendo do que for fazer. Preciso que cada sessão (nesse caso sessão tem o valor de corte, área. Um exemplo considere o wireframe do painel. Cada área dele, sendo a parte dos gráficos, a parte das notificações e dúvidas são sessões diferentes) do site seja feita pela tag <section>, pois isso agora é importante.
-		======================================================== -->
-		<section class="l-duvida-resultado">
+	      <div class="l-container cf">
 
-			<div class="l-container cf"><!-- ADRIAN: Essa div com class l-container centraliza em 960px e centraliza, no sass você pode observar isso. a class cf desconsidera os floats, sabe? as vezes quando você da um float left dentro de uma div o seu height não considera esses elementos. a class cf acaba considerando. -->
+	        <?php include 'template/sidebar.php'; ?>
 
-				<div class="l-row">
+	        <!-- .l-content
+	        =================================================== -->
+	        <section class="l-content">
+
+				<!-- login ADRIAN: Essa section é um exemplo de como você vai colocando as áreas do site. você pode alterar o nome da class .l-duvida-resultado para .l-duvida-resultado ou algo assim, dependendo do que for fazer. Preciso que cada sessão (nesse caso sessão tem o valor de corte, área. Um exemplo considere o wireframe do painel. Cada área dele, sendo a parte dos gráficos, a parte das notificações e dúvidas são sessões diferentes) do site seja feita pela tag <section>, pois isso agora é importante.
+				======================================================== -->
+				<section class="l-duvida-resultado">
+
 					<header>
 						<h2>Dúvidas</h2>
 					</header>
@@ -83,13 +90,14 @@
 						<p>As sugestões não te ajudaram? Preencha sua dúvida.</p>
 						<a href="duvida-cadastro.php" title="Formulário para cadastrar dúvida" class="btCadastrarDuvida">Cadastrar minha dúvida</a>
 					</div> <!-- #cadastrarDuvida -->
-				</div><!-- .l-row -->
 
-			</div><!-- .l-container.cf -->
+				</section><!-- .l-duvida-resultado -->
 
-		</section><!-- .l-duvida-resultado -->
+			</section><!-- .l-content -->
 
-		<!-- ADRIAN: FINAL DA ÁREA PARA COLOCAR SEU CÓDIGO, QUE VAI MUDAR EM CADA PÁGINA -->
+    	</div><!-- .l-container.cf -->
+
+    </section><!-- .l-main -->
 
 	<?php include 'template/footer.php'; ?>	
 

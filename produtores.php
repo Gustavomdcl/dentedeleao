@@ -36,15 +36,22 @@
 
 		<?php include 'template/header.php'; ?>
 
-		<!-- ADRIAN: ÁREA PARA COLOCAR SEU CÓDIGO, QUE VAI MUDAR EM CADA PÁGINA -->
+		<!-- .l-main
+	    ======================================================== -->
+	    <section class="l-main">
 
-		<!-- login ADRIAN: Essa section é um exemplo de como você vai colocando as áreas do site. você pode alterar o nome da class .l-produtores para .l-produtores ou algo assim, dependendo do que for fazer. Preciso que cada sessão (nesse caso sessão tem o valor de corte, área. Um exemplo considere o wireframe do painel. Cada área dele, sendo a parte dos gráficos, a parte das notificações e dúvidas são sessões diferentes) do site seja feita pela tag <section>, pois isso agora é importante.
-		======================================================== -->
-		<section class="l-produtores">
+	      <div class="l-container cf">
 
-			<div class="l-container cf"><!-- ADRIAN: Essa div com class l-container centraliza em 960px e centraliza, no sass você pode observar isso. a class cf desconsidera os floats, sabe? as vezes quando você da um float left dentro de uma div o seu height não considera esses elementos. a class cf acaba considerando. -->
+	        <?php include 'template/sidebar.php'; ?>
 
-				<div class="l-row">
+	        <!-- .l-content
+	        =================================================== -->
+	        <section class="l-content">
+
+				<!-- login ADRIAN: Essa section é um exemplo de como você vai colocando as áreas do site. você pode alterar o nome da class .l-produtores para .l-produtores ou algo assim, dependendo do que for fazer. Preciso que cada sessão (nesse caso sessão tem o valor de corte, área. Um exemplo considere o wireframe do painel. Cada área dele, sendo a parte dos gráficos, a parte das notificações e dúvidas são sessões diferentes) do site seja feita pela tag <section>, pois isso agora é importante.
+				======================================================== -->
+				<section class="l-produtores">
+
 					<header>
 						<h2>Produtores</h2>
 					</header>
@@ -232,15 +239,16 @@
 									} //while
 
 									?>  
-						</ul>
-					</div>
-				</div><!-- .l-row -->
+							</ul>
+						</div>
 
-			</div><!-- .l-container.cf -->
+					</section><!-- .l-produtores -->
 
-		</section><!-- .l-produtores -->
+				</section><!-- .l-content -->
 
-		<!-- ADRIAN: FINAL DA ÁREA PARA COLOCAR SEU CÓDIGO, QUE VAI MUDAR EM CADA PÁGINA -->
+	    	</div><!-- .l-container.cf -->
+
+	    </section><!-- .l-main -->
 
 		<?php include 'template/footer.php'; ?>
 
