@@ -76,7 +76,7 @@
 
 							<?php } ?>
 							<option value="null">Nenhuma</option>
-						</select><br>
+						</select>
 						<select name="estado" id="estado">
 							<option selected disabled>Estado</option>
 							<?php
@@ -100,13 +100,14 @@
 						<span class="carregando" style="display:none;">Carregando Cidades...</span>
 						<select name="cidade" id="cidade" style="display:none;">
 						</select>
-						<button type="submit">Buscar</button>
+						<button type="submit" id="bt-ok">Buscar</button>
 					</form>
 				</div><!-- #formulario-->
-					<hr />
+					
 					<div id="resultadoprodutores">
-						<div id="map-canvas" style="width:100%;height:500px;"></div><!-- div#map-canvas -->
-						<ul>
+						<div id="map-canvas" style="width:690px;height:500px;"></div><!-- div#map-canvas -->
+						<img src="assets/img/template/tlt-resultados.png" alt="Resultados" style="margin-bottom:40px;" />
+						<ul class="l-row">
 							<?php
 								// Query Produtores ======================================
 								  $condicoes = "";
@@ -204,7 +205,7 @@
 								  if($cultivoBusca == null && $cultivoBusca == 'null') {
 
 								  ?>
-								  <li class="map-place" data-lat="<?php echo $latitude; ?>" data-long="<?php echo $longitude; ?>" id="mark-<?php echo $produtor_contador; ?>"><img src="<?php echo $foto ?>" width="150" height="150" />
+								  <li class="map-place l-col6" data-lat="<?php echo $latitude; ?>" data-long="<?php echo $longitude; ?>" id="mark-<?php echo $produtor_contador; ?>"><img src="<?php echo $foto ?>" width="150" height="150" />
 								  	<strong><?php echo $nome ?></strong>
 									<p>Telefone: <?php echo $telefone; ?></p>
 									<p><?php echo $endereco; ?></p>
@@ -224,12 +225,15 @@
 
 								    			?>
 
-											  <li class="map-place" data-lat="<?php echo $latitude; ?>" data-long="<?php echo $longitude; ?>" id="mark-<?php echo $produtor_contador; ?>"><img src="<?php echo $foto ?>" width="150" height="150" />
+											  <li class="map-place l-col6" data-lat="<?php echo $latitude; ?>" data-long="<?php echo $longitude; ?>" id="mark-<?php echo $produtor_contador; ?>">
+											  	<div class="round-img">
+											  		<img src="<?php echo $foto ?>" width="150" height="150" />
+											  	</div>
 											  	<strong><?php echo $nome ?></strong>
 												<p>Telefone: <?php echo $telefone; ?></p>
 												<p><?php echo $endereco; ?></p>
 												<p>CEP <?php echo $cep; ?> - <?php echo $cidade; ?>/<?php echo $uf; ?></p>
-												<a href="perfil.php?produtor=<?php echo $idProdutor; ?>" title="Saiba mais">Saiba mais</a>
+												<a href="perfil.php?produtor=<?php echo $idProdutor; ?>" title="Saiba mais" class="saiba-mais">Saiba mais</a>
 											  </li>
 
 											  <?php 
@@ -241,7 +245,7 @@
 									} //while
 
 									?>  
-							</ul>
+						</ul>
 						</div>
 
 					</section><!-- .l-produtores -->
