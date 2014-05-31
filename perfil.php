@@ -22,7 +22,7 @@
 	
 </head>
 
-<body class="no-js perfil">
+<body class="no-js">
 
 	<!-- site
 	======================================================== -->
@@ -109,7 +109,7 @@
 
 				<div class="l-row">
 					<div class="round-img">
-					<img src="<?php echo $foto ?>" border="0" width="150" height="150" align="left" class="fotoperfil" />
+					<img src="<?php echo $foto ?>" border="0" class="fotoperfil" />
 				</div>
 					<div id="perfil-content">
 						<h2><?php echo $nome ?></h2>

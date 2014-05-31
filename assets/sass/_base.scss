@@ -7,6 +7,15 @@ body {
   //         font-smoothing: antialiased;
   margin:0;
   padding:0;
+  background-image: url(./../img/template/bg-perfil.png);
+  background-position:bottom center;
+  background-repeat:no-repeat;  
+}
+
+body.painel{
+  background-image: url(../img/template/bg-interna.png);
+  background-position: center top;
+  background-position: no-repeat;
 }
 
 p {
@@ -104,7 +113,7 @@ label.error {
 
 //TITULOS SECTIONS
 .block {
-  margin-bottom: 50px;
+  margin-bottom: 30px;
 }
 
 .title {

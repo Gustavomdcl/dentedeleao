@@ -1,4 +1,7 @@
 .l-device-sumary {
+	#com-sensor {
+		margin-left: 7px;
+	}
 	.abas-nav {
 		@include box-sizing(border-box);
 		@include sprite(abas-nav);
@@ -40,6 +43,9 @@
 		}
 	}
 	#resultados {
+		@include box-sizing(border-box);
+		padding: 20px 0px 0px 130px;
+		min-height: 260px;
 		.aba-device-plantacao {
 			.dados-content {
 				display: table-cell;
