@@ -49,101 +49,101 @@
 					<header>
 						<h2>Dúvidas</h2>
 					</header>
-					
-					<h3>Cadastrar Dúvida</h3>
-					<p>Preencha os campos abaixo para publicar sua dúvida.</p>
-					<form id="enviarDuvida" method="post" action="backend/envios/enviarDuvida.php" enctype="multipart/form-data">
-						<input type="text" name="titulo" id="titulo" placeholder="Título" required><br>
-						<textarea id="ckeditor" rows="5" cols="60" name="conteudo" placeholder="Descrição" required></textarea>
-						<input type="hidden" name="perfil" id="perfil" value="<?php echo $profile_id; ?>">
-						<p>Deseja marcar algum amigo em sua publicação? Digite as duas primeiras letras do nome e selecione.</p>
-						<div id="pessoas_container"></div><!-- #pessoas_container -->
-						<input type="hidden" name="pessoas" id="pessoas">
-						<input type="text" name="amigos" id="amigos"><br>
-						<p>Qual a data de início do problema?</p>
-						<input type="text" name="data" id="datepicker">
-						<p>A qual platação está relacionada a sua dúvida?</p>
-						<input type="hidden" name="deviceplantation" id="devicePlantation">
-						<span class="plantacoes">
-							<?php
-								$sqlPlantacaoList = "SELECT * FROM DL_ADMIN_plantationList WHERE valido = '1' order by id desc";
+					<div id="cadastrar-duvida">
+						<h3>Cadastrar Dúvida</h3>
+						<p>Preencha os campos abaixo para publicar sua dúvida.</p>
+						<form id="enviarDuvida" method="post" action="backend/envios/enviarDuvida.php" enctype="multipart/form-data">
+							<input type="text" name="titulo" id="titulo" placeholder="Título" required><br>
+							<textarea id="ckeditor" rows="5" cols="60" name="conteudo" placeholder="Descrição" required></textarea>
+							<input type="hidden" name="perfil" id="perfil" value="<?php echo $profile_id; ?>">
+							<p>Deseja marcar algum amigo em sua publicação? Digite as duas primeiras letras do nome e selecione.</p>
+							<div id="pessoas_container"></div><!-- #pessoas_container -->
+							<input type="hidden" name="pessoas" id="pessoas">
+							<input type="text" name="amigos" id="amigos"><br>
+							<p>Qual a data de início do problema?</p>
+							<input type="text" name="data" id="datepicker">
+							<p>A qual platação está relacionada a sua dúvida?</p>
+							<input type="hidden" name="deviceplantation" id="devicePlantation">
+							<span class="plantacoes">
+								<?php
+									$sqlPlantacaoList = "SELECT * FROM DL_ADMIN_plantationList WHERE valido = '1' order by id desc";
 
-								$resultPlantacaoList = mysql_query($sqlPlantacaoList);
+									$resultPlantacaoList = mysql_query($sqlPlantacaoList);
 
-							   	while ($row=mysql_fetch_array($resultPlantacaoList)) {
-							   		$id=$row['id'];
-									$plantacao=$row['plantacao'];
-									$imagem=$row['imagem'];
+								   	while ($row=mysql_fetch_array($resultPlantacaoList)) {
+								   		$id=$row['id'];
+										$plantacao=$row['plantacao'];
+										$imagem=$row['imagem'];
 
-									if($imagem == null){ 
-										$imagem = 'admin/assets/img/template/logo.gif'; 
-									} else { 
+										if($imagem == null){ 
+											$imagem = 'admin/assets/img/template/logo.gif'; 
+										} else { 
 
-										$imagemId = explode('-', $imagem);
+											$imagemId = explode('-', $imagem);
 
-										$sqlPlantacaoimg = "SELECT * FROM DL_IMAGES WHERE id = '$imagemId[0]' order by id desc";
-										$resultPlantacaoimg = mysql_query($sqlPlantacaoimg);
+											$sqlPlantacaoimg = "SELECT * FROM DL_IMAGES WHERE id = '$imagemId[0]' order by id desc";
+											$resultPlantacaoimg = mysql_query($sqlPlantacaoimg);
 
-										while ($row=mysql_fetch_array($resultPlantacaoimg)) {
-											$imagem = $row['caminho'] . $row['nome_imagem'];
+											while ($row=mysql_fetch_array($resultPlantacaoimg)) {
+												$imagem = $row['caminho'] . $row['nome_imagem'];
+											}
 										}
-									}
-							?>
-								<label for="plantacao-<?php echo $id ?>"><img src="<?php echo $imagem ?>" alt="<?php echo $plantacao ?>" /><?php echo $plantacao ?></label>
-								<input type="radio" name="plantacao[]" value="<?php echo $id ?>" id="plantacao-<?php echo $id ?>">
-							<?php }//while ?>
-						</span><!-- .plantacoes -->
-						<p>Deseja enviar fotos?</p>
-						<!--UL para upload das 5 fotos permitidas, peguei no airu e comentei-->
-						<ul>
-							<li id="img_li_1">
-								<!--Visualizar thumbnail-->
-								<div class="imageWrapper">
-		                        	<img src="" alt="Ver imagem pequena" width="130" height="130">
-		                        </div>
-		                        <input type="file" name="image[]" class="productImage ignore" onchange="readURL(this);" accept="image/png, image/gif, image/bmp, image/jpeg, image/jpg" id="image_1">
-		                    </li><!-- #img_li_1 -->
+								?>
+									<label for="plantacao-<?php echo $id ?>"><img src="<?php echo $imagem ?>" alt="<?php echo $plantacao ?>" /><?php echo $plantacao ?></label>
+									<input type="radio" name="plantacao[]" value="<?php echo $id ?>" id="plantacao-<?php echo $id ?>">
+								<?php }//while ?>
+							</span><!-- .plantacoes -->
+							<p>Deseja enviar fotos?</p>
+							<!--UL para upload das 5 fotos permitidas, peguei no airu e comentei-->
+							<ul>
+								<li id="img_li_1">
+									<!--Visualizar thumbnail-->
+									<div class="imageWrapper">
+			                        	<img src="" alt="Ver imagem pequena" width="130" height="130">
+			                        </div>
+			                        <input type="file" name="image[]" class="productImage ignore" onchange="readURL(this);" accept="image/png, image/gif, image/bmp, image/jpeg, image/jpg" id="image_1">
+			                    </li><!-- #img_li_1 -->
 
-		                    <li id="img_li_2">
-								<!--Visualizar thumbnail-->
-								<div class="imageWrapper">
-		                        	<img src="" alt="Ver imagem pequena" width="130" height="130">
-		                        </div>
-		                        <input type="file" name="image[]" class="productImage ignore" onchange="readURL(this);" accept="image/png, image/gif, image/bmp, image/jpeg, image/jpg" id="image_1">
-		                    </li><!-- #img_li_2 -->
+			                    <li id="img_li_2">
+									<!--Visualizar thumbnail-->
+									<div class="imageWrapper">
+			                        	<img src="" alt="Ver imagem pequena" width="130" height="130">
+			                        </div>
+			                        <input type="file" name="image[]" class="productImage ignore" onchange="readURL(this);" accept="image/png, image/gif, image/bmp, image/jpeg, image/jpg" id="image_1">
+			                    </li><!-- #img_li_2 -->
 
-		                    <li id="img_li_3">
-								<!--Visualizar thumbnail-->
-								<div class="imageWrapper">
-		                        	<img src="" alt="Ver imagem pequena" width="130" height="130">
-		                        </div>
-		                        <input type="file" name="image[]" class="productImage ignore" onchange="readURL(this);" accept="image/png, image/gif, image/bmp, image/jpeg, image/jpg" id="image_1">
-		                    </li><!-- #img_li_3 -->
+			                    <li id="img_li_3">
+									<!--Visualizar thumbnail-->
+									<div class="imageWrapper">
+			                        	<img src="" alt="Ver imagem pequena" width="130" height="130">
+			                        </div>
+			                        <input type="file" name="image[]" class="productImage ignore" onchange="readURL(this);" accept="image/png, image/gif, image/bmp, image/jpeg, image/jpg" id="image_1">
+			                    </li><!-- #img_li_3 -->
 
-		                    <li id="img_li_4">
-								<!--Visualizar thumbnail-->
-								<div class="imageWrapper">
-		                        	<img src="" alt="Ver imagem pequena" width="130" height="130">
-		                        </div>
-		                        <input type="file" name="image[]" class="productImage ignore" onchange="readURL(this);" accept="image/png, image/gif, image/bmp, image/jpeg, image/jpg" id="image_1">
-		                    </li><!-- #img_li_4 -->
+			                    <li id="img_li_4">
+									<!--Visualizar thumbnail-->
+									<div class="imageWrapper">
+			                        	<img src="" alt="Ver imagem pequena" width="130" height="130">
+			                        </div>
+			                        <input type="file" name="image[]" class="productImage ignore" onchange="readURL(this);" accept="image/png, image/gif, image/bmp, image/jpeg, image/jpg" id="image_1">
+			                    </li><!-- #img_li_4 -->
 
-		                    <li id="img_li_5">
-								<!--Visualizar thumbnail-->
-								<div class="imageWrapper">
-		                        	<img src="" alt="Ver imagem pequena" width="130" height="130">
-		                        </div>
-		                        <input type="file" name="image[]" class="productImage ignore" onchange="readURL(this);" accept="image/png, image/gif, image/bmp, image/jpeg, image/jpg" id="image_1">
-		                    </li><!-- #img_li_5 -->
-						</ul>
-						<p>E vídeo? (tamanho de até 20mb)</p>
-						<div id="uploadVideo">
-						  <input  accept="video/*" id="file_video" type="file" size="20" class="ignore" name="video[]"/>
-						  <p id="videoMensagem"></p>
-						</div> <!-- #uploadVideo -->
-						<button type="submit">Publicar dúvida</button>
-					</form>
-
+			                    <li id="img_li_5">
+									<!--Visualizar thumbnail-->
+									<div class="imageWrapper">
+			                        	<img src="" alt="Ver imagem pequena" width="130" height="130">
+			                        </div>
+			                        <input type="file" name="image[]" class="productImage ignore" onchange="readURL(this);" accept="image/png, image/gif, image/bmp, image/jpeg, image/jpg" id="image_1">
+			                    </li><!-- #img_li_5 -->
+							</ul>
+							<p>E vídeo? (tamanho de até 20mb)</p>
+							<div id="uploadVideo">
+							  <input  accept="video/*" id="file_video" type="file" size="20" class="ignore" name="video[]"/>
+							  <p id="videoMensagem"></p>
+							</div> <!-- #uploadVideo -->
+							<button type="submit">Publicar dúvida</button>
+						</form>
+					</div>
 				</section><!-- .l-duvida-exibicao -->
 
 			</section><!-- .l-content -->

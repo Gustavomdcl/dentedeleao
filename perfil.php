@@ -109,8 +109,8 @@
 
 				<div class="l-row">
 					<div class="round-img">
-					<img src="<?php echo $foto ?>" border="0" class="fotoperfil" />
-				</div>
+						<img src="<?php echo $foto ?>" border="0" class="fotoperfil" />
+					</div>
 					<div id="perfil-content">
 						<h2><?php echo $nome ?></h2>
 						<p style="margin-bottom:35px;"><?php echo $sobre; ?></p>
