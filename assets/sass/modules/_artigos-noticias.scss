@@ -1,0 +1,19 @@
+.l-artigos-noticias {
+	.article-content {
+		.postnome {
+			font-size: 1.28em;
+		}
+		.saiba-mais {
+			@include box-sizing(border-box);
+			@include sprite(saiba-mais);
+			padding: 7px 0px 0px 0px;
+			margin-top: 20px;
+			text-align: center;
+			display: inline-block;
+			font-weight: 700;
+			text-transform: uppercase;
+			font-size: 1em;
+			color: $color-white;
+		}
+	}
+}

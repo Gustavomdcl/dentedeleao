@@ -1,0 +1,56 @@
+.l-duvidas {
+	ul {
+		li {
+			position: relative;
+			min-height: 322px;
+			max-height: 322px;
+			.the_tag {
+				@include box-sizing(border-box);
+				@include sprite(tag-duvida);
+				font-family: 'Permanent Marker', sans-serif;
+				color: $color-white;
+				display: inline-block;
+				padding: 18px 0px 0px 9px;
+				font-size: 1.1em;
+				text-transform: uppercase;
+				position: absolute;
+				bottom: -3px;
+				left: -7px;
+				z-index: 5;
+				&::before {
+					content: '#';
+					font-size: 1.2em;
+				}
+			}
+			.ver-duvida {
+				@include box-sizing(border-box);
+				@include sprite(ver-duvida);
+				padding: 7px 0px 0px 0px;
+				margin-top: 20px;
+				text-align: center;
+				display: inline-block;
+				font-weight: 700;
+				text-transform: uppercase;
+				font-size: 1em;
+				color: $color-white;
+				position: absolute;
+				bottom: 0px;
+			}
+		}
+	}
+}
+
+.l-duvida-exibicao {
+	.galeria-imagens{
+		margin:5px 6px;
+	}
+	.comentario{
+		padding:10px 0;
+		border-bottom: dashed 1px grey;
+		margin:5px 0;
+	}
+	p.titulo{
+		font-size: 1em;
+		font-weight:bold;
+	}
+}

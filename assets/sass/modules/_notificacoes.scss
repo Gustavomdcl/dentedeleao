@@ -1,5 +1,38 @@
 .l-notificacoes {
-	#conteudoNotificacoes{
+	ul {
+		li {
+			position: relative;
+			min-height: 140px;
+			max-height: 140px;
+			margin-bottom: 40px;
+			.round-img {
+				position: absolute;
+			}
+			.postnome {
+				font-size: 1.28em;
+				margin-left: 131px;
+			}
+			.posttexto {
+				margin-left: 131px;
+			}
+			.ler-publicacao {
+				@include box-sizing(border-box);
+				@include sprite(ler-publicacao);
+				padding: 7px 0px 0px 0px;
+				margin-top: 20px;
+				text-align: center;
+				display: inline-block;
+				font-weight: 700;
+				text-transform: uppercase;
+				font-size: 1em;
+				color: $color-white;
+				position: absolute;
+				bottom: 0px;
+				margin-left: 131px;
+			}
+		}
+	}
+	/*#conteudoNotificacoes{
 		overflow:auto;
 		margin:10px 0;
 	}
@@ -12,5 +45,5 @@
 	}
 	#conteudoNotificacoes li img{
 		margin-right:5px;
-	}
+	}*/
 }

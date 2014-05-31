@@ -65,32 +65,52 @@
         <!-- ================= COM SENSOR ================== -->
 
         <div id="com-sensor">
-          <p>Meus Cultivos:</p>
-          
-          <ul id="abas" class="nav">
-            <?php 
 
-            foreach ($deviceUserRow as $value) { 
+          <div class="abas-nav">
+            <h3 class="title">Meus Cultivos:</h3>
+            
+            <ul id="abas" class="nav">
+              <?php 
 
-              $plantationNameId = $value['plantacao'];
+              foreach ($deviceUserRow as $value) { 
 
-              $sqlPlantacaoNome = "SELECT plantacao FROM DL_ADMIN_plantationList WHERE id = '$plantationNameId' order by id desc limit 1";
-              $resultPlantacaoNome = mysql_query($sqlPlantacaoNome);
-              while ($row=mysql_fetch_array($resultPlantacaoNome)) {
+                $plantationNameId = $value['plantacao'];
 
-            ?>
+                $sqlPlantacaoNome = "SELECT `plantacao`, `imagem` FROM DL_ADMIN_plantationList WHERE id = '$plantationNameId' order by id desc limit 1";
+                $resultPlantacaoNome = mysql_query($sqlPlantacaoNome);
+                while ($row=mysql_fetch_array($resultPlantacaoNome)) {
+                  $plantacaoNome = $row['plantacao'];
+                  $plantacaoImg = $row['imagem'];
 
-            <li><a href="plantacao-<?php echo $value['plantacao']; ?>"><?php echo $row['plantacao']; ?></a></li> 
+                  if($plantacaoImg == null){
+                    $plantacaoImg = 'admin/assets/img/template/logo.gif'; 
+                  } else {
 
-            <?php 
+                    $plantacaoImgContainer = explode('-', $plantacaoImg);
 
-              }//while
+                    $sqlImagemPlantationTag = "SELECT * FROM DL_IMAGES WHERE id = '$plantacaoImgContainer[0]' order by id desc";
+                    $resultImagemPlantationTag = mysql_query($sqlImagemPlantationTag);
 
-            }//foreach
+                    while ($rowImagem=mysql_fetch_array($resultImagemPlantationTag)) {
+                      $plantacaoImg = $rowImagem['caminho'] . $rowImagem['nome_imagem'];
+                    }
+                  }
 
-            ?>
+              ?>
 
-          </ul> <!-- #abas -->
+              <li><a href="plantacao-<?php echo $value['plantacao']; ?>" style="background-image: url(<?php echo $plantacaoImg; ?>);"><?php echo $plantacaoNome; ?></a></li> 
+
+              <?php 
+
+                }//while
+
+              }//foreach
+
+              ?>
+            </ul> <!-- #abas -->
+
+          </div><!-- .abas-nav -->
+
           <div id="resultados">
             <?php 
 
@@ -112,13 +132,44 @@
             ?>
 
             <div id="plantacao-<?php echo $value['plantacao']; ?>" class="aba-device-plantacao">
-              <ul>
-                <li>Dados da chuva: <?php echo $row['chuva']; ?></li>
-                <li>Umidade do Solo: <?php echo $row['umidade_do_solo']; ?></li>
-                <li>Umidade: <?php echo $row['umidade']; ?></li>
-                <li>Temperatura: <?php echo $row['temperatura']; ?></li>
+              <ul class="nav">
+                <li class="chuva-dados">
+                  <div class="dados-content">
+                    <img src="assets/img/template/chuva-dados.png" alt="Chuva" />
+                    <p class="data-right"><?php echo $row['chuva']; ?><span class="data-value">%</span><br>
+                      <span class="data-type">Chuva</span>
+                    </p><!-- .data-right -->
+                  </div><!-- .dados-content -->
+                </li>
+                <li class="umidade-dados">
+                  <div class="dados-content">
+                    <img src="assets/img/template/umidade-dados.png" alt="Umidade" />
+                    <p class="data-right"><?php echo $row['umidade']; ?><span class="data-value">%</span><br>
+                      <span class="data-type">Umidade</span>
+                    </p><!-- .data-right -->
+                  </div><!-- .dados-content -->
+                </li>
+                <li class="umidadedosolo-dados">
+                  <div class="dados-content">
+                    <img src="assets/img/template/umidadedosolo-dados.png" alt="Umidade do Solo" />
+                    <p class="data-right"><?php echo $row['umidade_do_solo']; ?><span class="data-value">%</span><br>
+                      <span class="data-type">
+                        Umidade<br>
+                        <span>do Solo</span>
+                      </span>
+                    </p><!-- .data-right -->
+                  </div><!-- .dados-content -->
+                </li>
+                <li class="temperatura-dados">
+                  <div class="dados-content">
+                    <img src="assets/img/template/temperatura-dados.png" alt="Temperatura" />
+                    <p class="data-right"><?php echo $row['temperatura']; ?><span class="data-value">°C</span><br>
+                      <span class="data-type">Temperatura</span>
+                    </p><!-- .data-right -->
+                  </div><!-- .dados-content -->
+                </li>
               </ul>
-              <a href="#" title="Veja mais">Veja mais</a>
+              <!--a href="graficos.php" title="Veja mais">Veja mais</a-->
             </div>
 
             <?php 
@@ -158,9 +209,137 @@
 
         <!-- .l-content
         =================================================== -->
-        <section class="l-content durepox">
+        <section class="l-content">
 
-          <section class="l-notificacoes">
+          <section class="l-duvidas block">
+
+            <h3 class="title">Dúvidas Recentes</h3>
+            <?php
+
+            $sqlDuvidaPosts = "SELECT * FROM DL_FORUM order by id desc limit 3";
+            $resultDuvidaPosts = mysql_query($sqlDuvidaPosts);
+
+            if (mysql_num_rows($resultDuvidaPosts) > 0) {
+              $id_duvida;
+              $titulo;
+              $plantacao;
+              $imagem_duvida;
+
+            ?>
+
+            <p class="subtitle">Sabe algo a respeito destas últimas dúvidas postadas? Contribua!</p>
+
+            <ul id="duvidas-recentes" class="l-row">
+
+              <?php
+              while ($row=mysql_fetch_array($resultDuvidaPosts)) {
+                $id_duvida = $row['id'];
+                $titulo = $row['titulo'];
+                $textoDuvida = $row['texto'];
+                $plantacaoDuvida = $row['plantacao'];
+                $plantacaoDuvidaId = $plantacaoDuvida;
+                $imagem_duvida = $row['imagem'];
+
+                //TITULO
+                $titulo = explode(" ", $titulo);
+
+                //TEXTO
+                $the_tag = array('<p>', '</p>', '<br>', '<br/>', '<br />');
+                $textoDuvida = str_replace($the_tag, '', $textoDuvida);
+                $textoDuvida = explode(" ", $textoDuvida);
+
+                //PLANTAÇÃO ===============
+                if($plantacaoDuvida==''){} else {
+                    $plantacaoDuvida     =   explode("/", $plantacaoDuvida);
+                    $plantacaoCount      =   0;
+                    foreach ($plantacaoDuvida as $plantacaoUnidade) {
+                        $sqlPlantacoesCategorias = mysql_query("SELECT `plantacao` FROM DL_ADMIN_plantationList WHERE id = '$plantacaoDuvida[$plantacaoCount]' limit 1");
+                        while ($row=mysql_fetch_array($sqlPlantacoesCategorias)) {
+                            $plantacaoNome       =   $row['plantacao'];
+                            if($plantacaoCount==0){
+                                $plantacaoDuvida[$plantacaoCount] = $plantacaoNome;
+                            } else {
+                                if($plantacaoCount+1==count($plantacaoDuvida)){
+                                    $plantacaoDuvida[$plantacaoCount] = ' e ' . $plantacaoNome;
+                                } else {
+                                    $plantacaoDuvida[$plantacaoCount] = ', ' . $plantacaoNome;
+                                }
+                            }
+                        }
+                        $plantacaoCount  =   $plantacaoCount + 1;
+                    }
+                }
+                //Prestador Foto
+                if($imagem_duvida == '' || $imagem_duvida == null) {
+                  $imagem_duvida[0] = 'admin/assets/img/template/logo.gif';
+                } else {
+                  $imagem_duvida     =   $imagem_duvida . '-';
+                  $imagem_duvida     =   explode("-", $imagem_duvida);
+                  $sqlDuvidaFoto = "SELECT `caminho`, `nome_imagem` FROM DL_IMAGES WHERE id = '$imagem_duvida[0]' order by id desc limit 1";
+                  $resultDuvidaFoto = mysql_query($sqlDuvidaFoto);
+                  while ($row=mysql_fetch_array($resultDuvidaFoto)) {
+                    $imagem_duvida[0] = $row['caminho'] . $row['nome_imagem'];
+                  }
+                } 
+              ?>
+
+              <li class="l-col4">
+                <div class="squared-img">
+                  <img src="<?php echo $imagem_duvida[0]; ?>" alt="nome do post" />
+                  <?php 
+                  if($plantacaoDuvida==''){} else {
+                    echo '<a class="the_tag" href="duvida-resultado.php?plantacao=';
+                    echo $plantacaoDuvidaId;
+                    echo '" title="Tag">';
+                    foreach ($plantacaoDuvida as $plantacaoPart){
+                      echo $plantacaoPart; 
+                    } 
+                    echo '</a>';
+                  } 
+                  ?>
+                </div><!-- .squared-img -->
+                <p class="postnome">
+                  <?php
+                  for($i=0;$i<=5;$i++){
+                    if($i==5){
+                      echo '...';
+                    } else if($i==4) {
+                      echo $titulo[$i];
+                    } else {
+                      echo $titulo[$i] . ' ';
+                    }
+                  }
+                  ?>
+                </p>
+                <p class="posttexto">
+                  <?php
+                  for($i=0;$i<=5;$i++){
+                    if($i==5){
+                      echo '...';
+                    } else if($i==4) {
+                      echo $textoDuvida[$i];
+                    } else {
+                      echo $textoDuvida[$i] . ' ';
+                    }
+                  }
+                  ?>
+                </p>
+                <a href="duvida.php?numero=<?php echo $id_duvida; ?>" title="Ver Dúvida" class="bt-saibamais ver-duvida button">Ver Dúvida</a>
+              </li><!-- .l-col4 -->
+
+              <?php }//while ?>
+
+            </ul> <!-- #duvidas-recentes.l-row -->
+
+            <?php } else { ?>
+
+            <p class="subtitle">Ainda não há dúvidas cadastradas</p>
+
+            <?php }//else ?>
+
+          </section><!-- .l-duvidas -->
+
+          <section class="l-notificacoes block">
 
             <h3 class="title">Notificações</h3>
             <?php
@@ -206,23 +385,60 @@
                   }
                 }
                 //Fórum Nome
-                $sqlForumNome = "SELECT `titulo` FROM DL_FORUM WHERE id = '$forum' order by id desc limit 1";
+                $sqlForumNome = "SELECT `titulo`, `texto` FROM DL_FORUM WHERE id = '$forum' order by id desc limit 1";
                 $resultForumNome = mysql_query($sqlForumNome);
                 while ($row=mysql_fetch_array($resultForumNome)) {
                   $forum_nome = $row['titulo'];
+                  $forum_texto = $row['texto'];
                 }
+                //TITULO
+                $forum_nome = explode(" ", $forum_nome);
+                //TEXTO
+                $the_tag = array('<p>', '</p>', '<br>', '<br/>', '<br />');
+                $forum_texto = str_replace($the_tag, '', $forum_texto);
+                $forum_texto = explode(" ", $forum_texto);
                 //Marcação
                 if ($tipo == '1') {
-                  $tipo = ' marcou você na dúvida:';
+                  $tipo = ' marcou você em ';
                 } else if ($tipo == '0') {
-                  $tipo = ' comentou na sua dúvida:';
+                  $tipo = ' comentou na sua dúvida ';
                 }
               ?>
               <li id="notification-<?php echo $id_notificacao; ?>" class="l-col12">
-                <img src="<?php echo $prestador_foto; ?>" alt="Pessoa" width="100" height="100" align="left" border="0" />
-                <b><?php echo $prestador; echo $tipo; ?></b>
-                <p><?php echo $forum_nome; ?></p>
-                <a href="duvida.php?numero=<?php echo $forum; ?>" >Saiba mais</a>
+                <div class="round-img">
+                  <img src="<?php echo $prestador_foto; ?>" alt="Pessoa" border="0" />
+                </div><!-- .round-img -->
+                <p class="postnome">
+                  <?php
+                  echo $prestador;
+                  echo $tipo;
+                  for($i=0;$i<=8;$i++){
+                    if($i==8){
+                      echo '..."';
+                    } else if($i==7) {
+                      echo $forum_nome[$i];
+                    } else if($i==0) {
+                      echo '"' . $forum_nome[$i] . ' ';
+                    } else {
+                      echo $forum_nome[$i] . ' ';
+                    }
+                  }
+                  ?>
+                </p>
+                <p class="posttexto">
+                  <?php
+                  for($i=0;$i<=20;$i++){
+                    if($i==20){
+                      echo '...';
+                    } else if($i==19) {
+                      echo $forum_texto[$i];
+                    } else {
+                      echo $forum_texto[$i] . ' ';
+                    }
+                  }
+                  ?>
+                </p>
+                <a href="duvida.php?numero=<?php echo $forum; ?>" class="ler-publicacao button">Ler Publicação</a>
               </li><!-- #notification-?php?.l-col12 -->
 
               <?php }//while ?>
@@ -237,94 +453,23 @@
 
           </section><!-- .l-notificacoes -->
 
-          <section class="l-duvidas">
+          <section class="l-artigos-noticias block">
 
-            <h3 class="title">Dúvidas Recentes</h3>
-            <?php
+            <h3 class="title">Artigos e Notícias</h3>
 
-            $sqlDuvidaPosts = "SELECT * FROM DL_FORUM order by id desc limit 3";
-            $resultDuvidaPosts = mysql_query($sqlDuvidaPosts);
+            <p class="subtitle">Confira as notícias e artigos recentes sobre o cultivo orgânico.</p>
 
-            if (mysql_num_rows($resultDuvidaPosts) > 0) {
-              $id_duvida;
-              $titulo;
-              $plantacao;
-              $imagem_duvida;
+            <div class="article-content">
+              <div class="retangle-img">
+                <img src="assets/img/upload/artigo-noticia.jpg" alt="Pessoa" border="0" />
+              </div><!-- .retangle-img -->
+              <p class="postnome">Agricultura Orgânica cresce 30% ao ano NO BRASIL</p>
+              <p class="posttexto">Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor 
+invidunt ut labore et dolore magna aliquyam erat...</p>
+              <a href="#" class="saiba-mais button">Saiba Mais</a>
+            </div><!-- .article-content -->
 
-            ?>
-
-            <p class="subtitle">Sabe algo a respeito destas últimas dúvidas postadas? Contribua!</p>
-
-            <ul id="duvidas-recentes" class="l-row">
-
-              <?php
-              while ($row=mysql_fetch_array($resultDuvidaPosts)) {
-                $id_duvida = $row['id'];
-                $titulo = $row['titulo'];
-                $plantacaoDuvida = $row['plantacao'];
-                $imagem_duvida = $row['imagem'];
-
-                //PLANTAÇÃO ===============
-                if($plantacaoDuvida==''){} else {
-                    $plantacaoDuvida     =   explode("/", $plantacaoDuvida);
-                    $plantacaoCount      =   0;
-                    foreach ($plantacaoDuvida as $plantacaoUnidade) {
-                        $sqlPlantacoesCategorias = mysql_query("SELECT `plantacao` FROM DL_ADMIN_plantationList WHERE id = '$plantacaoDuvida[$plantacaoCount]' limit 1");
-                        while ($row=mysql_fetch_array($sqlPlantacoesCategorias)) {
-                            $plantacaoNome       =   $row['plantacao'];
-                            if($plantacaoCount==0){
-                                $plantacaoDuvida[$plantacaoCount] = $plantacaoNome;
-                            } else {
-                                if($plantacaoCount+1==count($plantacaoDuvida)){
-                                    $plantacaoDuvida[$plantacaoCount] = ' e ' . $plantacaoNome;
-                                } else {
-                                    $plantacaoDuvida[$plantacaoCount] = ', ' . $plantacaoNome;
-                                }
-                            }
-                        }
-                        $plantacaoCount  =   $plantacaoCount + 1;
-                    }
-                }
-                //Prestador Foto
-                if($imagem_duvida == '' || $imagem_duvida == null) {
-                  $imagem_duvida[0] = 'admin/assets/img/template/logo.gif';
-                } else {
-                  $imagem_duvida     =   $imagem_duvida . '-';
-                  $imagem_duvida     =   explode("-", $imagem_duvida);
-                  $sqlDuvidaFoto = "SELECT `caminho`, `nome_imagem` FROM DL_IMAGES WHERE id = '$imagem_duvida[0]' order by id desc limit 1";
-                  $resultDuvidaFoto = mysql_query($sqlDuvidaFoto);
-                  while ($row=mysql_fetch_array($resultDuvidaFoto)) {
-                    $imagem_duvida[0] = $row['caminho'] . $row['nome_imagem'];
-                  }
-                } 
-              ?>
-
-              <li class="l-col4">
-                <img src="<?php echo $imagem_duvida[0]; ?>" alt="nome do post" width="200" height="150" />
-                <p class="postnome"><?php echo $titulo; ?></p>
-                <?php 
-                if($plantacaoDuvida==''){} else {
-                  echo '<a title="Tag">';
-                  foreach ($plantacaoDuvida as $plantacaoPart){ 
-                    echo $plantacaoPart; 
-                  } 
-                  echo '</a>';
-                } 
-                ?>
-                <a href="duvida.php?numero=<?php echo $id_duvida; ?>" title="Saiba mais" class="bt-saibamais">Saiba mais</a>
-              </li><!-- .l-col4 -->
-
-              <?php }//while ?>
-
-            </ul> <!-- #duvidas-recentes.l-row -->
-
-            <?php } else { ?>
-
-            <p class="subtitle">Ainda não há dúvidas cadastradas</p>
-
-            <?php }//else ?>
-
-          </section><!-- .l-duvidas -->
+          </section><!-- .l-artigos-noticias -->
 
         </section><!-- .l-content -->
 
