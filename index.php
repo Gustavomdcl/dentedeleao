@@ -115,23 +115,24 @@ if($sucesso == "aprovado") {
 							<h2>Cultive ideias.<br>Colha conhecimento.</h2>
 							<div class="bts-home">
 								<a class="btcadastrar">Cadastrar</a>
-								<a href="#login_form" class="btLogar" id="homeLogin">Logar</a>
+								<a href="#login_form" class="btLogar homeLogin">Logar</a>
 							</div>
 								<div id="accordion">
 									
 									<form id="formCadastroUsuario" method="post" action="backend/envios/enviarCadastroUsuario.php" style="display:none;">
 
-										<input type="text" name="nome" placeholder="Nome" id="nome" required><br>
+										<div style="position:relative; height:10px;"><input type="text" name="nome" placeholder="Nome" id="nome" required></div><br>
 
-										<input type="text" name="cpf" id="cpf" placeholder="CPF" required><br>
+										<div style="position:relative; height:10px;"><input type="text" name="cpf" id="cpf" placeholder="CPF" required></div><br>
 
-										<input type="email" name="email" placeholder="Email" id="email" required><br>
+										<div style="position:relative; height:10px;"><input type="email" name="email" placeholder="Email" id="email" required></div><br>
 
-										<input type="password" name="senha" placeholder="Senha" id="senha" required><br>
+										<div style="position:relative; height:10px;"><input type="password" name="senha" placeholder="Senha" id="senha" required></div><br>
 
-										<p><input type="checkbox" name="termos" value="Termos e condições" class="termos" id="termos" required >Li e estou de acordo com os <a href="" title="termos e condições">Termos e condições</a> </p><br>
+										<div style="position:relative;"><p><input type="checkbox" name="termos" value="Termos e condições" class="termos" id="termos" required >Li e estou de acordo com os<br><a href="" title="termos e condições">Termos e condições</a> </p></div><br>
 
-										<button type="submit">Cadastrar</button>
+										<button type="submit" class="bt-cadastrar">Cadastrar</button><br>
+										<a class="engano">Ops, apertei por engano!</a>
 									</form>
 								</div><!-- #accordion -->
 							
@@ -140,13 +141,13 @@ if($sucesso == "aprovado") {
 
 								<form id="login_form" method="post" action="backend/valida.php">
 								    
-									<input type="text" name="usuario" id="usuario" placeholder="Usuário" required><br>
+									<div style="position:relative; height:20px;"><input type="text" name="usuario" id="usuario" placeholder="Usuário" required></div><br>
 
-									<input type="password" name="senha" id="senha" placeholder="Senha" required><br>
+									<div style="position:relative; height:20px;"><input type="password" name="senha" id="senha" placeholder="Senha" required></div><br>
 
-									<input type="checkbox" name="conectado" value="Continuar Conectado">Continuar Conectado 
+									<input type="checkbox" name="conectado" value="Continuar Conectado">Continuar Conectado <br>
 									
-									<p><button type="submit">Fazer Login</button></p>
+									<button type="submit" class="fazer-login">Fazer Login</button>
 									
 									<a href="#lembrar_form" id="lembrarSenha">Esqueceu sua senha?</a>
 									
@@ -156,9 +157,9 @@ if($sucesso == "aprovado") {
 							<div style="display:none" >
 
 								<form id="lembrar_form" method="post" action="backend/envios/mudarSenha.php">
-									<p>Não consegue lembrar sua senha? Digite abaixo seu e-mail que a enviaremos para você.</p>
+									<p>Não consegue lembrar sua senha? <br>Digite abaixo seu e-mail que a enviaremos para você.</p>
 									<input type="email" name="email" placeholder="Digite aqui seu e-mail" id="email"><br>
-									<p><button type="submit">Enviar</button></p>
+									<button type="submit" class="enviar">Enviar</button>
 			
 								</form>
 							</div><!--Div reenvio de senha-->
@@ -185,13 +186,23 @@ if($sucesso == "aprovado") {
   	<script src="assets/min/jquery.fancybox.min.js"></script>
   	<!-- Script do accordion -->
 	<script>
+
+		$( document ).ready(function() {
+		    $('html, body').animate({'scrollTop': '2070px'},50, "easeInOutExpo");
+		});
+
 		  $('.btcadastrar').click(function() {
 		    $('#accordion form').slideDown();
-		    $('.btcadastrar').hide();
+		    $('.bts-home').hide();
+		  });
+
+		  $('.engano').click(function() {
+		    $('#accordion form').hide();
+		    $('.bts-home').show();
 		  });
 	//<!-- botão login -->
 	//<!-- scripts fancybox de login e recuperar senha -->
-		$("#homeLogin").fancybox({
+		$(".homeLogin").fancybox({
 			'scrolling'		: 'no',
 			'titleShow'		: false,
 			'onClosed'		: function() {
@@ -243,7 +254,7 @@ if($sucesso == "aprovado") {
 		   });
 
             $(".bt-sobre-projeto").click(function() {
-				  $('html, body').animate({'scrollTop': '1255px'},1000, "easeInOutExpo");
+				  $('html, body').animate({'scrollTop': '1240px'},1000, "easeInOutExpo");
 		   });
 
             $(".bt-login").click(function() {
@@ -251,12 +262,12 @@ if($sucesso == "aprovado") {
 		   });
 
 
-          //  $("ul.nav a").click(function() {
+            $("ul.nav a").click(function() {
 			  // remove classes from all
-		//	  $("ul.nav a").removeClass("ativo");
+			  $("ul.nav a").removeClass("ativo");
 			  // add class to the one we clicked
-		//	  $(this).addClass("ativo");
-		 //  });
+			  $(this).addClass("ativo");
+		   });
 		});
 
 	</script>

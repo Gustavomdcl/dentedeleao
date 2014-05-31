@@ -185,7 +185,7 @@ $(document).ready(function() {
 				},
 			},
 			messages: {
-				email: "Insira seu e-mail cadastrado",
+				email: "Insira seu e-mail",
 			}
 		});
 

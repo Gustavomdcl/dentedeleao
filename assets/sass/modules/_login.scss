@@ -6,15 +6,17 @@
 		font-family: 'Permanent Marker', sans-serif;
 	}
 	h1 {
-		margin:30px auto 20px;
+		margin:0px auto 5px;
 		width:421px;
 		height:108px;
 	}
 	#accordion{
 		width:260px;
-		margin:10px auto;
+		margin:10px auto 0;
 		text-align:center;
+
 	}
+
 	p{
 		text-align:center;
 		
@@ -33,6 +35,16 @@
 		display:block;
 		float:left; 
 		margin-right:25px;
+	}
+	.bt-cadastrar{
+		cursor:pointer;
+		background: url(../img/template/bt-cadastrar.png) top no-repeat;
+		width:189px;
+		height:34px;
+		text-indent:-9000px;
+		display:block;
+		border:none;
+		margin:-10px auto;
 	}
 	.btLogar{
 		cursor:pointer;
@@ -134,7 +146,7 @@
 			h2{
 				color:#8e9924;
 				text-align:center;
-				font-size:3.2em;
+				font-size:3em;
 				clear:both;
 				width:550px;
 				line-height:40px;
@@ -145,29 +157,80 @@
 			position:fixed;
 			height:32px;
 			display:block;
-			width:600px;
-			margin:0 auto;
-			top:0;
-			border:1px solid red;
+			width:500px;
+			top:5px;;
+			background-color:#fff;
+			border-radius: 5px;
+			left: 50%;
+			margin-left: -250px;
+			padding:3px 15px 3px 70px;
 			li{
 				text-indent:-9000px;
-				display:inline;
+				display:block;
+				margin-right:10px;
+				float:left;
 				a{
 					display:block;
 					float:left;
 					width:150px;
+					cursor:pointer;
 				}
 			}
-			.bt-beneficios{background: url(../img/template/bt-beneficios.png) top left no-repeat;}
+			.bt-beneficios{background: url(../img/template/bt-beneficios.png) top left no-repeat; height:25px; width:96px;}
 
-			.bt-como-funciona{background: url(../img/template/bt-como-funciona.png) top left no-repeat;}
+			.bt-como-funciona{background: url(../img/template/bt-como-funciona.png) top left no-repeat; height:32px; width:142px;}
 
-			.bt-sobre-projeto{background: url(../img/template/bt-sobre-projeto.png) top left no-repeat;}
+			.bt-sobre-projeto{background: url(../img/template/bt-sobre-projeto.png) top left no-repeat; height:25px; width: 139px; margin-top:3px;}
 
-			.bt-login{background: url(../img/template/bt-home.png) top left no-repeat;}
+			.bt-login{background: url(../img/template/bt-home.png) top left no-repeat; height:15px; width:70px; margin-top:7px;}
+
+			.bt-beneficios:hover, .bt-beneficios.ativo, .bt-como-funciona:hover, .bt-como-funciona.ativo, .bt-sobre-projeto:hover, .bt-sobre-projeto.ativo, .bt-login:hover, .bt-login.ativo {background-position:bottom;}
 		}
-
-
+	.engano{
+		cursor:pointer;
+	}
+	
 
 }
 body.index{background: url(../img/template/bg-home.png) center top no-repeat;}
+#login_form .fazer-login{
+		
+		background: url(../img/template/bt-fazer-login.png) top no-repeat;
+		margin:8px auto;		
+	}
+#lembrar_form #email, #login_form #usuario, #login_form #senha{
+	width:285px;
+	padding:2px 2px;
+}
+
+.enviar{
+	margin:5px auto;
+	background: url(../img/template/bt-enviar.png) top no-repeat;
+}
+
+button[type=submit]{
+		cursor:pointer;
+		width:189px;
+		height:34px;
+		text-indent:-9000px;
+		display:block;
+		border:none;
+	}
+#formCadastroUsuario #cpf, #formCadastroUsuario #nome, #formCadastroUsuario #email, #formCadastroUsuario #senha{width:212px; padding: 2px 2px; margin:-10px;}
+
+#login_form{
+	label.error {
+	  width: 100px;
+	  right: 0px;
+	  top: 1px;
+	  padding: 3px 5px;
+	}
+}
+#lembrar_form{
+	label.error {
+	  width: 120px;
+	  right: 3px;
+	  top: 33px;
+	  padding: 3px 3px;
+	}
+}

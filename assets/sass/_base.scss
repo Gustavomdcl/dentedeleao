@@ -63,12 +63,37 @@ b {
   font-weight:bold;
   }
 }
-label.error{
-  color:#ff0000;
-  font-size:0.7em;
-  display:block;
-  height:14px;
-  margin-bottom:-20px;
+label.error {
+  display: inline-block;
+  text-align:center;
+  width: 140px;
+  position: absolute;
+  right: -140px;
+  top: -2px;
+  color: $color-white;
+  padding: 3px 10px;
+  background-color: #ff921e;
+  &:before {
+    content: '';
+    display:block;
+    background-color: #ff921e;
+    width:10px;
+    height:10px;
+    position: absolute;
+    left:-5px;
+    top:7px;
+    transform: rotate(45deg);
+    -webkit-transform: rotate(45deg);
+    -moz-transform: rotate(45deg);
+    -o-transform: rotate(45deg);
+    -ms-transform: rotate(45deg);
+  }
+} .error-left + label.error {
+  left: -160px;
+  right:inherit;
+  &:before {
+    left:145px;
+  }
 }
 
 //TITULOS SECTIONS
