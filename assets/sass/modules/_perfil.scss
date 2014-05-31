@@ -1,19 +1,37 @@
 .l-perfil {
+	margin-top:-60px;
 	.fotoperfil{
 		margin:10px 10px 0 0;
-		/*float:left;*/
+		
 	}
 	#perfil-content{
 		width:700px;
-		/*float:left;*/
+		
 	}
 	p span{
-		font-weight:bold;
-		width:90px;
+		width:70px;
 		text-align:left;
 		margin-right:10px;
 		display:block;
-		float:left;
 		font-family: Sophie, sans-serif;
+		font-size: 1.4em;
+		float:left;
 	}
+	p{
+		font-size:1.14em;
+		line-height:26px
+	}
+	h2 {
+		font-family: 'Permanent Marker', sans-serif;
+		font-size:2.5em;
+		text-align:center;
+		clear:both;
+	}
+	.round-img{
+		margin:0 auto;
+	}
+	.map-place{
+		margin-top:20px;
+	}
+	#map-canvas{border: #7a7460 7px solid;}
 }

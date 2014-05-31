@@ -30,13 +30,21 @@
 
 		<?php include 'template/header.php'; ?>
 
-		<!-- ADRIAN: ÁREA PARA COLOCAR SEU CÓDIGO, QUE VAI MUDAR EM CADA PÁGINA -->
+		<!-- .l-main
+    ======================================================== -->
+    <section class="l-main">
+
+      <div class="l-container cf">
+
+        <?php include 'template/sidebar.php'; ?>
+
+        <!-- .l-content
+        =================================================== -->
+        <section class="l-content">
 
 		<!-- login ADRIAN: Essa section é um exemplo de como você vai colocando as áreas do site. você pode alterar o nome da class .l-perfil para .l-perfil ou algo assim, dependendo do que for fazer. Preciso que cada sessão (nesse caso sessão tem o valor de corte, área. Um exemplo considere o wireframe do painel. Cada área dele, sendo a parte dos gráficos, a parte das notificações e dúvidas são sessões diferentes) do site seja feita pela tag <section>, pois isso agora é importante.
 		======================================================== -->
 		<section class="l-perfil">
-
-			<div class="l-container cf"><!-- ADRIAN: Essa div com class l-container centraliza em 960px e centraliza, no sass você pode observar isso. a class cf desconsidera os floats, sabe? as vezes quando você da um float left dentro de uma div o seu height não considera esses elementos. a class cf acaba considerando. -->
 
 				<?php
 				
@@ -100,22 +108,23 @@
 				?>
 
 				<div class="l-row">
-					<header>
-						<h2><?php if($produtor != null) { echo "PERFIL"; } else { echo "MEU PERFIL"; } ?></h2>
-					</header>
-					<img src="<?php echo $foto ?>" border="0" width="150" height="150" align="left" class="fotoperfil" />
+					<div class="round-img">
+					<img src="<?php echo $foto ?>" border="0" class="fotoperfil" />
+				</div>
 					<div id="perfil-content">
-						<h3><?php echo $nome ?></h3>
+						<h2><?php echo $nome ?></h2>
+						<p style="margin-bottom:35px;"><?php echo $sobre; ?></p>
 						<p><span>Fazenda</span> <?php echo $fazenda; ?></p>
 						<p><span>CNPJ</span> <?php echo $cnpj; ?></p>
 						<p><span>Telefone</span> <?php echo $telefone; ?></p>
 						<p><span>Celular</span> <?php echo $celular; ?></p>
 						<p><span>E-mail</span> <?php echo $email; ?></p>
-						<p><span>Sobre</span></p>
-						<p><?php echo $sobre; ?></p>
+						
+						<br><br>
 							
 						<p><span>Localização</span></p>
-						<div id="map-canvas" style="width:100%;height:500px;"></div><!-- div#map-canvas -->
+						
+						<div id="map-canvas" style="width:695px;height:420px;"></div><!-- div#map-canvas -->
 						<!-- Unidade de Local -->
 					    <div class="map-place" data-lat="<?php echo $latitude; ?>" data-long="<?php echo $longitude; ?>" id="mark-0"> <!-- o id deve mudar -->
 					    	<p><?php echo $endereco; ?><br>
@@ -126,9 +135,13 @@
 					</div><!-- #perfil-content -->
 				</div><!-- .l-row -->
 
-			</div><!-- .l-container.cf -->
-
 		</section><!-- .l-perfil -->
+
+		        </section><!-- .l-content -->
+
+      </div><!-- .l-container.cf -->
+
+    </section><!-- .l-main -->
 
 		<?php include 'template/footer.php'; ?>
 
