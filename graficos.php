@@ -171,7 +171,7 @@
                     $resultDispositivoBeta = mysql_query($sqlDispositivoBeta);
                     while ($row=mysql_fetch_array($resultDispositivoBeta)) {
                 ?>
-                  <div class="value-<?php echo $value['plantacao']; ?>" data-plantacao="<?php echo $value['plantacao']; ?>" data-id="<?php echo $row['id']; ?>" data-device="<?php echo $row['dispositivo']; ?>" data-umidade="<?php echo $row['umidade']; ?>" data-umidadedosolo="<?php echo $row['umidade_do_solo']; ?>" data-temperatura="<?php echo $row['temperatura']; ?>" data-chuva="<?php echo $row['chuva']; ?>" data-date="<?php echo $row['data']; ?>"></div>
+                  <div class="value-<?php echo $value['plantacao']; ?>" data-plantacao="<?php echo $value['plantacao']; ?>" data-id="<?php echo $row['id']; ?>" data-device="<?php echo $row['dispositivo']; ?>" data-umidade="<?php echo $row['umidade']; ?>" data-umidadedosolo="<?php echo (int)((100*($row['umidade_do_solo']-512))/368); ?>" data-temperatura="<?php echo $row['temperatura']; ?>" data-chuva="<?php echo (int)((100*(1024-$row['chuva']))/368); ?>" data-date="<?php echo $row['data']; ?>"></div>
                 <?php 
                     }//while
                 ?>
@@ -228,10 +228,10 @@
       function drawChart() {
         jQuery(".target").each(function(e){
 
-          var valueChuva = [['Horário', 'Mililitros']];
-          var valueUmidade = [['Horário', 'Mililitros']];
-          var valueUmidadeSolo = [['Horário', 'Mililitros']];
-          var valueTemperatura = [['Horário', 'Celsius']];
+          var valueChuva = [['Horário', '%']];
+          var valueUmidade = [['Horário', '%']];
+          var valueUmidadeSolo = [['Horário', '%']];
+          var valueTemperatura = [['Horário', '°C ']];
 
           jQuery(".value-" + jQuery(this).data('plantacao')).each(function(f){
 

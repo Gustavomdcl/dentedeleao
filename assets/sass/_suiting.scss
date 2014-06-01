@@ -21,6 +21,10 @@
 .firefox {
 	.l-login ul.nav li{float: none;}
 	.l-login ul.nav li a{margin-right:5px;}
+	.l-sidebar .l-sidebar-bottom .logout {
+	    margin-top: 0px;
+	    line-height: 26px;
+	}
 }
 
 // Internet Explorer ----------------------------------

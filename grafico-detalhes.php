@@ -149,7 +149,7 @@
                     $resultDispositivoBeta = mysql_query($sqlDispositivoBeta);
                     while ($row=mysql_fetch_array($resultDispositivoBeta)) {
                 ?>
-                  <div class="value-<?php echo $plantacaoId; ?>" data-plantacao="<?php echo $plantacaoId; ?>" data-id="<?php echo $row['id']; ?>" data-device="<?php echo $row['dispositivo']; ?>" data-umidade="<?php echo $row['umidade']; ?>" data-umidadedosolo="<?php echo $row['umidade_do_solo']; ?>" data-temperatura="<?php echo $row['temperatura']; ?>" data-chuva="<?php echo $row['chuva']; ?>" data-date="<?php echo $row['data']; ?>"></div>
+                  <div class="value-<?php echo $plantacaoId; ?>" data-plantacao="<?php echo $plantacaoId; ?>" data-id="<?php echo $row['id']; ?>" data-device="<?php echo $row['dispositivo']; ?>" data-umidade="<?php echo $row['umidade']; ?>" data-umidadedosolo="<?php echo (int)((100*($row['umidade_do_solo']-512))/368); ?>" data-temperatura="<?php echo $row['temperatura']; ?>" data-chuva="<?php echo (int)((100*(1024-$row['chuva']))/368); ?>" data-date="<?php echo $row['data']; ?>"></div>
                 <?php 
                     }//while
                 ?>
@@ -195,13 +195,13 @@
           var valueTemperatura = new google.visualization.DataTable();
 
           valueChuva.addColumn('datetime', 'Data');
-          valueChuva.addColumn('number', 'Mililitros');
+          valueChuva.addColumn('number', '%');
           valueUmidade.addColumn('datetime', 'Data');
-          valueUmidade.addColumn('number', 'Mililitros');
+          valueUmidade.addColumn('number', '%');
           valueUmidadeDoSolo.addColumn('datetime', 'Data');
-          valueUmidadeDoSolo.addColumn('number', 'Mililitros');
+          valueUmidadeDoSolo.addColumn('number', '%');
           valueTemperatura.addColumn('datetime', 'Data');
-          valueTemperatura.addColumn('number', 'Celsius');
+          valueTemperatura.addColumn('number', '°C');
 
           jQuery(".value-" + jQuery(this).data('plantacao')).each(function(f){
 

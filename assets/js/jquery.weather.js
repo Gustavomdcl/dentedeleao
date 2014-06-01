@@ -1,21 +1,5 @@
 if($('body').hasClass('index')) {} else {
 	   	var localizeMemory;
-		if(readCookie('ddlweather')){
-			var cookieDate = readCookie('ddlweather').split('|');
-
-			localizeMemory = cookieDate[0];
-			$('body').addClass(cookieDate[0]);
-
-			$('#degreesCelsius .number').text(cookieDate[1]);
-			$('#degreesCelsius .cel').text("°C ");
-
-			$('#location').text(cookieDate[2]);//local
-		} else {
-			//getWeather("./weather.php");
-			var profileLatitude = $('#browser_geo').data('latitude');
-			var profileLongitude = $('#browser_geo').data('longitude');
-			getWeather("http://api.openweathermap.org/data/2.5/weather?lat="+profileLatitude+"&lon="+profileLongitude);
-		}
 
 	   function getWeather(link) {
 	   		$.getJSON(link, function(data){
@@ -73,6 +57,23 @@ if($('body').hasClass('index')) {} else {
 			createCookie('ddlweather', theWeather,0.02);
 		});
 	   }
+
+	   if(readCookie('ddlweather')){
+			var cookieDate = readCookie('ddlweather').split('|');
+
+			localizeMemory = cookieDate[0];
+			$('body').addClass(cookieDate[0]);
+
+			$('#degreesCelsius .number').text(cookieDate[1]);
+			$('#degreesCelsius .cel').text("°C ");
+
+			$('#location').text(cookieDate[2]);//local
+		} else {
+			//getWeather("./weather.php");
+			var profileLatitude = $('#browser_geo').data('latitude');
+			var profileLongitude = $('#browser_geo').data('longitude');
+			getWeather("http://api.openweathermap.org/data/2.5/weather?lat="+profileLatitude+"&lon="+profileLongitude);
+		}
 
 	   	/*$("#browser_geo" ).one('click', function(){
 	   		getLocation();

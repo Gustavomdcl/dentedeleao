@@ -344,7 +344,7 @@
             <h3 class="title">Notificações</h3>
             <?php
 
-            $sqlNotificacaoNome = "SELECT * FROM DL_NOTIFICATION WHERE tomador = '$profile_id' order by id desc limit 3";
+            $sqlNotificacaoNome = "SELECT * FROM DL_NOTIFICATION WHERE tomador = '$profile_id' order by id desc limit 2";
             $resultNotificacaoNome = mysql_query($sqlNotificacaoNome);
 
             if (mysql_num_rows($resultNotificacaoNome) > 0) {
