@@ -59,7 +59,7 @@
 					display: inline-block;
 					font-weight: 700;
 					text-transform: uppercase;
-					font-size: 30px;
+					font-size: 43px;
 					color: $color-white;
 					line-height: 18px;
 					.data-value {
@@ -76,9 +76,6 @@
 					height: 216px;
 					width: 189px;
 					.data-right {
-						.data-value {
-							font-size: 25px;
-						}
 						.data-type {
 							padding-right: 23px;
 						}
@@ -90,9 +87,6 @@
 				.dados-content {
 					height: 211px;
 					width: 188px;
-					.data-right {
-						font-size: 43px;
-					}
 				}
 			}
 			.umidadedosolo-dados {
@@ -107,7 +101,6 @@
 					height: 213px;
 					width: 188px;
 					.data-right {
-						font-size: 37px;
 						.data-type {
 							line-height: 0px;
 							span {
@@ -123,9 +116,6 @@
 				.dados-content {
 					height: 217px;
 					width: 189px;
-					.data-right {
-						font-size: 43px;
-					}
 					.data-type {
 						font-size: 13px;
 					}

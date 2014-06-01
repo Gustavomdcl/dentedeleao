@@ -53,58 +53,66 @@
 				======================================================== -->
 				<section class="l-duvida-exibicao">
 
-					<header>
-						<h2>Minha Dúvida</h2>
-					</header>
+					<h3 class="title">Dúvidas</h3>
 					
-					<h3><?php echo $tituloDuvida; ?></h3>
-					<p>Por <a href="perfil.php?produtor=<?php echo $idPerfilDuvida; ?>" title="<?php echo $perfilDuvida; ?>"><?php echo $perfilDuvida; ?></a> | <span><?php echo $dataDuvida; ?></span><?php if($plantacaoDuvida==''){} else { ?> | <?php foreach ($plantacaoDuvida as $plantacaoPart){ echo $plantacaoPart; } } ?></p>
-					<div class="conteudo">
-						<p><?php echo $textoDuvida; ?></p>
-					</div><!-- .conteudo -->
-					<?php if($tagDuvida==''){} else { ?>
-					<p>Já <?php if(count($tagDuvida)>1) { ?>ouviram<?php } else { ?>ouviu<?php } ?> algo sobre, 
-						<?php 
-						$pessoasCount = 0;
-						$pessoasTexto = '';
-						foreach ($tagDuvida as $tagPart){
-							$tagPart = explode("|",$tagPart);
-							if($pessoasCount==0){
-								$pessoasTexto = '';
-							} else if ($pessoasCount+1==count($tagDuvida)) {
-								$pessoasTexto = ' e ';
-							} else {
-								$pessoasTexto = ', ';
-							}
-						?><?php echo $pessoasTexto; ?><a href="perfil.php?produtor=<?php echo $tagPart[0]; ?>" title="<?php echo $tagPart[1]; ?>"><b><?php echo $tagPart[1]; ?></b></a><?php 
-							$pessoasCount = $pessoasCount + 1;
-						}//foreach 
-						?>?</p>
-					<?php }//else ?>
+					<h4 class="title post"><?php echo $tituloDuvida; ?></h4>
+
+					<div class="content-topo">
+
+						<p class="duvida-header">Por <a href="perfil.php?produtor=<?php echo $idPerfilDuvida; ?>" title="<?php echo $perfilDuvida; ?>"><?php echo $perfilDuvida; ?></a> | <span><?php echo $dataDuvida; ?></span><?php if($plantacaoDuvida==''){} else { ?> | <?php echo '<a href="duvida-resultado.php?plantacao=' . $plantacaoDuvidaId . '">'; foreach ($plantacaoDuvida as $plantacaoPart){ echo $plantacaoPart; } echo '</a>'; } ?></p>
+						<div class="conteudo">
+							<p><?php echo $textoDuvida; ?></p>
+						</div><!-- .conteudo -->
+						<?php if($tagDuvida==''){} else { ?>
+						<p><span class="marcacao-pessoas">Já <?php if(count($tagDuvida)>1) { ?>ouviram<?php } else { ?>ouviu<?php } ?> algo sobre</span>,
+							<span class="nomes-pessoas"> 
+							<?php 
+							$pessoasCount = 0;
+							$pessoasTexto = '';
+							foreach ($tagDuvida as $tagPart){
+								$tagPart = explode("|",$tagPart);
+								if($pessoasCount==0){
+									$pessoasTexto = '';
+								} else if ($pessoasCount+1==count($tagDuvida)) {
+									$pessoasTexto = ' e ';
+								} else {
+									$pessoasTexto = ', ';
+								}
+							?><?php echo $pessoasTexto; ?><a href="perfil.php?produtor=<?php echo $tagPart[0]; ?>" title="<?php echo $tagPart[1]; ?>"><b><?php echo $tagPart[1]; ?></b></a><?php 
+								$pessoasCount = $pessoasCount + 1;
+							}//foreach 
+							?>?</span></p>
+						<?php }//else ?>
+
+					</div><!-- .content-topo -->
 
 					<?php if($imagemDuvida==''){} else { ?>
-					<hr />
-					<?php foreach ($imagemDuvida as $imagemPart){ ?>
-						<a class="galeria-imagens" rel="imagenspost" href="<?php echo $imagemPart; ?>"><img src="<?php echo $imagemPart; ?>" width="130" height="130"/></a>
-					<?php }//foreach ?>
+					<div class="duvida-imagens">
+						<h4 class="title post">Imagens:</h4>
+						<?php foreach ($imagemDuvida as $imagemPart){ ?>
+							<a class="galeria-imagens" rel="imagenspost" href="<?php echo $imagemPart; ?>"><img src="<?php echo $imagemPart; ?>" width="130" height="130"/></a>
+						<?php }//foreach ?>
+					</div><!-- .duvida-imagens -->
 					<?php }//else ?>
 					<?php if($videoDuvida==''){} else { ?>
-					<hr />
-					<video width="480" height="360" controls>
-						Exibir video
-					  <source src="<?php echo $videoDuvida; ?>" type="video/<?php echo $videoParts[1]; ?>">
-					
-					</video>
+					<div class="duvida-videos">
+						<h4 class="title post">Video:</h4>
+						<video width="480" height="360" controls>
+							Exibir video
+						  <source src="<?php echo $videoDuvida; ?>" type="video/<?php echo $videoParts[1]; ?>">
+						</video>
+					</div><!-- .duvida-videos -->
 					<?php }//else ?>
-					<hr />
-					<h3>Comentários</h3>
-					<form id="enviarComentarioDuvida" method="post" action="backend/envios/enviarComentarioDuvida.php">
-						<textarea id="ckeditor" rows="4" cols="50" name="comment" > </textarea>
-						<input type="hidden" name="duvida" value="<?php echo $duvidaPost; ?>">
-						<input type="hidden" name="perfil" value="<?php echo $profile_id; ?>">
-						<input type="hidden" name="dono" value="<?php echo $idPerfilDuvida; ?>">
-						<button type="submit">Enviar Comentário</button>
-					</form>
+					<div class="cadastrar-comentario">
+						<h4 class="title post">Comentar Publicação</h4>
+						<form id="enviarComentarioDuvida" method="post" action="backend/envios/enviarComentarioDuvida.php">
+							<textarea id="ckeditor" rows="4" cols="50" name="comment" > </textarea>
+							<input type="hidden" name="duvida" value="<?php echo $duvidaPost; ?>">
+							<input type="hidden" name="perfil" value="<?php echo $profile_id; ?>">
+							<input type="hidden" name="dono" value="<?php echo $idPerfilDuvida; ?>">
+							<button type="submit">Enviar Comentário</button>
+						</form>
+					</div><!-- .cadastrar-comentario -->
 					<?php
 
 			          $sqlCommentsDuvida = "SELECT * FROM DL_FORUM_coments WHERE forum = '$duvidaPost' order by id desc";
@@ -146,7 +154,7 @@
 					      }
 		            ?>
 					<div id="comentario<?php echo $commentCount; ?>" class="comentario">
-						<p class="titulo"><b><a href="perfil.php?produtor=<?php echo $perfilCommentId; ?>"><?php echo $perfilCommentNome; ?></b> | <?php echo $dataComment; ?></p>
+						<p class="titulo"><b>Por <a href="perfil.php?produtor=<?php echo $perfilCommentId; ?>"><?php echo $perfilCommentNome; ?></a></b> | <?php echo $dataComment; ?></p>
 						<div class="contetComment"><?php echo $textoComment; ?></div><!-- .contetComment -->
 					</div><!-- #comentario -->
 					<?php $commentCount = $commentCount + 1; }//while ?>

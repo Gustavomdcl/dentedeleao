@@ -96,8 +96,72 @@
 }
 
 .l-duvida-exibicao {
-	.galeria-imagens{
-		margin:5px 6px;
+	a {
+		color: $color-orange;
+		text-decoration: underline;
+	}
+	h3.title {
+		margin-bottom: 30px;
+	}
+	h4.title.post {
+		margin-bottom: 20px;
+	}
+	p.duvida-header {
+		font-size: 0.85em;
+		margin-bottom: 20px;
+	}
+	div.conteudo {
+		&>* {
+			font-size: 1.14em;
+		}
+		p {
+			margin-bottom: 10px;
+		}
+	}
+	.marcacao-pessoas {
+		font-family: 'Sophie', sans-serif;
+		font-size: 1.58em;
+	}
+	.nomes-pessoas {
+		font-size: 1.14em;
+	}
+	.content-topo {
+		margin-bottom: 30px;
+	}
+	.duvida-imagens {
+		margin-bottom: 30px;
+		.galeria-imagens {
+			width: 157px;
+			height: 113px;
+			position: relative;
+			display: inline-block;
+			img {
+			  width: 157px;
+			  height: 113px;
+			}
+			&:after {
+				content: ' ';
+			    display: block;
+			    position: absolute;
+			    top: -3px;
+				right: -4px;
+			    @include sprite(duvida-imagem);
+			}
+		}
+		.galeria-imagens + .galeria-imagens {
+			margin-left: 17px;
+		}
+	}
+	.duvida-videos {
+		margin-bottom: 30px;
+	}
+	.cadastrar-comentario {
+		@include box-sizing(border-box);
+		@include sprite(comentario-background);
+		h4.title.post {
+			text-align: center;
+			color: $color-white;
+		}
 	}
 	.comentario{
 		padding:10px 0;

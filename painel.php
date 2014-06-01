@@ -136,7 +136,7 @@
                 <li class="chuva-dados">
                   <div class="dados-content">
                     <img src="assets/img/template/chuva-dados.png" alt="Chuva" />
-                    <p class="data-right"><?php echo $row['chuva']; ?><span class="data-value">%</span><br>
+                    <p class="data-right"><?php echo (int)((100*(1024-$row['chuva']))/368); ?><span class="data-value">%</span><br><!-- MAX 1024 | MIN 250 | 100% = 774 [1024-x] | (100*$var)/774 -->
                       <span class="data-type">Chuva</span>
                     </p><!-- .data-right -->
                   </div><!-- .dados-content -->
@@ -152,7 +152,7 @@
                 <li class="umidadedosolo-dados">
                   <div class="dados-content">
                     <img src="assets/img/template/umidadedosolo-dados.png" alt="Umidade do Solo" />
-                    <p class="data-right"><?php echo $row['umidade_do_solo']; ?><span class="data-value">%</span><br>
+                    <p class="data-right"><?php echo (int)((100*($row['umidade_do_solo']-512))/368); ?><span class="data-value">%</span><br><!-- MAX 880 | MIN 512 | 100% = 368 [x-512] | (100*$var)/368  -->
                       <span class="data-type">
                         Umidade<br>
                         <span>do Solo</span>

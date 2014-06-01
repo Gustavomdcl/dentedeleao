@@ -122,6 +122,10 @@ label.error {
   font-family: 'Permanent Marker', sans-serif;
   text-align: center;
   margin: 0px;
+  &.post {
+    font-size: 1.71em;
+    text-align: left;
+  }
 }
 .subtitle {
   font-size: 1.42em;
@@ -175,7 +179,7 @@ label.error {
     content: ' ';
     display: block;
     position: absolute;
-    top: 2px;
+    top: 0px;
     right: 0px;
     @include sprite(round);
   }

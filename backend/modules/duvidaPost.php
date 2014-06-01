@@ -8,6 +8,7 @@
         $idPerfilDuvida         =   $row['perfil'];//DONE
         $dataDuvida             =   $row['data'];//DONE
         $plantacaoDuvida        =   $row['plantacao'];//DONE
+        $plantacaoDuvidaId      =   $plantacaoDuvida;//DONE
         $imagemDuvida           =   $row['imagem'];//DONE
         $videoDuvida            =   $row['video'];//DONE
         $tagDuvida              =   $row['tag'];
