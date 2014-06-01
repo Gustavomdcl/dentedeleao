@@ -44,12 +44,9 @@
 
 				<!-- login ADRIAN: Essa section é um exemplo de como você vai colocando as áreas do site. você pode alterar o nome da class .l-duvida-resultado para .l-duvida-resultado ou algo assim, dependendo do que for fazer. Preciso que cada sessão (nesse caso sessão tem o valor de corte, área. Um exemplo considere o wireframe do painel. Cada área dele, sendo a parte dos gráficos, a parte das notificações e dúvidas são sessões diferentes) do site seja feita pela tag <section>, pois isso agora é importante.
 				======================================================== -->
-				<section class="l-notificacoes">
+				<section class="l-notificacoes block">
 
-					<header>
-						<h2>Notificações</h2>
-					</header>
-
+					<h3 class="title">Notificações</h3>
 					<?php
 
 			        $sqlNotificacaoNome = "SELECT * FROM DL_NOTIFICATION WHERE tomador = '$profile_id' order by id desc";
@@ -65,61 +62,99 @@
 
 			        ?>
 					
-					<h3>Dúvidas em que você foi marcado</h3>
+					<p class="subtitle">Você foi marcado nas seguintes publicações de dúvidas:</p>
 					
-					<ul id="conteudoNotificacoes"><!-- class="scroll" pq essa class? -->
+					<ul id="notificacoes" class="l-row"><!-- class="scroll" pq essa class? -->
 						
 			            <?php
 			            while ($row=mysql_fetch_array($resultNotificacaoNome)) {
-			              $id_notificacao = $row['id'];
-			              $prestador = $row['prestador'];
-			              $forum = $row['forum'];
-			              $tipo = $row['tipo'];
+			                $id_notificacao = $row['id'];
+			                $prestador = $row['prestador'];
+			                $forum = $row['forum'];
+			                $tipo = $row['tipo'];
 
-			              //Prestador Nome
-			              $sqlPrestadorNome = "SELECT `nome`, `foto` FROM DL_PROFILE WHERE id = '$prestador' order by id desc limit 1";
-			              $resultPrestadorNome = mysql_query($sqlPrestadorNome);
-			              while ($row=mysql_fetch_array($resultPrestadorNome)) {
-			                $prestador = $row['nome'];
-			                $prestador_foto = substr($row['foto'], 0, -1);
-			              }
-			              //Prestador Foto
-			              if($prestador_foto == '' || $prestador_foto == null) {
-			                $prestador_foto = 'admin/assets/img/template/logo.gif';
-			              } else {
-			                $sqlPrestadorFoto = "SELECT `caminho`, `nome_imagem` FROM DL_IMAGES WHERE id = '$prestador_foto' order by id desc limit 1";
-			                $resultPrestadorFoto = mysql_query($sqlPrestadorFoto);
-			                while ($row=mysql_fetch_array($resultPrestadorFoto)) {
-			                  $prestador_foto = $row['caminho'] . $row['nome_imagem'];
+			                //Prestador Nome
+			                $sqlPrestadorNome = "SELECT `nome`, `foto` FROM DL_PROFILE WHERE id = '$prestador' order by id desc limit 1";
+			                $resultPrestadorNome = mysql_query($sqlPrestadorNome);
+			                while ($row=mysql_fetch_array($resultPrestadorNome)) {
+			                  $prestador = $row['nome'];
+			                  $prestador_foto = substr($row['foto'], 0, -1);
 			                }
-			              }
-			              //Fórum Nome
-			              $sqlForumNome = "SELECT `titulo` FROM DL_FORUM WHERE id = '$forum' order by id desc limit 1";
-			              $resultForumNome = mysql_query($sqlForumNome);
-			              while ($row=mysql_fetch_array($resultForumNome)) {
-			                $forum_nome = $row['titulo'];
-			              }
-			              //Marcação
-			              if ($tipo == '1') {
-			                $tipo = ' marcou você na dúvida:';
-			              } else if ($tipo == '0') {
-			                $tipo = ' comentou na sua dúvida:';
-			              }
+			                //Prestador Foto
+			                if($prestador_foto == '' || $prestador_foto == null) {
+			                  $prestador_foto = 'admin/assets/img/template/logo.gif';
+			                } else {
+			                  $sqlPrestadorFoto = "SELECT `caminho`, `nome_imagem` FROM DL_IMAGES WHERE id = '$prestador_foto' order by id desc limit 1";
+			                  $resultPrestadorFoto = mysql_query($sqlPrestadorFoto);
+			                  while ($row=mysql_fetch_array($resultPrestadorFoto)) {
+			                    $prestador_foto = $row['caminho'] . $row['nome_imagem'];
+			                  }
+			                }
+			                //Fórum Nome
+			                $sqlForumNome = "SELECT `titulo`, `texto` FROM DL_FORUM WHERE id = '$forum' order by id desc limit 1";
+			                $resultForumNome = mysql_query($sqlForumNome);
+			                while ($row=mysql_fetch_array($resultForumNome)) {
+			                  $forum_nome = $row['titulo'];
+			                  $forum_texto = $row['texto'];
+			                }
+			                //TITULO
+			                $forum_nome = explode(" ", $forum_nome);
+			                //TEXTO
+			                $the_tag = array('<p>', '</p>', '<br>', '<br/>', '<br />');
+			                $forum_texto = str_replace($the_tag, '', $forum_texto);
+			                $forum_texto = explode(" ", $forum_texto);
+			                //Marcação
+			                if ($tipo == '1') {
+			                  $tipo = ' marcou você em ';
+			                } else if ($tipo == '0') {
+			                  $tipo = ' comentou na sua dúvida ';
+			                }
 			            ?>
 
-			            <li id="notification-<?php echo $id_notificacao; ?>"><img src="<?php echo $prestador_foto; ?>" alt="Pessoa" width="100" height="100" align="left" border="0" />
-			              <b><?php echo $prestador; echo $tipo; ?></b>
-			              <p><?php echo $forum_nome; ?></p>
-			              <a href="duvida.php?numero=<?php echo $forum; ?>" >Saiba mais</a>
-			            </li>
+			            <li id="notification-<?php echo $id_notificacao; ?>" class="l-col12">
+			                <div class="round-img">
+			                  <img src="<?php echo $prestador_foto; ?>" alt="Pessoa" border="0" />
+			                </div><!-- .round-img -->
+			                <p class="postnome">
+			                  <?php
+			                  echo $prestador;
+			                  echo $tipo;
+			                  for($i=0;$i<=8;$i++){
+			                    if($i==8){
+			                      echo '..."';
+			                    } else if($i==7) {
+			                      echo $forum_nome[$i];
+			                    } else if($i==0) {
+			                      echo '"' . $forum_nome[$i] . ' ';
+			                    } else {
+			                      echo $forum_nome[$i] . ' ';
+			                    }
+			                  }
+			                  ?>
+			                </p>
+			                <p class="posttexto">
+			                  <?php
+			                  for($i=0;$i<=20;$i++){
+			                    if($i==20){
+			                      echo '...';
+			                    } else if($i==19) {
+			                      echo $forum_texto[$i];
+			                    } else {
+			                      echo $forum_texto[$i] . ' ';
+			                    }
+			                  }
+			                  ?>
+			                </p>
+			                <a href="duvida.php?numero=<?php echo $forum; ?>" class="ler-publicacao button">Ler Publicação</a>
+			              </li><!-- #notification-?php?.l-col12 -->
 
 			            <?php }//while ?>
 				        
-					</ul> <!-- #conteudoNotificacoes -->
+					</ul> <!-- #notificacoes.l-row -->
 
 					<?php } else { ?>
 
-					<h3>Ainda não há notificações</h3>
+					<p>Ainda não há notificações</p>
 
 					<?php }//else ?>
 

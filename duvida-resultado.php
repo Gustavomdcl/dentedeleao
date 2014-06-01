@@ -62,11 +62,9 @@
 
 				<!-- login ADRIAN: Essa section é um exemplo de como você vai colocando as áreas do site. você pode alterar o nome da class .l-duvida-resultado para .l-duvida-resultado ou algo assim, dependendo do que for fazer. Preciso que cada sessão (nesse caso sessão tem o valor de corte, área. Um exemplo considere o wireframe do painel. Cada área dele, sendo a parte dos gráficos, a parte das notificações e dúvidas são sessões diferentes) do site seja feita pela tag <section>, pois isso agora é importante.
 				======================================================== -->
-				<section class="l-duvida-resultado">
+				<section class="l-duvidas resultado">
 
-					<header>
-						<h2>Dúvidas</h2>
-					</header>
+					<h3 class="title">Dúvidas</h3>
 
 					<?php 
 
@@ -85,13 +83,14 @@
 
 					?>
 
-					<hr />
-					<div id="cadastrarDuvida">
-						<p>As sugestões não te ajudaram? Preencha sua dúvida.</p>
-						<a href="duvida-cadastro.php" title="Formulário para cadastrar dúvida" class="btCadastrarDuvida">Cadastrar minha dúvida</a>
-					</div> <!-- #cadastrarDuvida -->
+				</section><!-- .l-duvidas -->
 
-				</section><!-- .l-duvida-resultado -->
+			    <section class="l-duvidas-cadastrar-button block">
+
+						<p class="subtitle">As sugestões não te ajudaram? Preencha sua dúvida.</p>
+						<a href="duvida-cadastro.php" title="Formulário para cadastrar dúvida" class="btCadastrarDuvida">Cadastrar minha dúvida</a>
+
+				</section><!-- .l-duvidas-cadastrar-button -->
 
 			</section><!-- .l-content -->
 

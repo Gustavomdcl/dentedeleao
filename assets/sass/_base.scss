@@ -117,7 +117,7 @@ label.error {
 }
 
 .title {
-  font-size: 1.8em;
+  font-size: 2em;
   text-transform: uppercase;
   font-family: 'Permanent Marker', sans-serif;
   text-align: center;
@@ -190,7 +190,6 @@ label.error {
   img {
     width: 678px;
     height: 272px;
-    behavior: url(assets/css/suiting/pie.htc);
   }
   &::after {
     content: ' ';
@@ -205,4 +204,20 @@ label.error {
 // WAYPOINTS
 .sticky-wrapper {
   position: absolute;
+}
+
+//FORMULARIO ============
+
+input {
+  @include box-sizing(border-box);
+  padding: 10px 30px;
+  font-family: 'Maven Pro', sans-serif;
+  font-size: 1em;
+  color: $color-brown;
+  border: none;
+  -moz-box-shadow: 0px 1px 1px $color-brown-light, inset 0px 1px 1px $color-brown-dark;
+  -webkit-box-shadow: 0px 1px 1px $color-brown-light, inset 0px 1px 1px $color-brown-dark;
+  box-shadow: 0px 1px 1px $color-brown-light, inset 0px 1px 1px $color-brown-dark;
+  border-radius: 5px;
+  behavior: url(assets/css/suiting/pie.htc);
 }

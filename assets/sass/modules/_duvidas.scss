@@ -38,6 +38,61 @@
 			}
 		}
 	}
+	&.resultado {
+		margin-bottom: 30px;
+	}
+}
+
+.l-duvida-busca {
+	h3.title {
+		margin-bottom: 30px;
+		font-size: 2.5em;
+	}
+	form {
+		@include box-sizing(border-box);
+		@include sprite(duvida-busca);
+		text-align: center;
+		padding: 35px 0px 0px 0px;
+		.input-container {
+			position: relative;
+			display: inline-block;
+			input {
+				width: 492px;
+			}
+			button {
+				position: absolute;
+				top: 5px;
+				right: 5px;
+				display: block;
+				background-color: transparent;
+				@include box-sizing(border-box);
+				@include sprite(icone-busca);
+			}
+		}
+	}
+}
+
+.l-duvidas-cadastrar-button {
+	@include box-sizing(border-box);
+	@include sprite(duvidas-cadastrar-button);
+	text-align: center;
+	padding-top: 20px;
+	.subtitle {
+		margin-bottom: 0px;
+		color: $color-orange;
+	}
+	.btCadastrarDuvida {
+		@include box-sizing(border-box);
+		@include sprite(cadastrar-duvida);
+		padding: 7px 0px 0px 0px;
+		margin-top: 10px;
+		text-align: center;
+		display: inline-block;
+		font-weight: 700;
+		text-transform: uppercase;
+		font-size: 1em;
+		color: $color-white;
+	}
 }
 
 .l-duvida-exibicao {
@@ -99,3 +154,4 @@
 	}
 
 }
+	#cadastrar-duvida{background: url(./../img/template/bg-duvida.png) top center no-repeat;}
