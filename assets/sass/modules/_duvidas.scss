@@ -175,6 +175,7 @@
 }
 
 .l-duvida-cadastro{
+	margin-top:-30px;
 	h2{
 		font-family: 'Permanent Marker', sans-serif;
 		font-size:2.5em;
@@ -187,5 +188,34 @@
 			text-align:center;
 
 		}
-	#cadastrar-duvida{background: url(./../img/template/bg-duvida.png) top center no-repeat;}
+	.plantacoes{clear:both;}
+
+	#cadastrar-duvida{background: url(./../img/template/bg-duvida.png) top center no-repeat; padding:20px 50px 0;}
+
+	#titulo, #amigos {border-radius:5px; padding:5px; width:580px; margin:20px auto;}
+
+	#cadastrar-duvida p{font-family:'Sophie', sans-serif; color: #fff; font-size:1.6em; text-align:center; line-height:28px;}
+
+	#ckeditor{height:150px;}
+
+	#datepicker{border-radius:5px; padding:5px; margin:10px 0 10px 200px;}
+
+	.borda-radios{position:relative; background: url(./../img/template/bg-radio.png) no-repeat; width:70px; height:69px; display:block; margin:20px; float:left; }
+
+	.borda-radios input[type="radio"]{
+		position:absolute;
+		right:2px;
+		top:6px;
+	}
+	.borda-radios img{display:block; margin-top:10px; margin-left:9px; margin-bottom:15px;}
+
+	.borda-radios label{font-family:'Sophie', sans-serif; font-size:1.7em;}
+
+	ul.lista-imagens{
+		margin-bottom:20px;
+		height:130px;
+		li{width:130px; float:left; margin-right:5px; height:99px;}
+	}
+
 }
+	#cadastrar-duvida{background: url(./../img/template/bg-duvida.png) top center no-repeat;}
