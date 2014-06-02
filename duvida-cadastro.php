@@ -99,7 +99,7 @@
 								<?php }//while ?>
 							</ul><!--l-row-->
 							</span><!-- .plantacoes -->
-							<p style="clear:both; color:#7a7460;">Deseja enviar fotos?</p>
+							<p style="clear:both; color:#7a7460; margin:10px auto;">Deseja enviar fotos?</p>
 							<!--UL para upload das 5 fotos permitidas, peguei no airu e comentei-->
 							<ul class="lista-imagens">
 								<li id="img_li_1">
@@ -107,7 +107,7 @@
 									<div class="imageWrapper">
 			                        	<img src="assets/img/template/bg-subir-foto.png" alt="Ver imagem pequena" width="130" height="99">
 			                        </div>
-			                        <input type="file" name="image[]" class="productImage ignore" onchange="readURL(this);" accept="image/png, image/gif, image/bmp, image/jpeg, image/jpg" id="image_1">
+			                        <input type="file" name="image[]" class="productImage ignore filestyle" onchange="readURL(this);" accept="image/png, image/gif, image/bmp, image/jpeg, image/jpg" id="image_1">
 			                    </li><!-- #img_li_1 -->
 
 			                    <li id="img_li_2">
@@ -115,7 +115,7 @@
 									<div class="imageWrapper">
 			                        	<img src="assets/img/template/bg-subir-foto.png" alt="Ver imagem pequena" width="130" height="99">
 			                        </div>
-			                        <input type="file" name="image[]" class="productImage ignore" onchange="readURL(this);" accept="image/png, image/gif, image/bmp, image/jpeg, image/jpg" id="image_1">
+			                        <input type="file" name="image[]" class="productImage ignore filestyle" onchange="readURL(this);" accept="image/png, image/gif, image/bmp, image/jpeg, image/jpg" id="image_2">
 			                    </li><!-- #img_li_2 -->
 
 			                    <li id="img_li_3">
@@ -123,7 +123,7 @@
 									<div class="imageWrapper">
 			                        	<img src="assets/img/template/bg-subir-foto.png" alt="Ver imagem pequena" width="130" height="99">
 			                        </div>
-			                        <input type="file" name="image[]" class="productImage ignore" onchange="readURL(this);" accept="image/png, image/gif, image/bmp, image/jpeg, image/jpg" id="image_1">
+			                        <input type="file" name="image[]" class="productImage ignore filestyle" onchange="readURL(this);" accept="image/png, image/gif, image/bmp, image/jpeg, image/jpg" id="image_3">
 			                    </li><!-- #img_li_3 -->
 
 			                    <li id="img_li_4">
@@ -131,16 +131,17 @@
 									<div class="imageWrapper">
 			                        	<img src="assets/img/template/bg-subir-foto.png" alt="Ver imagem pequena" width="130" height="99">
 			                        </div>
-			                        <input type="file" name="image[]" class="productImage ignore" onchange="readURL(this);" accept="image/png, image/gif, image/bmp, image/jpeg, image/jpg" id="image_1">
+			                        <input type="file" name="image[]" class="productImage ignore filestyle" onchange="readURL(this);" accept="image/png, image/gif, image/bmp, image/jpeg, image/jpg" id="image_4">
 			                    </li><!-- #img_li_4 -->
 
 			                </ul>
-							<p style="clear:both; color:#7a7460;">E vídeo? (tamanho de até 20mb)</p>
+							<p style="clear:both; color:#7a7460; margin:10px auto;">E vídeo? (tamanho de até 20mb)</p>
 							<div id="uploadVideo">
-							  <input  accept="video/*" id="file_video" type="file" size="20" class="ignore" name="video[]"/>
-							  <p id="videoMensagem"></p>
-							</div> <!-- #uploadVideo -->
-							<button type="submit">Publicar dúvida</button>
+								<input  accept="video/*" id="file_video" type="file" size="20" class="ignore filestyle" name="video[]" data-buttonText="Enviar Vídeo " data-input="true" data-buttonBefore="true"/>
+							  
+							</div>
+							<p id="videoMensagem"></p> <!-- #uploadVideo -->
+							<button type="submit" class="salva-postar">Publicar dúvida</button>
 						</form>
 					</div>
 				</section><!-- .l-duvida-exibicao -->
@@ -158,241 +159,11 @@
 	<?php include 'template/script.php'; ?>
   	<script src="assets/min/jquery.ui.min.js"></script>
   	<script src="//code.jquery.com/ui/1.10.4/jquery-ui.js"></script>
+  	<!--filestyle -->
+  	<script type="text/javascript" src="assets/js/bootstrap-filestyle.js"> </script>
   	<!-- autocomplete >
 	<link rel="stylesheet" href="//code.jquery.com/ui/1.10.4/themes/smoothness/jquery-ui.css"-->
-  	<style>
-	/* Autocomplete
-	----------------------------------*/    
-	.ui-autocomplete-loading { background: white url('assets/img/modules/ui-anim_basic_16x16.gif') right center no-repeat; }
-
-	/* workarounds */
-	* html .ui-autocomplete { width:1px; } /* without this, the menu expands to 100% in IE6 */
-
-	/* Menu
-	----------------------------------*/
-	/* Layout helpers
-	----------------------------------*/
-	.ui-helper-hidden {
-		display: none;
-	}
-	.ui-helper-hidden-accessible {
-		border: 0;
-		clip: rect(0 0 0 0);
-		height: 1px;
-		margin: -1px;
-		overflow: hidden;
-		padding: 0;
-		position: absolute;
-		width: 1px;
-	}
-	.ui-helper-reset {
-		margin: 0;
-		padding: 0;
-		border: 0;
-		outline: 0;
-		line-height: 1.3;
-		text-decoration: none;
-		font-size: 100%;
-		list-style: none;
-	}
-	.ui-helper-clearfix:before,
-	.ui-helper-clearfix:after {
-		content: "";
-		display: table;
-		border-collapse: collapse;
-	}
-	.ui-helper-clearfix:after {
-		clear: both;
-	}
-	.ui-helper-clearfix {
-		min-height: 0; /* support: IE7 */
-	}
-	.ui-helper-zfix {
-		width: 100%;
-		height: 100%;
-		top: 0;
-		left: 0;
-		position: absolute;
-		opacity: 0;
-		filter:Alpha(Opacity=0);
-	}
-
-	.ui-front {
-		z-index: 100;
-	}
-
-
-	/* Interaction Cues
-	----------------------------------*/
-	.ui-state-disabled {
-		cursor: default !important;
-	}
-
-
-	/* Icons
-	----------------------------------*/
-
-	/* states and images */
-	.ui-icon {
-		display: block;
-		text-indent: -99999px;
-		overflow: hidden;
-		background-repeat: no-repeat;
-	}
-
-
-	/* Misc visuals
-	----------------------------------*/
-
-	/* Overlays */
-	.ui-widget-overlay {
-		position: fixed;
-		top: 0;
-		left: 0;
-		width: 100%;
-		height: 100%;
-	}
-	.ui-menu-item a {
-		padding: 10px;
-		display: block;
-		font-size: 14px;
-	}
-	.ui-menu-item a:hover {
-		background: #666;
-		color: #fff;
-	}
-	.ui-accordion .ui-accordion-header {
-		display: block;
-		cursor: pointer;
-		position: relative;
-		margin-top: 2px;
-		padding: .5em .5em .5em .7em;
-		min-height: 0; /* support: IE7 */
-	}
-	.ui-accordion .ui-accordion-icons {
-		padding-left: 2.2em;
-	}
-	.ui-accordion .ui-accordion-noicons {
-		padding-left: .7em;
-	}
-	.ui-accordion .ui-accordion-icons .ui-accordion-icons {
-		padding-left: 2.2em;
-	}
-	.ui-accordion .ui-accordion-header .ui-accordion-header-icon {
-		position: absolute;
-		left: .5em;
-		top: 50%;
-		margin-top: -8px;
-	}
-	.ui-accordion .ui-accordion-content {
-		padding: 1em 2.2em;
-		border-top: 0;
-		overflow: auto;
-	}
-	.ui-autocomplete {
-		position: absolute;
-		top: 0;
-		left: 0;
-		cursor: default;
-		background: #fff;
-	}
-	.ui-button {
-		display: inline-block;
-		position: relative;
-		padding: 0;
-		line-height: normal;
-		margin-right: .1em;
-		cursor: pointer;
-		vertical-align: middle;
-		text-align: center;
-		overflow: visible; /* removes extra width in IE */
-	}
-	.ui-button,
-	.ui-button:link,
-	.ui-button:visited,
-	.ui-button:hover,
-	.ui-button:active {
-		text-decoration: none;
-	}
-	/* to make room for the icon, a width needs to be set here */
-	.ui-button-icon-only {
-		width: 2.2em;
-	}
-	/* button elements seem to need a little more width */
-	button.ui-button-icon-only {
-		width: 2.4em;
-	}
-	.ui-button-icons-only {
-		width: 3.4em;
-	}
-	button.ui-button-icons-only {
-		width: 3.7em;
-	}
-
-	/* button text element */
-	.ui-button .ui-button-text {
-		display: block;
-		line-height: normal;
-	}
-	.ui-button-text-only .ui-button-text {
-		padding: .4em 1em;
-	}
-	.ui-button-icon-only .ui-button-text,
-	.ui-button-icons-only .ui-button-text {
-		padding: .4em;
-		text-indent: -9999999px;
-	}
-	.ui-button-text-icon-primary .ui-button-text,
-	.ui-button-text-icons .ui-button-text {
-		padding: .4em 1em .4em 2.1em;
-	}
-	.ui-button-text-icon-secondary .ui-button-text,
-	.ui-button-text-icons .ui-button-text {
-		padding: .4em 2.1em .4em 1em;
-	}
-	.ui-button-text-icons .ui-button-text {
-		padding-left: 2.1em;
-		padding-right: 2.1em;
-	}
-	/* no icon support for input elements, provide padding by default */
-	input.ui-button {
-		padding: .4em 1em;
-	}
-
-	/* button icon element(s) */
-	.ui-button-icon-only .ui-icon,
-	.ui-button-text-icon-primary .ui-icon,
-	.ui-button-text-icon-secondary .ui-icon,
-	.ui-button-text-icons .ui-icon,
-	.ui-button-icons-only .ui-icon {
-		position: absolute;
-		top: 50%;
-		margin-top: -8px;
-	}
-	.ui-button-icon-only .ui-icon {
-		left: 50%;
-		margin-left: -8px;
-	}
-	.ui-button-text-icon-primary .ui-button-icon-primary,
-	.ui-button-text-icons .ui-button-icon-primary,
-	.ui-button-icons-only .ui-button-icon-primary {
-		left: .5em;
-	}
-	.ui-button-text-icon-secondary .ui-button-icon-secondary,
-	.ui-button-text-icons .ui-button-icon-secondary,
-	.ui-button-icons-only .ui-button-icon-secondary {
-		right: .5em;
-	}
-
-	/* button sets */
-	.ui-buttonset {
-		margin-right: 7px;
-	}
-	.ui-buttonset .ui-button {
-		margin-left: 0;
-		margin-right: -.3em;
-	}
-	</style>
+  	
 	<!-- cookies antigos sendo lidos -->
 	<script>
   	if(readCookie('duvidaSituation')){
@@ -507,7 +278,7 @@
 		}
 
 		$(document).ready(function(){
-		  $(".lista-imagens:file").css("display","none");
+		  $(":file").filestyle();
 		});
 
 	</script>
