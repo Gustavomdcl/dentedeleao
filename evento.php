@@ -48,13 +48,17 @@
 
 					<h3 class="title">Evento Raízes</h3>
 					
-					<h4 class="title post">Evento #01 - Lorem Ipsum Dolor</h4>
+					<h4 class="title post">Evento #01 - Práticas de cultivo e gestão</h4>
 
 					<div class="content-topo">
 
 						<p class="evento-header"><span>25 de Maio de 2014</span></p>
 						<div class="conteudo">
-							<p>Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam</p>
+							<p>A primeira edição do evento, que ocorreu na sede da AAO no Parque da Água Branca, trouxe workshops/palestras relacionadas ao ensino financeiro e estratégico para os produtores orgânicos.</p>
+							<p>Contou com aproximadamente 35 produtores de todo o pais.</p>
+							<p>Tivemos destaque com a palestra "Perguntas e respostas básicas de Finanças", na qual contamos com a presença de Hugo Azevedo, operador de mercado que destilou de seu profundo conhecimento acadêmico e prático o cuidado de organizar cada pacote de perguntas seguindo uma ordem lógica e agrupando-as de maneira a permitir um aprendizado financeiro.</p>
+							<p>Outro destaque foi a palestra da Dra. Ana Primavesi, primeira associada da AAO que recebeu o prêmio americano "One World Award" pela dedicação de uma vida inteira a favor da agricultura orgânica:</p>
+							<p><em>"A Ecologia se refere ao sistema natural de cada local, envolvendo o solo, o clima, os seres vivos, bem como as inter-relações entre esses três componentes."</em></p>
 						</div><!-- .conteudo -->
 
 					</div><!-- .content-topo -->
@@ -62,6 +66,8 @@
 					<div class="evento-imagens">
 						<h4 class="title post">Imagens:</h4>
 						<a class="galeria-imagens" rel="imagenspost" href="assets/img/template/evento-thumb.jpg"><img src="assets/img/template/evento-thumb.jpg" width="130" height="130"/></a>
+						<a class="galeria-imagens" rel="imagenspost" href="assets/img/template/evento01.jpg"><img src="assets/img/template/evento01.jpg" width="130" height="130"/></a>
+						<a class="galeria-imagens" rel="imagenspost" href="assets/img/template/evento02.jpg"><img src="assets/img/template/evento02.jpg" width="130" height="130"/></a>
 					</div><!-- .evento-imagens -->
 
 					<div class="cadastrar-comentario">
@@ -77,12 +83,12 @@
 					
 					<div id="comentario0" class="comentario">
 						<p class="header-comment">Por <a href="perfil.php?produtor=1">Gustavo Lima</a> | <span class="evento-header">26 de Maio de 2014</span></p>
-						<div class="contetComment">Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor amet invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam.</div><!-- .contetComment -->
+						<div class="contetComment">Importantíssimas orientações recebidas, ótimo evento! Obrigado pela sua qualidade. Sucesso!</div><!-- .contetComment -->
 					</div><!-- #comentario -->
 
 					<div id="comentario1" class="comentario">
 						<p class="header-comment">Por <a href="perfil.php?produtor=2">Beatriz Victorio</a> | <span class="evento-header">28 de Maio de 2014</span></p>
-						<div class="contetComment">Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor amet invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam.</div><!-- .contetComment -->
+						<div class="contetComment">Adorei a palestra com o Hugo, agora posso melhorar meus processos financeiros.</div><!-- .contetComment -->
 					</div><!-- #comentario -->
 
 				</section><!-- .l-evento-exibicao -->

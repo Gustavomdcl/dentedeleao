@@ -55,7 +55,7 @@
                   <img src="assets/img/template/artigo-thumb.jpg" alt="Evento" border="0" />
                 </div><!-- .squared-img -->
                 <p class="postnome">Agricultura orgânica cresce 30% ao ano no Brasil</p>
-                <p class="posttexto">Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore...</p>
+                <p class="posttexto">Os alimentos org&acirc;nicos&nbsp;conquistam&nbsp;mais consumidores, como atestam produtores de hortali&ccedil;as, frutas e legumes do Vale...</p>
                 <a href="artigo.php?numero=1" class="saiba-mais button">Saiba Mais</a>
               </li><!-- #evento-?php?.l-col12 -->
 

@@ -55,8 +55,8 @@
                   <img src="assets/img/template/evento-thumb.jpg" alt="Evento" border="0" />
                   <a class="the_tag">01</a>
                 </div><!-- .squared-img -->
-                <p class="postnome">Evento #01 - Lorem ipsum dolor</p>
-                <p class="posttexto">Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore mag na aliquyam erat lorem ipsum dolor sit amet consectetur...</p>
+                <p class="postnome">Evento #01 - Práticas de cultivo e gestão</p>
+                <p class="posttexto">A primeira edição do evento, que ocorreu na sede da AAO no Parque da Água Branca, trouxe workshops/palestras relacionadas ao ensino financeiro e estratégico...</p>
                 <a href="evento.php?numero=1" class="saiba-mais button">Saiba Mais</a>
               </li><!-- #evento-?php?.l-col12 -->
 

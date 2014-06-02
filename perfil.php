@@ -49,7 +49,7 @@
 				<?php
 				
 				$produtor = isset($_GET['produtor']) ? $_GET['produtor'] : null;
-				if($produtor != null && $produtor != $usuarioLogadoID) {
+				if($produtor != null && $produtor != $idProfile) {
 					// VALIDA PERFIL ======================================
 					  $perfilCriado = mysql_query("SELECT * FROM DL_PROFILE WHERE id = '$produtor'");
 					  $nome; $foto; $cpf; $email; $telefone; $celular; $fazenda; $cnpj; $endereco; $latitude; $longitude; $cep; $estado; $uf; $cidade; $plantacoes; $sobre;
