@@ -53,15 +53,15 @@
 						<h3>Cadastrar Dúvida</h3>
 						<p>Preencha os campos abaixo para publicar sua dúvida.</p>
 						<form id="enviarDuvida" method="post" action="backend/envios/enviarDuvida.php" enctype="multipart/form-data">
-							<input type="text" name="titulo" id="titulo" placeholder="Título" required><br>
-							<textarea id="ckeditor" rows="3" cols="60" name="conteudo" placeholder="Descrição" required></textarea>
+							<input type="text" name="titulo" id="titulo" placeholder="DÊ UM TÍTULO PARA SUA DÚVIDA..." required><br>
+							<textarea id="ckeditor" rows="3" cols="60" name="conteudo" placeholder="Descrição" required>DIGITE AQUI O QUE ESTÁ ACONTECENDO COM A SUA PLANTAÇÃO...</textarea>
 							<input type="hidden" name="perfil" id="perfil" value="<?php echo $profile_id; ?>">
-							<p style="margin-top:15px;">Deseja marcar algum amigo em sua publicação? Digite as duas primeiras letras do nome e selecione.</p>
-							<div id="pessoas_container"></div><!-- #pessoas_container -->
-							<input type="hidden" name="pessoas" id="pessoas">
-							<input type="text" name="amigos" id="amigos"><br>
-							<p>Qual a data de início do problema?</p>
+							<p style="margin-top:15px;">Qual a data de início do problema?</p>
 							<input type="text" name="data" id="datepicker">
+							<p style="margin-top:15px;">Deseja marcar algum amigo em sua publicação? Digite as duas primeiras letras do nome e selecione.</p>
+							<input type="hidden" name="pessoas" id="pessoas">
+							<input type="text" name="amigos" id="amigos" placeholder="DESEJO MARCAR..."><br>
+							<div id="pessoas_container"></div><!-- #pessoas_container -->
 							<p style="color:#7a7460; margin-top:50px;">Selecione o cultivo relacionado a sua dúvida:</p>
 							<input type="hidden" name="deviceplantation" id="devicePlantation">
 							<span class="plantacoes">
@@ -137,10 +137,11 @@
 			                </ul>
 							<p style="clear:both; color:#7a7460; margin:10px auto;">E vídeo? (tamanho de até 20mb)</p>
 							<div id="uploadVideo">
+								<img src="assets/img/template/bt-enviar-video.png" alt="Ver imagem pequena" width="130" height="99" style="margin-left: 65px;">
 								<input  accept="video/*" id="file_video" type="file" size="20" class="ignore filestyle" name="video[]" data-buttonText="Enviar Vídeo " data-input="true" data-buttonBefore="true"/>
 							  
 							</div>
-							<p id="videoMensagem"></p> <!-- #uploadVideo -->
+							<p id="videoMensagem" style="color: #7a7460;"></p> <!-- #uploadVideo -->
 							<button type="submit" class="salva-postar">Publicar dúvida</button>
 						</form>
 					</div>
@@ -182,31 +183,6 @@
   			$('#datepicker').val(duvidaSituation[1]);
   		}
   	}
-  	</script>
-  	<!-- tamanho arquivo -->
-  	<script>
-	$("#file_video").on("change", function (e) {
-
-	    var files = e.currentTarget.files; // puts all files into an array
-
-	    // call them as such files[0].size will get you the file size of the 0th file
-	    for (var x in files) {
-
-	        var filesize = ((files[x].size/1024)/1024).toFixed(4); // MB
-
-	        if (files[x].name != "item" && typeof files[x].name != "undefined") {
-	        	
-	        	if(filesize <= 20) {
-	        		//ok
-	        		$('#videoMensagem').text('Vídeo está dentro do limite de 20mb, ele possui: '+ filesize + 'mb');
-	        	} else {
-		        	$("#file_video").replaceWith($("#file_video").clone());
-		        	$('#videoMensagem').text('Vídeo excede o limite de 20mb, ele possui: '+ filesize + 'mb');
-		        }
-
-	        }
-	    }
-	});
   	</script>
   	<!-- busca para marcar pessoas -->
   	<script>
@@ -250,7 +226,7 @@
 	          	return false;
 	          } else {
 		          //Adiciona a div
-		          $('#pessoas_container').append('<div class="pessoa_marcada pessoa-' + ui.item.id + '"><img src="' + ui.item.value + '" width="50" height="50" alt="' + ui.item.label + '"><p>Você marcou ' + ui.item.label + ' na sua dúvida. <a href="javascript:fecha(' + ui.item.id + ');">cancelar</a></p></div><!-- .pessoa_marcada -->');
+		          $('#pessoas_container').append('<div class="pessoa_marcada pessoa-' + ui.item.id + ' l-row"><div class="round-img"><img src="' + ui.item.value + '" width="50" height="50" alt="' + ui.item.label + '"></div><p>Você marcou ' + ui.item.label + ' na sua dúvida. <a href="javascript:fecha(' + ui.item.id + ');">cancelar</a></p></div><!-- .pessoa_marcada -->');
 		          //Limpa o input
 		          this.value = "";
 		          //Area dos Ids
@@ -296,6 +272,36 @@
 		    prevText: 'Anterior'
 		});
 	});
-	  </script>
+	</script>
+	<!-- tamanho arquivo -->
+  	<script>
+	$("#file_video").on("change", function (e) {
+
+		setTimeout(function(){
+
+			var files = e.currentTarget.files; // puts all files into an array
+
+		    // call them as such files[0].size will get you the file size of the 0th file
+		    for (var x in files) {
+
+		        var filesize = ((files[x].size/1024)/1024).toFixed(4); // MB
+
+		        if (files[x].name != "item" && typeof files[x].name != "undefined") {
+		        	
+		        	if(filesize <= 20) {
+		        		//ok
+		        		$('#videoMensagem').text('Vídeo está dentro do limite de 20mb, ele possui: '+ filesize + 'mb');
+		        	} else {
+			        	$("#file_video").replaceWith($("#file_video").clone());
+			        	$("#file_video").next('.bootstrap-filestyle').children('.form-control').val('');
+			        	$('#videoMensagem').text('Vídeo excede o limite de 20mb, ele possui: '+ filesize + 'mb');
+			        }
+
+		        }
+		    }
+
+		}, 800);
+	});
+  	</script>
 </body>
 </html>
