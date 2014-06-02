@@ -48,19 +48,27 @@
 				<!-- login ADRIAN: Essa section é um exemplo de como você vai colocando as áreas do site. você pode alterar o nome da class .l-duvida-resultado para .l-duvida-resultado ou algo assim, dependendo do que for fazer. Preciso que cada sessão (nesse caso sessão tem o valor de corte, área. Um exemplo considere o wireframe do painel. Cada área dele, sendo a parte dos gráficos, a parte das notificações e dúvidas são sessões diferentes) do site seja feita pela tag <section>, pois isso agora é importante.
 				======================================================== -->
 				<section class="l-duvida-resultado">
-			
-					<header>
-						<h2>Dúvidas</h2>
-					</header>
-					<h3>Tenho uma dúvida sobre</h3>
-					<p>Notou algum problema em sua plantação ou está com dúvida sobre alguma cultura? Selecione uma opção abaixo e, caso a dúvida não esteja relacionada a nenhuma opção, selecione outra.</p>
-					<form id="duvidaSendSearch" method="post" action="duvida-resultado.php">
+
+						<h3 class="title">Dúvidas</h3>
+
+						<h4 class="title post">Tenho uma dúvida sobre:</h4>
+
 						<?php
 						$sqlDispositivo = "SELECT * FROM DL_ADMIN_deviceuser WHERE usuario = '$idProfile' order by id desc";
 
 						$resultDispositivo = mysql_query($sqlDispositivo);
 						$deviceUserRow;
 						$devicePlantations;
+
+						?>
+
+						<p class="subtitle">Selecione uma das opções abaixo para buscar uma solução para o seu problema.
+						<?php if (mysql_num_rows($resultDispositivo) > 0 && $outrasPlantacoes == null) { ?><br> Mas atenção, você deve selecionar apenas uma opção, caso o cultivo não esteja<br>
+						cadastrado, selecione a opção outra!<?php } ?></p>
+
+					<form id="duvidaSendSearch" method="post" action="duvida-resultado.php">
+						
+					<?php
 
 						if (mysql_num_rows($resultDispositivo) > 0 && $outrasPlantacoes == null) {
 							require_once ("backend/modules/duvidaDevice.php");
@@ -121,19 +129,23 @@
 			$('.deviceData').hide();
 			$('.deviceData').children('input').val('');
 			$('.sendDevice').removeAttr('disabled');
+			$('.sendDevice').removeClass('disabled');
 		} else {
 			$('#duvidaSendSearch').attr('action', primaryAction);
 			$('.deviceData').show();
 			if($('#datepicker').val()==""){
 				$('.sendDevice').attr('disabled', 'disabled');
+				$('.sendDevice').addClass('disabled');
 			}
 		}
 	});
 	$('#datepicker').change(function(){
 		if($(this).val()==""){
 			$('.sendDevice').attr('disabled', 'disabled');
+			$('.sendDevice').addClass('disabled');
 		} else {
 			$('.sendDevice').removeAttr('disabled');
+			$('.sendDevice').removeClass('disabled');
 		}
 	});
   	</script>

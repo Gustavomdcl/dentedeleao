@@ -212,6 +212,10 @@ label.error {
 
 //FORMULARIO ============
 
+#ui-datepicker-div {
+  width: 200px;
+}
+
 input {
   @include box-sizing(border-box);
   padding: 10px 30px;

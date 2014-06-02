@@ -110,7 +110,7 @@
 							<input type="hidden" name="duvida" value="<?php echo $duvidaPost; ?>">
 							<input type="hidden" name="perfil" value="<?php echo $profile_id; ?>">
 							<input type="hidden" name="dono" value="<?php echo $idPerfilDuvida; ?>">
-							<button type="submit">Enviar Comentário</button>
+							<button type="submit" class="enviar-comentario">Enviar</button>
 						</form>
 					</div><!-- .cadastrar-comentario -->
 					<?php
@@ -154,13 +154,13 @@
 					      }
 		            ?>
 					<div id="comentario<?php echo $commentCount; ?>" class="comentario">
-						<p class="titulo"><b>Por <a href="perfil.php?produtor=<?php echo $perfilCommentId; ?>"><?php echo $perfilCommentNome; ?></a></b> | <?php echo $dataComment; ?></p>
+						<p class="header-comment">Por <a href="perfil.php?produtor=<?php echo $perfilCommentId; ?>"><?php echo $perfilCommentNome; ?></a> | <span class="duvida-header"><?php echo $dataComment; ?></span></p>
 						<div class="contetComment"><?php echo $textoComment; ?></div><!-- .contetComment -->
 					</div><!-- #comentario -->
 					<?php $commentCount = $commentCount + 1; }//while ?>
 					<?php } else { ?>
 					<div id="comentario0" class="comentario">
-						<p>Ninguém comentou nessa dúvida. Seja o primeiro!</p>
+						<div class="contetComment"><p>Ninguém comentou nessa dúvida. Seja o primeiro!</p></div><!-- .contetComment -->
 					</div><!-- #comentario0-->
 					<?php }//else ?>
 

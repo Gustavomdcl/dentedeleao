@@ -1,12 +1,15 @@
 <?php
             $myPlantations;
             if($plantacoesLista!=null){ ?>
-            <h4>Suas plantações:</h4>
+            <h4 class="title post">Suas plantações:</h4>
             <!-- Suas Plantações -->
             <span class="plantacoes">
               <?php foreach ($plantacoesLista as $value) {  ?>
-                <label for="plantacao-<?php echo $value['id']; ?>"><img src="<?php echo $value['imagem']; ?>" alt="<?php echo $value['plantacao']; ?>" /><?php echo $value['plantacao']; ?></label>
-                <input type="radio" name="platacao[]" class="nodevicePlantacao" value="<?php echo $value['id']; ?>" id="plantacao-<?php echo $value['id']; ?>">
+                <label for="plantacao-<?php echo $value['id']; ?>" class="plantacao-content">
+                    <img src="<?php echo $value['imagem']; ?>" alt="<?php echo $value['plantacao']; ?>" />
+                    <p class="plantation-name"><?php echo $value['plantacao']; ?></p>
+                    <input type="radio" name="platacao[]" class="nodevicePlantacao" value="<?php echo $value['id']; ?>" id="plantacao-<?php echo $value['id']; ?>">
+                </label>
               <?php
                   $myPlantations[] = $value['id'];
                 }//foreach
@@ -25,7 +28,7 @@
 
             ?>
 
-            <h4>Outras plantações:</h4>
+            <h4 class="title post">Outras plantações:</h4>
             <!-- Suas Plantações -->
             <span class="plantacoes">
 
@@ -53,8 +56,11 @@
                   } 
             ?>
 
-            <label for="plantacao-<?php echo $id ?>"><img src="<?php echo $imagem ?>" alt="<?php echo $plantacao ?> " /><?php echo $plantacao ?> </label>
-            <input type="radio" name="platacao[]" class="nodevicePlantacao" value="<?php echo $id ?>" id="plantacao-<?php echo $id ?>">
+            <label for="plantacao-<?php echo $id ?>" class="plantacao-content">
+                <img src="<?php echo $imagem ?>" alt="<?php echo $plantacao ?>" />
+                <p class="plantation-name"><?php echo $plantacao ?></p>
+                <input type="radio" name="platacao[]" class="nodevicePlantacao" value="<?php echo $id ?>" id="plantacao-<?php echo $id ?>">
+            </label>
 
             <?php 
                 }//else myPlantations
@@ -66,4 +72,4 @@
 
             <?php }//If ?>
             
-            <button type="submit">Buscar</button><!-- aqui deve direcionar para a duvida-resultado.php, que serão as dúvidas filtradas -->
+            <button class="sendDevice" type="submit">Buscar</button><!-- aqui deve direcionar para a duvida-resultado.php, que serão as dúvidas filtradas -->

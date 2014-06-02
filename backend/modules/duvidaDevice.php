@@ -15,9 +15,9 @@
               }
 
               ?>
-            <h4>Suas plantações:</h4>
+            <h4 class="title post">Plantações com dispositivo:</h4>
             <!-- Suas Plantações -->
-            <span class="plantacoes">
+            <div class="plantacoes">
               <?php
               foreach ($deviceUserRow as $value) { 
 
@@ -44,19 +44,26 @@
                   }
 
               ?>
-                <label for="plantacao-<?php echo $value['plantacao']; ?>"><img src="<?php echo $plantacaoImg; ?>" alt="<?php echo $plantacaoNome; ?>" /><?php echo $plantacaoNome; ?> (dispositivo)</label>
-                <input type="radio" name="platacaoDevice" class="devicePlantacao" value="<?php echo $value['plantacao']; ?>" id="plantacao-<?php echo $value['plantacao']; ?>">
+                <label for="plantacao-<?php echo $value['plantacao']; ?>" class="plantacao-content">
+                  <img src="<?php echo $plantacaoImg; ?>" alt="<?php echo $plantacaoNome; ?>" />
+                  <p class="plantation-name"><?php echo $plantacaoNome; ?></p>
+                  <p class="plantation-device">(Dispositivo)</p>
+                  <input type="radio" name="platacaoDevice" class="devicePlantacao" value="<?php echo $value['plantacao']; ?>" id="plantacao-<?php echo $value['plantacao']; ?>">
+                </label>
               <?php
                 }//while
               }//foreach
               ?>
-                <label for="plantacao-null"><img src="admin/assets/img/template/logo.gif" width="50" height="50" alt="Outra" />Outra</label>
-                <input type="radio" name="platacaoDevice" class="devicePlantacao" value="outra" id="plantacao-null">
-            </span><!-- .plantacoes -->
+                <label for="plantacao-null" class="plantacao-content">
+                  <img src="assets/img/template/outra-plantacao.png" width="50" height="50" alt="Outra" />
+                  <p class="plantation-name">Outra</p>
+                  <input type="radio" name="platacaoDevice" class="devicePlantacao" value="outra" id="plantacao-null">
+                </label>
+            </div><!-- .plantacoes -->
             <!-- Suas Plantações -->
             <div class="deviceData">
-                <p>Quando você notou o problema referente a sua dúvida?</p>
+                <p class="deviceText">Quando você notou o problema?</p>
                 <input type="text" name="data_inicio" id="datepicker" placeholder="Data">
                 <input type="hidden" name="perfil" id="perfil" value="<?php echo $profile_id; ?>">
             </div><!-- .deviceData -->
-            <button class="sendDevice" type="submit" disabled>Buscar</button><!-- aqui deve direcionar para a duvida-resultado.php, que serão as dúvidas filtradas -->
+            <button class="sendDevice disabled" type="submit" disabled>Buscar Dúvida</button><!-- aqui deve direcionar para a duvida-resultado.php, que serão as dúvidas filtradas -->
