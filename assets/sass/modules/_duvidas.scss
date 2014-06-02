@@ -4,6 +4,7 @@
 			position: relative;
 			min-height: 322px;
 			max-height: 322px;
+			margin-bottom: 30px;
 			.the_tag {
 				@include box-sizing(border-box);
 				@include sprite(tag-duvida);
