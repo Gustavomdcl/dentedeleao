@@ -55,7 +55,7 @@
   	  $sobre=$row['sobre'];
 
       if($foto == null){
-        $foto = 'admin/assets/img/template/logo.gif'; 
+        $foto = 'assets/img/template/photo-cadastro-perfil.png'; 
       } else {
 
         $fotoId = explode('-', $foto);

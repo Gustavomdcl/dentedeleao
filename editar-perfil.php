@@ -44,52 +44,55 @@
 
 				<!-- login ADRIAN: Essa section é um exemplo de como você vai colocando as áreas do site. você pode alterar o nome da class .l-cadastrarperfil para .l-cadastrarperfil ou algo assim, dependendo do que for fazer. Preciso que cada sessão (nesse caso sessão tem o valor de corte, área. Um exemplo considere o wireframe do painel. Cada área dele, sendo a parte dos gráficos, a parte das notificações e dúvidas são sessões diferentes) do site seja feita pela tag <section>, pois isso agora é importante.
 				======================================================== -->
-				<section class="l-duvida-cadastro">
+				<section class="l-editar-perfil">
 
-					<header>
-						<h2>Editar Perfil</h2>
-					</header>
+					<h3 class="title">Editar Perfil</h3>
 
-					<h3>Olá <?php echo $nome; ?></h3>
-					<p>Preencha os campos abaixo para editar seu perfil.</p>
+					<h4 class="title post">Olá <?php echo $nome; ?>,</h4>
+					<p class="subtitle">Preencha os campos abaixo para editar seu perfil.</p>
 					<form id="editarPerfil" method="post" action="backend/envios/editarPerfilUsuario.php" enctype="multipart/form-data">
-						<input type="hidden" name="profile" id="profile" value="<?php echo $profile_id; ?>">
-						<input type="text" name="nome" id="nome" placeholder="<?php echo $nome; ?>">
-						<p>Conte mais sobre que você é para os outros produtores:</p>
-						<textarea id="ckeditor" rows="5" cols="60" name="sobre" placeholder="Descrição"><?php if($sobre!='Não há nenhuma descrição cadastrada'){ echo $sobre; } else { } ?></textarea>
-						<p>Envie-nos uma foto no campo abaixo</p>
-						<span><img src="<?php echo $foto; ?>" id="preview" width="150" height="150" /></span><br>
-						<input type="file" name="foto[]" id="foto" onchange="readURL(this);" class="ignore" accept="image/png, image/gif, image/bmp, image/jpeg, image/jpg">
-						<p>Qual o seu número de telefone?</p>
-						<input type="text" name="telefone" placeholder="<?php if($telefone!=null||$telefone!=''){ echo $telefone; } else { echo 'Telefone'; } ?>" id="telefone"><br>
-						<input type="text" name="celular" placeholder="<?php if($celular!=null||$celular!=''){ echo $celular; } else { echo 'Celular'; } ?>" id="celular"><br>
-						<h2>Conte-nos sobre sua fazenda</h2>
-						<input type="text" name="nomefazenda" placeholder="<?php if($fazenda!=null||$fazenda!=''){ echo $fazenda; } else { echo 'Nome de sua fazenda'; } ?>" id="nomefazenda"><br>
-						<input type="text" name="cnpjfazenda" placeholder="<?php if($cnpj!=null||$cnpj!=''){ echo $cnpj; } else { echo 'CNPJ de sua fazenda'; } ?>" id="cnpjfazenda"><br>
-						<p>Onde ela está localizada? (Arraste a marcação no mapa se preciso)</p>
-						<input type="text" name="enderecofazenda" placeholder="<?php if($endereco!=null||$endereco!=''){ echo $endereco; } else { echo 'Endereço'; } ?>" id="start"><br>
-						<input type="text" name="cepfazenda" placeholder="<?php if($cep!=null||$cep!=''){ echo $cep; } else { echo 'CEP'; } ?>" id="cepfazenda"><br>
-						<select name="estado" id="estado" style="width:255px;">
-							<option selected disabled>Estado - <?php echo $uf; ?> | <?php echo $cidade; ?> </option>
-							<?php
+						<div class="inicio-cadastro-img">
+							<div class="round-img"><img src="<?php echo $foto; ?>" id="preview" width="150" height="150" /></div><br>
+							<input type="file" name="foto[]" id="foto" onchange="readURL(this);" class="ignore filestyle" accept="image/png, image/gif, image/bmp, image/jpeg, image/jpg">
+						</div><!-- .inicio-cadastro-img -->
+						<div class="informacoes-pessoais">
+							<h3 class="title" style="margin-bottom:5px;">Qual o seu nome?</h3>
+							<input type="hidden" name="profile" id="profile" value="<?php echo $profile_id; ?>">
+							<input type="text" name="nome" id="nome" placeholder="<?php echo $nome; ?>">
+							<h3 class="title" style="margin-bottom:5px;margin-top:20px;">Conte mais sobre quem você é</h3>
+							<textarea id="ckeditor" rows="5" cols="60" name="sobre" placeholder="Descrição"><?php if($sobre!='Não há nenhuma descrição cadastrada'){ echo $sobre; } else { } ?></textarea>
+							<h3 class="title" style="margin-bottom:5px;margin-top:20px;">Qual o seu número de telefone?</h3>
+							<input type="text" name="telefone" placeholder="<?php if($telefone!=null||$telefone!=''){ echo $telefone; } else { echo 'Telefone'; } ?>" id="telefone">
+							<input type="text" name="celular" placeholder="<?php if($celular!=null||$celular!=''){ echo $celular; } else { echo 'Celular'; } ?>" id="celular">
+							<h3 class="title" style="margin-bottom:5px;margin-top:20px;">Conte-nos sobre sua fazenda</h3>
+							<input type="text" name="nomefazenda" placeholder="<?php if($fazenda!=null||$fazenda!=''){ echo $fazenda; } else { echo 'Nome de sua fazenda'; } ?>" id="nomefazenda">
+							<input type="text" name="cnpjfazenda" placeholder="<?php if($cnpj!=null||$cnpj!=''){ echo $cnpj; } else { echo 'CNPJ de sua fazenda'; } ?>" id="cnpjfazenda">
+							<h3 class="title" style="margin-top:20px;">Onde ela está localizada?</h3>
+							<p class="subtitle">(Arraste a marcação no mapa se preciso)</p>
+							<input type="text" name="enderecofazenda" placeholder="<?php if($endereco!=null||$endereco!=''){ echo $endereco; } else { echo 'Endereço'; } ?>" id="start" class="enderecofazenda"><br>
+							<input type="text" name="cepfazenda" placeholder="<?php if($cep!=null||$cep!=''){ echo $cep; } else { echo 'CEP'; } ?>" id="cepfazenda">
+							<select name="estado" id="estado">
+								<option selected disabled>Estado - <?php echo $uf; ?> | <?php echo $cidade; ?> </option>
+								<?php
 
-							$sqlState = "SELECT * FROM DL_STATE order by id asc";
+								$sqlState = "SELECT * FROM DL_STATE order by id asc";
 
-							$resultState = mysql_query($sqlState);
+								$resultState = mysql_query($sqlState);
 
-						   	while ($row=mysql_fetch_array($resultState)) {
-						   		$id=$row['id'];
-								$estado=$row['estado'];
-								$uf=$row['uf'];
+							   	while ($row=mysql_fetch_array($resultState)) {
+							   		$id=$row['id'];
+									$estado=$row['estado'];
+									$uf=$row['uf'];
 
-							?>
+								?>
 
-							<option value="<?php echo $id; ?>"><?php echo $estado; ?></option>
+								<option value="<?php echo $id; ?>"><?php echo $estado; ?></option>
 
-							<?php } ?>
-						</select><br>
-						<span class="carregando" style="display:none; width:255px;">Carregando Cidades...</span>
-						<select name="cidade" id="cidade" style="display:none; width:255px;"></select><br>
+								<?php } ?>
+							</select>
+							<span class="carregando" style="display:none;">Carregando Cidades...</span>
+							<select name="cidade" id="cidade" style="display:none;"></select><br>
+						</div><!-- .informacoes-pessoais --><br>
 						<div id="map-canvas" style="width:100%;height:500px;"></div><!-- div#map-canvas -->
 						<div class="map-container" style="display:none;">
 							<!-- Unidade de Local -->
@@ -103,20 +106,28 @@
 						    </div><!-- .map-place -->
 						    <!-- Unidade de Local -->
 						</div><!-- .map-container -->
-						<h4>Suas plantações:</h4>
+						<h3 class="title plantacoes">Suas plantações:</h3>
 			            <!-- Suas Plantações -->
 			            <span class="plantacoes">
-			              <?php foreach ($plantacoesLista as $value) {  ?>
-			                <label for="plantacao-<?php echo $value['id']; ?>"><img src="<?php echo $value['imagem']; ?>" alt="<?php echo $value['plantacao']; ?>" /><?php echo $value['plantacao']; ?></label>
-			                <input type="checkbox" name="platacao[]" value="<?php echo $value['id']; ?>" id="plantacao-<?php echo $value['id']; ?>" checked>
-			              <?php
-			                  $myPlantations[] = $value['id'];
-			                }//foreach
-			              ?>
+			            	<ul class="l-row">
+				              <?php foreach ($plantacoesLista as $value) {  ?>
+				              <li class="borda-radios">
+				                <label for="plantacao-<?php echo $value['id']; ?>">
+				                	<img src="<?php echo $value['imagem']; ?>" alt="<?php echo $value['plantacao']; ?>" />
+				                	<?php echo $value['plantacao']; ?>
+				                </label>
+				                <input type="checkbox" name="platacao[]" value="<?php echo $value['id']; ?>" id="plantacao-<?php echo $value['id']; ?>" checked>
+				              </li>
+				              <?php
+				                  $myPlantations[] = $value['id'];
+				                }//foreach
+				              ?>
+				            </ul>
 			            </span><!-- .plantacoes -->
 			            <!-- Suas Plantações -->
-			            <h4>Outras plantações:</h4>
+			            <h3 class="title">Outras plantações:</h3>
 						<span class="plantacoes">
+							<ul class="l-row">
 							<?php
 
 							$sqlPlantacaoList = "SELECT * FROM DL_ADMIN_plantationList WHERE valido = '1' order by id desc";
@@ -146,18 +157,26 @@
 									}
 
 							?> 
-							<img src="<?php echo $imagem; ?>" id="preview" class="plantacaofigura" width="50" height="50" />
-							<input type="checkbox" name="platacao[]" id="plantacao-<?php echo $id ?>" value="<?php echo $id ?>">
-							<label for="plantacao-<?php echo $id ?>"><?php echo $plantacao ?></label>
+							<li class="borda-radios">
+								<label for="plantacao-<?php echo $id ?>">
+									<img src="<?php echo $imagem; ?>" id="preview" class="plantacaofigura" width="50" height="50" />
+									<?php echo $plantacao ?>
+								</label>
+								<input type="checkbox" name="platacao[]" id="plantacao-<?php echo $id ?>" value="<?php echo $id ?>">
+							</li>
 							<?php }//else 
 								}//while ?>
+							</ul>
 						</span>
-						<p> Você cultiva algo mais? Separe com vírgula (,)</p>
-						<input type="text" name="demaisplantacoes"><br>
-						<button type="submit">Salvar Informações</button>
+						<div class="mais-plantacoes">
+							<p class="subtitle">  Você cultiva algo mais?<br>
+							Separe as plantações com ponto e vírgula (,).</p>
+							<input type="text" name="demaisplantacoes">
+						</div><!-- .mais-plantacoes --><br>
+							<button type="submit" class="salvar-cadastro-perfil">Salvar </button>
 					</form>
 
-					</section><!-- .l-duvida-cadastro -->
+					</section><!-- .l-editar-perfil -->
 
 				</section><!-- .l-content -->
 
@@ -201,6 +220,8 @@
 		}
 	});
 	</script>
+	<!--filestyle -->
+  	<script type="text/javascript" src="assets/js/bootstrap-filestyle.js"> </script>
 	<!-- Script do Input File -->
 	<script>
 		function readURL(input){

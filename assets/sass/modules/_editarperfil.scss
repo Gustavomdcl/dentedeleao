@@ -1,0 +1,132 @@
+.l-editar-perfil {
+	text-align:center;
+	.title.post {
+		text-align: center;
+		margin-top: 30px;
+	}
+	form {
+		.inicio-cadastro-img {
+			width: 475px;
+			display: inline-block;
+			.round-img {
+				display: inline-block;
+			}
+			.texto-fotografia {
+				font-size: 1.71em;
+				font-family: 'Sophie', sans-serif;
+				color: #58595b;
+				margin-top: 20px;
+			}
+			.form-control  {
+				padding: 0px;
+				width: 156px;
+				box-shadow: none;
+				background: transparent;
+				text-align: center;
+				color: $color-orange;
+			}
+			.btn-default {
+				font-family: 'Permanent Marker', sans-serif;
+				font-size: 1.42em;
+			}
+			.group-span-filestyle {
+				display: block;
+			}
+		}
+		.informacoes-pessoais {
+			display: inline-block;
+			margin-top: 20px;
+			margin-bottom: 20px;
+			@include box-sizing(border-box);
+			@include sprite(editar-perfil-background);
+			padding: 30px 40px;
+			text-align: center;
+			margin-bottom: 30px;
+			color: $color-white;
+			.title {
+				font-size: 24px;
+				margin-top: 25px!important;
+			}
+			.subtitle {
+				margin-bottom: 10px;
+			}
+			.enderecofazenda {
+				width: 390px;
+			}
+			#cepfazenda {
+				width: 140px;
+			}
+		}
+		#map-canvas {
+			display: inline-block;
+			border: 5px solid $color-brown;
+		}
+		.title.plantacoes {
+			font-size: 3.57em;
+			margin-top: 20px;
+		}
+		.plantacoes{
+			clear:both;
+			ul {
+				list-style: none;
+				width: 560px;
+				display: inline-block;
+				.borda-radios{
+					position:relative;
+					background: url(./../img/template/bg-radio.png) no-repeat;
+					width:70px;
+					height:69px;
+					display:block;
+					margin:20px;
+					float:left;
+					input[type="checkbox"]{
+						position:absolute;
+						right:2px;
+						top:6px;
+					}
+					img{
+						display:block;
+						margin-top:10px;
+						margin-left:9px;
+						margin-bottom:15px;
+					}
+					label{
+						font-family:'Sophie', sans-serif;
+						font-size:1.7em;
+					}
+				}
+			}
+		}
+		.mais-plantacoes {
+			display: inline-block;
+			margin-top: 40px;
+			@include box-sizing(border-box);
+			@include sprite(mais-plantacoes);
+			padding: 30px 40px;
+			text-align: center;
+			margin-bottom: 40px;
+			color: $color-white;
+			.subtitle {
+				margin-bottom: 10px;
+			}
+			input {
+				width: 390px;
+				color: $color-orange;
+			}
+		}
+		.salvar-cadastro-perfil {
+			@include box-sizing(border-box);
+			@include sprite(salvar-cadastro-perfil);
+			padding: 0px 0px 0px 0px;
+			text-align: center;
+			display: inline-block;
+			font-weight: 700;
+			text-transform: uppercase;
+			font-size: 1.35em;
+			color: $color-brown;
+			background-color: transparent;
+			outline: none;
+			text-indent: inherit;
+		}
+	}
+}
