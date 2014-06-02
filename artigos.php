@@ -4,22 +4,22 @@
 <html lang="pt_BR">
 <head>
 
-  <title>Dente de Leão | Projeto para Produtores Orgânicos - Cultive Ideias. Colha Conhecimento</title>
+	<title>Dente de Leão | Projeto para Produtores Orgânicos - Cultive Ideias. Colha Conhecimento</title>
 
-  <!-- SEO rel="nofollow" on links
-  ======================================================== -->
-  <meta name="robots" content="INDEX, follow" />  
-  <meta name="title" content="Dente de Leão | Cultive Ideias. Colha Conhecimento">
-  <meta name="description" content="Projeto Dente de Leão busca a disseminação e troca do conhecimento tácito entre os produtores orgânicos para fortalecer o mercado e os laços entre a comunidade orgânica.">
-  <!-- ADRIAN: Importante para acessibilidade e SEO. Coloque sempre o Título e a Descrição da página. Sempre coloque ali em cima no <title> também. Cada página precisa de um diferente. -->
+	<!-- SEO rel="nofollow" on links
+	======================================================== -->
+	<meta name="robots" content="INDEX, follow" />	
+	<meta name="title" content="Dente de Leão | Cultive Ideias. Colha Conhecimento">
+	<meta name="description" content="Projeto Dente de Leão busca a disseminação e troca do conhecimento tácito entre os produtores orgânicos para fortalecer o mercado e os laços entre a comunidade orgânica.">
+	<!-- ADRIAN: Importante para acessibilidade e SEO. Coloque sempre o Título e a Descrição da página. Sempre coloque ali em cima no <title> também. Cada página precisa de um diferente. -->
 
-  <?php include 'template/head.php'; ?>
-  <!-- Fancybox CSS -->
-    <link rel="stylesheet" href="assets/css/jquery.fancybox.css">
+	<?php include 'template/head.php'; ?>
+	<!-- Fancybox CSS -->
+  	<link rel="stylesheet" href="assets/css/jquery.fancybox.css">
 
-  <!-- modernizr modernizr.com -->
-  <script src="assets/min/modernizr.min.js"></script>
-  
+	<!-- modernizr modernizr.com -->
+	<script src="assets/min/modernizr.min.js"></script>
+
 </head>
 
 <body class="no-js">
