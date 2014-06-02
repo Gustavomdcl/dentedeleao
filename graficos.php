@@ -75,7 +75,7 @@
                 <header>
                   <h2>Dados da Plantação</h2>
                 </header>
-                <p>Selecione abaixo a aba correspondente ao cultivo que deseja visualizar.</p>
+                <p class="subtitle">Selecione abaixo a aba correspondente ao cultivo que deseja visualizar.</p>
 
                 <ul id="plantacoes">
                   <?php 
@@ -133,17 +133,17 @@
                   </div>
                   <!--a href="interna1" class="bt-vermais">Ver mais </a-->
 
-                <hr style="clear:both" />
+                
                   <h3>Umidade</h3>
                   <div id="umidade-<?php echo $value['plantacao']; ?>" style="width: 735px; height: 300px;"></div>
                   <!--a href="interna1" class="bt-vermais">Ver mais </a-->
 
-                <hr style="clear:both" />
+                
                   <h3>Umidade do Solo</h3>
                   <div id="umidade_do_solo-<?php echo $value['plantacao']; ?>" style="width: 735px; height: 300px;"></div>
                   <!--a href="interna1" class="bt-vermais">Ver mais </a-->
 
-                <hr style="clear:both" />
+                
                   <h3>Temperatura</h3>
                   <div id="temperatura-<?php echo $value['plantacao']; ?>" style="width: 735px; height: 300px;"></div>
                   <form id="verGrafico" method="post" action="grafico-detalhes.php">
