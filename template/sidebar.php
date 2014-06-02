@@ -34,9 +34,9 @@
 			<div class="l-sidebar-bottom">
 				<h3>Eventos</h3>
 				<ul>
-					<li><a href=".php" title="Eventos Anteriores"><img src="assets/img/template/eventos-anteriores-menu.png" />Eventos Anteriores</a></li>
-					<li><a href=".php" title="Participar do Próximo"><img src="assets/img/template/evento-participar-menu.png" />Participar do Próximo</a></li>
-					<li><a href=".php" title="Sediar Evento"><img src="assets/img/template/evento-sediar-menu.png" />Sediar Evento</a></li>
+					<li><a href="eventos-anteriores.php" title="Eventos Anteriores"><img src="assets/img/template/eventos-anteriores-menu.png" />Eventos Anteriores</a></li>
+					<li><a href="evento-proximo.php" title="Participar do Próximo"><img src="assets/img/template/evento-participar-menu.png" />Participar do Próximo</a></li>
+					<li><a href="evento-sediar.php" title="Sediar Evento"><img src="assets/img/template/evento-sediar-menu.png" />Sediar Evento</a></li>
 				</ul>
 				<a href="sair.php" Title="Sair" class="logout"><img src="assets/img/template/logout.png" />Sair</a>
 			</div><!-- .l-sidebar-bottom -->

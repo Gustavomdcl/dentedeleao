@@ -1,0 +1,241 @@
+.l-eventos-anteriores {
+	ul {
+		li {
+			position: relative;
+			min-height: 153px;
+			max-height: 153px;
+			margin-bottom: 30px;
+			.squared-img {
+				position: absolute;
+			}
+			.the_tag {
+				@include box-sizing(border-box);
+				@include sprite(tag-evento);
+				font-family: 'Permanent Marker', sans-serif;
+				color: $color-white;
+				display: inline-block;
+				padding: 18px 0px 0px 9px;
+				font-size: 1.1em;
+				text-transform: uppercase;
+				position: absolute;
+				bottom: -3px;
+				left: -7px;
+				z-index: 5;
+				&::before {
+					content: '#';
+					font-size: 1.2em;
+				}
+			}
+			.postnome {
+				margin-left: 230px;
+				font-size: 1.28em;
+			}
+			.posttexto {
+				margin-left: 230px;
+			}
+			.saiba-mais {
+				@include box-sizing(border-box);
+				@include sprite(saiba-mais-evento);
+				padding: 7px 0px 0px 0px;
+				margin-top: 20px;
+				text-align: center;
+				display: inline-block;
+				font-weight: 700;
+				text-transform: uppercase;
+				font-size: 1em;
+				color: $color-white;
+				position: absolute;
+				bottom: 0px;
+				right: 20px;
+			}
+		}
+	}
+	&.resultado {
+		margin-bottom: 30px;
+	}
+}
+
+.l-evento-exibicao {
+	a {
+		color: $color-orange;
+		text-decoration: underline;
+	}
+	h3.title {
+		margin-bottom: 30px;
+	}
+	h4.title.post {
+		margin-bottom: 20px;
+	}
+	p.evento-header {
+		font-size: 0.85em;
+		margin-bottom: 20px;
+	}
+	div.conteudo {
+		&>* {
+			font-size: 1.14em;
+		}
+		p {
+			margin-bottom: 10px;
+		}
+	}
+	.marcacao-pessoas {
+		font-family: 'Sophie', sans-serif;
+		font-size: 1.58em;
+	}
+	.nomes-pessoas {
+		font-size: 1.14em;
+	}
+	.content-topo {
+		margin-bottom: 30px;
+	}
+	.evento-imagens {
+		margin-bottom: 30px;
+		.galeria-imagens {
+			width: 157px;
+			height: 113px;
+			position: relative;
+			display: inline-block;
+			img {
+			  width: 157px;
+			  height: 113px;
+			}
+			&:after {
+				content: ' ';
+			    display: block;
+			    position: absolute;
+			    top: -3px;
+				right: -4px;
+			    @include sprite(duvida-imagem);
+			}
+		}
+		.galeria-imagens + .galeria-imagens {
+			margin-left: 17px;
+		}
+	}
+	.cadastrar-comentario {
+		@include box-sizing(border-box);
+		@include sprite(comentario-background);
+		padding: 30px 40px;
+		text-align: center;
+		margin-bottom: 20px;
+		h4.title.post {
+			text-align: center;
+			color: $color-white;
+		}
+		.enviar-comentario {
+			@include box-sizing(border-box);
+			@include sprite(enviar-comentario);
+			padding: 0px 0px 0px 0px;
+			margin-top: 20px;
+			text-align: center;
+			display: inline-block;
+			font-weight: 700;
+			text-transform: uppercase;
+			font-size: 1.35em;
+			color: $color-white;
+			background-color: transparent;
+			outline: none;
+			text-indent: inherit;
+		}
+	}
+	.comentario{
+		padding:20px 0px 30px 0px;
+		margin:5px 0;
+		background-image: url(../img/template/background-comment.png);
+		background-repeat: no-repeat;
+		background-position: left bottom;
+		.header-comment {
+			font-size: 1.14em;
+			margin-bottom: 10px;
+			.evento-header {
+				font-size: 12px;
+			}
+		}
+		.contetComment {
+			&>* {
+				font-size: 1.14em;
+			}
+		}
+	}
+	p.titulo{
+		font-size: 1em;
+		font-weight:bold;
+	}
+}
+
+.l-evento-proximo {
+	.postnome {
+		font-size: 1.28em;
+	}
+}
+
+.l-evento-proximo-cadastro {
+	@include box-sizing(border-box);
+	@include sprite(evento-proximo-cadastro);
+	padding: 30px 40px;
+	text-align: center;
+	margin-bottom: 30px;
+	margin-top: 30px;
+	color: $color-white;
+	form {
+		input {
+			margin-bottom: 15px;
+			width: 484px;
+		}
+		.enviar {
+			@include box-sizing(border-box);
+			@include sprite(enviar-cadastro-evento);
+			padding: 0px 0px 0px 0px;
+			margin-top: 0px;
+			text-align: center;
+			display: inline-block;
+			font-weight: 700;
+			text-transform: uppercase;
+			font-size: 1.35em;
+			color: $color-white;
+			background-color: transparent;
+			outline: none;
+			text-indent: inherit;
+		}
+	}
+}
+
+.l-evento-sediar {
+	.postnome {
+		font-size: 1.28em;
+	}
+}
+
+.l-evento-sediar-cadastro {
+	@include box-sizing(border-box);
+	@include sprite(evento-sediar-cadastro);
+	padding: 40px 40px 30px 40px;
+	text-align: center;
+	margin-bottom: 30px;
+	margin-top: 30px;
+	color: $color-white;
+	form {
+		input {
+			margin-bottom: 20px;
+			width: 484px;
+		}
+		#datepicker {
+			width: 200px;
+		}
+		.enviar {
+			@include box-sizing(border-box);
+			@include sprite(enviar-cadastro-evento);
+			padding: 0px 0px 0px 0px;
+			margin-top: 15px;
+			text-align: center;
+			display: inline-block;
+			font-weight: 700;
+			text-transform: uppercase;
+			font-size: 1.35em;
+			color: $color-white;
+			background-color: transparent;
+			outline: none;
+			text-indent: inherit;
+		}
+	}
+}

@@ -466,7 +466,7 @@
               <p class="postnome">Agricultura Orgânica cresce 30% ao ano NO BRASIL</p>
               <p class="posttexto">Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor 
 invidunt ut labore et dolore magna aliquyam erat...</p>
-              <a href="#" class="saiba-mais button">Saiba Mais</a>
+              <a href="artigo.php?numero=1" class="saiba-mais button">Saiba Mais</a>
             </div><!-- .article-content -->
 
           </section><!-- .l-artigos-noticias -->
