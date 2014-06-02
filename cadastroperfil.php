@@ -25,7 +25,6 @@
   	$nome=$row['nome'];
   	$cpf=$row['cpf'];
   }
-
 ?>
 <!DOCTYPE html>
 <html lang="pt_BR">
@@ -65,8 +64,9 @@
 
 				<div class="l-row">
 					<header>
-						<h2>Olá <span><?php echo $nome; ?></span></h2>
-						<p>Seja bem vindo ao Dente de Leão, uma plataforma que o auxiliará diariamente. Antes de começar a utilizá-la, queremos te conhecer!</p>
+						<img class="logo" src="assets/img/template/logo-home.png" alt="Logo Dente de Leão">
+						<h2>Olá <span><?php echo $nome; ?></span>,<br>
+							Seja bem vindo!</h2>
 					</header>
 					<div>
 						<form id="enviarPerfil" method="post" action="backend/envios/enviarPerfilUsuario.php" enctype="multipart/form-data">
@@ -74,40 +74,49 @@
 							<input type="hidden" name="nome" id="nome" value="<?php echo $nome; ?>">
 							<input type="hidden" name="cpf" id="cpf" value="<?php echo $cpf; ?>">
 							<input type="hidden" name="email" id="email" value="<?php echo $usuarioLogadoEmail; ?>">
-							<p>Envie-nos uma foto no campo abaixo</p>
-							<span><img src="" id="preview" width="150" height="150" /></span><br>
-							<input type="file" name="foto[]" id="foto" onchange="readURL(this);" class="ignore" accept="image/png, image/gif, image/bmp, image/jpeg, image/jpg">
-							<p>Qual o seu número de telefone?</p>
-							<input type="text" name="telefone" placeholder="Telefone" id="telefone" required><br>
-							<input type="text" name="celular" placeholder="Celular" id="celular"><br>
-							<h2>Conte-nos sobre sua fazenda</h2>
-							<input type="text" name="nomefazenda" placeholder="Nome de sua fazenda" id="nomefazenda" required><br>
-							<input type="text" name="cnpjfazenda" placeholder="CNPJ de sua fazenda" id="cnpjfazenda" required><br>
-							<p>Onde ela está localizada? (Arraste a marcação no mapa se preciso)</p>
-							<input type="text" name="enderecofazenda" placeholder="Endereço" id="start" required><br>
-							<input type="text" name="cepfazenda" placeholder="CEP" id="cepfazenda" required><br>
-							<select name="estado" id="estado" style="width:255px;">
-								<option selected disabled>Estado</option>
-								<?php
+							<div class="l-row inicio-cadastro-img">
+								<div class="l-col6">
+									<p class="texto-fotografia">Obrigado por se cadastrar. Antes de começar gostaríamos de te conhecer. Envie-nos uma foto no campo a seguir...</p>
+								</div><!-- .l-col6 -->
+								<div class="l-col6">
+									<span><img src="assets/img/template/photo-cadastro-perfil.png" id="preview" width="150" height="150" /></span><br>
+									<input type="file" name="foto[]" id="foto" onchange="readURL(this);" class="ignore filestyle" accept="image/png, image/gif, image/bmp, image/jpeg, image/jpg">
+								</div><!-- .l-col6 -->
+							</div><!-- .l-row -->
+							<div class="informacoes-pessoais">
+								<h3 class="title" style="margin-bottom:5px;">Qual o seu número de telefone?</h3>
+								<input type="text" name="telefone" placeholder="TELEFONE" id="telefone" required>
+								<input type="text" name="celular" placeholder="CELULAR" id="celular">
+								<h3 class="title" style="margin-bottom:5px;margin-top:20px;">Conte-nos sobre sua fazenda</h3>
+								<input type="text" name="nomefazenda" placeholder="NOME" id="nomefazenda" required>
+								<input type="text" name="cnpjfazenda" placeholder="CNPJ" id="cnpjfazenda" required>
+								<h3 class="title" style="margin-top:20px;">Onde ela está localizada?</h3>
+								<p class="subtitle">(Arraste a marcação no mapa se preciso)</p>
+								<input type="text" name="enderecofazenda" placeholder="ENDEREÇO" id="start" class="enderecofazenda" required><br>
+								<input type="text" name="cepfazenda" placeholder="CEP" id="cepfazenda" required>
+								<select name="estado" id="estado">
+									<option selected disabled>Estado</option>
+									<?php
 
-								$sqlState = "SELECT * FROM DL_STATE order by id asc";
+									$sqlState = "SELECT * FROM DL_STATE order by id asc";
 
-								$resultState = mysql_query($sqlState);
+									$resultState = mysql_query($sqlState);
 
-							   	while ($row=mysql_fetch_array($resultState)) {
-							   		$id=$row['id'];
-									$estado=$row['estado'];
-									$uf=$row['uf'];
+								   	while ($row=mysql_fetch_array($resultState)) {
+								   		$id=$row['id'];
+										$estado=$row['estado'];
+										$uf=$row['uf'];
 
-								?>
+									?>
 
-								<option value="<?php echo $id; ?>"><?php echo $estado; ?></option>
+									<option value="<?php echo $id; ?>"><?php echo $estado; ?></option>
 
-								<?php } ?>
-							</select><br>
-							<span class="carregando" style="display:none; width:255px;">Carregando Cidades...</span>
-							<select name="cidade" id="cidade" style="display:none; width:255px;" required></select><br>
-							<div id="map-canvas" style="width:100%;height:500px;"></div><!-- div#map-canvas -->
+									<?php } ?>
+								</select>
+								<span class="carregando" style="display:none; width:255px;">Carregando Cidades...</span>
+								<select name="cidade" id="cidade" style="display:none;" required></select>
+							</div><!-- .informacoes-pessoais --><br>
+							<div id="map-canvas" style="width:557px;height:409px;"></div><!-- div#map-canvas -->
 							<div class="map-container" style="display:none;">
 								<!-- Unidade de Local -->
 							    <div class="map-place" data-lat="-23.5505199" data-long="-46.63330939999997" id="mark-0"> <!-- o id deve mudar -->
@@ -120,8 +129,9 @@
 							    </div><!-- .map-place -->
 							    <!-- Unidade de Local -->
 							</div><!-- .map-container -->
-							<p>O que você cultiva?</p>
+							<h3 class="title plantacoes">O que você cultiva?</h3>
 							<span class="plantacoes">
+								<ul class="l-row">
 								<?php
 
 								$sqlPlantacaoList = "SELECT * FROM DL_ADMIN_plantationList WHERE valido = '1' order by id desc";
@@ -148,14 +158,22 @@
 									}
 
 								?> 
-								<img src="<?php echo $imagem; ?>" id="preview" class="plantacaofigura" width="50" height="50" />
-								<input type="checkbox" name="platacao[]" id="plantacao-<?php echo $id ?>" value="<?php echo $id ?>">
-								<label for="plantacao-<?php echo $id ?>"><?php echo $plantacao ?></label>
+								<li class="borda-radios">
+									<label for="plantacao-<?php echo $id ?>">
+										<img src="<?php echo $imagem; ?>" id="preview" class="plantacaofigura" />
+										<?php echo $plantacao ?>
+									</label>
+									<input type="checkbox" name="platacao[]" id="plantacao-<?php echo $id ?>" value="<?php echo $id ?>">
+								</li>
 								<?php } ?>
+								</ul>
 							</span>
-							<p> Você cultiva algo mais? Separe com vírgula (,)</p>
-							<input type="text" name="demaisplantacoes"><br>
-							<button type="submit">Salvar Informações</button>
+							<div class="mais-plantacoes">
+								<p class="subtitle"> Você cultiva algo mais?<br>
+								Separe as plantações com ponto e vírgula (,).</p>
+								<input type="text" name="demaisplantacoes" placeholder="EU TAMBÉM PLANTO...">
+							</div><!-- .mais-plantacoes --><br>
+							<button type="submit" class="salvar-cadastro-perfil">Salvar</button>
 						</form>
 					</div><!-- Formulário de cadastro-->
 					
@@ -204,6 +222,8 @@
 		}
 	});
 	</script>
+	<!--filestyle -->
+  	<script type="text/javascript" src="assets/js/bootstrap-filestyle.js"> </script>
 	<!-- Script do Input File -->
 	<script>
 		function readURL(input){
