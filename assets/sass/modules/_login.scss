@@ -9,7 +9,7 @@
 		font-family: 'Permanent Marker', sans-serif;
 	}
 	h1 {
-		margin:0px auto 5px;
+		margin:10px auto 0px;
 		width:421px;
 		height:108px;
 	}
@@ -149,10 +149,10 @@
 			h2{
 				color:#8e9924;
 				text-align:center;
-				font-size:3em;
+				font-size:2em;
 				clear:both;
 				width:550px;
-				line-height:40px;
+				line-height:28px;
 				margin:0 auto;
 			}
 		}
@@ -196,14 +196,19 @@
 
 }
 body.index{background: url(../img/template/bg-home.png) center top no-repeat;}
+
 #login_form .fazer-login{
 		
 		background: url(../img/template/bt-fazer-login.png) top no-repeat;
 		margin:8px auto;		
 	}
+
 #lembrar_form #email, #login_form #usuario, #login_form #senha{
 	width:285px;
-	padding:2px 2px;
+	padding:3px 2px;
+	border-radius:0; 
+	box-shadow:none; 
+	moz-box-shadow:none;
 }
 
 .enviar{
@@ -219,7 +224,11 @@ button[type=submit]{
 		display:block;
 		border:none;
 	}
-#formCadastroUsuario #cpf, #formCadastroUsuario #nome, #formCadastroUsuario #email, #formCadastroUsuario #senha{width:212px; padding: 2px 2px; margin:-10px;}
+#formCadastroUsuario #cpf, #formCadastroUsuario #nome, #formCadastroUsuario #email, #formCadastroUsuario #senha{width:212px; padding: 3px 2px; margin:-10px; border-radius:0; box-shadow:none; moz-box-shadow:none;}
+
+#termos{
+	box-shadow:none; moz-box-shadow:none;
+}
 
 #login_form{
 	label.error {
