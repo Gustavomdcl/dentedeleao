@@ -76,22 +76,22 @@
                   <h2>Dados da Plantação</h2>
                 </header>
                 <p class="subtitle">Selecione abaixo a aba correspondente ao cultivo que deseja visualizar.</p>
-
+                <div id="abas">
+                <h3 class="title">Meus Cultivos:</h3>
                 <ul id="plantacoes">
                   <?php 
 
                   foreach ($deviceUserRow as $value) { 
 
                     $plantationNameId = $value['plantacao'];
-                    $imagem=$row['imagem'];
+                    //$imagem=$row['imagem'];
 
-                    $sqlPlantacaoNome = "SELECT * FROM DL_ADMIN_plantationList WHERE id = '$plantationNameId' order by id desc limit 1";
+                    $sqlPlantacaoNome = "SELECT `plantacao`, `imagem` FROM DL_ADMIN_plantationList WHERE id = '$plantationNameId' order by id desc limit 1";
                     $resultPlantacaoNome = mysql_query($sqlPlantacaoNome);
                     while ($row=mysql_fetch_array($resultPlantacaoNome)) {
-
-                      $imagem=$row['imagem'];
                       $plantationName=$row['plantacao'];
-
+                      $imagem=$row['imagem'];
+                      
                       if($imagem == null){ 
                             $imagem = 'admin/assets/img/template/logo.gif'; 
                           } else { 
@@ -107,7 +107,8 @@
                           }
 
                   ?>
-                  <li class="plantacao" target="<?php echo $value['plantacao']; ?>"><img src="<?php echo $imagem ?>" alt="<?php echo $plantationName; ?>" /></li>
+                  <li><a class="plantacao" target="<?php echo $value['plantacao']; ?>" style="background-image: url(<?php echo $imagem ?>);"><?php echo $plantationName; ?></a></li>
+                  <!--<li class="plantacao" target="<?php echo $value['plantacao']; ?>"><img src="<?php echo $imagem ?>" alt="<?php echo $plantationName; ?>" /></li>-->
                   <?php 
 
                     }//while
@@ -117,40 +118,45 @@
                   ?>
                 </ul><!-- #plantacoes -->
 
-                <hr />
+               </div><!-- #abas-->
 
                 <?php
 
                 foreach ($deviceUserRow as $value) {
 
                 ?>
-
-                <div id="plantacao-<?php echo $value['plantacao']; ?>" class="target" data-plantacao="<?php echo $value['plantacao']; ?>">
-                  <h3>Chuva</h3>
-                  <div id="chuva-<?php echo $value['plantacao']; ?>">
-                    <div id="chart" style='width: 735px; height: 300px;'></div>
-                    <div id="control" style='width: 735px; height: 50px;'></div>
-                  </div>
-                  <!--a href="interna1" class="bt-vermais">Ver mais </a-->
-
                 
-                  <h3>Umidade</h3>
-                  <div id="umidade-<?php echo $value['plantacao']; ?>" style="width: 735px; height: 300px;"></div>
-                  <!--a href="interna1" class="bt-vermais">Ver mais </a-->
+                  <div id="plantacao-<?php echo $value['plantacao']; ?>" class="target" data-plantacao="<?php echo $value['plantacao']; ?>">
+                  <div class="bg-graficos">  
+                    <h4 class="left"><img src="assets/img/template/tlt-chuva.png" alt="Chuva"/></h4>
+                    <div id="chuva-<?php echo $value['plantacao']; ?>" style="width: 500px; height: 300px; float:right;"></div>
+                      <!--<div id="chart" style='width: 500px; height: 300px;'></div>
+                      <div id="control" style='width: 500px; height: 50px;'></div>
+                    </div>-->
+                    <!--a href="interna1" class="bt-vermais">Ver mais </a-->
+                    <img src="assets/img/template/divisoria-graficos.png" alt="divisoria gráficos" class="divisoria" />
+                  
+                    <h4 class="right"><img src="assets/img/template/tlt-umidade.png" alt="Umidade"/></h4>
+                    <div id="umidade-<?php echo $value['plantacao']; ?>" style="width: 500px; height: 300px; float:left;"></div>
+                    <!--a href="interna1" class="bt-vermais">Ver mais </a-->
 
+                    <img src="assets/img/template/divisoria-graficos.png" alt="divisoria gráficos" class="divisoria" />
+                  
+                    <h4 class="left"><img src="assets/img/template/tlt-umidade-solo.png" alt="Umidade do Solo"/></h4>
+                    <div id="umidade_do_solo-<?php echo $value['plantacao']; ?>" style="width: 500px; height: 300px; float:right;"></div>
+                    <!--a href="interna1" class="bt-vermais">Ver mais </a-->
+
+                    <img src="assets/img/template/divisoria-graficos.png" alt="divisoria gráficos" class="divisoria" />
+                  
+                    <h4 class="right"><img src="assets/img/template/tlt-temperatura.png" alt="Temperatura"/></h4>
+                    <div id="temperatura-<?php echo $value['plantacao']; ?>" style="width: 500px; height: 300px; float:left;"></div>
+                  </div>  
+                    <form id="verGrafico" method="post" action="grafico-detalhes.php">
+                      <input type="hidden" value="<?php echo $value['id']; ?>" name="grafico">
+                      <button type="submit" href="grafico-detalhes.php?dados=" class="bt-vermais">Ver mais</button>
+                    </form>
+                  
                 
-                  <h3>Umidade do Solo</h3>
-                  <div id="umidade_do_solo-<?php echo $value['plantacao']; ?>" style="width: 735px; height: 300px;"></div>
-                  <!--a href="interna1" class="bt-vermais">Ver mais </a-->
-
-                
-                  <h3>Temperatura</h3>
-                  <div id="temperatura-<?php echo $value['plantacao']; ?>" style="width: 735px; height: 300px;"></div>
-                  <form id="verGrafico" method="post" action="grafico-detalhes.php">
-                    <input type="hidden" value="<?php echo $value['id']; ?>" name="grafico">
-                    <button type="submit" href="grafico-detalhes.php?dados=" class="bt-vermais">Ver mais </button>
-                  </form>
-
                 <div class="values-container">
 
                 <?php
@@ -285,11 +291,19 @@
           jQuery('#plantacao-'+$(this).attr('target')).attr('data-nome', jQuery(this).children('img').attr('alt'));
       });
 
+      $("#abas li a").each(function(e){
+        if(e==0) {
+           $(this).addClass("active");
+        }
+      });
+
       jQuery(function(){
          
         jQuery('.plantacao').click(function(){
-              jQuery('.target').hide();
-              jQuery('#plantacao-'+$(this).attr('target')).show();
+          jQuery('.target').hide();
+          jQuery('#plantacao-'+$(this).attr('target')).show();
+          $(".active").removeClass("active");
+          $(this).addClass("active");
         });
 
       });

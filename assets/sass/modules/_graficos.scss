@@ -6,10 +6,9 @@
 		margin:5px;
 	}
 	.bt-vermais{
-		display:block;
-		float:right;
-		padding:5px 10px;
-		background-color:#f00;
+		background: url(./../img/template/bt-ver-mais.png);
+		width:190px;
+		margin:0px auto;
 	}
 	h2{
 		font-family:'Permanent Marker', sans-serif;
@@ -20,7 +19,10 @@
 		font-family:'Permanent Marker', sans-serif;
 		font-size:2em;
 		text-align:left;
-		margin:30px 0 10px;
+		margin:10px 10px 20px 10px;
+		color: $color-white;
+		float:left;
+
 	}
 	.subtitle{
 		font-family:'Sophie', sans-serif;
@@ -31,6 +33,70 @@
 	#sem-sensor{
 		h3{
 			text-align:center;
+		}
+	}
+	.divisoria{
+		clear:both;
+		width:289px;
+		height:7px;
+		margin:20px 202px;
+	}
+	h4{
+		font-family:'Permanent Marker', sans-serif;
+		font-size:1.7em;
+		clear:both;
+		color: $color-white;
+	}
+	#abas{
+		background: url(./../img/template/bg-tlt-graficos.png) no-repeat;
+		width:694px;
+		height:59px;
+		a {
+			display: inline-block;
+			min-height: 50px;
+			min-width: 50px;
+			font-family: 'Sophie', sans-serif;
+			font-size: 1.71em;
+			color: transparent;
+			text-transform: uppercase;
+			vertical-align: middle;
+			line-height: 50px;
+			background-repeat: no-repeat;
+			background-position: 50% 50%;
+			&:hover {
+				color: $color-white;
+				background-position: 50% 10000px;
+			}
+			&.active {
+				color: $color-white;
+				background-position: 50% 10000px;
+				cursor: default;
+			}
+		}
+	}
+	#plantacoes{
+		padding-top:6px;
+	}
+	.bg-graficos{
+		background: url(./../img/template/bg-graficos.png) no-repeat;
+		width:634px;
+		padding:25px 30px 0;
+		margin:25px 0;
+		height:1425px;
+
+		.left{
+			float:left;
+			display:block;
+			width:115px;
+			margin:84px 5px;
+			text-align:left;
+		}
+		.right{
+			float:right;
+			display:block;
+			width:125px;
+			margin-top:80px;
+			text-align:right;
 		}
 	}
 }
