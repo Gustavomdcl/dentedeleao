@@ -7,15 +7,19 @@ body {
   //         font-smoothing: antialiased;
   margin:0;
   padding:0;
-  background-image: url(./../img/template/bg-perfil.png);
-  background-position:bottom center;
-  background-repeat:no-repeat;  
+  #site {
+    background-image: url(./../img/template/bg-perfil.png);
+    background-position:bottom center;
+    background-repeat:no-repeat;  
+  }
 }
 
 body.painel{
-  background-image: url(../img/template/bg-interna.png);
-  background-position: center top;
-  background-position: no-repeat;
+  #site {
+    background-image: url(../img/template/bg-interna.png);
+    background-position: center top;
+    background-repeat: no-repeat;
+  }
 }
 
 p {

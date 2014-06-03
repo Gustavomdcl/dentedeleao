@@ -26,6 +26,8 @@
 
 	<!-- site
 	======================================================== -->
+	<div id="clima-img">
+	<div id="clima-fx">
 	<div id="site">
 
 		<?php include 'template/header.php'; ?>
@@ -147,6 +149,9 @@
 
 		<!-- ADRIAN: FINAL DA ÁREA PARA COLOCAR SEU CÓDIGO, QUE VAI MUDAR EM CADA PÁGINA -->
 	</div><!-- #site -->
+	</div>
+	</div>
+	
 	<?php include 'template/script.php'; ?>
 	<!-- google maps api -->
 	<script src="assets/js/jquery.mapsperfil.js" type="text/javascript"></script>

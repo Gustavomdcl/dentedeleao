@@ -26,6 +26,8 @@
 
 	<!-- site
 	======================================================== -->
+	<div id="clima-img">
+	<div id="clima-fx">
 	<div id="site">
 
 		<?php include 'template/header.php'; ?>
@@ -187,6 +189,8 @@
 		<?php include 'template/footer.php'; ?>
 
 	</div><!-- #site -->
+	</div>
+	</div>
 
 	<?php include 'template/script.php'; ?>
 	<!-- google maps api -->
