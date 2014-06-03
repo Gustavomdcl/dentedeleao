@@ -197,7 +197,7 @@
                     </header>
                     <div id="sem-sensor">
                       <h3>Ainda não conhece o dispositivo?</h3>
-                      <p>Monitore sua plantação 24h por dia, tenha acesso a gráficos e comece um banco de dados de informações para saber como resolver seus problemas em qualquer situação.</p>
+                      <p class="subtitle">Monitore sua plantação 24h por dia, tenha acesso a gráficos e comece um banco de dados de informações para saber como resolver seus problemas em qualquer situação.</p>
                       <img src="" width="735" height="300" />
                     </div><!-- #sem-sensor  -->
                     <!-- ================= SEM SENSOR ================== -->
