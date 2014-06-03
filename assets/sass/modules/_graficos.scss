@@ -76,6 +76,12 @@
 	}
 	#plantacoes{
 		padding-top:6px;
+		h2{
+			color: $color-white;
+			background: url(./../img/template/bg-tlt-graficos.png) no-repeat;
+			width:694px;
+			height:59px;
+		}
 	}
 	.bg-graficos{
 		background: url(./../img/template/bg-graficos.png) no-repeat;
