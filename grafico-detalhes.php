@@ -69,7 +69,7 @@
                 <header>
                   <h2>Dados da Plantação</h2>
                 </header>
-                <p class="subtitle">Selecione abaixo a aba correspondente ao cultivo que deseja visualizar.</p>
+                <p>Selecione abaixo a aba correspondente ao cultivo que deseja visualizar.</p>
 
                 <ul id="plantacoes">
                   <?php 
@@ -102,67 +102,62 @@
                   <li class="plantacao"><img src="<?php echo $imagem; ?>" alt="<?php echo $plantacao; ?>" /><?php echo $plantacao; ?></li>
                   <?php }//while ?>
                 </ul><!-- #plantacoes -->
-                
+
+                <hr />
+
+                <div id="plantacao-<?php echo $plantacaoId; ?>" class="target" data-plantacao="<?php echo $plantacaoId; ?>">
+                  <h3>Chuva</h3>
+                  <div id="chuva-<?php echo $plantacaoId; ?>">
+                    <div id="chart-chuva" style='width: 735px; height: 300px;'></div>
+                    <div id="control-chuva" style='width: 735px; height: 50px;'></div>
+                  </div>
+
+                <hr style="clear:both" />
+                  <h3>Umidade</h3>
+                  <div id="umidade-<?php echo $plantacaoId; ?>" style="width: 735px; height: 350px;">
+                    <div id="chart-umidade" style='width: 735px; height: 300px;'></div>
+                    <div id="control-umidade" style='width: 735px; height: 50px;'></div>
+                  </div>
+
+                <hr style="clear:both" />
+                  <h3>Umidade do Solo</h3>
+                  <div id="umidade_do_solo-<?php echo $plantacaoId; ?>" style="width: 735px; height: 350px;">
+                    <div id="chart-umidade_do_solo" style='width: 735px; height: 300px;'></div>
+                    <div id="control-umidade_do_solo" style='width: 735px; height: 50px;'></div>
+                  </div>
+
+                <hr style="clear:both" />
+                  <h3>Temperatura</h3>
+                  <div id="temperatura-<?php echo $plantacaoId; ?>" style="width: 735px; height: 350px;">
+                    <div id="chart-temperatura" style='width: 735px; height: 300px;'></div>
+                    <div id="control-temperatura" style='width: 735px; height: 50px;'></div>
+                  </div>
+
+                <div class="values-container">
 
                 <?php
 
-                foreach ($deviceUserRow as $value) {
-
+                    $deviceDataFim;
+                    
+                    if($data_fim!=null){
+                      $deviceDataFim = $data_fim;
+                    } else {
+                      $deviceDataFim = date('o\-m\-d');
+                    }
+                    $data_fim = $deviceDataFim . "23:59:59";
+                    $sqlDispositivoBeta = "SELECT * FROM DL_DEVICE WHERE data BETWEEN '$data_inicio' and '$data_fim' AND dispositivo = '$dispositivo' order by id asc";
+                    $resultDispositivoBeta = mysql_query($sqlDispositivoBeta);
+                    while ($row=mysql_fetch_array($resultDispositivoBeta)) {
                 ?>
-
-                <div id="plantacao-<?php echo $plantacaoId; ?>" class="target" data-plantacao="<?php echo $plantacaoId; ?>">
-                  <div class="bg-graficos">  
-                    <h4 class="left"><img src="assets/img/template/tlt-chuva.png" alt="Chuva"/></h4>
-                    <div id="chuva-<?php echo $plantacaoId; ?>" style="width: 500px; height: 300px; float:right;">
-                    <div id="chart-chuva" style="width: 500px; height: 250px;"></div>
-                    <div id="control-chuva" style="width: 500px; height: 50px;"></div>
-                    </div>
-
-                    <img src="assets/img/template/divisoria-graficos.png" alt="divisoria gráficos" class="divisoria" />
-                    <h4 class="right"><img src="assets/img/template/tlt-umidade.png" alt="Umidade"/></h4>
-                    <div id="umidade-<?php echo $plantacaoId; ?>" style="width: 500px; height: 300px;">
-                    <div id="chart-umidade" style="width: 500px; height: 250px;"></div>
-                    <div id="control-umidade" style="width: 500px; height: 50px;"></div>
-                    </div>
-
-                    <img src="assets/img/template/divisoria-graficos.png" alt="divisoria gráficos" class="divisoria" />
-                    <h4 class="left"><img src="assets/img/template/tlt-umidade-solo.png" alt="Umidade do Solo"/></h4>
-                    <div id="umidade_do_solo-<?php echo $plantacaoId; ?>" style="width: 500px; height: 300px; float:right;">
-                    <div id="chart-umidade_do_solo" style="width: 500px; height: 250px;"></div>
-                    <div id="control-umidade_do_solo" style="width: 500px; height: 50px;"></div>
-                    </div>
-
-                    <img src="assets/img/template/divisoria-graficos.png" alt="divisoria gráficos" class="divisoria" />
-                    <h4 class="right"><img src="assets/img/template/tlt-temperatura.png" alt="Temperatura"/></h4>
-                    <div id="temperatura-<?php echo $plantacaoId; ?>" style="width: 500px; height: 300px;">
-                      <div id="chart-temperatura" style="width: 500px; height: 250px;"></div>
-                      <div id="control-temperatura" style="width: 500px; height: 50px;"></div>
-                    </div>
-                  </div><!--.bg-graficos-->
-                  <div class="values-container">
-
-                      <?php
-
-                          $deviceDataFim;
-                          
-                          if($data_fim!=null){
-                            $deviceDataFim = $data_fim;
-                          } else {
-                            $deviceDataFim = date('o\-m\-d');
-                          }
-                          $data_fim = $deviceDataFim . "23:59:59";
-                          $sqlDispositivoBeta = "SELECT * FROM DL_DEVICE WHERE data BETWEEN '$data_inicio' and '$data_fim' AND dispositivo = '$dispositivo' order by id asc";
-                          $resultDispositivoBeta = mysql_query($sqlDispositivoBeta);
-                          while ($row=mysql_fetch_array($resultDispositivoBeta)) {
-                      ?>
-                      <div class="value-<?php echo $plantacaoId; ?>" data-plantacao="<?php echo $plantacaoId; ?>" data-id="<?php echo $row['id']; ?>" data-device="<?php echo $row['dispositivo']; ?>" data-umidade="<?php echo $row['umidade']; ?>" data-umidadedosolo="<?php echo (int)((100*($row['umidade_do_solo']-512))/368); ?>" data-temperatura="<?php echo $row['temperatura']; ?>" data-chuva="<?php echo (int)((100*(1024-$row['chuva']))/368); ?>" data-date="<?php echo $row['data']; ?>"></div>
-                      <?php 
-                          }//while
-                      ?>
+                  <div class="value-<?php echo $plantacaoId; ?>" data-plantacao="<?php echo $plantacaoId; ?>" data-id="<?php echo $row['id']; ?>" data-device="<?php echo $row['dispositivo']; ?>" data-umidade="<?php echo $row['umidade']; ?>" data-umidadedosolo="<?php echo (int)((100*($row['umidade_do_solo']-512))/368); ?>" data-temperatura="<?php echo $row['temperatura']; ?>" data-chuva="<?php echo (int)((100*(1024-$row['chuva']))/368); ?>" data-date="<?php echo $row['data']; ?>"></div>
+                <?php 
+                    }//while
+                ?>
                   </div><!-- .values-container -->
-                
                 </div><!-- #plantacao -->
-              
+                <?php
+                  }//while
+                ?>
 
           </section><!-- .l-graficos -->
 
@@ -432,8 +427,6 @@
 
         });
       }
-      
-      
     </script>
 </body>
 </html>
