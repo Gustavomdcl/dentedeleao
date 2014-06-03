@@ -82,6 +82,7 @@
 								<ul>
 									<li><a href="lista-registros.php" title="" class="btn">Registros <i class="fa fa-users"></i></a></li>
 									<li><a href="lista-dispositivos.php" title="" class="btn">Dispositivos <i class="fa fa-tachometer"></i></a></li>
+									<li><a href="lista-promocoes.php" title="" class="btn">Promoções <i class="fa fa-bullhorn"></i></a></li>
 								</ul>
 							</nav>
 
@@ -97,9 +98,9 @@
 
 							<nav>
 								<ul>
-									<li><a href="" title="" class="btn invalid">Próximo Evento <i class="fa fa-certificate"></i></a></li>
-									<li><a href="" title="" class="btn invalid">Eventos Anteriores <i class="fa fa-calendar"></i></a></li>
-									<li><a href="" title="" class="btn invalid">Fazendas Disponíveis <i class="fa fa-map-marker"></i></a></li>
+									<li><a href="lista-proximo-evento.php" title="" class="btn">Próximo Evento <i class="fa fa-certificate"></i></a></li>
+									<li><a href="lista-eventos-anteriores.php" title="" class="btn">Eventos Anteriores <i class="fa fa-calendar"></i></a></li>
+									<li><a href="lista-fazendas-disponiveis.php" title="" class="btn">Fazendas Disponíveis <i class="fa fa-map-marker"></i></a></li>
 								</ul>
 							</nav>
 
@@ -118,6 +119,7 @@
 									<li><a href="lista-email.php" title="Lista de Email" class="btn">Lista de Email <i class="fa fa-envelope"></i></a></li>
 									<li><a href="lista-cpf.php" title="" class="btn">Lista de CPF <i class="fa fa-credit-card"></i></a></li>
 									<li><a href="lista-plantacao.php" title="" class="btn">Lista de Plantação <i class="fa fa-leaf"></i></a></li>
+									<li><a href="lista-artigos-noticias.php" title="" class="btn">Lista de Artigos e Notícias <i class="fa fa-file-text"></i></a></li>
 								</ul>
 							</nav>
 
