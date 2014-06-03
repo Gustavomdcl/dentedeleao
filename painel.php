@@ -187,8 +187,9 @@
 
         <!-- ================= SEM SENSOR ================== -->
         <div id="sem-sensor">
-          <h3>Ainda não conhece o dispositivo?</h3>
-          <p>Monitore sua plantação 24h por dia, tenha acesso a gráficos e comece um banco de dados de informações para saber como resolver seus problemas em qualquer situação.</p>
+          <h3 class="title">Ainda não conhece o dispositivo?</h3>
+          <p class="subtitle">Monitore sua plantação 24h por dia, tenha acesso a gráficos e comece um banco de dados<br>
+            de informações para saber como resolver seus problemas em qualquer situação.</p>
           <img src="" width="735" height="300" />
         </div><!-- #sem-sensor  -->
         <!-- ================= SEM SENSOR ================== -->
@@ -447,7 +448,7 @@
 
             <?php } else { ?>
 
-            <p>Ainda não há notificações</p>
+            <p class="subtitle">Ainda não há notificações</p>
 
             <?php }//else ?>
 
