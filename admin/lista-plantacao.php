@@ -89,7 +89,7 @@
 
 					<div class="l-col1">
 	
-						<img src="assets/img/template/logo.gif" id="preview" class="plantacaofigura" width="50" height="50" />
+						<img src="assets/img/template/logo.gif" id="preview" class="plantacaofigura" width="50" height="50" style="background:#ccc;border-radius:5px;" />
 
 					</div><!-- .l-col1 -->
 
@@ -168,7 +168,7 @@
 
 									?> 
 
-									<li class="l-col1"><img src="<?php echo $imagem ?>" id="preview" class="plantacaofigura" width="40" height="40" /></li>
+									<li class="l-col1"><img src="<?php echo $imagem ?>" id="preview" class="plantacaofigura" width="40" height="40" style="background:#ccc;border-radius:5px;" /></li>
 									<li class="l-col11"><p class="btn"><?php echo $plantacao ?> 
 										<a href="#confirm_form" data-id="<?php echo $id ?>" data-plantacao="<?php echo $plantacao ?>" data-img="<?php echo $imagem ?>" class="icon excluir modal"><i class="fa fa-trash-o"></i></a>
 										<a href="#edit_form" data-id="<?php echo $id ?>" data-plantacao="<?php echo $plantacao ?>" data-img="<?php echo $imagem ?>" class="icon editar modal"><i class="fa fa-pencil"></i></a>
@@ -225,7 +225,7 @@
 
 									?> 
 
-									<li class="l-col1"><img src="<?php echo $imagem; ?>" id="preview" class="plantacaofigura" width="40" height="40" /></li>
+									<li class="l-col1"><img src="<?php echo $imagem; ?>" id="preview" class="plantacaofigura" width="40" height="40" style="background:#ccc;border-radius:5px;" /></li>
 									<li class="l-col11"><p class="btn"><?php echo $plantacao ?> 
 										<a href="#confirm_form" data-id="<?php echo $id ?>" data-plantacao="<?php echo $plantacao ?>" data-img="<?php echo $imagem; ?>" class="icon excluir modal"><i class="fa fa-trash-o"></i></a>
 										<a href="#edit_form" data-id="<?php echo $id ?>" data-plantacao="<?php echo $plantacao ?>" data-img="<?php echo $imagem; ?>" class="icon editar modal"><i class="fa fa-pencil"></i></a>
@@ -315,7 +315,7 @@
 
 				<div class="l-col1">
 
-					<img src="assets/img/template/logo.gif" id="previewimgeditar" class="plantacaofigura" width="50" height="50" />
+					<img src="assets/img/template/logo.gif" id="previewimgeditar" class="plantacaofigura" width="50" height="50" style="background:#ccc;border-radius:5px;" />
 
 				</div><!-- .l-col1 -->
 
