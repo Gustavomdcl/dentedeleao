@@ -2,6 +2,7 @@ if($('body').hasClass('index')) {} else {
 	   	var localizeMemory;
 
 	   function getWeather(link) {
+	   		//alert('wow');
 	   		$.getJSON(link, function(data){
 			//console.log(data);
 
@@ -55,6 +56,43 @@ if($('body').hasClass('index')) {} else {
 			//cookies
 			var theWeather = 'clima-'+icon+'|'+Math.round(tempCelcius)+'|'+$('#browser_geo').data('cidade');
 			createCookie('ddlweather', theWeather,0.02);
+		}).fail(function() {
+			//ERROR===========
+		    //alert( "error" );
+		    if(localizeMemory==null){
+				localizeMemory = 'clima-10n';
+			} else {
+				$('body').removeClass(localizeMemory);
+			}
+			$('body').addClass('clima-10n');
+			//http://openweathermap.org/wiki/API/Weather_Condition_Codes
+			//http://openweathermap.org/img/w/10d.png
+			/*01d.png	 01n.png	 sky is clear
+			02d.png	 02n.png	 few clouds
+			03d.png	 03n.png	 scattered clouds
+			04d.png	 04n.png	 broken clouds
+			09d.png	 09n.png	 shower rain
+			10d.png	 10n.png	 Rain
+			11d.png	 11n.png	 Thunderstorm
+			13d.png	 13n.png	 snow
+			50d.png	 50n.png	 mist*/
+
+			//console.log(icon);
+
+			//get weather description
+			var tempCelcius = 17;
+			var tempFahrenheit = tempCelcius * 9 / 5 + 32;
+
+			//$('#weather-desc').text(description);//<div id="weather-desc"></div>
+			//$('#location').text(data.name);//local
+			$('#location').text($('#browser_geo').data('cidade'));
+
+			$('#degreesCelsius .number').text(Math.round(tempCelcius));
+			$('#degreesCelsius .cel').text("°C ");
+			//$('#degreesFahrenheit').text(Math.round(tempFahrenheit) + "°F");//<div class="t" id="degreesFahrenheit"></div>
+			//cookies
+			var theWeather = 'clima-10n|'+Math.round(tempCelcius)+'|'+$('#browser_geo').data('cidade');
+			createCookie('ddlweather', theWeather,0.02);
 		});
 	   }
 
@@ -72,6 +110,7 @@ if($('body').hasClass('index')) {} else {
 			//getWeather("./weather.php");
 			var profileLatitude = $('#browser_geo').data('latitude');
 			var profileLongitude = $('#browser_geo').data('longitude');
+			//alert('hey');
 			getWeather("http://api.openweathermap.org/data/2.5/weather?lat="+profileLatitude+"&lon="+profileLongitude);
 		}
 

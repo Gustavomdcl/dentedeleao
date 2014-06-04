@@ -89,7 +89,7 @@ if($sucesso == "aprovado") {
 						
 							<a class="videohome"><img src="assets/img/template/como-funciona.png" border="0" usemap="#Map" alt="Sobre o Projeto" /></a>
 							<map name="Map">
-	                          <area shape="poly" class="videohome" coords="34,137,109,47,195,5,281,0,365,11,400,25,429,44,446,63,460,89,469,122,440,152,410,193,394,231,404,272,330,385,242,453,134,506,51,402,12,341,-3,253" href="https://www.youtube.com/watch?v=YJKESYJ4QW8?iframe">
+	                          <area shape="poly" class="videohome" coords="34,137,109,47,195,5,281,0,365,11,400,25,429,44,446,63,460,89,469,122,440,152,410,193,394,231,404,272,330,385,242,453,134,506,51,402,12,341,-3,253" href="https://www.youtube.com/watch?v=SHvRFJVqTsM?iframe">
 	                        </map>
                         </section>
 						<!-- .como-funciona -->
