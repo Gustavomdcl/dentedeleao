@@ -15,7 +15,7 @@
               }
 
               ?>
-            <h4 class="title post">Plantações com dispositivo:</h4>
+            <h4 class="title post">Cultivos com dispositivo:</h4>
             <!-- Suas Plantações -->
             <div class="plantacoes">
               <?php

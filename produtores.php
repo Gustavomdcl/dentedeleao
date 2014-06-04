@@ -61,7 +61,7 @@
 					<h3>Buscar produtores</h3>
 					<form method="post" action="produtores.php">
 						<select name="cultivo" id="cultivo">
-							<option selected disabled>Plantação</option>
+							<option selected disabled>Cultivo</option>
 							<?php
 
 							$sqlPlantacaoList = "SELECT * FROM DL_ADMIN_plantationList WHERE valido = '1' order by id desc";

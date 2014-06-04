@@ -1,7 +1,7 @@
 <?php
             $myPlantations;
             if($plantacoesLista!=null){ ?>
-            <h4 class="title post">Suas plantações:</h4>
+            <h4 class="title post">Seus Cultivos:</h4>
             <!-- Suas Plantações -->
             <span class="plantacoes">
               <?php foreach ($plantacoesLista as $value) {  ?>
@@ -28,7 +28,7 @@
 
             ?>
 
-            <h4 class="title post">Outras plantações:</h4>
+            <h4 class="title post">Outros Cultivos:</h4>
             <!-- Suas Plantações -->
             <span class="plantacoes">
 

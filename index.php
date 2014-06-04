@@ -77,8 +77,8 @@ if($sucesso == "aprovado") {
 							<ol>
 								<li style="margin-top:65px;">Conversar com outros produtores que possuem o mesmo orgulho e prazer em cultivar alimentos saudáveis.<br><img src="assets/img/template/ondinhas.png" alt="ornamento" /></li>
 								<li style="margin-top:80px;"><img src="assets/img/template/ondinhas.png" alt="ornamento" /><br>
-									Obter respostas de colegas empenhados como você em ter uma plantação melhor a cada dia.</li> 								
-								<li>Monitorar em tempo real dados como a umidade do ar e do solo temperatura e chuvas relacionadas a sua plantação. <br><img src="assets/img/template/ondinhas.png" alt="ornamento" /></li>
+									Obter respostas de colegas empenhados como você em ter<br> um cultivo melhor<br> a cada dia</li> 								
+								<li>Monitorar em tempo real dados como a umidade do ar e do solo temperatura e chuvas relacionadas<br> ao seu cultivo. <br><img src="assets/img/template/ondinhas.png" alt="ornamento" /></li>
 								<li>Ler artigos e notícias sobre diversos assuntos para ampliar sua visão de mercado, soluções, legislação entre outros <br><img src="assets/img/template/ondinhas.png" alt="ornamento" /></li>
 								
 							</ol>
