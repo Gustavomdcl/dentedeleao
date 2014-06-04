@@ -1,4 +1,9 @@
 .l-duvidas {
+	input{
+		-webkit-box-shadow:none;
+		box-shadow:none;
+		}
+	margin-top:-30px;
 	ul {
 		li {
 			position: relative;
@@ -45,6 +50,11 @@
 }
 
 .l-duvida-busca {
+	margin-top:-30px;
+	input{
+		-webkit-box-shadow:none;
+		box-shadow:none;
+		}
 	h3.title {
 		margin-bottom: 30px;
 		font-size: 2.5em;
@@ -97,6 +107,10 @@
 }
 
 .l-duvida-exibicao {
+	input{
+		-webkit-box-shadow:none;
+		box-shadow:none;
+		}
 	a {
 		color: $color-orange;
 		text-decoration: underline;
@@ -538,6 +552,11 @@ input.ui-button {
 
 
 .l-duvida-resultado {
+	margin-top:-30px;
+	input{
+		-webkit-box-shadow:none;
+		box-shadow:none;
+		}
 	.title.post {
 		text-align: center;
 		margin-top: 30px;
@@ -569,8 +588,8 @@ input.ui-button {
 			}
 			input[type=radio] {
 				position: absolute;
-				top: 3px;
-				right: 6px;
+				top: 4px;
+				right: 5px;
 			}
 			.plantation-name {
 				font-weight: 700;
@@ -615,6 +634,7 @@ input.ui-button {
 		text-indent: inherit;
 		margin-left: 80px;
 		outline: none;
+		background-color: transparent;
 		&.disabled {
 			cursor: default;
 			-ms-filter:"progid:DXImageTransform.Microsoft.Alpha(Opacity=50)";

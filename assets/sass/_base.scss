@@ -227,7 +227,7 @@ label.error {
   width: 200px;
 }
 
-input {
+input, select {
   @include box-sizing(border-box);
   padding: 10px 30px;
   font-family: 'Maven Pro', sans-serif;
